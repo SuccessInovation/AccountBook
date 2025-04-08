@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <h1>가계부 프로젝트</h1>
+    <h1></h1>
   </header>
 </template>
 

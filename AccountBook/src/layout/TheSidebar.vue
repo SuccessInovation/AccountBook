@@ -1,18 +1,18 @@
 <template>
   <aside class="sidebar">
     <nav class="menu">
-      <router-link to="/" class="nav-button">🏠 Home</router-link>
+      <router-link to="/home" class="nav-button">🏠 Home</router-link>
       <router-link to="/transaction" class="nav-button"
         >💰 수입/지출 내역</router-link
       >
 
       <div class="nav-group">
-        <div class="nav-group-title">📊 통계</div>
-        <router-link to="/statistics/export" class="nav-sub-button"
-          >⬇️ 엑셀 내보내기</router-link
-        >
+        <div class="nav-group-title">📊 통계 및 내보내기</div>
         <router-link to="/statistics/summary" class="nav-sub-button"
           >📄 요약 통계</router-link
+        >
+        <router-link to="/statistics/export" class="nav-sub-button"
+          >⬇️ 엑셀 내보내기</router-link
         >
       </div>
 
@@ -23,7 +23,6 @@
 
 <style scoped>
 .sidebar {
-  position: fixed;
   top: 0;
   left: 0;
   width: 200px;
@@ -31,7 +30,6 @@
   background-color: #f0f4f8;
   padding: 1rem;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  z-index: 10;
 }
 .menu {
   display: flex;

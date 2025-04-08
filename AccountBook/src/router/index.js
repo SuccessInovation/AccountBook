@@ -14,48 +14,57 @@ import ExportExcelPage from '@/pages/ExportExcelPage.vue'
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: HomePage, // 홈 경로는 HomePage.vue로
-  },
-  {
-    path: '/start',
     name: 'Start',
     component: StartPage,
+    meta: { layout: 'no-layout' }, // 헤더/사이드바 없는 레이아웃
+  },
+  {
+    path: '/home',
+    name: 'Home',
+    component: HomePage,
+    meta: { layout: 'default' }, //  헤더/사이드바 있는 레이아웃
   },
   {
     path: '/login',
     name: 'Login',
     component: LoginPage,
+    meta: { layout: 'default' }, //  헤더/사이드바 있는 레이아웃
   },
   {
     path: '/register',
     name: 'Register',
     component: RegisterPage,
+    meta: { layout: 'default' }, //  헤더/사이드바 있는 레이아웃
   },
   {
     path: '/transaction',
     name: 'Transaction',
     component: TransactionPage,
+    meta: { layout: 'default' }, //  헤더/사이드바 있는 레이아웃
   },
   {
     path: '/popup',
     name: 'Popup',
     component: PopupPage,
+    meta: { layout: 'default' }, //  헤더/사이드바 있는 레이아웃
   },
   {
     path: '/statistics/summary',
     name: 'Statistics',
     component: StatisticsPage,
+    meta: { layout: 'default' }, //  헤더/사이드바 있는 레이아웃
   },
   {
     path: '/statistics/export',
     name: 'Exports',
     component: ExportExcelPage,
+    meta: { layout: 'default' }, //  헤더/사이드바 있는 레이아웃
   },
   {
     path: '/budget',
     name: 'Budget',
     component: BudgetPage,
+    meta: { layout: 'default' }, //  헤더/사이드바 있는 레이아웃
   },
 ]
 
