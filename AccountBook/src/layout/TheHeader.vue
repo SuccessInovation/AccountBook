@@ -17,6 +17,5 @@
   box-sizing: border-box;
 
   top: 0;
-  z-index: 9;
 }
 </style>
