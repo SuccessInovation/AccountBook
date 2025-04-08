@@ -14,7 +14,6 @@ export const EXPENSE_CATEGORIES = [
   'Travel',
   'Contributions',
   'Savings',
-  'Education',
   'Etc',
 ]
 
