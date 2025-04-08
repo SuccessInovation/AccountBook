@@ -14,11 +14,15 @@ export const statisticsStore = defineStore('statistics', {
   getters: {
     getSortedRecords: (state) => {
       return [...state.records].sort(
-        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        (a, b) => new Date(b.date) - new Date(a.date)
+      );
+    },
+    getSortedFiteredRecords: (state) => {
+      return [...state.filteredRecords].sort(
+        (a, b) => new Date(b.date) - new Date(a.date)
       );
     },
   },
-
   actions: {
     async fetchRecords() {
       this.loading = true;

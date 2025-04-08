@@ -1,11 +1,14 @@
 <template>
   <div class="box">
     <ul>
-      <li v-for="item in store.filteredRecords" :key="item.id">
+      <!-- 양식에 맞게 수정 예정 -->
+      <li v-for="item in store.getSortedFiteredRecords" :key="item.id">
         {{ item.date }} | {{ item.category }} | {{ item.amount }}원
       </li>
     </ul>
-    <button @click="downloadExcel(store.filteredRecords)">내보내기</button>
+    <button @click="downloadExcel(store.getSortedFiteredRecords)">
+      내보내기
+    </button>
   </div>
 </template>
 
@@ -23,7 +26,7 @@ const downloadExcel = (data) => {
 
   const worksheet = XLSX.utils.json_to_sheet(data);
   const workbook = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(workbook, worksheet, '조회내역');
+  XLSX.utils.book_append_sheet(workbook, worksheet, '가계부');
   XLSX.writeFile(workbook, 'transactionList.xlsx');
 };
 </script>

@@ -10,10 +10,10 @@ import ExcelFilter from '@/components/ExcelFilter.vue';
 import ExcelList from '@/components/ExcelList.vue';
 import { ref } from 'vue';
 
-const isSearched = ref(false); // ✅ 조회 상태 추가
+const isSearched = ref(false);
 
 const handleSearch = () => {
-  isSearched.value = true; // ✅ 조회 버튼 누르면 true로 바뀜
+  isSearched.value = true;
 };
 </script>
 

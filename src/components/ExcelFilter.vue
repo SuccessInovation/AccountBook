@@ -16,8 +16,9 @@
       <input type="radio" value="custom" v-model="selectPeriod" /> 기간설정
     </label>
     <button type="submit">조회</button>
-    <!-- ✅ 기간설정 선택 시에만 날짜 입력창 표시 -->
-    <div v-if="selectPeriod === 'custom'" class="date-inputs">
+
+    <!-- 기간설정 선택 시에만 날짜 입력창 표시 -->
+    <div v-if="selectPeriod === 'custom'" class="date_inputs">
       <input type="date" v-model="customStartDate" />
       <span>~</span>
       <input type="date" v-model="customEndDate" />
@@ -60,7 +61,7 @@ const handleSubmit = () => {
 
     store.fetchRecordsByPeriod(customStartDate.value, customEndDate.value);
   }
-  emit('search'); // ✅ 조회 완료 → 부모 컴포넌트에게 알림!
+  emit('search'); // 조회 완료 → 부모 컴포넌트에게 알림!
 };
 </script>
 
