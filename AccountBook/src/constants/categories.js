@@ -41,7 +41,6 @@ export const CATEGORY_MAP = {
   Travel: '여행/숙박',
   Contributions: '경조사/회비',
   Savings: '저축',
-  Education: '교육',
   Etc: '기타', // 지출/수입 '기타'항목은 한 번만 등록
 
   // 수입
