@@ -1,7 +1,13 @@
 <template>
-  <TheHeader />
-  <TheSidebar />
-  <router-view />
+  <div id="containers">
+    <TheHeader />
+    <div class="main-content">
+      <TheSidebar />
+      <div class="container_router_view">
+        <router-view />
+      </div>
+    </div>
+  </div>
   <TheFooter />
 </template>
 

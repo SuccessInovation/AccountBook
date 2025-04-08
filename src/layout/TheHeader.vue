@@ -3,12 +3,12 @@
 <template>
   <div class="TheHeader">
     <h1>
-      <div class="logo">
+      <div id="logo">
         <span>배추</span
         ><img id="img_logo" src="../img/cabbage/logo1.png" alt="로고" />
       </div>
-      <div class="header_title">임시 제목: HOME</div>
     </h1>
+    <div id="header_title">임시 제목: HOME</div>
     <div id="img_profile">
       <img
         class="rounded-circle"
@@ -24,16 +24,24 @@
   height: 115px;
   background-color: var(--point-5-color);
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 115px;
   display: flex;
   align-items: center;
   box-sizing: border-box;
+  position: relative;
 }
-.logo {
+/* 배추 로고 */
+.TheHeader h1 {
+  width: 300px;
+  height: 100%;
+}
+#logo {
   display: flex;
   align-items: center;
-  font-size: 50px;
+  font-size: 45px;
   font-weight: bold;
   margin: 15px 0 0 40px;
 }
@@ -41,37 +49,24 @@
   width: 55px;
   height: 82px;
 }
-.header_title {
+/* 화면 제목 */
+#header_title {
+  margin: 0 auto;
   font-size: 27px;
   font-weight: bold;
+  text-align: center;
+  transform: translateX(-50%);
 }
+/* 프로필 아이콘 */
 #img_profile {
+  position: fixed;
+  right: 20px;
   width: 70px;
   height: 70px;
   object-fit: cover; /* 이미지 비율 잘 맞추기 */
-  border-radius: 50%; /* 진짜 동그랗게 만들기 */
+  border-radius: 50%;
   border: 3px solid white;
+  margin-left: auto;
+  cursor: pointer;
 }
 </style>
-<!--
-<template>
-  <header class="header">
-    <h1></h1>
-  </header>
-</template>
-
-<style scoped>
-.header {
-  width: 100%;
-  height: 60px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #ddd;
-  display: flex;
-  align-items: center;
-  padding-left: 220px; /* sidebar 공간 확보 */
-  padding-right: 1rem;
-  box-sizing: border-box;
-
-  top: 0;
-}
-</style> -->
