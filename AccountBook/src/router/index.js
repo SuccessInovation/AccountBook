@@ -9,7 +9,7 @@ import TransactionPage from '@/pages/TransactionPage.vue'
 import PopupPage from '@/pages/PopupPage.vue'
 import StatisticsPage from '@/pages/StatisticsPage.vue'
 import BudgetPage from '@/pages/BudgetPage.vue'
-
+import ExportExcelPage from '@/pages/ExportExcelPage.vue'
 
 const routes = [
   {
@@ -20,37 +20,42 @@ const routes = [
   {
     path: '/start',
     name: 'Start',
-    component: StartPage
+    component: StartPage,
   },
   {
     path: '/login',
     name: 'Login',
-    component: LoginPage
+    component: LoginPage,
   },
   {
     path: '/register',
     name: 'Register',
-    component: RegisterPage
+    component: RegisterPage,
   },
   {
     path: '/transaction',
     name: 'Transaction',
-    component: TransactionPage
+    component: TransactionPage,
   },
   {
     path: '/popup',
     name: 'Popup',
-    component: PopupPage
+    component: PopupPage,
   },
   {
-    path: '/statistics',
+    path: '/statistics/summary',
     name: 'Statistics',
-    component: StatisticsPage
+    component: StatisticsPage,
+  },
+  {
+    path: '/statistics/export',
+    name: 'Exports',
+    component: ExportExcelPage,
   },
   {
     path: '/budget',
     name: 'Budget',
-    component: BudgetPage
+    component: BudgetPage,
   },
 ]
 

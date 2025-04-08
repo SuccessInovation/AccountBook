@@ -2,15 +2,21 @@
   <aside class="sidebar">
     <nav class="menu">
       <router-link to="/" class="nav-button">🏠 Home</router-link>
-      <router-link to="/transaction" class="nav-button">💰 수입/지출 내역</router-link>
+      <router-link to="/transaction" class="nav-button"
+        >💰 수입/지출 내역</router-link
+      >
 
       <div class="nav-group">
         <div class="nav-group-title">📊 통계</div>
-        <router-link to="/statistics/export" class="nav-sub-button">⬇️ 엑셀 내보내기</router-link>
-        <router-link to="/statistics/summary" class="nav-sub-button">📄 요약 통계</router-link>
+        <router-link to="/statistics/export" class="nav-sub-button"
+          >⬇️ 엑셀 내보내기</router-link
+        >
+        <router-link to="/statistics/summary" class="nav-sub-button"
+          >📄 요약 통계</router-link
+        >
       </div>
 
-      <router-link to="/summary" class="nav-button">🧾 요약</router-link>
+      <router-link to="/budget" class="nav-button">🧾 예산</router-link>
     </nav>
   </aside>
 </template>
