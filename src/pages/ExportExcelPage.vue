@@ -1,21 +1,20 @@
 <template>
   <div class="ExportExcelPage">
-    <ExcelFilter />
-    <ExcelList />
+    <ExcelFilter @search="handleSearch" />
+    <ExcelList v-if="isSearched" />
   </div>
 </template>
 
 <script setup>
-import ExcelFilter from '@/components/ExcelFilter.vue'
-import ExcelList from '@/components/ExcelList.vue'
-import { onMounted } from 'vue'
-import { statisticsStore } from '@/stores/statisticsStore'
+import ExcelFilter from '@/components/ExcelFilter.vue';
+import ExcelList from '@/components/ExcelList.vue';
+import { ref } from 'vue';
 
-const store = statisticsStore()
+const isSearched = ref(false); // ✅ 조회 상태 추가
 
-onMounted(() => {
-  store.fetchRecordsByPeriod()
-})
+const handleSearch = () => {
+  isSearched.value = true; // ✅ 조회 버튼 누르면 true로 바뀜
+};
 </script>
 
 <style>
