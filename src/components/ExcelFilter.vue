@@ -15,15 +15,13 @@
     <label>
       <input type="radio" value="custom" v-model="selectPeriod" /> 기간설정
     </label>
-
+    <button type="submit">조회</button>
     <!-- ✅ 기간설정 선택 시에만 날짜 입력창 표시 -->
     <div v-if="selectPeriod === 'custom'" class="date-inputs">
       <input type="date" v-model="customStartDate" />
       <span>~</span>
       <input type="date" v-model="customEndDate" />
     </div>
-
-    <button type="submit">조회</button>
   </form>
 </template>
 
