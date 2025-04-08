@@ -15,7 +15,7 @@ export const EXPENSE_CATEGORIES = [
   'Contributions',
   'Savings',
   'Education',
-  'etc',
+  'Etc',
 ]
 
 // 수입
@@ -24,7 +24,7 @@ export const INCOME_CATEGORIES = [
   'Allowance',
   'Financial',
   'Scholarship',
-  'etc',
+  'Etc',
 ]
 
 // 카테고리 이름 한글-영어 매칭
@@ -42,7 +42,7 @@ export const CATEGORY_MAP = {
   Contributions: '경조사/회비',
   Savings: '저축',
   Education: '교육',
-  etc: '기타',
+  Etc: '기타', // 지출/수입 '기타'항목은 한 번만 등록
 
   // 수입
   Salary: '급여',
