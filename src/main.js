@@ -1,4 +1,6 @@
 import './assets/main.css'
+// 달력 부트스트랩
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
