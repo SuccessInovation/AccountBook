@@ -45,13 +45,13 @@ const handleSubmit = () => {
 
   const today = new Date();
   if (selectPeriod.value === '1months') {
-    store.fetchRecordsByPeriod();
+    store.fetchTranactionsByPeriod();
   } else if (selectPeriod.value === '3months') {
     const startDate = new Date();
     startDate.setMonth(today.getMonth() - 3);
 
     const start = startDate.toISOString().split('T')[0];
-    store.fetchRecordsByPeriod(start, today);
+    store.fetchTranactionsByPeriod(start, today);
   } else if (selectPeriod.value === 'custom') {
     // 입력 확인
     if (!customStartDate.value || !customEndDate.value) {
@@ -59,7 +59,7 @@ const handleSubmit = () => {
       return;
     }
 
-    store.fetchRecordsByPeriod(customStartDate.value, customEndDate.value);
+    store.fetchTranactionsByPeriod(customStartDate.value, customEndDate.value);
   }
   emit('search'); // 조회 완료 → 부모 컴포넌트에게 알림!
 };

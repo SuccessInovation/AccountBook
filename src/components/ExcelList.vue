@@ -2,13 +2,11 @@
   <div class="box">
     <ul>
       <!-- 양식에 맞게 수정 예정 -->
-      <li v-for="item in store.getSortedFiteredRecords" :key="item.id">
+      <li v-for="item in store.filteredTransaction" :key="item.id">
         {{ item.date }} | {{ item.category }} | {{ item.amount }}원
       </li>
     </ul>
-    <button @click="downloadExcel(store.getSortedFiteredRecords)">
-      내보내기
-    </button>
+    <button @click="downloadExcel(store.filteredTransaction)">내보내기</button>
   </div>
 </template>
 

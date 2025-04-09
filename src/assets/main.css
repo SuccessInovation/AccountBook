@@ -1,4 +1,65 @@
+/* 폰트 (나눔고딕) */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+/* 변수 설정 */
+:root {
+  --font-color: #3f3e3c;
+  --point-1-color: #328e6e;
+  --point-2-color: #67ae6e;
+  --point-3-color: #99bc85;
+  --point-4-color: #b7ccb4;
+  --point-5-color: #d3ded9;
+  --input-box-color: #dbdbdb;
+  --dark-brown: #706d54;
+  --light-brown: #c9b194;
+  --very-light-brown: #ededed;
+  --font-main: 'Nanum Gothic', sans-serif;
+}
+
+/* 초기화 */
 * {
- margin: 0,
- padding:s 0
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  border: none;
+  background: none;
+  outline: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ul,
+ol {
+  list-style: none;
+}
+
+/* 전체 적용 */
+#containers {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+main-content {
+  display: flex;
+  flex: 1;
 }
