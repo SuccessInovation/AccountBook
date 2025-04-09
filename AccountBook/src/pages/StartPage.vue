@@ -5,7 +5,7 @@
     <section>
       <div class="wrap_content">
         <div class="introduction_box">
-          <h1>배추<img src="/img/logo1.png" alt="" /></h1>
+          <h1>배추<img src="../img/logo1.png" alt="" /></h1>
           <p>
             그 어디에서도 경험하지 못한 <br /><strong
               >실속 그 자체 온라인 가계부 배추!</strong
@@ -18,6 +18,7 @@
         </div>
         <div class="start-button-box">
           <router-link to="home">시작하기</router-link>
+          <router-link to="login">로그인</router-link>
         </div>
       </div>
     </section>
@@ -75,6 +76,7 @@ h1 > img {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
+  gap: 3rem;
 }
 
 /* 시작 버튼 스타일 */
