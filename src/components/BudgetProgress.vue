@@ -172,13 +172,11 @@ watch(
 }
 
 .cab_btn {
-  border: 1px solid blue;
   width: 3rem;
   cursor: pointer;
 }
 .cab_btn:hover {
-  background-color: blue;
-  color: white;
+  background-color: var(--point-5-color);
 }
 .btn_txt {
   font-size: 0.75rem;
