@@ -1,3 +1,99 @@
+<script setup>
+import { ref, computed, onMounted } from 'vue'
+import { useTransactionStore } from '@/stores/TransactionStore'
+import { useRouter } from 'vue-router'
+import PopupPage from '@/pages/PopupPage.vue'
+import TransactionEdit from '@/components/TransactionEdit.vue'
+
+// 내역 추가하는 팝업창 상태 (초기값 : false)
+const showPopup = ref(false)
+function openPopup() {
+  showPopup.value = true
+}
+function closePopup() {
+  showPopup.value = false
+}
+
+// 수정하는 팝업창 상태 (초기값 : false)
+const showEdit = ref(false)
+function closeEdit() {
+  showEdit.value = false
+}
+
+// 수정할 거래 데이터를 저장할 변수
+const selectedTransaction = ref(null)
+
+// 수정 아이콘 클릭 시 실행: 해당 거래 데이터를 저장하고, 수정 팝업을 연다.
+function handleEdit(record) {
+  selectedTransaction.value = record
+  showEdit.value = true
+}
+
+// 거래 내역 관련 로직
+const transactionStore = useTransactionStore()
+const router = useRouter() // router는 다른 용도로 사용할 수 있으므로 그대로 남깁니다.
+
+onMounted(() => {
+  transactionStore.fetchTransactions()
+})
+
+// 필터 상태 (수입/지출 모두 체크)
+const showIncome = ref(true)
+const showExpense = ref(true)
+
+// 필터된 거래 목록
+const filteredTransactions = computed(() =>
+  transactionStore.transactions.filter(record => {
+    if (record.type === '수입' && showIncome.value) return true
+    if (record.type === '지출' && showExpense.value) return true
+    return false
+  }),
+)
+
+// 페이징 관련 변수
+const currentPage = ref(1)
+const pageSize = ref(10)
+const totalPages = computed(
+  () => Math.ceil(filteredTransactions.value.length / pageSize.value) || 1,
+)
+const paginatedTransactions = computed(() => {
+  const start = (currentPage.value - 1) * pageSize.value
+  return filteredTransactions.value.slice(start, start + pageSize.value)
+})
+
+// 페이징 버튼 함수
+function prevPage() {
+  if (currentPage.value > 1) {
+    currentPage.value--
+  }
+}
+
+function nextPage() {
+  if (currentPage.value < totalPages.value) {
+    currentPage.value++
+  }
+}
+
+// 금액 포맷 함수
+function formatAmount(value, type) {
+  const num = parseFloat(value)
+  if (isNaN(num)) return value
+  const formatted = num.toLocaleString()
+  return type === '수입'
+    ? `+${formatted}`
+    : type === '지출'
+      ? `-${formatted}`
+      : formatted
+}
+
+// 삭제 이벤트 처리
+function handleDelete(id) {
+  if (window.confirm('정말 삭제하시겠습니까?')) {
+    transactionStore.deleteTransaction(id)
+  }
+}
+</script>
+
 <template>
   <div class="ledger-container">
     <!-- 상단 연/월 네비게이션 영역 -->
@@ -26,7 +122,6 @@
         <input type="text" class="search-input" placeholder="내역 검색" />
       </div>
       <div class="nav-right">
-        <!-- 수입/지출 필터 체크박스 -->
         <label class="income-checkbox">
           <input type="checkbox" v-model="showIncome" />
           <span>수입</span>
@@ -43,8 +138,7 @@
       <table class="ledger-table">
         <thead>
           <tr>
-            <!-- 선택삭제용 체크박스 열 -->
-            <!-- 아직 구현 X -->
+            <!-- 선택삭제용 체크박스 열 (아직 구현 X) -->
             <th style="width: 40px"><input type="checkbox" /></th>
             <th style="width: 120px">날짜</th>
             <th style="width: 120px">카테고리</th>
@@ -57,7 +151,6 @@
         <tbody>
           <!-- 필터 상태에 따라 페이징된 거래 목록 렌더링 -->
           <tr v-for="record in paginatedTransactions" :key="record.id">
-            <!-- 선택삭제 체크박스 -->
             <td>
               <input
                 type="checkbox"
@@ -68,24 +161,20 @@
             <td>{{ record.date }}</td>
             <td>{{ record.category }}</td>
             <td>{{ record.description }}</td>
-            <td>{{ formatAmount(record.amount, record.type) }}</td>
-            <!-- 수정 아이콘 -->
+            <td>{{ formatAmount(record.amount, record.type) }} 원</td>
             <td>
               <i
                 class="icon-edit"
                 @click="handleEdit(record)"
                 style="cursor: pointer"
-                >✏️</i
-              >
+                >✏️</i>
             </td>
-            <!-- 삭제 아이콘 -->
             <td>
               <i
                 class="icon-delete"
                 @click="handleDelete(record.id)"
                 style="cursor: pointer"
-                >🗑️</i
-              >
+                >🗑️</i>
             </td>
           </tr>
         </tbody>
@@ -97,7 +186,7 @@
         style="margin-top: 16px; text-align: center"
       >
         <button @click="prevPage" :disabled="currentPage === 1">이전</button>
-        <span> {{ currentPage }} / {{ totalPages }} </span>
+        <span>{{ currentPage }} / {{ totalPages }}</span>
         <button @click="nextPage" :disabled="currentPage === totalPages">
           다음
         </button>
@@ -106,98 +195,23 @@
 
     <!-- 하단 '추가' 버튼 -->
     <div class="add-button-area">
-      <router-link to="/popup" class="add-button">추가 +</router-link>
-      <!-- <button class="add-button">추가</button> -->
+      <button class="add-button" @click="openPopup">추가 +</button>
     </div>
+
+    <!-- 거래 추가 팝업 -->
+    <PopupPage v-if="showPopup" @close="closePopup" />
+    <!-- 거래 수정 팝업 -->
+    <TransactionEdit
+      v-if="showEdit"
+      :transaction="selectedTransaction"
+      @close="closeEdit"
+    />
   </div>
 </template>
 
-<script setup>
-import { ref, computed, onMounted } from 'vue'
-import { useTransactionStore } from '@/stores/TransactionStore'
-import { useRouter } from 'vue-router'
-
-const transactionStore = useTransactionStore()
-const router = useRouter()
-
-// 페이지 로드 시 거래 내역 불러오기
-onMounted(() => {
-  transactionStore.fetchTransactions()
-})
-
-// 필터 상태: 수입/지출 (기본: 모두 체크)
-const showIncome = ref(true)
-const showExpense = ref(true)
-
-// 필터링된 거래 내역 목록 (수입/지출 체크 상태에 따라)
-const filteredTransactions = computed(() => {
-  return transactionStore.transactions.filter(record => {
-    if (record.type === '수입' && showIncome.value) return true
-    if (record.type === '지출' && showExpense.value) return true
-    return false
-  })
-})
-
-// 페이지 관련 변수
-const currentPage = ref(1)
-const pageSize = ref(10)
-
-// 총 페이지 수 계산
-const totalPages = computed(() => {
-  return Math.ceil(filteredTransactions.value.length / pageSize.value) || 1
-})
-
-// 현재 페이지의 항목: filteredTransactions를 currentPage와 pageSize에 따라 슬라이스
-const paginatedTransactions = computed(() => {
-  const start = (currentPage.value - 1) * pageSize.value
-  return filteredTransactions.value.slice(start, start + pageSize.value)
-})
-
-// 이전 페이지 버튼 함수
-function prevPage() {
-  if (currentPage.value > 1) {
-    currentPage.value--
-  }
-}
-
-// 다음 페이지 버튼 함수
-function nextPage() {
-  if (currentPage.value < totalPages.value) {
-    currentPage.value++
-  }
-}
-
-// 금액 포맷 함수:
-// - value를 숫자로 변환하고,
-// - 거래 유형에 따라 '수입'은 '+' 기호, '지출'은 '-' 기호 추가
-function formatAmount(value, type) {
-  const num = parseFloat(value)
-  if (isNaN(num)) return value
-  const formatted = num.toLocaleString()
-  return type === '수입'
-    ? `+${formatted}`
-    : type === '지출'
-      ? `-${formatted}`
-      : formatted
-}
-
-// 수정 아이콘 클릭 시 처리 (수정 페이지로 이동)
-function handleEdit(record) {
-  router.push({ name: 'Popup', params: { id: record.id } })
-}
-
-// 삭제 아이콘 클릭 시 처리 (삭제 확인 후 삭제)
-function handleDelete(id) {
-  if (window.confirm('정말 삭제하시겠습니까?')) {
-    transactionStore.deleteTransaction(id)
-  }
-}
-</script>
-
 <style scoped>
-/* 기존 스타일 그대로 유지 */
+/* 스타일은 기존 코드와 동일 */
 
-/* 전체 컨테이너 */
 .ledger-container {
   width: 100%;
   max-width: 1200px;
@@ -206,7 +220,6 @@ function handleDelete(id) {
   background-color: #fff;
 }
 
-/* 상단 연/월 네비게이션 */
 .ledger-header {
   display: flex;
   align-items: center;
@@ -235,7 +248,6 @@ function handleDelete(id) {
   margin-top: 2px;
 }
 
-/* 중간의 '목록/달력/카테고리/검색/수입/지출' 섹션 */
 .ledger-nav {
   display: flex;
   align-items: center;
@@ -295,7 +307,6 @@ function handleDelete(id) {
   cursor: pointer;
 }
 
-/* 테이블 영역 */
 .ledger-table-section {
   padding: 20px;
   background-color: #f8f8f8;
@@ -330,7 +341,6 @@ function handleDelete(id) {
   cursor: pointer;
 }
 
-/* 페이징 컨트롤 */
 .pagination-controls button {
   padding: 6px 12px;
   margin: 0 6px;
@@ -346,7 +356,6 @@ function handleDelete(id) {
   cursor: not-allowed;
 }
 
-/* 하단 '추가' 버튼 영역 */
 .add-button-area {
   display: flex;
   justify-content: center;

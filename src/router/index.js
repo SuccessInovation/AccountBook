@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 // 페이지 import
+import TransactionEdit from '@/components/TransactionEdit.vue'
 import StartPage from '@/pages/StartPage.vue'
 import LoginPage from '@/pages/LoginPage.vue'
 import RegisterPage from '@/pages/RegisterPage.vue'
@@ -12,6 +13,11 @@ import BudgetPage from '@/pages/BudgetPage.vue'
 import ExportExcelPage from '@/pages/ExportExcelPage.vue'
 
 const routes = [
+  {
+    path: '/transaction/edit/:id',
+    name: 'TransactionEdit',
+    component: TransactionEdit,
+  },
   {
     path: '/',
     name: 'Home',

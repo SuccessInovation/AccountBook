@@ -8,6 +8,7 @@
     - delete: 삭제 요청 시 거래의 id를 전달
 */
 
+
 const emit = defineEmits(['edit', 'delete'])
 
 // 금액 포맷 함수: 거래 유형에 따라 수입은 '+' 지출은 '-' 부호 추가
