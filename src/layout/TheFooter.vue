@@ -3,13 +3,14 @@
 <template>
   <div class="TheFooter">
     <span id="copyright"
-      >copyright &copy; 2025 성공하면 혁신!조. All rights reserved.</span
+      >copyright &copy 2025 성공하면 혁신!조. All rights reserved.</span
     >
   </div>
 </template>
 
 <style scoped>
 .TheFooter {
+  background-color: #fff;
   color: var(--font-color);
   position: fixed;
   bottom: 0;

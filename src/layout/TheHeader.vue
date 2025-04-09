@@ -3,10 +3,10 @@
 <template>
   <div class="TheHeader">
     <h1>
-      <div id="logo">
+      <router-link id="logo">
         <span>배추</span
         ><img id="img_logo" src="../img/cabbage/logo1.png" alt="로고" />
-      </div>
+      </router-link>
     </h1>
     <div class="header_title_wrapper">
       <div id="header_title">임시 제목: HOME</div>
@@ -34,12 +34,13 @@
   background-color: var(--point-5-color);
   box-sizing: border-box;
 }
+
 /* 배추 로고 */
 #logo {
   margin: 0;
   width: 300px;
   height: 100%;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   font-size: 45px;
   font-weight: bold;
@@ -72,17 +73,13 @@
   margin-left: auto;
   cursor: pointer;
 }
-<<<<<<< HEAD
 /* 프로필 아이콘 */
 #img_profile {
   position: fixed;
   right: 20px;
-=======
-#img_profile {
->>>>>>> b029045 (Design: Header, SNB, Footer 완료)
   width: 70px;
   height: 70px;
-  object-fit: cover; /* 이미지 비율 잘 맞추기: 화면 비율 고정ㄴ*/
+  object-fit: cover; /* 이미지 비율 잘 맞추기: 화면 비율 고정*/
   border-radius: 50%;
   border: 3px solid white;
   cursor: pointer;

@@ -5004,25 +5004,25 @@
   "budgets": [
     {
       "category": "food",
-      "amount": 10000,
+      "amount": 0,
       "month": "2025-04",
       "id": "8aa3"
     },
     {
       "category": "cafesnack",
-      "amount": 100000,
+      "amount": 0,
       "month": "2025-04",
       "id": "abba"
     },
     {
       "category": "entertainment",
-      "amount": 10000,
+      "amount": 0,
       "month": "2025-04",
       "id": "6352"
     },
     {
       "category": "shopping",
-      "amount": 100000,
+      "amount": 0,
       "month": "2025-04",
       "id": "a926"
     },
