@@ -18,7 +18,7 @@
     </div>
     <!-- 전체 진척도 Bar -->
     <div v-else class="overall-progress">
-      <div class="overall-title">전체 진척도</div>
+      <div class="overall-title">총 예산</div>
       <div class="bar-wrapper">
         <div class="percentage">
           {{ totalBudget === 0 ? '-' : overallPercent + '%' }}
@@ -96,8 +96,9 @@ const overallPercent = ref(0)
 
 // 한 달 지출 불러오기
 const loadExpensebyMonth = async (startDate, endDate, selectedMonth) => {
-  const result = await statics.fetchRecordsByPeriod(startDate, endDate)
-  const expenses = result.filter(exp => exp.type === '지출')
+  const result = await statics.fetchTranactionsByPeriod(startDate, endDate)
+  const expenses = result.filter(exp => exp.type === 'expense')
+  console.log('📊 지출 항목:', expenses)
 
   const spendingByCategory = {}
   expenses.forEach(r => {
@@ -107,6 +108,7 @@ const loadExpensebyMonth = async (startDate, endDate, selectedMonth) => {
   })
 
   await store.fetchBudgets(selectedMonth)
+
   const budgetByCategory = Object.fromEntries(
     store.budgets.map(b => [b.category, b.amount]),
   )
