@@ -1,3 +1,5 @@
+import 'bootstrap/dist/css/bootstrap.min.css' // bootstrap
+import 'bootstrap/dist/js/bootstrap.bundle.min.js' // bootstrap
 import './assets/main.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 

@@ -33,7 +33,6 @@
   align-items: center;
   background-color: var(--point-5-color);
   box-sizing: border-box;
-  position: relative;
 }
 /* 배추 로고 */
 #logo {
@@ -73,10 +72,14 @@
   margin-left: auto;
   cursor: pointer;
 }
+<<<<<<< HEAD
 /* 프로필 아이콘 */
 #img_profile {
   position: fixed;
   right: 20px;
+=======
+#img_profile {
+>>>>>>> b029045 (Design: Header, SNB, Footer 완료)
   width: 70px;
   height: 70px;
   object-fit: cover; /* 이미지 비율 잘 맞추기: 화면 비율 고정ㄴ*/
