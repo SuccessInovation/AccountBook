@@ -7,6 +7,7 @@ import RegisterPage from '@/pages/RegisterPage.vue'
 import HomePage from '@/pages/HomePage.vue'
 import TransactionPage from '@/pages/TransactionPage.vue'
 import PopupPage from '@/pages/PopupPage.vue'
+import PopupListPage from '@/pages/PopupListPage.vue'
 import StatisticsPage from '@/pages/StatisticsPage.vue'
 import BudgetPage from '@/pages/BudgetPage.vue'
 import ExportExcelPage from '@/pages/ExportExcelPage.vue'
@@ -48,6 +49,12 @@ const routes = [
     path: '/popup',
     name: 'Popup',
     component: PopupPage,
+    meta: { layout: 'default' }, //  헤더/사이드바 있는 레이아웃
+  },
+  {
+    path: '/popup/list',
+    name: 'PopupList',
+    component: PopupListPage,
     meta: { layout: 'default' }, //  헤더/사이드바 있는 레이아웃
   },
   {

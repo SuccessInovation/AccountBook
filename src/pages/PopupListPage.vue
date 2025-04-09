@@ -1,24 +1,90 @@
+<template>
+  <div class="ledger-container">
+    <!-- 목록/달력 토글 & 검색/필터 영역 -->
+    <!-- 테이블 영역 -->
+    <section class="ledger-table-section">
+      <table class="ledger-table">
+        <thead>
+          <tr>
+            <!-- 선택삭제용 체크박스 열 -->
+            <!-- 아직 구현 X -->
+            <th style="width: 40px"><input type="checkbox" /></th>
+            <th style="width: 120px">날짜</th>
+            <th style="width: 120px">카테고리</th>
+            <th>내용</th>
+            <th style="width: 120px">금액</th>
+            <th style="width: 60px">수정</th>
+            <th style="width: 60px">삭제</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 필터 상태에 따라 페이징된 거래 목록 렌더링 -->
+          <tr v-for="record in filteredByDate" :key="record.id">
+            <!-- 선택삭제 체크박스 -->
+            <td>
+              <input
+                type="checkbox"
+                v-model="record.selected"
+                style="width: 16px; height: 16px"
+              />
+            </td>
+            <td>{{ record.date }}</td>
+            <td>{{ record.category }}</td>
+            <td>{{ record.description }}</td>
+            <td>{{ formatAmount(record.amount, record.type) }}</td>
+            <!-- 수정 아이콘 -->
+            <td>
+              <i
+                class="icon-edit"
+                @click="handleEdit(record)"
+                style="cursor: pointer"
+                >✏️</i
+              >
+            </td>
+            <!-- 삭제 아이콘 -->
+            <td>
+              <i
+                class="icon-delete"
+                @click="handleDelete(record.id)"
+                style="cursor: pointer"
+                >🗑️</i
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="closepopuplist" @click="closepopuplist" />
+    </section>
+
+    <!-- 하단 '추가' 버튼 -->
+    <!-- <AddListBtn /> -->
+    <!-- <div class="add-button-area">
+      <router-link to="/popup" class="add-button">추가 +</router-link> -->
+    <!-- <button class="add-button">추가</button> -->
+    <!-- </div> -->
+  </div>
+</template>
+
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useTransactionStore } from '@/stores/TransactionStore'
-import { useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 // import
 
 // 달력,AddListBtn import
 import CalendarContent from '@/components/CalendarContent.vue'
 import AddListBtn from '@/components/AddListBtn.vue'
-import TransactionContent from '@/components/TransactionContent.vue'
+
 const transactionStore = useTransactionStore()
-const router = useRouter()
+const route = useRoute()
+
+console.log('날짜:', route.query.date) // console.log(route.params.id)
 //달력 showCalendar, openCalendar
-const showCalendar = ref(false)
+// const showCalendar = ref(false)
 
-const openCalendar = () => {
-  showCalendar.value = true
-}
-const activeTab = ref('list') // 기본 탭: list
-
-// const tabs = ['목록', '달력']
+// const openCalendar = () => {
+//   showCalendar.value = true
+// }
 
 // 페이지 로드 시 거래 내역 불러오기
 onMounted(() => {
@@ -38,34 +104,22 @@ const filteredTransactions = computed(() => {
   })
 })
 
-// 페이지 관련 변수
-const currentPage = ref(1)
-const pageSize = ref(10)
-
-// 총 페이지 수 계산
-const totalPages = computed(() => {
-  return Math.ceil(filteredTransactions.value.length / pageSize.value) || 1
+const selectedDate = ref(route.query.date || '')
+console.log('선택요일:', selectedDate.value)
+onMounted(() => {
+  transactionStore.fetchTransactions()
 })
 
-// 현재 페이지의 항목: filteredTransactions를 currentPage와 pageSize에 따라 슬라이스
-const paginatedTransactions = computed(() => {
-  const start = (currentPage.value - 1) * pageSize.value
-  return filteredTransactions.value.slice(start, start + pageSize.value)
+// 날짜 기준으로 필터링
+const filteredByDate = computed(() => {
+  return transactionStore.transactions.filter(
+    t => t.date === selectedDate.value,
+  )
 })
 
-// 이전 페이지 버튼 함수
-function prevPage() {
-  if (currentPage.value > 1) {
-    currentPage.value--
-  }
-}
-
-// 다음 페이지 버튼 함수
-function nextPage() {
-  if (currentPage.value < totalPages.value) {
-    currentPage.value++
-  }
-}
+console.log('선택된 날짜:', selectedDate.value)
+// console.log('전체 거래 내역:', transactionStore.transactions)
+console.log('필터된 결과:', filteredByDate.value)
 
 // 금액 포맷 함수:
 // - value를 숫자로 변환하고,
@@ -93,47 +147,8 @@ function handleDelete(id) {
   }
 }
 </script>
-<!-- 탭메뉴 -->
-<template>
-  <div>
-    <!-- Bootstrap 탭 메뉴 -->
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <button
-          class="nav-link"
-          :class="{ active: activeTab === 'list' }"
-          @click="activeTab = 'list'"
-        >
-          목록
-        </button>
-      </li>
-      <li class="nav-item">
-        <button
-          class="nav-link"
-          :class="{ active: activeTab === 'calendar' }"
-          @click="activeTab = 'calendar'"
-        >
-          달력
-        </button>
-      </li>
-    </ul>
 
-    <!-- 탭 콘텐츠 -->
-    <div class="tab-content mt-3">
-      <div v-if="activeTab === 'list'">
-        <!-- 목록 보기 -->
-        <!-- <TransactionContent :transactions="store.transactions" />/ -->
-        <TransactionContent :transactions="transactionStore.transactions" />
-      </div>
-      <div v-else-if="activeTab === 'calendar'">
-        <!-- 달력 보기 -->
-        <CalendarContent />
-      </div>
-    </div>
-    <!-- 추가 버튼 -->
-    <AddListBtn />
-  </div>
-</template>
+<style scoped></style>
 
 <style scoped>
 /* 기존 스타일 그대로 유지 */
@@ -307,9 +322,8 @@ function handleDelete(id) {
 .add-button:hover {
   background-color: #8eb58d;
 }
-
-/* 탭메뉴 */
-.nav-tabs .nav-link {
-  cursor: pointer;
+.closepopuplist {
+  background-color: var(--point-1-color);
+  color: white;
 }
 </style>

@@ -11,11 +11,7 @@
   </div>
 </template>
 
-<script setup>
-import { useRoute } from 'vue-router'
-import { computed } from 'vue'
-
-// 레이아웃 컴포넌트 불러오기
+<script>
 import TheHeader from './layout/TheHeader.vue'
 import TheSidebar from './layout/TheSidebar.vue'
 import TheFooter from './layout/TheFooter.vue'
