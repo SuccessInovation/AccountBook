@@ -13,13 +13,13 @@
   color: var(--font-color);
   position: fixed;
   bottom: 0;
-  left: 300px;
-  width: calc(100% - 300px); /* 사이드바 너비만큼 뺌 */
+  width: 100%;
   height: 80px;
   display: flex;
   align-items: center;
   border-top: 0.5px solid var(--dark-brown);
   padding-right: 30px;
+  z-index: 1; /* 사이드바 밑으로 오게 설정 */
 }
 #copyright {
   margin-left: auto;
