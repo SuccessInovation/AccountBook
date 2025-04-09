@@ -104,19 +104,19 @@
   "budgets": [
     {
       "category": "food",
-      "amount": 0,
+      "amount": 100000,
       "month": "2025-04",
       "id": "1"
     },
     {
       "category": "cafesnack",
-      "amount": 0,
+      "amount": 50000,
       "month": "2025-04",
       "id": "2"
     },
     {
       "category": "entertainment",
-      "amount": 0,
+      "amount": 10000,
       "month": "2025-04",
       "id": "3"
     },

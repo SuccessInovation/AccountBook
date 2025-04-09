@@ -1,42 +1,15 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
-const API_URL = 'http://localhost:3000/records'
+// BASE_URI (db.json)
+import { BASE_URI } from '@/constants/api'
 
 export const statisticsStore = defineStore('statistics', {
   state: () => ({
-    records: [],
-    filteredRecords: [],
-    loading: false,
-    error: null,
+    transactions: [],
+    filteredTransaction: [],
   }),
-
-  getters: {
-    getSortedRecords: state => {
-      return [...state.records].sort(
-        (a, b) => new Date(b.date) - new Date(a.date),
-      )
-    },
-    getSortedFiteredRecords: state => {
-      return [...state.filteredRecords].sort(
-        (a, b) => new Date(b.date) - new Date(a.date),
-      )
-    },
-  },
   actions: {
-    async fetchRecords() {
-      this.loading = true
-      this.error = null
-      try {
-        const res = await axios.get(API_URL)
-        this.records = res.data
-      } catch (err) {
-        this.error = err.message
-      } finally {
-        this.loading = false
-      }
-    },
-
     //#region 기간으로 조회 기능
     /**
      * 1개월, 3개월, 설정기간 별로 데이터 불러오기
@@ -44,13 +17,13 @@ export const statisticsStore = defineStore('statistics', {
      *
      *return : 기간별로 필터링된 결과 -> 컴포넌트로 전송
      */
-    async fetchRecordsByPeriod(startDate = null, endDate = new Date()) {
-      this.loading = true
-      this.error = null
-
+    async fetchTranactionsByPeriod(startDate = null, endDate = new Date()) {
       try {
-        const res = await axios.get(API_URL)
-        this.records = res.data
+        const res = await axios.get(`${BASE_URI}/transactions`)
+        // data 내림차순 정렬
+        this.transactions = res.data.sort(
+          (a, b) => new Date(b.date) - new Date(a.date),
+        )
 
         const today = new Date() // 오늘 날짜
         const defaultStart = new Date()
@@ -61,12 +34,12 @@ export const statisticsStore = defineStore('statistics', {
         const end = endDate ? new Date(endDate) : today
 
         // db에서 date(날짜)로 불러와서 특정 기간에만 필터링
-        const filtered = this.records.filter(record => {
+        const filtered = this.transactions.filter(record => {
           const recordDate = new Date(record.date)
           return recordDate >= start && recordDate <= end
         })
 
-        return (this.filteredRecords = filtered)
+        return (this.filteredTransaction = filtered)
       } catch (err) {
         this.error = err.message
         return []
