@@ -5004,31 +5004,31 @@
   "budgets": [
     {
       "category": "food",
-      "amount": 100000,
+      "amount": 10000,
       "month": "2025-04",
       "id": "8aa3"
     },
     {
       "category": "cafesnack",
-      "amount": 34433443,
+      "amount": 100000,
       "month": "2025-04",
       "id": "abba"
     },
     {
       "category": "entertainment",
-      "amount": 200000,
+      "amount": 10000,
       "month": "2025-04",
       "id": "6352"
     },
     {
       "category": "shopping",
-      "amount": 1231123,
+      "amount": 100000,
       "month": "2025-04",
       "id": "a926"
     },
     {
       "category": "transportation",
-      "amount": 3000000,
+      "amount": 0,
       "month": "2025-04",
       "id": "2651"
     },
@@ -5040,7 +5040,7 @@
     },
     {
       "category": "health",
-      "amount": 1231231,
+      "amount": 0,
       "month": "2025-04",
       "id": "d67d"
     },
@@ -5052,19 +5052,19 @@
     },
     {
       "category": "travel",
-      "amount": 345345,
+      "amount": 0,
       "month": "2025-04",
       "id": "7a74"
     },
     {
       "category": "contributions",
-      "amount": 1231231,
+      "amount": 0,
       "month": "2025-04",
       "id": "dd71"
     },
     {
       "category": "savings",
-      "amount": 34535,
+      "amount": 0,
       "month": "2025-04",
       "id": "d489"
     },

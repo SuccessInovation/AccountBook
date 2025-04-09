@@ -113,24 +113,27 @@ const resetBudget = async () => {
 <template>
   <div class="BudgetSetting">
     <div class="budget_popup">
-      <p>예산 설정 페이지입니다.</p>
-      <h2>예산 설정</h2>
+      <div class="setting_title">
+        <h2>예산 설정</h2>
+      </div>
       <!-- 예산 리스트 불러오기 -->
-      <div
-        v-for="item in categoryData"
-        :key="item.category"
-        class="category_item"
-      >
-        <span>{{ CATEGORY_MAP[item.category] }}</span>
-        <input
-          class="amount_input"
-          type="number"
-          :value="item.amount === 0 && item.focused ? '' : item.amount"
-          @focus="handleFocus(item)"
-          @blur="handleReset(item)"
-          @input="e => (item.amount = Number(e.target.value))"
-        />
-        <span>원</span>
+      <div class="category_container">
+        <div
+          v-for="item in categoryData"
+          :key="item.category"
+          class="category_item"
+        >
+          <span>{{ CATEGORY_MAP[item.category] }}</span>
+          <input
+            class="amount_input"
+            type="number"
+            :value="item.amount === 0 && item.focused ? '' : item.amount"
+            @focus="handleFocus(item)"
+            @blur="handleReset(item)"
+            @input="e => (item.amount = Number(e.target.value))"
+          />
+          <span class="won">원</span>
+        </div>
       </div>
       <!--버튼 영역 -->
       <div class="buttons">
@@ -146,12 +149,12 @@ const resetBudget = async () => {
 
 <style scope>
 .BudgetSetting {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 999;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
   background: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
@@ -160,31 +163,100 @@ const resetBudget = async () => {
 
 .budget_popup {
   background-color: white;
-  border: 1px solid black;
-  width: 500px;
-  height: 80%;
+  border: none;
+  width: 450px;
+  height: 730px;
+  border-radius: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
 }
+/* 제목 */
+.setting_title {
+  margin: 2.5rem;
+  padding: 1rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+/* 리스트 */
+.category_container {
+  width: 80%;
+  max-height: 430px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
 
+.category_container::-webkit-scrollbar {
+  width: 0.625rem;
+  background-color: var(--input-box-color);
+  border-radius: 10px;
+}
+.category_container::-webkit-scrollbar-thumb {
+  background-color: var(--point-1-color);
+  border-radius: 10px;
+}
+/* 카테고리 별 아이템 */
+.category_item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1.25rem;
+}
+.amount_input {
+  background-color: var(--input-box-color);
+  width: 10rem;
+  height: 2rem;
+  flex: 2;
+  padding: 0 0.5rem;
+  border-radius: 0.375rem;
+  border: none;
+  text-align: center;
+  color: var(--font-color);
+  display: inline-block;
+}
+.category_item span:first-child {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+}
+.category_item span:last-child {
+  width: 2rem;
+  text-align: right;
+}
+.won {
+  position: absolute;
+  right: 12px;
+  color: var(--font-color);
+  opacity: 50%;
+}
+
+/* 버튼 */
 .popup_btn {
-  width: 100px;
-  background-color: white;
-  color: black;
-  border: 1px solid black;
+  width: 100%;
+  height: 2.75rem;
+  background-color: var(--point-1-color);
+  color: var(--very-light-brown);
+  border: none;
+  border-radius: 0.375rem;
+  margin: 0.625rem 0;
 }
 .popup_btn:hover {
-  background: #333;
+  background: var(--dark-brown);
 }
-.buttons * {
-  margin: 10px;
-}
-input {
-  border: 1px solid black;
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 160px);
+  row-gap: 0.625rem;
+  column-gap: 0.625rem;
 }
 
+.reset-btn {
+  grid-column: span 2;
+  margin: 0;
+}
 /* 스핀 버튼 제거 */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

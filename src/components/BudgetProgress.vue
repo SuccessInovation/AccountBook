@@ -1,37 +1,41 @@
 <template>
-  <div class="budget_progress">
+  <div class="budget_container">
+    <!-- 제목 -->
     <div class="budget_title">
       <h2>{{ calendar.current_month + 1 }}월 총예산</h2>
       <div class="btn_wrap">
-        <button class="cab_btn" @click.prevent="budgetSetting">
+        <button class="setting_btn" @click.prevent="budgetSetting">
           <img src="../img/cabbage/배추9.png" alt="예산설정버튼" />
           <span class="btn_txt"><strong>예산설정</strong></span>
         </button>
       </div>
     </div>
-    <div v-if="progressData.length === 0" class="progress_data_box">
-      <!-- 예산이 없는 경우 -->
-      <div class="no-budget-box">
+    <!-- 예산이 없는 경우 -->
+    <div v-if="progressData.length === 0" class="budget_box">
+      <div class="no_budget">
         <p>이번 달 예산이 설정되지 않았어요</p>
         <img src="../img/cabbage/logo1.png" alt="배추이미지" />
       </div>
     </div>
-    <!-- 전체 진척도 Bar -->
-    <div v-else class="overall-progress">
-      <div class="bar-wrapper">
-        <div class="percentage">
-          {{ totalBudget === 0 ? '-' : overallPercent + '%' }}
+    <!-- 예산이 있을 경우 -->
+    <div v-else class="overall_progress">
+      <div class="bar_wrapper">
+        <div class="category_title">
+          <div class="percentage">
+            {{ totalBudget === 0 ? '-' : overallPercent + '%' }}
+          </div>
+          <span class="left_budget">남음</span>
         </div>
-        <div class="bar-background">
+        <div class="bar_background">
           <div
-            class="bar-fill"
+            class="bar_fill"
             :style="{
               width: (totalBudget === 0 ? '100' : overallPercent) + '%',
-              backgroundColor: 'var(--point-1-color)', // 연한 초록 계열
+              backgroundColor: 'var(--point-1-color)',
             }"
           ></div>
         </div>
-        <div class="bar-text">
+        <div class="bar_text">
           <span>{{ totalSpent.toLocaleString() }}원 지출</span>
           <span>예산 {{ totalBudget.toLocaleString() }}원</span>
         </div>
@@ -39,32 +43,34 @@
     </div>
     <div
       :class="[
-        'progress-list',
+        'progress_list',
         progressData.length <= 3 ? 'one-column' : 'two-column',
       ]"
     >
+      <!-- 카테고리 별 지출, 예산 진행률 리스트 -->
       <div
         v-for="item in progressData"
         :key="item.category"
-        class="progress-item"
+        class="progress_item"
       >
-        <div class="category-title">
+        <div class="category_title">
           <span>아이콘</span>
           {{ item.name }}
           <div class="percentage">
             {{ item.budget === 0 ? '-' : item.percent + '%' }}
           </div>
+          <span class="left_budget">남음</span>
         </div>
-        <div class="bar-wrapper">
-          <div class="bar-background">
+        <div class="bar_wrapper">
+          <div class="bar_background">
             <div
-              class="bar-fill"
+              class="bar_fill"
               :style="{
                 width: (item.budget === 0 ? '100' : item.percent) + '%',
               }"
             ></div>
           </div>
-          <div class="bar-text">
+          <div class="bar_text">
             <span>{{ item.spent.toLocaleString() }}원 지출</span>
             <span>예산 {{ item.budget.toLocaleString() }}원</span>
           </div>
@@ -95,16 +101,26 @@ const calendar = use_calendar_store()
 
 // 입력 데이터 저장용
 const progressData = ref([])
+
+// @params = 전체 예산, 전체 지출, 전체 비율
 const totalBudget = ref(0)
 const totalSpent = ref(0)
 const overallPercent = ref(0)
 
-// 한 달 지출 불러오기
+//#region 함수 기능
+/**
+ * 한달 지출을 불러와서 카테고리별로 예산에 다른 지출 비율 계산 함수
+ * @param {number} spent = 지출
+ * @param {number} budget = 예산
+ * @param {number} percent = 지출/예산 비율
+ *return 카테고리명, 지출, 예산, 계산값
+ */
 const loadExpensebyMonth = async (startDate, endDate, selectedMonth) => {
+  // 한 달의 데이터를 불러와서 지출만 expenses에 저장
   const result = await statics.fetchTranactionsByPeriod(startDate, endDate)
   const expenses = result.filter(exp => exp.type === 'expense')
-  console.log('📊 지출 항목:', expenses)
 
+  // 카테코리 별 지출을 카테고리-금액으로 저장
   const spendingByCategory = {}
   expenses.forEach(r => {
     const cat = r.category
@@ -112,12 +128,15 @@ const loadExpensebyMonth = async (startDate, endDate, selectedMonth) => {
     spendingByCategory[cat] = (spendingByCategory[cat] || 0) + amount
   })
 
+  //   선택 월의 예산을 불러옴
   await store.fetchBudgets(selectedMonth)
 
+  //   카테고리 별 예산을 저장
   const budgetByCategory = Object.fromEntries(
     store.budgets.map(b => [b.category, b.amount]),
   )
 
+  //   ProgressData에 카테고리 별 지출, 예산, 비율을 계산하여 저장
   progressData.value = EXPENSE_CATEGORIES.filter(
     cat => (budgetByCategory[cat] || 0) > 0,
   ).map(cat => {
@@ -132,7 +151,7 @@ const loadExpensebyMonth = async (startDate, endDate, selectedMonth) => {
       percent,
     }
   })
-  // ⬇️ 이거 추가
+  //   총 지출, 총 예산을 계산
   totalBudget.value = progressData.value.reduce(
     (sum, item) => sum + item.budget,
     0,
@@ -146,7 +165,9 @@ const loadExpensebyMonth = async (startDate, endDate, selectedMonth) => {
       ? 0
       : Math.min(100, ((totalSpent.value / totalBudget.value) * 100).toFixed(1))
 }
-// 📌 외부에서 호출할 수 있게 expose
+// endregion
+
+// 외부에서 호출할 수 있게 expose
 const refresh = () => {
   loadExpensebyMonth(calendar.startDate, calendar.endDate, calendar.monthKey)
 }
@@ -167,60 +188,72 @@ watch(
 </script>
 
 <style scoped>
+/* *** 제목, 예산설정 버튼 영역 시작 *** */
+/* 제목 위치, 크기 */
 .budget_title {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center; /* 제목(h2)을 가운데로 보냄 */
-  padding: 0 2rem; /* 좌우 여유 */
-}
-
-.budget_title {
+  justify-content: center;
   font-size: 1.2rem;
   font-weight: bold;
   margin: 0.375rem auto;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
 }
-
+/* 버튼 위치, 크기, 색상 */
 .btn_wrap {
   position: absolute;
   right: 0;
 }
 
-.cab_btn {
+.setting_btn {
   align-items: center;
   width: 3rem;
   cursor: pointer;
 }
-.cab_btn > span {
+.setting_btn > span {
   color: var(--point-1-color);
   text-decoration: underline;
 }
-.cab_btn:hover {
+.setting_btn:hover {
   background-color: var(--point-5-color);
 }
 .btn_txt {
   font-size: 0.75rem;
 }
 
-.budget_progress {
+/* *** 컨텐츠 박스 영역 *** */
+/* 컨텐츠 박스 설정 */
+.budget_container {
   border: 1rem solid var(--point-3-color);
   border-radius: 1rem;
   padding: 20px;
   max-width: 900px;
+  height: 600px;
   margin: 1.5rem auto;
 }
 
-.progress_data_box {
+/* 예산이 없을 때 시작 */
+.budget_box {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.no-budget-box {
-  text-align: center;
+
+.no_budget {
   width: 50%;
+  text-align: center;
 }
-.progress-list {
+
+/* 예산이 설정되었을 때 시작 */
+.overall_progress {
+  justify-self: center;
+  width: 50%;
+  margin-bottom: 2rem;
+}
+
+/* 예산, 지출 비율 리스트 */
+.progress_list {
   display: grid;
   gap: 1rem;
   max-height: 20rem;
@@ -228,28 +261,35 @@ watch(
   padding-right: 6px;
 }
 
-.progress-list.one-column {
+.progress_list.one-column {
   grid-template-columns: 1fr;
 }
 
-.progress-list.two-column {
+.progress_list.two-column {
   grid-template-columns: repeat(2, 1fr);
 }
 
-.progress-item {
-  padding: 16px;
+.progress_item {
+  padding: 1rem;
 }
-
-.category-title {
-  font-size: 18px;
+/* 카테고리명 */
+.category_title {
+  position: relative;
+  font-size: 1.125rem;
   font-weight: bold;
   margin-bottom: 8px;
 }
 
-.bar-wrapper {
-  width: 100%;
+.left_budget {
+  position: absolute;
+  right: 0;
 }
 
+/* 진행률 바 영역 */
+.bar_wrapper {
+  width: 100%;
+}
+/* 퍼센트 글씨 */
 .percentage {
   display: inline;
   margin-left: 0.625rem;
@@ -258,36 +298,28 @@ watch(
   opacity: 50%;
   font-weight: 600;
 }
-
-.bar-background {
+/* 회색 바 */
+.bar_background {
   width: 100%;
-  height: 16px;
+  height: 1rem;
   background-color: #e5e7eb;
   border-radius: 999px;
   overflow: hidden;
 }
-
-.bar-fill {
+/* 진행률 표시 */
+.bar_fill {
   height: 100%;
   background-color: var(--point-2-color);
   border-radius: 999px;
   transition: width 0.3s ease;
 }
-
-.bar-text {
+/* 지출, 예산 표시 */
+.bar_text {
   display: flex;
   justify-content: space-between;
   margin-top: 6px;
   font-size: 14px;
   color: #333;
 }
-.overall-progress {
-  justify-self: center;
-  width: 50%;
-  margin-bottom: 2rem;
-}
-span {
-  color: var(--font-color);
-  font-weight: bold;
-}
+/* *** 제목, 예산설정 버튼 스타일 끝 *** */
 </style>

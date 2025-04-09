@@ -30,9 +30,6 @@ const handleSubmit = () => {
 </template>
 
 <style scoped>
-div {
-  border: 1px solid lightblue;
-}
 .BudgetPage {
   position: relative;
 }
