@@ -1,23 +1,28 @@
 <template>
   <div class="BudgetProgress">
-    <h2>{{ calendar.monthKey }} 예산 진척도</h2>
-
-    <!-- 예산이 없는 경우 -->
-    <div v-if="progressData.length === 0" class="no-budget-box">
-      <p>이번 달 예산이 설정되지 않았어요</p>
-      <button class="set-budget-btn" @click="budgetSetting">
-        예산 설정하기
+    <div class="budget_title">
+      <h2>{{ calendar.current_month + 1 }}월 예산 진척도</h2>
+    </div>
+    <div class="btn_wrap">
+      <button class="cab_btn" @click.prevent="budgetSetting">
+        <img src="../img/cabbage/배추9.png" alt="예산설정버튼" />
+        <span class="btn_txt"><strong>예산설정</strong></span>
       </button>
+    </div>
+    <div v-if="progressData.length === 0" class="progress_data_box">
+      <!-- 예산이 없는 경우 -->
+      <div class="no-budget-box">
+        <p>이번 달 예산이 설정되지 않았어요</p>
+        <img src="../img/cabbage/logo1.png" alt="배추이미지" />
+      </div>
     </div>
     <!-- 전체 진척도 Bar -->
     <div v-else class="overall-progress">
       <div class="overall-title">전체 진척도</div>
-
       <div class="bar-wrapper">
         <div class="percentage">
           {{ totalBudget === 0 ? '-' : overallPercent + '%' }}
         </div>
-
         <div class="bar-background">
           <div
             class="bar-fill"
@@ -27,7 +32,6 @@
             }"
           ></div>
         </div>
-
         <div class="bar-text">
           <span>총 지출 {{ totalSpent.toLocaleString() }}원</span>
           <span>총 예산 {{ totalBudget.toLocaleString() }}원</span>
@@ -62,7 +66,6 @@
         </div>
       </div>
     </div>
-    <button class="cab_btn" @click.prevent="budgetSetting">배추버튼</button>
   </div>
 </template>
 
@@ -157,12 +160,28 @@ watch(
 </script>
 
 <style scoped>
+.budget_title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn_wrap {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 10px;
+}
+
 .cab_btn {
   border: 1px solid blue;
+  width: 3rem;
+  cursor: pointer;
 }
 .cab_btn:hover {
   background-color: blue;
   color: white;
+}
+.btn_txt {
+  font-size: 0.75rem;
 }
 
 .BudgetProgress {
@@ -171,6 +190,15 @@ watch(
   margin: 0 auto;
 }
 
+.progress_data_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.no-budget-box {
+  text-align: center;
+  width: 50%;
+}
 .progress-item {
   border: 1px solid #ccc;
   padding: 16px;

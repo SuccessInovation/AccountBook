@@ -146,11 +146,13 @@ const resetBudget = async () => {
 
 <style scope>
 .BudgetSetting {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  z-index: 999; /* 다른 컴포넌트 위에 오게 함 */
-  background: rgba(0, 0, 0, 0.4); /* 반투명 딤드 처리 */
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -159,8 +161,8 @@ const resetBudget = async () => {
 .budget_popup {
   background-color: white;
   border: 1px solid black;
-  width: 50vw;
-  height: 100vh;
+  width: 500px;
+  height: 80%;
   display: flex;
   justify-content: center;
   align-items: center;

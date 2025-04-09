@@ -80,16 +80,19 @@ export const use_calendar_store = defineStore('calendar', () => {
   }
 
   /* 우진 추가 */
+  // 시작날짜를 보고있는 월 기준의 시작일로 설정
   const startDate = computed(() => {
     const start = new Date(current_year.value, current_month.value, 1)
     return start.toISOString().split('T')[0] // YYYY-MM-DD
   })
 
+  // 마지막 날짜를 보고있는 월 기준의 말일로 설정
   const endDate = computed(() => {
     const end = new Date(current_year.value, current_month.value + 1, 0) // 말일
     return end.toISOString().split('T')[0]
   })
 
+  // 예산 month에 접근하기 위한 Key
   const monthKey = computed(() => {
     const y = current_year.value
     const m = (current_month.value + 1).toString().padStart(2, '0')
