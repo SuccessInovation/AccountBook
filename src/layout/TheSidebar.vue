@@ -1,15 +1,15 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 
-const showMobileMenu = ref(false);
+const showMobileMenu = ref(false)
 const toggleMobileMenu = () => {
-  showMobileMenu.value = !showMobileMenu.value;
-};
+  showMobileMenu.value = !showMobileMenu.value
+}
 
-const showStatsSubMenu = ref(false);
+const showStatsSubMenu = ref(false)
 const toggleStatsSubMenu = () => {
-  showStatsSubMenu.value = !showStatsSubMenu.value;
-};
+  showStatsSubMenu.value = !showStatsSubMenu.value
+}
 </script>
 
 <template>

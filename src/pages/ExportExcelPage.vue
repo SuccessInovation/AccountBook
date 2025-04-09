@@ -6,15 +6,15 @@
 </template>
 
 <script setup>
-import ExcelFilter from '@/components/ExcelFilter.vue';
-import ExcelList from '@/components/ExcelList.vue';
-import { ref } from 'vue';
+import ExcelFilter from '@/components/ExcelFilter.vue'
+import ExcelList from '@/components/ExcelList.vue'
+import { ref } from 'vue'
 
-const isSearched = ref(false);
+const isSearched = ref(false)
 
 const handleSearch = () => {
-  isSearched.value = true;
-};
+  isSearched.value = true
+}
 </script>
 
 <style>

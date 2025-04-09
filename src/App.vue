@@ -12,9 +12,15 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import TheHeader from './layout/TheHeader.vue';
 import TheSidebar from './layout/TheSidebar.vue';
 import TheFooter from './layout/TheFooter.vue';
+=======
+import TheHeader from './layout/TheHeader.vue'
+import TheSidebar from './layout/TheSidebar.vue'
+import TheFooter from './layout/TheFooter.vue'
+>>>>>>> feature/4-budget
 
 export default {
   components: {
@@ -22,7 +28,11 @@ export default {
     TheSidebar,
     TheFooter,
   },
+<<<<<<< HEAD
 };
+=======
+}
+>>>>>>> feature/4-budget
 </script>
 
 <style>
