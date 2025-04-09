@@ -112,78 +112,38 @@ watch([incomeChecked, expenseChecked], () => {
 <template>
   <div class="TransactionPage">
     <!-- '수입/지출' 체크박스 -->
-    <!-- bootstrap -->
-    <div class="d-flex gap-3 mb-3">
-      <!-- '수입' 체크박스 -->
-      <div class="form-check form-check-inline checkbox_income">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="incomeCheck"
-          v-model="incomeChecked"
-        />
-        <label class="form-check-label" for="incomeCheck">수입</label>
-      </div>
-      <!-- '지출' 체크박스 -->
-      <div class="form-check form-check-inline checkbox_expense">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="expenseCheck"
-          v-model="expenseChecked"
-        />
-        <label class="form-check-label" for="expenseCheck">지출</label>
-      </div>
-    </div>
 
-    <!-- 카테고리 필터 컴포넌트 -->
-    <!-- props - 'FilterCategory.vue'로 '카테고리/resetKey' 전달 -->
+    <!-- '수입' 체크박스 -->
+    <input type="checkbox" v-model="incomeChecked" />
+    <label class="checkbox_income"> 수입</label>
+    <label class="checkbox_expense">
+      <input type="checkbox" v-model="expenseChecked" />
+      <span>지출</span>
+    </label>
+
+    <!-- 카테고리 필터 -->
     <FilterCategory
       :categories="availableCategories"
       :resetKey="resetKey"
       @categorySelected="CategoryChangeHandler"
     />
-
-    <!-- 메모 검색창 컴포넌트 -->
+    <!-- 메모 검색 -->
     <SearchByMemo @memoInputted="MemoSearchHandler" />
 
-    <!-- 필터링된 거래내역 출력 -->
+    <!-- 필터링된 내역 출력 -->
     <ul class="filtered_list">
+      <!-- 수정 필요 -->
       <li v-for="filtered in filteredList" :key="filtered.id">
-        <!-- 카테고리 이름 - 한글로 매핑해서 출력 -->
+        <!-- 카테고리 원본: {{ filtered.category }} 매핑된 한글:
+        {{ CATEGORY_MAP[filtered.category] || filtered.category }} -->
+
         {{ filtered.date }} -
         {{ CATEGORY_MAP[filtered.category] || filtered.category }}
-        - {{ filtered.type }} - {{ filtered.memo }} - {{ filtered.amount }}
+        - {{ filtered.memo }} - {{ filtered.amount }}
       </li>
     </ul>
-
-    <!-- 필터링 결과 X - 메시지 표시 -->
     <p v-if="filteredList.length === 0">표시할 내역이 없습니다.</p>
   </div>
 </template>
 
-<style scoped>
-/* '수입' 체크박스 */
-#incomeCheck {
-  background-color: var(--light-green);
-  border-color: var(--point-1-color);
-}
-
-/* '수입/출금' 체크박스 선택 */
-#incomeCheck:checked {
-  background-color: var(--point-1-color);
-  border-color: var(--point-1-color);
-}
-
-/* '출금' 체크박스 */
-#expenseCheck {
-  background-color: var(--light-red);
-  border-color: var(--red-100);
-}
-
-/* '출금' 체크박스 선택 */
-#expenseCheck:checked {
-  background-color: var(--red-100);
-  border-color: var(--red-100);
-}
-</style>
+<style scoped></style>

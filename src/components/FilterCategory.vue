@@ -10,67 +10,72 @@ import {
 } from 'vue'
 import { CATEGORY_MAP } from '@/constants/categories'
 
-// 카테고리 목록 가져오기
+// props - 'TransactionPage.vue'로부터 '카테고리/resetKey' 전달받음
 const props = defineProps({
+  // 카테고리 목록 (['food', 'dessert', ...])
   categories: {
     type: Array,
     required: true,
   },
-  // 체크박스 상태 변경 -> 드롭다운 초기화
+  // resetKey : 체크박스 상태 변경 시 드롭다운 초기화
   resetKey: {
     type: Number,
     default: 0,
   },
 })
 
-// 카테고리 목록에 '전체' 추가
+// (드롭다운) 카테고리 목록에 '전체' 추가
 const categoryList = computed(() => ['전체', ...props.categories])
 
-// 선택된 카테고리 전달하기 위해 emit 정의
+// emit - 'TransactionPage.vue'에 선택된 카테고리 전달
 const emit = defineEmits(['categorySelected'])
 
-// 초기값 설정 (선택 전 상태)
+// 상태변수 초기값 설정
+
+// 선택된 카테고리 - 기본: 카테고리
 const categorySelected = ref('카테고리')
-// 드롭다운 open/close 상태 저장
+// 드롭다운 open/close 상태  - 기본: false(close)
 const isOpen = ref(false)
-
-// 드롭다운 토글 함수
-const toggleDropdown = () => {
-  isOpen.value = !isOpen.value // 클릭 -> open/close 상태 변경
-}
-
 // 드롭다운 외부 영역 클릭 상태 감지
 const dropdownRef = ref('')
 
-// 외부 클릭 시 드롭다운 상태 close로 변경 함수
+// 드롭다운 토글 함수 클릭 -> open/close (true/false) 상태 변경
+const toggleDropdown = () => {
+  isOpen.value = !isOpen.value
+}
+
+// 외부 영역 클릭 시 드롭다운 닫기 함수 - 상태: close (false)
 const clickOuterHandler = e => {
-  // 외부 영역 클릭 -> 드롭다운 close
+  // 드롭다운 요소가 존재 & 클릭 대상이 바깥 영역일 경우
   if (dropdownRef.value && !dropdownRef.value.contains(e.target)) {
     isOpen.value = false
   }
 }
 
-// 컴포넌트가 mount될 때 클릭 이벤트 등록
+// 컴포넌트가 mount되면 문서 전체에 클릭 이벱트 등록
 onMounted(() => {
   document.addEventListener('click', clickOuterHandler)
 })
 
-// 컴포넌트가 unmount될 때 (사라질 때) 클릭 이벤트 제거 (메모리 누수 방지)
+// 컴포넌트가 unmount되면 클릭 이벤트 제거 (메모리 누수 방지)
 onBeforeUnmount(() => {
   document.removeEventListener('click', clickOuterHandler)
 })
 
-// 카테고리 선택 시
+// 카테고리 항목 클릭 시 실행 함수
 const selectFilter = category => {
+  // 선택된 카테고리 값 변경
   categorySelected.value = category
-  // 부모에게 선택된 카테고리 전달
+  // emit - 'TransactionPage.vue'에 선택된 카테고리 값 전달
+  // 카테고리가 '전체'면 'all'로 변환
   emit('categorySelected', category === '전체' ? 'all' : category)
   isOpen.value = false // 드롭다운 닫기
 }
 
-// restKey 감사
+// 'restKey' 변경 감지
 watch(
   () => props.resetKey,
+  // 선택된 카테고리 텍스트 초기화
   () => {
     categorySelected.value = '카테고리'
   },
@@ -79,25 +84,28 @@ watch(
 
 <template>
   <div class="filter_category" ref="dropdownRef">
+    <!-- 드롭다운 버튼 -->
     <div class="filter_btn" @click="toggleDropdown">
-      <!-- 드롭다운 버튼 -->
+      <!-- 선택된 카테고리 항목명 (기본: 카테고리) -->
       <span>{{
         categorySelected === '카테고리'
           ? '카테고리'
           : CATEGORY_MAP[categorySelected]
       }}</span>
+      <!-- ▼ 아이콘 -->
       <span class="icon_triangle">▼</span>
     </div>
 
     <!-- 드롭다운 항목 -->
     <ul v-if="isOpen" class="category_list">
-      <!-- 선택된 카테고리 항목 강조하기 위해 클래스 지정 -->
+      <!-- 카테고리 목록 렌더링-->
       <li
         v-for="category in categoryList"
         :key="category"
         @click="selectFilter(category)"
         :class="{ selected: category === categorySelected }"
       >
+        <!-- '전체'만 그대로 표시, 나머지는 한글로 매핑 -->
         {{ category === '전체' ? '전체' : CATEGORY_MAP[category] || category }}
       </li>
     </ul>
@@ -105,7 +113,7 @@ watch(
 </template>
 
 <style scoped>
-/* 전체 배경색 적용 */
+/* 드롭다운 내부의 모든 요소에 공통 배경색 적용 */
 .filter_category * {
   background-color: var(--white);
 }
@@ -132,6 +140,7 @@ watch(
   /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); */
 }
 
+/* 드롭다운 버튼 hover 이벤트 */
 .filter_btn:hover {
   background-color: #f9f9f9;
   border-color: #aaa;
@@ -169,15 +178,15 @@ watch(
   transition: 0.2s;
 }
 
-/* 마우스 오버 시 */
+/* 드롭다운 항목 hover 이벤트 */
 .category_list li:hover {
   background-color: #f0f0f0;
 }
 
-/* 선택된 항목 강조 */
+/* 선택된 카테고리 항목 */
 .category_list li.selected {
-  background-color: var(--lightgreen);
+  background-color: rgba(42, 125, 92, 0.2);
   font-weight: bold;
-  color: var(--green);
+  color: var(--point-1-color);
 }
 </style>

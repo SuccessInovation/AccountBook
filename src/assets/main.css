@@ -9,10 +9,14 @@
   --point-3-color: #99bc85;
   --point-4-color: #b7ccb4;
   --point-5-color: #d3ded9;
+  --backgreen: #99bc85;
+  --light-green: rgba(42, 125, 92, 0.2);
   --input-box-color: #dbdbdb;
   --dark-brown: #706d54;
   --light-brown: #c9b194;
   --very-light-brown: #ededed;
+  --red-100: #f93949;
+  --light-red: rgba(249, 57, 73, 0.2);
   --font-main: 'Nanum Gothic', sans-serif;
 }
 
