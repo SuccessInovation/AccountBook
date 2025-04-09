@@ -1,23 +1,30 @@
 <script setup>
-import { ref, defineProps, defineEmits, onMounted, onBeforeUnmount } from 'vue'
-// import { useRouter } from 'vue-router'
+import {
+  ref,
+  defineProps,
+  defineEmits,
+  computed,
+  onMounted,
+  onBeforeUnmount,
+} from 'vue'
+import { CATEGORY_MAP } from '@/constants/categories'
 
-const categories = ['전체', '식비']
+// 카테고리 목록 가져오기
+const props = defineProps({
+  categories: {
+    type: Array,
+    required: true,
+  },
+})
 
-// // 부모 컴포넌트로부터 카테고리 목록 가져오기
-// const props = defineProps({
-//   categories: {
-//     type: Array,
-//     required: true,
-//   },
-// })
+// 카테고리 목록에 'all' 추가
+const categoryList = computed(() => ['전체', ...props.categories])
 
 // 선택된 카테고리 전달하기 위해 emit 정의
 const emit = defineEmits(['categorySelected'])
 
-// 기본 (전체 내역 보여줌) - 필터 적용 X
-const selectedCategory = ref('카테고리')
-
+// 초기값 설정 (선택 전 상태)
+const categorySelected = ref('카테고리')
 // 드롭다운 open/close 상태 저장
 const isOpen = ref(false)
 
@@ -47,44 +54,36 @@ onBeforeUnmount(() => {
   document.removeEventListener('click', clickOuterHandler)
 })
 
-// // 라우터 인스턴스
-// const router = useRouter()
-
 // 카테고리 선택 시
 const selectFilter = category => {
-  selectedCategory.value = category
-  isOpen.value = false
-
+  categorySelected.value = category === '전체' ? '카테고리' : category
   // 부모에게 선택된 카테고리 전달
-  emit('categorySelected', category)
-
-  // router.push({
-  //   // 수정 필요
-  //   name: 'TargetPage'
-  //   query: {
-  //     category: category
-  //   }
-  // })
+  emit('categorySelected', category === '전체' ? 'all' : category)
+  isOpen.value = false // 드롭다운 닫기
 }
 </script>
 
 <template>
   <div class="filter_category" ref="dropdownRef">
-    <div class="toggle_category" @click="toggleDropdown">
+    <div class="filter_btn" @click="toggleDropdown">
       <!-- 드롭다운 버튼 -->
-      <span>{{ selectedCategory || '카테고리' }}</span>
+      <span>{{
+        categorySelected === '카테고리'
+          ? '카테고리'
+          : CATEGORY_MAP[categorySelected]
+      }}</span>
       <span class="icon_triangle">▼</span>
     </div>
 
     <!-- 드롭다운 항목 -->
     <ul v-if="isOpen" class="category_list">
       <li
-        v-for="category in categories"
+        v-for="category in categoryList"
         :key="category"
         @click="selectFilter(category)"
-        :class="{ selected: category === selectedCategory }"
+        :class="{ selected: category === categorySelected }"
       >
-        {{ category }}
+        {{ category === '전체' ? '전체' : CATEGORY_MAP[category] || category }}
       </li>
     </ul>
   </div>
@@ -104,7 +103,7 @@ const selectFilter = category => {
 }
 
 /* 드롭다운 버튼 (카테고리 + ▼ 아이콘 포함) */
-.toggle_category {
+.filter_btn {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -118,7 +117,7 @@ const selectFilter = category => {
   /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); */
 }
 
-.toggle_category:hover {
+.filter_btn:hover {
   background-color: #f9f9f9;
   border-color: #aaa;
 }
