@@ -17,8 +17,8 @@ const handleSearch = () => {
 }
 </script>
 
-<style>
+<style scoped>
 .ExportExcelPage {
-  border: 1px solid lightblue;
+  background-color: var(--point-3-color);
 }
 </style>

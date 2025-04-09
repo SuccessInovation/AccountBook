@@ -10,6 +10,7 @@
 
 <style scoped>
 .TheFooter {
+  background-color: #fff;
   color: var(--font-color);
   position: fixed;
   bottom: 0;

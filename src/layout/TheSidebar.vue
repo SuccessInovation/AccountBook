@@ -18,10 +18,10 @@ const toggleStatsSubMenu = () => {
     <div class="sidebar-container">
       <ul class="main-menu list-group list-group-flush">
         <li class="list-group-item mt-160">
-          <a href="#" class="text-decoration-none">HOME</a>
+          <router-link to="/">HOME</router-link>
         </li>
         <li class="list-group-item">
-          <a href="#" class="text-decoration-none">수입/지출 내역</a>
+          <router-link to="/transaction">수입/지출 내역</router-link>
         </li>
 
         <!-- 통계 및 내보내기 + 서브메뉴 -->
@@ -31,16 +31,16 @@ const toggleStatsSubMenu = () => {
           </div>
           <ul class="sub-menu" :class="{ 'sub-menu-open': showStatsSubMenu }">
             <li class="sub-item pt-3">
-              <a href="#" class="text-decoration-none">요약 통계</a>
+              <router-link to="/statistics/summary">요약 통계</router-link>
             </li>
             <li class="sub-item pt-2">
-              <a href="#" class="text-decoration-none">엑셀 내보내기</a>
+              <router-link to="/statistics/export">엑셀 내보내기</router-link>
             </li>
           </ul>
         </li>
 
         <li class="list-group-item">
-          <a href="#" class="text-decoration-none">예산</a>
+          <router-link to="/budget">예산</router-link>
         </li>
       </ul>
     </div>
@@ -65,10 +65,10 @@ const toggleStatsSubMenu = () => {
   >
     <ul class="list-group list-group-flush main-menu">
       <li class="list-group-item mt-160">
-        <a href="#" class="text-decoration-none">HOME</a>
+        <router-link to="/">HOME</router-link>
       </li>
       <li class="list-group-item">
-        <a href="#" class="text-decoration-none">수입/지출 내역</a>
+        <router-link to="/transaction">수입/지출 내역</router-link>
       </li>
 
       <li class="list-group-item submenu-wrapper">
@@ -77,16 +77,16 @@ const toggleStatsSubMenu = () => {
         </div>
         <ul class="sub-menu" :class="{ 'sub-menu-open': showStatsSubMenu }">
           <li class="sub-item pt-3">
-            <a href="#" class="text-decoration-none">요약 통계</a>
+            <router-link to="/statistics/summary">요약 통계</router-link>
           </li>
           <li class="sub-item pt-2">
-            <a href="#" class="text-decoration-none">엑셀 내보내기</a>
+            <router-link to="/statistics/export">엑셀 내보내기</router-link>
           </li>
         </ul>
       </li>
 
       <li class="list-group-item">
-        <a href="#" class="text-decoration-none">예산</a>
+        <router-link to="/budget">예산</router-link>
       </li>
     </ul>
   </div>

@@ -11,28 +11,29 @@
 </template>
 
 <script setup>
-import { statisticsStore } from '@/stores/statisticsStore';
-import * as XLSX from 'xlsx';
+import { statisticsStore } from '@/stores/statisticsStore'
+import * as XLSX from 'xlsx'
 
-const store = statisticsStore();
+const store = statisticsStore()
 
-const downloadExcel = (data) => {
+const downloadExcel = data => {
   if (!data || data.length === 0) {
-    alert('내보낼 데이터가 없습니다!');
-    return;
+    alert('내보낼 데이터가 없습니다!')
+    return
   }
 
-  const worksheet = XLSX.utils.json_to_sheet(data);
-  const workbook = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(workbook, worksheet, '가계부');
-  XLSX.writeFile(workbook, 'transactionList.xlsx');
-};
+  const worksheet = XLSX.utils.json_to_sheet(data)
+  const workbook = XLSX.utils.book_new()
+  XLSX.utils.book_append_sheet(workbook, worksheet, '가계부')
+  XLSX.writeFile(workbook, 'transactionList.xlsx')
+}
 </script>
 
 <style scoped>
 .box {
-  width: 100%;
-  border: 1px solid lightgray;
+  width: 80%;
+  border: none;
   padding: 1rem;
+  background-color: white;
 }
 </style>
