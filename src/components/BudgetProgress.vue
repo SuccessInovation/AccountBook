@@ -2,6 +2,38 @@
   <div class="BudgetProgress">
     <h2>{{ calendar.monthKey }} 예산 진척도</h2>
 
+    <!-- 예산이 없는 경우 -->
+    <div v-if="progressData.length === 0" class="no-budget-box">
+      <p>이번 달 예산이 설정되지 않았어요</p>
+      <button class="set-budget-btn" @click="budgetSetting">
+        예산 설정하기
+      </button>
+    </div>
+    <!-- 전체 진척도 Bar -->
+    <div v-else class="overall-progress">
+      <div class="overall-title">전체 진척도</div>
+
+      <div class="bar-wrapper">
+        <div class="percentage">
+          {{ totalBudget === 0 ? '-' : overallPercent + '%' }}
+        </div>
+
+        <div class="bar-background">
+          <div
+            class="bar-fill"
+            :style="{
+              width: (totalBudget === 0 ? '100' : overallPercent) + '%',
+              backgroundColor: '#22c55e', // 연한 초록 계열
+            }"
+          ></div>
+        </div>
+
+        <div class="bar-text">
+          <span>총 지출 {{ totalSpent.toLocaleString() }}원</span>
+          <span>총 예산 {{ totalBudget.toLocaleString() }}원</span>
+        </div>
+      </div>
+    </div>
     <div
       v-for="item in progressData"
       :key="item.category"
@@ -55,6 +87,9 @@ const calendar = use_calendar_store()
 
 // 입력 데이터 저장용
 const progressData = ref([])
+const totalBudget = ref(0)
+const totalSpent = ref(0)
+const overallPercent = ref(0)
 
 // 한 달 지출 불러오기
 const loadExpensebyMonth = async (startDate, endDate, selectedMonth) => {
@@ -73,11 +108,12 @@ const loadExpensebyMonth = async (startDate, endDate, selectedMonth) => {
     store.budgets.map(b => [b.category, b.amount]),
   )
 
-  progressData.value = EXPENSE_CATEGORIES.map(cat => {
+  progressData.value = EXPENSE_CATEGORIES.filter(
+    cat => (budgetByCategory[cat] || 0) > 0,
+  ).map(cat => {
     const spent = spendingByCategory[cat] || 0
     const budget = budgetByCategory[cat] || 0
-    const percent =
-      budget === 0 ? 0 : Math.min(100, ((spent / budget) * 100).toFixed(1))
+    const percent = Math.min(100, ((spent / budget) * 100).toFixed(1))
     return {
       category: cat,
       name: CATEGORY_MAP[cat],
@@ -86,7 +122,25 @@ const loadExpensebyMonth = async (startDate, endDate, selectedMonth) => {
       percent,
     }
   })
+  // ⬇️ 이거 추가
+  totalBudget.value = progressData.value.reduce(
+    (sum, item) => sum + item.budget,
+    0,
+  )
+  totalSpent.value = progressData.value.reduce(
+    (sum, item) => sum + item.spent,
+    0,
+  )
+  overallPercent.value =
+    totalBudget.value === 0
+      ? 0
+      : Math.min(100, ((totalSpent.value / totalBudget.value) * 100).toFixed(1))
 }
+// 📌 외부에서 호출할 수 있게 expose
+const refresh = () => {
+  loadExpensebyMonth(calendar.startDate, calendar.endDate, calendar.monthKey)
+}
+defineExpose({ refresh })
 
 // mount 될 때 한 번 실행
 onMounted(() => {
@@ -109,9 +163,6 @@ watch(
 .cab_btn:hover {
   background-color: blue;
   color: white;
-}
-div {
-  border: 1px solid lightgray;
 }
 
 .BudgetProgress {
@@ -169,5 +220,20 @@ div {
   margin-top: 6px;
   font-size: 14px;
   color: #333;
+}
+.overall-progress {
+  margin-bottom: 32px;
+  padding: 16px;
+  border: 2px solid #22c55e;
+  border-radius: 12px;
+  background-color: #f0fdf4;
+}
+
+.overall-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #16a34a;
 }
 </style>

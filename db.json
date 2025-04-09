@@ -104,19 +104,19 @@
   "budgets": [
     {
       "category": "food",
-      "amount": 30000,
+      "amount": 0,
       "month": "2025-04",
       "id": "1"
     },
     {
       "category": "cafesnack",
-      "amount": 0,
+      "amount": 100000,
       "month": "2025-04",
       "id": "2"
     },
     {
       "category": "entertainment",
-      "amount": 200000,
+      "amount": 0,
       "month": "2025-04",
       "id": "3"
     },
@@ -134,7 +134,7 @@
     },
     {
       "category": "utilities",
-      "amount": 1000000,
+      "amount": 0,
       "month": "2025-04",
       "id": "6"
     },
@@ -173,6 +173,78 @@
       "amount": 0,
       "month": "2025-04",
       "id": "12"
+    },
+    {
+      "category": "food",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "b921"
+    },
+    {
+      "category": "cafesnack",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "ca79"
+    },
+    {
+      "category": "entertainment",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "76ca"
+    },
+    {
+      "category": "shopping",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "177a"
+    },
+    {
+      "category": "transportation",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "d9ab"
+    },
+    {
+      "category": "utilities",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "b0bc"
+    },
+    {
+      "category": "health",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "adc2"
+    },
+    {
+      "category": "leisure",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "36b7"
+    },
+    {
+      "category": "travel",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "0e1b"
+    },
+    {
+      "category": "contributions",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "a656"
+    },
+    {
+      "category": "savings",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "ea4d"
+    },
+    {
+      "category": "etc",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "7be5"
     }
   ]
 }

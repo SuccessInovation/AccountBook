@@ -2,18 +2,16 @@
 import { defineEmits, ref, onMounted } from 'vue'
 import { EXPENSE_CATEGORIES, CATEGORY_MAP } from '@/constants/categories'
 import { useBudgetStore } from '@/stores/UseBudgetStore'
+import { use_calendar_store } from '@/stores/MonthSelector'
 import axios from 'axios'
 
 const store = useBudgetStore()
 
 const emit = defineEmits(['close', 'submit'])
 
-// 현재 월 구하기
-const date = new Date()
-const year = date.getFullYear()
-const month = String(date.getMonth() + 1).padStart(2, '0') // 0~11이니까 +1
+const calendar = use_calendar_store()
 
-const currentMonth = `${year}-${month}`
+const currentMonth = calendar.monthKey
 
 // 카테고리 불러오기
 const categoryData = ref(
@@ -83,11 +81,32 @@ const handleSubmit = async () => {
       await axios.post('http://localhost:3000/budgets', payload)
     }
   }
-
   await store.fetchBudgets() // 저장 후 store 재갱신
   emit('submit')
   emit('close')
   alert('예산이 저장되었습니다.')
+}
+const resetBudget = async () => {
+  if (!confirm('정말로 예산을 초기화하시겠습니까?')) return
+
+  // 1. 현재 달 예산 불러오기
+  await store.fetchBudgets(currentMonth)
+  const budgets = store.budgets
+
+  // 2. 예산 모두 0으로 초기화 (PUT 요청)
+  const resetRequests = budgets.map(b => {
+    return axios.put(`http://localhost:3000/budgets/${b.id}`, {
+      ...b,
+      amount: 0,
+    })
+  })
+
+  await Promise.all(resetRequests)
+
+  // 3. 화면 입력값도 초기화
+  categoryData.value.forEach(item => {
+    item.amount = 0
+  })
 }
 </script>
 
@@ -117,6 +136,9 @@ const handleSubmit = async () => {
       <div class="buttons">
         <button class="popup_btn" @click="handleSubmit">확인</button>
         <button class="popup_btn" @click="handleCancel">취소</button>
+        <button class="popup_btn reset-btn" @click="resetBudget">
+          예산 초기화
+        </button>
       </div>
     </div>
   </div>
@@ -128,8 +150,6 @@ const handleSubmit = async () => {
   top: 0;
   left: 0;
   z-index: 999; /* 다른 컴포넌트 위에 오게 함 */
-  width: 100vw;
-  height: 100vh;
   background: rgba(0, 0, 0, 0.4); /* 반투명 딤드 처리 */
   display: flex;
   justify-content: center;
