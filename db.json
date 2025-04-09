@@ -139,6 +139,213 @@
       "amount": 300000,
       "description": "그래픽 카드 구매",
       "createdAt": "2025-04-01T07:00:00Z"
+    },
+
+    {
+      "id": "1712066400000",
+      "date": "2025-04-02",
+      "type": "지출",
+      "category": "문화생활",
+      "paymentMethod": "카드",
+      "amount": 12000,
+      "description": "영화 관람",
+      "createdAt": "2025-04-02T13:00:00Z"
+    },
+    {
+      "id": "1711965600000",
+      "date": "2025-04-01",
+      "type": "수입",
+      "category": "기타",
+      "paymentMethod": "현금",
+      "amount": 50000,
+      "description": "중고거래 수입",
+      "createdAt": "2025-04-01T08:00:00Z"
+    },
+    {
+      "id": "1744138482726",
+      "type": "지출",
+      "date": "2025-04-12",
+      "amount": 135144,
+      "category": "의료/건강",
+      "paymentMethod": "creditCard",
+      "description": "",
+      "createdAt": "2025-04-08T18:54:42.726Z"
+    },
+    {
+      "id": "9dda",
+      "date": "2025-04-18",
+      "amount": "32424",
+      "category": "Transportation",
+      "payment": "cash",
+      "memo": ""
+    },
+    {
+      "id": "bc19",
+      "date": "2025-04-19",
+      "amount": "123423",
+      "category": "CafeSnack",
+      "payment": "cash",
+      "memo": ""
+    },
+    {
+      "id": "02bc",
+      "type": "지출",
+      "date": "2025-04-22",
+      "amount": 31414214,
+      "category": "Savings",
+      "paymentMethod": "creditCard",
+      "description": ""
+    },
+    {
+      "id": "b208",
+      "type": "지출",
+      "date": "2025-04-19",
+      "amount": 234114,
+      "category": "경조사/회비",
+      "paymentMethod": "cash",
+      "description": ""
+    },
+    {
+      "id": "a337",
+      "type": "지출",
+      "date": "2025-04-04",
+      "amount": 6755,
+      "category": "경조사/회비",
+      "paymentMethod": "cash",
+      "description": ""
+    },
+    {
+      "id": "1744143537778",
+      "type": "지출",
+      "date": "2025-04-11",
+      "amount": 123445,
+      "category": "쇼핑",
+      "paymentMethod": "creditCard",
+      "description": "",
+      "createdAt": 1744143537778
+    },
+    {
+      "id": "1744143631701",
+      "type": "수입",
+      "date": "2025-04-29",
+      "amount": 5000000,
+      "category": "교통",
+      "paymentMethod": "",
+      "description": "",
+      "createdAt": "2025-04-08T20:20:31.701Z"
+    },
+    {
+      "id": "1744144079378",
+      "type": "수입",
+      "date": "2025-04-17",
+      "amount": 1144667,
+      "category": "급여",
+      "paymentMethod": "",
+      "description": "월급",
+      "createdAt": "2025-04-08T20:27:59.378Z"
+    },
+    {
+      "id": "1744145309944",
+      "type": "지출",
+      "date": "2025-04-10",
+      "amount": 134211,
+      "category": "저축",
+      "paymentMethod": "creditCard",
+      "description": "",
+      "createdAt": "2025-04-08T20:48:29.944Z"
+    },
+    {
+      "id": "1744145323534",
+      "type": "수입",
+      "date": "2025-04-03",
+      "amount": 32324,
+      "category": "용돈",
+      "paymentMethod": "",
+      "description": "",
+      "createdAt": "2025-04-08T20:48:43.534Z"
+    },
+    {
+      "id": "1744145382857",
+      "type": "지출",
+      "date": "2025-04-12",
+      "amount": 11,
+      "paymentMethod": "",
+      "description": "",
+      "createdAt": "2025-04-08T20:49:42.857Z"
+    },
+    {
+      "id": "1744145390588",
+      "type": "지출",
+      "date": "",
+      "amount": null,
+      "paymentMethod": "",
+      "description": "",
+      "createdAt": "2025-04-08T20:49:50.588Z"
+    },
+    {
+      "id": "1744145683223",
+      "type": "지출",
+      "date": "",
+      "amount": null,
+      "paymentMethod": "",
+      "description": "",
+      "createdAt": "2025-04-08T20:54:43.223Z"
+    },
+    {
+      "id": "1744145753894",
+      "type": "지출",
+      "date": "2025-04-04",
+      "amount": 2344,
+      "paymentMethod": "creditCard",
+      "description": "",
+      "createdAt": "2025-04-08T20:55:53.894Z"
+    },
+    {
+      "id": "1744146028703",
+      "type": "지출",
+      "date": "2025-04-09",
+      "amount": 34522,
+      "category": "경조사/회비",
+      "paymentMethod": "cash",
+      "description": "",
+      "createdAt": "2025-04-08T21:00:28.703Z"
+    },
+    {
+      "id": "1744146204678",
+      "type": "지출",
+      "date": "",
+      "amount": null,
+      "paymentMethod": "",
+      "description": "",
+      "createdAt": "2025-04-08T21:03:24.678Z"
+    },
+    {
+      "id": "1744146459805",
+      "type": "지출",
+      "date": "",
+      "amount": null,
+      "paymentMethod": "",
+      "description": "",
+      "createdAt": "2025-04-08T21:07:39.805Z"
+    },
+    {
+      "id": "1744146759654",
+      "type": "지출",
+      "date": "",
+      "amount": null,
+      "paymentMethod": "",
+      "description": "",
+      "createdAt": "2025-04-08T21:12:39.654Z"
+    },
+    {
+      "id": "1744157356802",
+      "type": "지출",
+      "date": "2025-04-09",
+      "amount": 10000,
+      "category": "식비",
+      "paymentMethod": "creditCard",
+      "description": ".",
+      "createdAt": "2025-04-09T00:09:16.802Z"
     }
   ]
 }
