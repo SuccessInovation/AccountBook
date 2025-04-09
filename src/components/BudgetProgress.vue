@@ -1,13 +1,13 @@
 <template>
-  <div class="BudgetProgress">
+  <div class="budget_progress">
     <div class="budget_title">
-      <h2>{{ calendar.current_month + 1 }}월 예산 진척도</h2>
-    </div>
-    <div class="btn_wrap">
-      <button class="cab_btn" @click.prevent="budgetSetting">
-        <img src="../img/cabbage/배추9.png" alt="예산설정버튼" />
-        <span class="btn_txt"><strong>예산설정</strong></span>
-      </button>
+      <h2>{{ calendar.current_month + 1 }}월 총예산</h2>
+      <div class="btn_wrap">
+        <button class="cab_btn" @click.prevent="budgetSetting">
+          <img src="../img/cabbage/배추9.png" alt="예산설정버튼" />
+          <span class="btn_txt"><strong>예산설정</strong></span>
+        </button>
+      </div>
     </div>
     <div v-if="progressData.length === 0" class="progress_data_box">
       <!-- 예산이 없는 경우 -->
@@ -18,7 +18,6 @@
     </div>
     <!-- 전체 진척도 Bar -->
     <div v-else class="overall-progress">
-      <div class="overall-title">총 예산</div>
       <div class="bar-wrapper">
         <div class="percentage">
           {{ totalBudget === 0 ? '-' : overallPercent + '%' }}
@@ -28,41 +27,47 @@
             class="bar-fill"
             :style="{
               width: (totalBudget === 0 ? '100' : overallPercent) + '%',
-              backgroundColor: '#22c55e', // 연한 초록 계열
+              backgroundColor: 'var(--point-1-color)', // 연한 초록 계열
             }"
           ></div>
         </div>
         <div class="bar-text">
-          <span>총 지출 {{ totalSpent.toLocaleString() }}원</span>
-          <span>총 예산 {{ totalBudget.toLocaleString() }}원</span>
+          <span>{{ totalSpent.toLocaleString() }}원 지출</span>
+          <span>예산 {{ totalBudget.toLocaleString() }}원</span>
         </div>
       </div>
     </div>
     <div
-      v-for="item in progressData"
-      :key="item.category"
-      class="progress-item"
+      :class="[
+        'progress-list',
+        progressData.length <= 3 ? 'one-column' : 'two-column',
+      ]"
     >
-      <div class="category-title">{{ item.name }}</div>
-
-      <div class="bar-wrapper">
-        <div class="percentage">
-          {{ item.budget === 0 ? '-' : item.percent + '%' }}
+      <div
+        v-for="item in progressData"
+        :key="item.category"
+        class="progress-item"
+      >
+        <div class="category-title">
+          <span>아이콘</span>
+          {{ item.name }}
+          <div class="percentage">
+            {{ item.budget === 0 ? '-' : item.percent + '%' }}
+          </div>
         </div>
-
-        <div class="bar-background">
-          <div
-            class="bar-fill"
-            :style="{
-              width: (item.budget === 0 ? '100' : item.percent) + '%',
-              backgroundColor: '#3b82f6',
-            }"
-          ></div>
-        </div>
-
-        <div class="bar-text">
-          <span>지출 {{ item.spent.toLocaleString() }}원</span>
-          <span>예산 {{ item.budget.toLocaleString() }}원</span>
+        <div class="bar-wrapper">
+          <div class="bar-background">
+            <div
+              class="bar-fill"
+              :style="{
+                width: (item.budget === 0 ? '100' : item.percent) + '%',
+              }"
+            ></div>
+          </div>
+          <div class="bar-text">
+            <span>{{ item.spent.toLocaleString() }}원 지출</span>
+            <span>예산 {{ item.budget.toLocaleString() }}원</span>
+          </div>
         </div>
       </div>
     </div>
@@ -163,19 +168,33 @@ watch(
 
 <style scoped>
 .budget_title {
+  position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center; /* 제목(h2)을 가운데로 보냄 */
+  padding: 0 2rem; /* 좌우 여유 */
 }
+
+.budget_title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0.375rem auto;
+  padding: 1rem 0;
+}
+
 .btn_wrap {
-  display: flex;
-  justify-content: end;
-  margin-bottom: 10px;
+  position: absolute;
+  right: 0;
 }
 
 .cab_btn {
+  align-items: center;
   width: 3rem;
   cursor: pointer;
+}
+.cab_btn > span {
+  color: var(--point-1-color);
+  text-decoration: underline;
 }
 .cab_btn:hover {
   background-color: var(--point-5-color);
@@ -184,10 +203,12 @@ watch(
   font-size: 0.75rem;
 }
 
-.BudgetProgress {
+.budget_progress {
+  border: 1rem solid var(--point-3-color);
+  border-radius: 1rem;
   padding: 20px;
-  max-width: 700px;
-  margin: 0 auto;
+  max-width: 900px;
+  margin: 1.5rem auto;
 }
 
 .progress_data_box {
@@ -199,31 +220,42 @@ watch(
   text-align: center;
   width: 50%;
 }
+.progress-list {
+  display: grid;
+  gap: 1rem;
+  max-height: 20rem;
+  overflow-y: scroll;
+  padding-right: 6px;
+}
+
+.progress-list.one-column {
+  grid-template-columns: 1fr;
+}
+
+.progress-list.two-column {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .progress-item {
-  border: 1px solid #ccc;
   padding: 16px;
-  margin-bottom: 20px;
-  font-family: 'Pretendard', sans-serif;
 }
 
 .category-title {
   font-size: 18px;
   font-weight: bold;
-  text-align: center;
   margin-bottom: 8px;
 }
 
 .bar-wrapper {
-  position: relative;
   width: 100%;
 }
 
 .percentage {
-  position: absolute;
-  top: -20px;
-  left: 0;
+  display: inline;
+  margin-left: 0.625rem;
   font-size: 14px;
-  color: #3b82f6;
+  color: var(--font-color);
+  opacity: 50%;
   font-weight: 600;
 }
 
@@ -237,7 +269,7 @@ watch(
 
 .bar-fill {
   height: 100%;
-  background-color: #3b82f6;
+  background-color: var(--point-2-color);
   border-radius: 999px;
   transition: width 0.3s ease;
 }
@@ -250,18 +282,12 @@ watch(
   color: #333;
 }
 .overall-progress {
-  margin-bottom: 32px;
-  padding: 16px;
-  border: 2px solid #22c55e;
-  border-radius: 12px;
-  background-color: #f0fdf4;
+  justify-self: center;
+  width: 50%;
+  margin-bottom: 2rem;
 }
-
-.overall-title {
-  font-size: 20px;
+span {
+  color: var(--font-color);
   font-weight: bold;
-  margin-bottom: 10px;
-  text-align: center;
-  color: #16a34a;
 }
 </style>

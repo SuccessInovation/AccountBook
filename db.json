@@ -5010,25 +5010,25 @@
     },
     {
       "category": "cafesnack",
-      "amount": 0,
+      "amount": 34433443,
       "month": "2025-04",
       "id": "abba"
     },
     {
       "category": "entertainment",
-      "amount": 0,
+      "amount": 200000,
       "month": "2025-04",
       "id": "6352"
     },
     {
       "category": "shopping",
-      "amount": 0,
+      "amount": 1231123,
       "month": "2025-04",
       "id": "a926"
     },
     {
       "category": "transportation",
-      "amount": 0,
+      "amount": 3000000,
       "month": "2025-04",
       "id": "2651"
     },
@@ -5040,7 +5040,7 @@
     },
     {
       "category": "health",
-      "amount": 0,
+      "amount": 1231231,
       "month": "2025-04",
       "id": "d67d"
     },
@@ -5052,19 +5052,19 @@
     },
     {
       "category": "travel",
-      "amount": 0,
+      "amount": 345345,
       "month": "2025-04",
       "id": "7a74"
     },
     {
       "category": "contributions",
-      "amount": 0,
+      "amount": 1231231,
       "month": "2025-04",
       "id": "dd71"
     },
     {
       "category": "savings",
-      "amount": 0,
+      "amount": 34535,
       "month": "2025-04",
       "id": "d489"
     },
@@ -5075,76 +5075,76 @@
       "id": "442d"
     },
     {
-      "id": "04a4",
       "category": "food",
       "amount": 1000000,
-      "month": "2025-03"
+      "month": "2025-03",
+      "id": "04a4"
     },
     {
-      "id": "9da1",
       "category": "cafesnack",
       "amount": 30000,
-      "month": "2025-03"
+      "month": "2025-03",
+      "id": "9da1"
     },
     {
-      "id": "08e3",
       "category": "entertainment",
       "amount": 0,
-      "month": "2025-03"
+      "month": "2025-03",
+      "id": "08e3"
     },
     {
-      "id": "4903",
       "category": "shopping",
-      "amount": 0,
-      "month": "2025-03"
+      "amount": 30000,
+      "month": "2025-03",
+      "id": "4903"
     },
     {
-      "id": "1849",
       "category": "transportation",
-      "amount": 0,
-      "month": "2025-03"
+      "amount": 500000,
+      "month": "2025-03",
+      "id": "1849"
     },
     {
-      "id": "53c9",
       "category": "utilities",
       "amount": 0,
-      "month": "2025-03"
+      "month": "2025-03",
+      "id": "53c9"
     },
     {
-      "id": "65ee",
       "category": "health",
       "amount": 0,
-      "month": "2025-03"
+      "month": "2025-03",
+      "id": "65ee"
     },
     {
-      "id": "18f3",
       "category": "leisure",
       "amount": 0,
-      "month": "2025-03"
+      "month": "2025-03",
+      "id": "18f3"
     },
     {
-      "id": "d701",
       "category": "travel",
       "amount": 0,
-      "month": "2025-03"
+      "month": "2025-03",
+      "id": "d701"
     },
     {
-      "id": "77b3",
       "category": "contributions",
       "amount": 0,
-      "month": "2025-03"
+      "month": "2025-03",
+      "id": "77b3"
     },
     {
-      "id": "db4e",
       "category": "savings",
       "amount": 0,
-      "month": "2025-03"
+      "month": "2025-03",
+      "id": "db4e"
     },
     {
-      "id": "70e7",
       "category": "etc",
       "amount": 0,
-      "month": "2025-03"
+      "month": "2025-03",
+      "id": "70e7"
     }
   ]
 }
