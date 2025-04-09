@@ -10,7 +10,6 @@ import PopupPage from '@/pages/PopupPage.vue'
 import StatisticsPage from '@/pages/StatisticsPage.vue'
 import BudgetPage from '@/pages/BudgetPage.vue'
 import ExportExcelPage from '@/pages/ExportExcelPage.vue'
-import HomePageCopy from '@/pages/HomePage copy.vue'
 
 const routes = [
   {
@@ -25,12 +24,7 @@ const routes = [
     component: HomePage,
     meta: { layout: 'default' }, //  헤더/사이드바 있는 레이아웃
   },
-  {
-    path: '/home1',
-    name: 'Homecopy',
-    component: HomePageCopy,
-    meta: { layout: 'default' }, //  헤더/사이드바 있는 레이아웃
-  },
+
   {
     path: '/login',
     name: 'Login',
