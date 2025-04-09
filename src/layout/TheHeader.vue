@@ -1,10 +1,72 @@
 <script setup></script>
 
 <template>
-  <div class="TheHeader"></div>
+  <div class="TheHeader">
+    <h1>
+      <div id="logo">
+        <span>배추</span
+        ><img id="img_logo" src="../img/cabbage/logo1.png" alt="로고" />
+      </div>
+    </h1>
+    <div id="header_title">임시 제목: HOME</div>
+    <div id="img_profile">
+      <img
+        class="rounded-circle"
+        src="../img/cabbage/pretty_cabbage.jpg"
+        alt="프로필 이미지"
+      />
+    </div>
+  </div>
 </template>
 
 <style scoped>
 .TheHeader {
+  height: 115px;
+  background-color: var(--point-5-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 115px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+}
+/* 배추 로고 */
+.TheHeader h1 {
+  width: 300px;
+  height: 100%;
+}
+#logo {
+  display: flex;
+  align-items: center;
+  font-size: 45px;
+  font-weight: bold;
+  margin: 15px 0 0 40px;
+}
+#img_logo {
+  width: 55px;
+  height: 82px;
+}
+/* 화면 제목 */
+#header_title {
+  margin: 0 auto;
+  font-size: 27px;
+  font-weight: bold;
+  text-align: center;
+  transform: translateX(-50%);
+}
+/* 프로필 아이콘 */
+#img_profile {
+  position: fixed;
+  right: 20px;
+  width: 70px;
+  height: 70px;
+  object-fit: cover; /* 이미지 비율 잘 맞추기 */
+  border-radius: 50%;
+  border: 3px solid white;
+  margin-left: auto;
+  cursor: pointer;
 }
 </style>
