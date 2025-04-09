@@ -1,21 +1,49 @@
-<script setup></script>
+<!-- summary_card	전체 카드 섹션을 감싸는 최상위 div
+card_wrap	        왼쪽 카드 묶음 (지출/수입/예산 카드 포함)
+card_box	        각 개별 카드 박스 스타일 클래스
+amount_box	      금액을 표시하는 곳
+piechart_wrap	    향후 파이차트를 넣을 오른쪽 공간 -->
+<script setup>
+// props로 부모 컴포넌트로부터 세 가지 숫자 데이터를 받음
+const props = defineProps({
+  totalExpense: Number, // 총 지출
+  totalIncome: Number, // 총 수입
+  budget: Number, // 예산
+})
+console.log('받은 props:', props)
+</script>
 
 <template>
   <div class="summary_card">
+    <!-- 왼쪽 카드 영역 -->
     <div class="card_wrap">
+      <!-- 지출 카드 -->
       <div class="expense_card card_box">
         <div class="box_title"><span>지출</span></div>
-        <div id="usevalue_expense" class="amount_box">1,500,000 원</div>
+        <div id="usevalue_expense" class="amount_box">
+          {{ (totalExpense ?? 0).toLocaleString() }} 원
+          <!-- 숫자를 한국식 쉼표 포맷으로 변환: 1500000 -> 1,500,000 -->
+        </div>
       </div>
+
+      <!-- 수입 카드 -->
       <div class="income_card card_box">
         <div class="box_title"><span>수입</span></div>
-        <div id="usevalue_income_box" class="amount_box">8,500,000 원</div>
+        <div id="usevalue_income_box" class="amount_box">
+          {{ (totalIncome ?? 0).toLocaleString() }} 원
+        </div>
       </div>
+
+      <!-- 예산 카드 -->
       <div class="budget_card card_box">
         <div class="box_title"><span>예산</span></div>
-        <div id="usevalue_budget_box" class="amount_box">7,000,000 원</div>
+        <div id="usevalue_budget_box" class="amount_box">
+          {{ (budget ?? 0).toLocaleString() }} 원
+        </div>
       </div>
     </div>
+
+    <!-- 오른쪽 파이차트 자리 (현재 비워져 있음) -->
     <div class="piechart_wrap"></div>
   </div>
 </template>
