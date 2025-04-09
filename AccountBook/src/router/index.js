@@ -19,24 +19,25 @@ const routes = [
     meta: { layout: 'no-layout' }, // 헤더/사이드바 없는 레이아웃
   },
   {
+    path: '/login',
+    name: 'Login',
+    component: LoginPage,
+    // meta: { layout: 'no-layout' }, //  헤더/사이드바 있는 레이아웃
+    meta: { layout: 'none' }, //  뷰포트 전체를 차지
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: RegisterPage,
+    meta: { layout: 'no-layout' }, //  헤더/사이드바 있는 레이아웃
+  },
+  {
     path: '/home',
     name: 'Home',
     component: HomePage,
     meta: { layout: 'default' }, //  헤더/사이드바 있는 레이아웃
   },
 
-  {
-    path: '/login',
-    name: 'Login',
-    component: LoginPage,
-    meta: { layout: 'default' }, //  헤더/사이드바 있는 레이아웃
-  },
-  {
-    path: '/register',
-    name: 'Register',
-    component: RegisterPage,
-    meta: { layout: 'default' }, //  헤더/사이드바 있는 레이아웃
-  },
   {
     path: '/transaction',
     name: 'Transaction',
