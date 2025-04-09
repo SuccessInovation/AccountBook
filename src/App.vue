@@ -1,11 +1,11 @@
 <template>
-  <TheHeader />
-  <TheSidebar />
+  <!-- <TheHeader /> -->
+  <!-- <TheSidebar /> -->
   <router-view />
-  <TheFooter />
+  <!-- <TheFooter /> -->
 </template>
 
-<script>
+<!-- <script>
 import TheHeader from './layout/TheHeader.vue'
 import TheSidebar from './layout/TheSidebar.vue'
 import TheFooter from './layout/TheFooter.vue'
@@ -14,7 +14,7 @@ export default {
   components: {
     TheHeader,
     TheSidebar,
-    TheFooter
-  }
+    TheFooter,
+  },
 }
-</script>
+</script> -->
