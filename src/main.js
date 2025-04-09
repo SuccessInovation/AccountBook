@@ -1,5 +1,6 @@
+import 'bootstrap/dist/css/bootstrap.min.css' // bootstrap
+import 'bootstrap/dist/js/bootstrap.bundle.min.js' // bootstrap
 import './assets/main.css'
-// 달력 부트스트랩
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { createApp } from 'vue'

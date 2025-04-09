@@ -52,3 +52,14 @@ ul,
 ol {
   list-style: none;
 }
+
+/* 전체 적용 */
+#containers {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+main-content {
+  display: flex;
+  flex: 1;
+}
