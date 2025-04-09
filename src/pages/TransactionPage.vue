@@ -3,7 +3,8 @@ import { ref, computed, onMounted } from 'vue'
 import { useTransactionStore } from '@/stores/TransactionStore'
 import { useRouter } from 'vue-router'
 import PopupPage from '@/pages/PopupPage.vue'
-import TransactionEdit from '@/components/TransactionEdit.vue'
+// TransactionEdit.vue는 수정페이지로 라우터 이동 시 사용되므로 여기서는 import할 필요가 없습니다.
+// import TransactionEdit from '@/components/TransactionEdit.vue'
 
 // 내역 추가하는 팝업창 상태 (초기값 : false)
 const showPopup = ref(false)
@@ -14,24 +15,9 @@ function closePopup() {
   showPopup.value = false
 }
 
-// 수정하는 팝업창 상태 (초기값 : false)
-const showEdit = ref(false)
-function closeEdit() {
-  showEdit.value = false
-}
-
-// 수정할 거래 데이터를 저장할 변수
-const selectedTransaction = ref(null)
-
-// 수정 아이콘 클릭 시 실행: 해당 거래 데이터를 저장하고, 수정 팝업을 연다.
-function handleEdit(record) {
-  selectedTransaction.value = record
-  showEdit.value = true
-}
-
 // 거래 내역 관련 로직
 const transactionStore = useTransactionStore()
-const router = useRouter() // router는 다른 용도로 사용할 수 있으므로 그대로 남깁니다.
+const router = useRouter()
 
 onMounted(() => {
   transactionStore.fetchTransactions()
@@ -74,7 +60,7 @@ function nextPage() {
   }
 }
 
-// 금액 포맷 함수
+// 금액 포맷 함수 (수입이면 +로, 지출이면 -로 표현)
 function formatAmount(value, type) {
   const num = parseFloat(value)
   if (isNaN(num)) return value
@@ -91,6 +77,16 @@ function handleDelete(id) {
   if (window.confirm('정말 삭제하시겠습니까?')) {
     transactionStore.deleteTransaction(id)
   }
+}
+
+// 수정 이벤트 처리 (라우터를 통해 수정 페이지로 이동)
+// 기존에는 팝업 창을 사용했으나, 여기서는 라우터를 통한 이동 방식을 사용합니다.
+function handleEdit(record) {
+  console.log('수정할 거래 id:', record.id)
+  router.push({
+    name: 'TransactionEdit',
+    params: { id: record.id },
+  })
 }
 </script>
 
@@ -121,12 +117,13 @@ function handleDelete(id) {
       <div class="nav-center">
         <input type="text" class="search-input" placeholder="내역 검색" />
       </div>
-      <div class="nav-right">
-        <label class="income-checkbox">
+      <!-- 수입/지출 항목 필터링 -->
+      <div class="navRight">
+        <label class="incomeCheckbox">
           <input type="checkbox" v-model="showIncome" />
           <span>수입</span>
         </label>
-        <label class="expense-checkbox">
+        <label class="expenseCheckbox">
           <input type="checkbox" v-model="showExpense" />
           <span>지출</span>
         </label>
@@ -134,8 +131,8 @@ function handleDelete(id) {
     </nav>
 
     <!-- 테이블 영역 -->
-    <section class="ledger-table-section">
-      <table class="ledger-table">
+    <section class="ledgerTableSection">
+      <table class="ledgerTable">
         <thead>
           <tr>
             <!-- 선택삭제용 체크박스 열 (아직 구현 X) -->
@@ -167,14 +164,16 @@ function handleDelete(id) {
                 class="icon-edit"
                 @click="handleEdit(record)"
                 style="cursor: pointer"
-                >✏️</i>
+                >✏️</i
+              >
             </td>
             <td>
               <i
                 class="icon-delete"
                 @click="handleDelete(record.id)"
                 style="cursor: pointer"
-                >🗑️</i>
+                >🗑️</i
+              >
             </td>
           </tr>
         </tbody>
@@ -182,7 +181,7 @@ function handleDelete(id) {
 
       <!-- 페이징 컨트롤 -->
       <div
-        class="pagination-controls"
+        class="paginationControls"
         style="margin-top: 16px; text-align: center"
       >
         <button @click="prevPage" :disabled="currentPage === 1">이전</button>
@@ -194,24 +193,18 @@ function handleDelete(id) {
     </section>
 
     <!-- 하단 '추가' 버튼 -->
-    <div class="add-button-area">
-      <button class="add-button" @click="openPopup">추가 +</button>
+    <div class="addButtonArea">
+      <button class="addButton" @click="openPopup">추가 +</button>
     </div>
 
     <!-- 거래 추가 팝업 -->
     <PopupPage v-if="showPopup" @close="closePopup" />
-    <!-- 거래 수정 팝업 -->
-    <TransactionEdit
-      v-if="showEdit"
-      :transaction="selectedTransaction"
-      @close="closeEdit"
-    />
+    <!-- 거래 수정 팝업 제거: 수정은 라우터를 통해 TransactionEdit 페이지로 이동하므로 Popup 창을 사용하지 않습니다 -->
   </div>
 </template>
 
 <style scoped>
-/* 스타일은 기존 코드와 동일 */
-
+/* 기존 스타일 그대로 유지 */
 .ledger-container {
   width: 100%;
   max-width: 1200px;
@@ -294,24 +287,24 @@ function handleDelete(id) {
   border-radius: 4px;
   outline: none;
 }
-.nav-right {
+.navRight {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.income-checkbox,
-.expense-checkbox {
+.incomeCheckbox,
+.expenseCheckbox {
   display: flex;
   align-items: center;
   gap: 4px;
   cursor: pointer;
 }
 
-.ledger-table-section {
+.ledgerTableSection {
   padding: 20px;
   background-color: #f8f8f8;
 }
-.ledger-table {
+.ledgerTable {
   width: 100%;
   border-collapse: collapse;
   background-color: #fff;
@@ -319,29 +312,29 @@ function handleDelete(id) {
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.ledger-table thead {
+.ledgerTable thead {
   background-color: #e2e2e2;
 }
-.ledger-table th,
-.ledger-table td {
+.ledgerTable th,
+.ledgerTable td {
   text-align: left;
   padding: 12px;
   border-bottom: 1px solid #eee;
 }
-.ledger-table th {
+.ledgerTable th {
   font-weight: bold;
   font-size: 0.9rem;
   color: #333;
 }
-.ledger-table td {
+.ledgerTable td {
   font-size: 0.88rem;
   color: #555;
 }
-.ledger-table td i {
+.ledgerTable td i {
   cursor: pointer;
 }
 
-.pagination-controls button {
+.paginationControls button {
   padding: 6px 12px;
   margin: 0 6px;
   border: none;
@@ -351,18 +344,18 @@ function handleDelete(id) {
   cursor: pointer;
   transition: background-color 0.3s;
 }
-.pagination-controls button:disabled {
+.paginationControls button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
 
-.add-button-area {
+.addButtonArea {
   display: flex;
   justify-content: center;
   padding: 20px;
   background-color: #fff;
 }
-.add-button {
+.addButton {
   background-color: #a3c39c;
   color: #fff;
   border: none;
@@ -372,7 +365,7 @@ function handleDelete(id) {
   cursor: pointer;
   transition: background-color 0.3s;
 }
-.add-button:hover {
+.addButton:hover {
   background-color: #8eb58d;
 }
 </style>

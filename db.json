@@ -49,7 +49,7 @@
     {
       "id": "02bc",
       "type": "지출",
-      "date": "2025-04-22",
+      "date": "2025-04-23",
       "amount": 31414214,
       "category": "Savings",
       "paymentMethod": "creditCard",
@@ -58,11 +58,12 @@
     {
       "id": "b208",
       "type": "지출",
-      "date": "2025-04-19",
-      "amount": 234114,
+      "date": "2025-04-28",
+      "amount": 2341140,
       "category": "경조사/회비",
       "paymentMethod": "cash",
-      "description": ""
+      "description": "",
+      "memo": "수정됨"
     },
     {
       "id": "a337",
@@ -122,24 +123,6 @@
       "paymentMethod": "",
       "description": "",
       "createdAt": "2025-04-08T20:48:43.534Z"
-    },
-    {
-      "id": "1744145382857",
-      "type": "지출",
-      "date": "2025-04-12",
-      "amount": 11,
-      "paymentMethod": "",
-      "description": "",
-      "createdAt": "2025-04-08T20:49:42.857Z"
-    },
-    {
-      "id": "1744145390588",
-      "type": "지출",
-      "date": "",
-      "amount": null,
-      "paymentMethod": "",
-      "description": "",
-      "createdAt": "2025-04-08T20:49:50.588Z"
     },
     {
       "id": "1744145683223",
