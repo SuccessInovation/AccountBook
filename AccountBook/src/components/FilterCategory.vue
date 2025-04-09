@@ -1,168 +1,107 @@
 <script setup>
-import {
-  ref,
-  defineProps,
-  defineEmits,
-  computed,
-  onMounted,
-  onBeforeUnmount,
-} from 'vue'
-import { CATEGORY_MAP } from '@/constants/categories'
+import { ref, defineEmits, onMounted, onBeforeUnmount } from 'vue'
 
-// 카테고리 목록 가져오기
-const props = defineProps({
-  categories: {
-    type: Array,
-    required: true,
-  },
-})
+// 입력된 검색내용 전달하기 위해 emit 정의
+const emit = defineEmits(['memoInputted'])
 
-// 카테고리 목록에 'all' 추가
-const categoryList = computed(() => ['전체', ...props.categories])
+// 사용자가 입력하는 텍스트를 저장할 반응형 변수 (입력 중 텍스트)
+const inputText = ref('')
 
-// 선택된 카테고리 전달하기 위해 emit 정의
-const emit = defineEmits(['categorySelected'])
+// 입력창 외부 클릭 시 포커스를 해제하기 위한 DOM 참조 변수
+const inputRef = ref(null)
+const isFocused = ref(false) // 포커스 여부 저장
 
-// 초기값 설정 (선택 전 상태)
-const categorySelected = ref('카테고리')
-// 드롭다운 open/close 상태 저장
-const isOpen = ref(false)
-
-// 드롭다운 토글 함수
-const toggleDropdown = () => {
-  isOpen.value = !isOpen.value // 클릭 -> open/close 상태 변경
-}
-
-// 드롭다운 외부 영역 클릭 상태 감지
-const dropdownRef = ref('')
-
-// 외부 클릭 시 드롭다운 상태 close로 변경 함수
+// 외부 클릭 시 포커스 해제 처리 함수
 const clickOuterHandler = e => {
-  // 외부 영역 클릭 -> 드롭다운 close
-  if (dropdownRef.value && !dropdownRef.value.contains(e.target)) {
-    isOpen.value = false
+  if (inputRef.value && !inputRef.value.contains(e.target)) {
+    isFocused.value = false
   }
 }
 
-// 컴포넌트가 mount될 때 클릭 이벤트 등록
+// 컴포넌트가 화면에 나타날 때 클릭 이벤트 등록
 onMounted(() => {
   document.addEventListener('click', clickOuterHandler)
 })
 
-// 컴포넌트가 unmount될 때 (사라질 때) 클릭 이벤트 제거 (메모리 누수 방지)
+// 컴포넌트가 사라질 때 클릭 이벤트 해제 (메모리 누수 방지)
 onBeforeUnmount(() => {
   document.removeEventListener('click', clickOuterHandler)
 })
 
-// 카테고리 선택 시
-const selectFilter = category => {
-  categorySelected.value = category === '전체' ? '카테고리' : category
-  // 부모에게 선택된 카테고리 전달
-  emit('categorySelected', category === '전체' ? 'all' : category)
-  isOpen.value = false // 드롭다운 닫기
+// 메모 검색 시 emit
+const submitSearch = () => {
+  emit('memoInputted', inputText.value)
+}
+
+// 입력값이 바뀔 때마다 부모 컴포넌트에 전달
+const onInput = () => {
+  emit('memoInputted', inputText.value)
 }
 </script>
 
 <template>
-  <div class="filter_category" ref="dropdownRef">
-    <div class="filter_btn" @click="toggleDropdown">
-      <!-- 드롭다운 버튼 -->
-      <span>{{
-        categorySelected === '카테고리'
-          ? '카테고리'
-          : CATEGORY_MAP[categorySelected]
-      }}</span>
-      <span class="icon_triangle">▼</span>
-    </div>
+  <div class="memo_input_wrap" ref="inputRef">
+    <!-- 좌측 텍스트 -->
+    <span class="memo_label"></span>
 
-    <!-- 드롭다운 항목 -->
-    <ul v-if="isOpen" class="category_list">
-      <li
-        v-for="category in categoryList"
-        :key="category"
-        @click="selectFilter(category)"
-        :class="{ selected: category === categorySelected }"
-      >
-        {{ category === '전체' ? '전체' : CATEGORY_MAP[category] || category }}
-      </li>
-    </ul>
+    <!-- 입력창 -->
+    <input
+      v-model="inputText"
+      @keydown.enter="submitSearch"
+      @focus="isFocused = true"
+      type="text"
+      class="memo_input"
+      placeholder="메모 검색"
+    />
+
+    <!-- 입력 즉시 결과 보고 싶으면 @input="onInput" -->
+
+    <!-- 돋보기 아이콘 -->
+    <span class="search_icon" @click="submitSearch">🔍</span>
   </div>
 </template>
 
 <style scoped>
 /* 전체 배경색 적용 */
-.filter_category * {
+.memo_input_wrap * {
   background-color: var(--white);
 }
 
-/* 전체 드롭다운 영역 */
-.filter_category {
-  position: relative; /* 드롭다운 기준 위치 */
-  width: 160px;
-  font-size: 14px;
-}
-
-/* 드롭다운 버튼 (카테고리 + ▼ 아이콘 포함) */
-.filter_btn {
+/* 전체 감싸는 박스 스타일 */
+.memo_input_wrap {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  border: 1px solid #ccc;
-  border-radius: 15px;
+  gap: 12px;
+  padding: 10px 16px;
   background-color: #fff;
+  border-radius: 18px;
+  max-width: 400px;
+  width: 300px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s ease;
+}
+
+/* 입력창 포커스 시 테두리 색상 변경 */
+.memo_input_wrap:focus-within {
+  border-color: var(--green);
+}
+
+/* 검색 입력창 */
+.memo_input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  background-color: transparent;
+}
+
+/* 돋보기 아이콘 */
+.search_icon {
+  font-size: 18px;
+}
+
+/* 돋보기 아이콘 hover이벤트 */
+.search_icon:hover {
   cursor: pointer;
-  transition: all 0.2s ease;
-  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); */
-}
-
-.filter_btn:hover {
-  background-color: #f9f9f9;
-  border-color: #aaa;
-}
-
-/* ▼ 아이콘 */
-.icon_triangle {
-  font-size: 12px;
-  color: var(--green);
-}
-
-/* 드롭다운 목록 */
-.category_list {
-  position: absolute;
-  top: calc(100% + 4px); /* 버튼 바로 아래에 배치 */
-  left: 0;
-  width: 100%;
-  margin: 0;
-  padding: 6px 0;
-  list-style: none;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background-color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  max-height: 220px;
-  overflow-y: auto;
-}
-
-/* 드롭다운 항목 */
-.category_list li {
-  padding: 10px 14px;
-  color: #333;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-/* 마우스 오버 시 */
-.category_list li:hover {
-  background-color: #f0f0f0;
-}
-
-/* 선택된 항목 강조 */
-.category_list li.selected {
-  background-color: var(--lightgreen);
-  font-weight: bold;
-  color: var(--green);
 }
 </style>
