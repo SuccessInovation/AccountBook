@@ -195,6 +195,16 @@
       "paymentMethod": "",
       "description": "",
       "createdAt": "2025-04-08T21:12:39.654Z"
+    },
+    {
+      "id": "1744157356802",
+      "type": "지출",
+      "date": "2025-04-09",
+      "amount": 10000,
+      "category": "식비",
+      "paymentMethod": "creditCard",
+      "description": ".",
+      "createdAt": "2025-04-09T00:09:16.802Z"
     }
   ]
 }

@@ -81,7 +81,7 @@ async function handleSubmit() {
   }
 
   try {
-    await axios.post('http://localhost:5000/records', dataToSend)
+    await axios.post('http://localhost:3000/records', dataToSend)
     alert('새 항목이 추가되었습니다!')
     // 폼 초기화 및 기본 상태 복원
     formData.value = {
