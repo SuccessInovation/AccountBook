@@ -1,0 +1,264 @@
+{
+  "records": [
+    {
+      "id": 1712404800000,
+      "date": "2025-04-06",
+      "type": "지출",
+      "category": "식비",
+      "paymentMethod": "카드",
+      "amount": 12000,
+      "description": "점심 식사",
+      "createdAt": "2025-04-06T12:00:00Z"
+    },
+    {
+      "id": 1712383200000,
+      "date": "2025-04-06",
+      "type": "지출",
+      "category": "카페/간식",
+      "paymentMethod": "현금",
+      "amount": 4500,
+      "description": "커피 한 잔",
+      "createdAt": "2025-04-06T06:00:00Z"
+    },
+    {
+      "id": 1712332800000,
+      "date": "2025-04-05",
+      "type": "지출",
+      "category": "교통",
+      "paymentMethod": "카드",
+      "amount": 1650,
+      "description": "지하철 요금",
+      "createdAt": "2025-04-05T16:00:00Z"
+    },
+    {
+      "id": 1712314800000,
+      "date": "2025-04-05",
+      "type": "수입",
+      "category": "기타",
+      "paymentMethod": "현금",
+      "amount": 20000,
+      "description": "용돈 받음",
+      "createdAt": "2025-04-05T11:00:00Z"
+    },
+    {
+      "id": 1712228400000,
+      "date": "2025-04-04",
+      "type": "지출",
+      "category": "쇼핑",
+      "paymentMethod": "카드",
+      "amount": 39000,
+      "description": "옷 구매",
+      "createdAt": "2025-04-04T11:00:00Z"
+    },
+    {
+      "id": 1712203200000,
+      "date": "2025-04-04",
+      "type": "지출",
+      "category": "식비",
+      "paymentMethod": "현금",
+      "amount": 8700,
+      "description": "저녁 식사",
+      "createdAt": "2025-04-04T04:00:00Z"
+    },
+    {
+      "id": 1712120400000,
+      "date": "2025-04-03",
+      "type": "수입",
+      "category": "급여",
+      "paymentMethod": "카드",
+      "amount": 1500000,
+      "description": "월급",
+      "createdAt": "2025-04-03T04:00:00Z"
+    },
+    {
+      "id": 1712066400000,
+      "date": "2025-04-02",
+      "type": "지출",
+      "category": "문화생활",
+      "paymentMethod": "카드",
+      "amount": 12000,
+      "description": "영화 관람",
+      "createdAt": "2025-04-02T13:00:00Z"
+    },
+    {
+      "id": 1712048400000,
+      "date": "2025-04-02",
+      "type": "지출",
+      "category": "식비/카페",
+      "paymentMethod": "카드",
+      "amount": 9500,
+      "description": "브런치 카페",
+      "createdAt": "2025-04-02T08:00:00Z"
+    },
+    {
+      "id": 1711965600000,
+      "date": "2025-04-01",
+      "type": "수입",
+      "category": "기타",
+      "paymentMethod": "현금",
+      "amount": 50000,
+      "description": "중고거래 수입",
+      "createdAt": "2025-04-01T08:00:00Z"
+    },
+    {
+      "id": 1701235200000,
+      "date": "2023-11-29",
+      "type": "지출",
+      "category": "식비",
+      "paymentMethod": "카드",
+      "amount": 8700,
+      "description": "저녁 식사",
+      "createdAt": "2023-11-29T11:00:00Z"
+    },
+    {
+      "id": 1709875200000,
+      "date": "2024-03-09",
+      "type": "수입",
+      "category": "급여",
+      "paymentMethod": "현금",
+      "amount": 1400000,
+      "description": "월급",
+      "createdAt": "2024-03-09T04:00:00Z"
+    },
+    {
+      "id": 1712745600000,
+      "date": "2024-04-10",
+      "type": "지출",
+      "category": "쇼핑",
+      "paymentMethod": "카드",
+      "amount": 42000,
+      "description": "신발 구매",
+      "createdAt": "2024-04-10T15:00:00Z"
+    },
+    {
+      "id": 1720396800000,
+      "date": "2024-07-08",
+      "type": "지출",
+      "category": "카페/간식",
+      "paymentMethod": "현금",
+      "amount": 5200,
+      "description": "디저트",
+      "createdAt": "2024-07-08T08:00:00Z"
+    },
+    {
+      "id": 1730937600000,
+      "date": "2024-11-07",
+      "type": "수입",
+      "category": "기타",
+      "paymentMethod": "현금",
+      "amount": 30000,
+      "description": "용돈",
+      "createdAt": "2024-11-07T10:00:00Z"
+    },
+    {
+      "id": 1736208000000,
+      "date": "2025-01-07",
+      "type": "지출",
+      "category": "교통",
+      "paymentMethod": "카드",
+      "amount": 1350,
+      "description": "버스 요금",
+      "createdAt": "2025-01-07T07:00:00Z"
+    },
+    {
+      "id": 1738790400000,
+      "date": "2025-02-06",
+      "type": "지출",
+      "category": "식비",
+      "paymentMethod": "현금",
+      "amount": 10500,
+      "description": "점심 식사",
+      "createdAt": "2025-02-06T06:00:00Z"
+    },
+    {
+      "id": 1741113600000,
+      "date": "2025-03-05",
+      "type": "수입",
+      "category": "급여",
+      "paymentMethod": "카드",
+      "amount": 1500000,
+      "description": "월급",
+      "createdAt": "2025-03-05T04:00:00Z"
+    },
+    {
+      "id": 1741824000000,
+      "date": "2025-03-12",
+      "type": "지출",
+      "category": "문화생활",
+      "paymentMethod": "카드",
+      "amount": 11000,
+      "description": "공연 관람",
+      "createdAt": "2025-03-12T12:00:00Z"
+    },
+    {
+      "id": 1742256000000,
+      "date": "2025-03-17",
+      "type": "지출",
+      "category": "쇼핑",
+      "paymentMethod": "현금",
+      "amount": 28000,
+      "description": "액세서리 구매",
+      "createdAt": "2025-03-17T10:00:00Z"
+    },
+    {
+      "id": 1743110400000,
+      "date": "2025-03-27",
+      "type": "수입",
+      "category": "기타",
+      "paymentMethod": "현금",
+      "amount": 70000,
+      "description": "과외비",
+      "createdAt": "2025-03-27T14:00:00Z"
+    },
+    {
+      "id": 1743532800000,
+      "date": "2025-04-01",
+      "type": "지출",
+      "category": "카페/간식",
+      "paymentMethod": "카드",
+      "amount": 4300,
+      "description": "아이스크림",
+      "createdAt": "2025-04-01T13:00:00Z"
+    },
+    {
+      "id": 1743705600000,
+      "date": "2025-04-03",
+      "type": "지출",
+      "category": "식비",
+      "paymentMethod": "카드",
+      "amount": 9700,
+      "description": "저녁 회식",
+      "createdAt": "2025-04-03T18:00:00Z"
+    },
+    {
+      "id": 1743792000000,
+      "date": "2025-04-04",
+      "type": "지출",
+      "category": "교통",
+      "paymentMethod": "카드",
+      "amount": 1650,
+      "description": "지하철",
+      "createdAt": "2025-04-04T09:00:00Z"
+    },
+    {
+      "id": 1743964800000,
+      "date": "2025-04-06",
+      "type": "수입",
+      "category": "기타",
+      "paymentMethod": "현금",
+      "amount": 25000,
+      "description": "친구한테 받은 돈",
+      "createdAt": "2025-04-06T15:00:00Z"
+    },
+    {
+      "id": 1743964800000,
+      "date": "2023-04-06",
+      "type": "수입",
+      "category": "기타",
+      "paymentMethod": "현금",
+      "amount": 25000,
+      "description": "친구한테 받은 돈",
+      "createdAt": "2023-04-06T15:00:00Z"
+    }
+  ]
+}
