@@ -1,51 +1,50 @@
 // 카테고리 목록 배열로 저장
-// 카테고리 -> 상수 -> 대문자로 명명
+// 카테고리 -> 상수 -> 배열 대문자로 명명
 
 // 지출
 export const EXPENSE_CATEGORIES = [
-  'Food',
-  'CafeSnack',
-  'Entertainment',
-  'Shopping',
-  'Transportation',
-  'Utilities',
-  'Health',
-  'Leisure',
-  'Travel',
-  'Contributions',
-  'Savings',
-  'Education',
-  'Etc',
+  'food',
+  'dessert',
+  'entertainment',
+  'shopping',
+  'transportation',
+  'utilities',
+  'health',
+  'leisure',
+  'travel',
+  'contributions',
+  'savings',
+  'etc',
 ]
 
 // 수입
 export const INCOME_CATEGORIES = [
-  'Salary',
-  'Allowance',
-  'Financial',
-  'Scholarship',
-  'Etc',
+  'salary',
+  'allowance',
+  'financial',
+  'scholarship',
+  'etc',
 ]
 
 // 카테고리 이름 한글-영어 매칭
 export const CATEGORY_MAP = {
   // 지출
-  Food: '식비',
-  CafeSnack: '카페/간식',
-  Entertainment: '술/유흥',
-  Shopping: '쇼핑',
-  Transportation: '교통',
-  Utilities: '주거/통신',
-  Health: '의료/건강',
-  Leisure: '문화/여가',
-  Travel: '여행/숙박',
-  Contributions: '경조사/회비',
-  Savings: '저축',
-  Etc: '기타', // 지출/수입 '기타'항목은 한 번만 등록
+  food: '식비',
+  dessert: '카페/간식',
+  entertainment: '술/유흥',
+  shopping: '쇼핑',
+  transportation: '교통',
+  utilities: '주거/통신',
+  health: '의료/건강',
+  leisure: '문화/여가',
+  travel: '여행/숙박',
+  contributions: '경조사/회비',
+  savings: '저축',
+  etc: '기타', // 지출/수입 '기타'항목은 공통이므로 한 번만 등록
 
   // 수입
-  Salary: '급여',
-  Allowance: '용돈',
-  Financial: '금융수입',
-  Scholarship: '장학금',
+  salary: '급여',
+  allowance: '용돈',
+  financial: '금융수입',
+  scholarship: '장학금',
 }

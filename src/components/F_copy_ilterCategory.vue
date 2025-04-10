@@ -85,7 +85,12 @@ watch(
 <template>
   <div class="filter_category" ref="dropdownRef">
     <!-- 드롭다운 버튼 -->
-    <div class="filter_btn" @click="toggleDropdown">
+    <button
+      class="btn btn-outline-secondary dropdown-toggle w-100 text-start"
+      type="button"
+      @click="toggleDropdown"
+    >
+    <!-- <div class="filter_btn" @click="toggleDropdown"> -->
       <!-- 선택된 카테고리 항목명 (기본: 카테고리) -->
       <span>{{
         categorySelected === '카테고리'
@@ -97,7 +102,8 @@ watch(
     </div>
 
     <!-- 드롭다운 항목 -->
-    <ul v-if="isOpen" class="category_list">
+    <ul class="dropdown-menu w-100" :class="{ show: isOpen }">
+      <!-- <ul v-if="isOpen" class="category_list"> -->
       <!-- 카테고리 목록 렌더링-->
       <li
         v-for="category in categoryList"
@@ -105,11 +111,16 @@ watch(
         @click="selectFilter(category)"
         :class="{ selected: category === categorySelected }"
       >
+       <a
+          href="#"
+          class="dropdown-item"
+          :class="{ active: category === categorySelected }"
+          @click.prevent="selectFilter(category)"
+        >
         <!-- '전체'만 그대로 표시, 나머지는 한글로 매핑 -->
         {{ category === '전체' ? '전체' : CATEGORY_MAP[category] || category }}
       </li>
     </ul>
-  </div>
 </template>
 
 <style scoped>
@@ -118,27 +129,25 @@ watch(
   background-color: var(--white);
 }
 
+/* bootstrap */
 /* 전체 드롭다운 영역 */
-.filter_category {
-  width: 160px;
-  font-size: 14px;
+.dropdown-menu {
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 1000;
 }
 
 /* 드롭다운 버튼 (카테고리 + ▼ 아이콘 포함) */
-.filter_btn {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  border-radius: 15px;
-  background-color: #fff;
-  cursor: pointer;
-  transition: all 0.2s ease;
+.dropdown-item.active {
+  background-color: rgba(42, 125, 92, 0.15);
+  font-weight: bold;
+  color: var(--point-1-color);
 }
+/* bootstrap */
+
 
 /* 드롭다운 버튼 hover 이벤트 */
-.filter_btn:hover {
+.dropdown-item:hover {
   background-color: #f9f9f9;
   border-color: #aaa;
 }
@@ -146,7 +155,7 @@ watch(
 /* ▼ 아이콘 */
 .icon_triangle {
   font-size: 12px;
-  color: var(--color-point-1);
+  color: var(--point-1-color);
 }
 
 /* 드롭다운 목록 */
