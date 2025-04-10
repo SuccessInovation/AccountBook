@@ -8,6 +8,40 @@ import {
   EXPENSE_CATEGORIES,
 } from '@/constants/categories'
 
+//#region 폼 제출 유효성 검사
+/**
+ * 금액이 0 이하면 제출 버튼이 disabled 됨
+ * 모든 항목에 대해 하나라도 선택되지 않으면 제출 버튼 disabled
+ *
+ */
+ const amountError = computed(() => {
+  const amount = Number(formData.value.amount)
+  return amount <= 0 ? '금액은 0원보다 커야 합니다' : ''
+})
+
+const isFormValid = computed(() => {
+  const amount = Number(formData.value.amount)
+  const category = formData.value.category
+  const type = formData.value.type
+  const date = formData.value.date
+  const payment = formData.value.paymentMethod
+
+  const isAmountValid = amount > 0
+  const isCategoryValid = category !== ''
+  const isDateValid = date !== ''
+  const isTypeValid = type === 'income' || type === 'expense'
+  const isPaymentValid = type === 'expense' ? payment !== '' : true
+
+  return (
+    isAmountValid &&
+    isCategoryValid &&
+    isDateValid &&
+    isTypeValid &&
+    isPaymentValid
+  )
+})
+//#endregion
+
 const API_URL = 'http://localhost:3000/transactions'
 const route = useRoute()
 const router = useRouter()
@@ -78,6 +112,12 @@ function closeModal() {
           placeholder="금액"
           id="editAmount"
         />
+        <p
+          v-if="amountError"
+          style="color: red; font-size: 0.875rem; margin: 0 0 3px"
+        >
+          {{ amountError }}
+        </p>
         <label for="editCategory">카테고리</label>
         <select v-model="formData.category" id="editCategory" required>
           <option value="" disabled>카테고리 선택</option>
@@ -111,7 +151,9 @@ function closeModal() {
         />
 
         <div class="button-group">
-          <button type="submit" class="editSubmit">수정 완료</button>
+          <button type="submit" class="editSubmit" :disabled="!isFormValid">
+            수정 완료
+          </button>
           <button type="button" class="editCancel" @click="closeModal">
             취소
           </button>
