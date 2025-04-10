@@ -36,6 +36,17 @@ export const use_calendar_store = defineStore('calendar', () => {
   //    - base_date에서 getMonth()는 0부터 시작하므로 그대로 사용
   const current_month = ref(base_date.getMonth())
 
+  // 선택된 월의 startDate
+  const monthStartDate = computed(
+    () => new Date(current_year.value, current_month.value, 1),
+  )
+
+  // 선택된 월의 endDate
+  // js에서 '다음 달의 0일'은 '이달의 마지막 날'임
+  const monthEndDate = computed(
+    () => new Date(current_year.value, current_month.value + 1, 0),
+  )
+
   //  get_month_data: offset을 받아서 해당 월/연 정보를 반환하는 함수
   //    - offset은 -1, 0, 1 (이전 달, 현재 달, 다음 달)
   //    - new Date는 자동으로 월이 12 이상이면 다음 해로, 0보다 작으면 이전 해로 계산됨
@@ -80,18 +91,6 @@ export const use_calendar_store = defineStore('calendar', () => {
   }
 
   /* 우진 추가 */
-  // 시작날짜를 보고있는 월 기준의 시작일로 설정
-  const startDate = computed(() => {
-    const start = new Date(current_year.value, current_month.value, 1)
-    return start.toISOString().split('T')[0] // YYYY-MM-DD
-  })
-
-  // 마지막 날짜를 보고있는 월 기준의 말일로 설정
-  const endDate = computed(() => {
-    const end = new Date(current_year.value, current_month.value + 1, 0) // 말일
-    return end.toISOString().split('T')[0]
-  })
-
   // 예산 month에 접근하기 위한 Key
   const monthKey = computed(() => {
     const y = current_year.value
@@ -107,8 +106,8 @@ export const use_calendar_store = defineStore('calendar', () => {
     visible_months,
     go_to_prev_month,
     go_to_next_month,
-    startDate,
-    endDate,
+    monthStartDate,
+    monthEndDate,
     monthKey,
   }
 })

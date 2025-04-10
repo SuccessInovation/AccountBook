@@ -109,7 +109,7 @@ const budgetSetting = () => {
   emit('setting')
 }
 
-const statics = statisticsStore()
+const statistics = statisticsStore()
 const store = useBudgetStore()
 const calendar = use_calendar_store()
 
@@ -132,7 +132,7 @@ const totalLeft = ref(0)
  */
 const loadExpensebyMonth = async (startDate, endDate, selectedMonth) => {
   // 한 달의 데이터를 불러와서 지출만 expenses에 저장
-  const result = await statics.fetchTranactionsByPeriod(startDate, endDate)
+  const result = await statistics.fetchTranactionsByPeriod(startDate, endDate)
   const expenses = result.filter(exp => exp.type === 'expense')
 
   // 카테코리 별 지출을 카테고리-금액으로 저장
@@ -201,9 +201,13 @@ onMounted(() => {
 
 // 달 변경되면 자동으로 다시 계산
 watch(
-  () => [calendar.startDate, calendar.endDate, calendar.monthKey],
+  () => [calendar.monthStartDate, calendar.monthEndDate, calendar.monthKey],
   () => {
-    loadExpensebyMonth(calendar.startDate, calendar.endDate, calendar.monthKey)
+    loadExpensebyMonth(
+      calendar.monthStartDate,
+      calendar.monthEndDate,
+      calendar.monthKey,
+    )
   },
 )
 </script>
@@ -262,7 +266,7 @@ watch(
 }
 
 .no_budget {
-  width: 50%;
+  width: 45%;
   text-align: center;
 }
 

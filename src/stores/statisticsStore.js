@@ -1,5 +1,10 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
+// import {
+//   calculateCategoryTotals,
+//   calculateMonthlyTotals,
+//   calculateNetProfit,
+// } from '@/utils/statistics'
 
 // BASE_URI (db.json)
 import { BASE_URI } from '@/constants/api'
@@ -8,7 +13,19 @@ export const statisticsStore = defineStore('statistics', {
   state: () => ({
     transactions: [],
     filteredTransaction: [],
+
+    // 통계용
+    monthlyCategoryData: {},
+    monthlyExpenseData: {},
+    monthlyIncomeData: {},
+    netProfitData: {},
   }),
+
+  getters: {
+    getNetProfit: state => state.netProfitData.netProfit ?? 0,
+    getIncome: state => state.netProfitData.income ?? 0,
+    getExpense: state => state.netProfitData.expense ?? 0,
+  },
   actions: {
     //#region 기간으로 조회 기능
     /**
@@ -24,6 +41,7 @@ export const statisticsStore = defineStore('statistics', {
         this.transactions = res.data.sort(
           (a, b) => new Date(b.date) - new Date(a.date),
         )
+        // this.calculateStatistics() // 불러온 데이터로 통계 계산 시작
 
         const today = new Date() // 오늘 날짜
         const defaultStart = new Date()
@@ -34,9 +52,9 @@ export const statisticsStore = defineStore('statistics', {
         const end = endDate ? new Date(endDate) : today
 
         // db에서 date(날짜)로 불러와서 특정 기간에만 필터링
-        const filtered = this.transactions.filter(record => {
-          const recordDate = new Date(record.date)
-          return recordDate >= start && recordDate <= end
+        const filtered = this.transactions.filter(tr => {
+          const transactionDate = new Date(tr.date)
+          return transactionDate >= start && transactionDate <= end
         })
 
         return (this.filteredTransaction = filtered)
@@ -48,6 +66,20 @@ export const statisticsStore = defineStore('statistics', {
       }
     },
 
+    // 통계 계산
+    // calculateStatistics() {
+    //   console.log('filteredRecords:', this.filteredTransaction)
+    //   this.monthlyCategoryData = calculateCategoryTotals(
+    //     this.filteredTransaction,
+    //   )
+    //   this.monthlyExpenseData = calculateMonthlyTotals(
+    //     this.transactions,
+    //     '지출',
+    //   )
+    //   this.monthlyIncomeData = calculateMonthlyTotals(this.transactions, '수입')
+    //   this.netProfitData = calculateNetProfit(this.filteredTransaction)
+    //   console.log('netProfitData:', this.netProfitData)
+    // },
     // endregion
   },
 })
