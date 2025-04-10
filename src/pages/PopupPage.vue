@@ -127,7 +127,7 @@ async function handleSubmit() {
   <div class="popupOverlay" @click.self="closeModal">
     <div class="popupContainer">
       <h1 style="text-align: center; margin-bottom: 16px">내역 추가</h1>
-      <button class="closeBtn" @click="closeModal">X</button>
+      <button class="closeBtn" @click="closeModal">✖️</button>
 
       <!-- 탭 영역: '지출' / '수입' 선택 -->
       <div
@@ -236,7 +236,7 @@ async function handleSubmit() {
             "
             required
           >
-            <option value="">카테고리</option>
+            <option value="" disabled>카테고리</option>
             <option
               v-for="(label, key) in EXPENSE_CATEGORIES"
               :key="key"
@@ -261,7 +261,7 @@ async function handleSubmit() {
             "
             required
           >
-            <option value="">카테고리</option>
+            <option value="" disabled>카테고리</option>
             <option
               v-for="(label, key) in INCOME_CATEGORIES"
               :key="key"
@@ -288,7 +288,7 @@ async function handleSubmit() {
             "
             required
           >
-            <option value="">결제 수단</option>
+            <option value="" disabled>결제 수단</option>
             <option value="card">카드</option>
             <option value="cash">현금</option>
           </select>
