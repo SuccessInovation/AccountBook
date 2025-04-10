@@ -8,10 +8,10 @@ const emit = defineEmits(['memoInputted'])
 
 // 사용자가 입력 "하는" 텍스트를 저장 - 기본: ''
 const inputText = ref('')
-// 사용자가 입력 "중인" 텍스트 저장  - 기본:null
-const inputRef = ref(null)
 // 입력창 포커스 여부 - 기본값: false
 const isFocused = ref(false)
+// 사용자가 입력 "중인" 텍스트 저장  - 기본:null
+const inputRef = ref(null)
 
 // 외부 클릭 시 포커스 해제 처리 함수
 const clickOuterHandler = e => {
@@ -53,10 +53,10 @@ const submitSearch = () => {
     <!-- 입력 즉시 결과 보고 싶으면 @input="onInput" -->
 
     <!-- 돋보기 (검색 버튼) -->
-    <span class="search_button" @click="submitSearch"
+    <span class="search_icon" @click="submitSearch"
       ><img
-        id="magnifierIcon"
-        src="@/img/icons/magnifying-glass-solid.png"
+        id="magnifier"
+        src="../img/icons/magnifying-glass-solid.png"
         alt="magnifier"
     /></span>
   </div>
@@ -106,7 +106,7 @@ const submitSearch = () => {
 }
 
 /* 돋보기 아이콘 */
-#magnifierIcon {
+#magnifier {
   height: 25px;
   width: 25px;
   object-fit: contain;
@@ -114,7 +114,7 @@ const submitSearch = () => {
 }
 
 /* 돋보기 (검색버튼) hover이벤트 */
-#magnifierIcon:hover {
+#magnifier:hover {
   cursor: pointer;
 }
 </style>

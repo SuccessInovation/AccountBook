@@ -90,7 +90,7 @@ const filteredList = computed(() => {
     // 메모 검색어가 비어있거나 메모 검색어가 메모에 들어있는 경우 - 검색어 모두 소문자로 변경
     const memoMatch =
       memoInputted.value === '' ||
-      item.memo.toLowerCase().includes(memoInputted.value)
+      (item.memo && item.memo.toLowerCase().includes(memoInputted.value))
 
     // 두 조건을 모두 만족하는 항목 반환
     return categoryMatch && memoMatch
