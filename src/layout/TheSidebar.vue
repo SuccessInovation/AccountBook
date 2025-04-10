@@ -107,6 +107,8 @@ const toggleStatsSubMenu = () => {
 .main-menu {
   font-size: 20px;
   font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .mt-160 {
   margin-top: 40px;
@@ -137,6 +139,8 @@ const toggleStatsSubMenu = () => {
 .sub-item {
   padding: 15px 0 0 10px;
   font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .sub-item:hover {
   color: var(--color-point-1);
