@@ -6,9 +6,10 @@ import {
   INCOME_CATEGORIES,
   EXPENSE_CATEGORIES,
 } from '@/constants/categories'
+import { useTransactionStore } from '@/stores/TransactionStore'
 
-const API_URL = 'http://localhost:3000/records'
-
+const API_URL = 'http://localhost:3000/transactions'
+const transactionStore = useTransactionStore()
 const records = ref([])
 async function getRecords() {
   try {
@@ -88,23 +89,24 @@ async function handleSubmit() {
   }
 
   const dataToSend = {
-    type: transactionType.value === 'expenses' ? '지출' : '수입',
+    id: String(Date.now()),
     date: formData.value.date,
-    amount: parseFloat(formData.value.amount),
-    // CATEGORY_MAP을 사용해 카테고리 값을 한글로 매핑
-    category: CATEGORY_MAP[formData.value.category],
+    type: transactionType.value === 'expenses' ? 'expense' : 'income',
+    category: formData.value.category,
     paymentMethod:
       transactionType.value === 'expenses' ? formData.value.payment : '',
-    description: formData.value.memo,
+    amount: parseFloat(formData.value.amount),
+    memo: formData.value.memo,
     createdAt: new Date().toISOString(),
-    id: String(Date.now()),
   }
 
   try {
     await axios.post(API_URL, dataToSend)
     alert('새 항목이 추가되었습니다!')
-    records.value.unshift(dataToSend)
+    // store 업데이트: 새 항목 추가 후, 거래 내역을 DB에서 다시 불러옴
+    await transactionStore.fetchTransactions()
     closeModal()
+    // 폼 초기화
     formData.value = {
       date: '',
       amount: '',
@@ -128,23 +130,48 @@ async function handleSubmit() {
       <button class="closeBtn" @click="closeModal">X</button>
 
       <!-- 탭 영역: '지출' / '수입' 선택 -->
-      <div style="display: flex; gap: 4px; justify-content: space-between; margin-bottom: 16px;">
+      <div
+        style="
+          display: flex;
+          gap: 4px;
+          justify-content: space-between;
+          margin-bottom: 16px;
+        "
+      >
         <button
-          style="flex: 1; padding: 12px; border-radius: 4px; margin-right: 4px; cursor: pointer; font-weight: bold; border: none;"
+          style="
+            flex: 1;
+            padding: 12px;
+            border-radius: 4px;
+            margin-right: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            border: none;
+          "
           @click.prevent="transactionType = 'expenses'"
           :style="{
-            backgroundColor: transactionType === 'expenses' ? '#47a447' : '#aedda9',
-            color: 'white'
+            backgroundColor:
+              transactionType === 'expenses' ? '#47a447' : '#aedda9',
+            color: 'white',
           }"
         >
           지출
         </button>
         <button
-          style="flex: 1; padding: 12px; border-radius: 4px; margin-left: 4px; cursor: pointer; font-weight: bold; border: none;"
+          style="
+            flex: 1;
+            padding: 12px;
+            border-radius: 4px;
+            margin-left: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            border: none;
+          "
           @click.prevent="transactionType = 'income'"
           :style="{
-            backgroundColor: transactionType === 'income' ? '#47a447' : '#aedda9',
-            color: 'white'
+            backgroundColor:
+              transactionType === 'income' ? '#47a447' : '#aedda9',
+            color: 'white',
           }"
         >
           수입
@@ -152,14 +179,23 @@ async function handleSubmit() {
       </div>
 
       <!-- 입력 폼 -->
-      <form novalidate @submit.prevent="handleSubmit" style="display: flex; flex-direction: column; gap: 12px">
+      <form
+        novalidate
+        @submit.prevent="handleSubmit"
+        style="display: flex; flex-direction: column; gap: 12px"
+      >
         <!-- 날짜 입력 -->
         <div>
           <input
             type="date"
             v-model="formData.date"
             @blur="checkRequired('date')"
-            style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 100%;"
+            style="
+              padding: 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              width: 100%;
+            "
             required
           />
           <div v-if="errors.date" style="color: red; font-size: 12px">
@@ -174,7 +210,12 @@ async function handleSubmit() {
             placeholder="금액"
             v-model="formData.amount"
             @blur="checkAmount"
-            style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 100%;"
+            style="
+              padding: 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              width: 100%;
+            "
             required
           />
           <div v-if="errors.amount" style="color: red; font-size: 12px">
@@ -187,11 +228,20 @@ async function handleSubmit() {
           <select
             v-model="formData.category"
             @blur="checkRequired('category')"
-            style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 100%;"
+            style="
+              padding: 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              width: 100%;
+            "
             required
           >
             <option value="">카테고리</option>
-            <option v-for="(label, key) in EXPENSE_CATEGORIES" :key="key" :value="label">
+            <option
+              v-for="(label, key) in EXPENSE_CATEGORIES"
+              :key="key"
+              :value="label"
+            >
               {{ CATEGORY_MAP[label] }}
             </option>
           </select>
@@ -203,11 +253,20 @@ async function handleSubmit() {
           <select
             v-model="formData.category"
             @blur="checkRequired('category')"
-            style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 100%;"
+            style="
+              padding: 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              width: 100%;
+            "
             required
           >
             <option value="">카테고리</option>
-            <option v-for="(label, key) in INCOME_CATEGORIES" :key="key" :value="label">
+            <option
+              v-for="(label, key) in INCOME_CATEGORIES"
+              :key="key"
+              :value="label"
+            >
               {{ CATEGORY_MAP[label] }}
             </option>
           </select>
@@ -221,11 +280,16 @@ async function handleSubmit() {
           <select
             v-model="formData.payment"
             @blur="checkRequired('payment')"
-            style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 100%;"
+            style="
+              padding: 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              width: 100%;
+            "
             required
           >
             <option value="">결제 수단</option>
-            <option value="creditCard">신용카드</option>
+            <option value="card">카드</option>
             <option value="cash">현금</option>
           </select>
           <div v-if="errors.payment" style="color: red; font-size: 12px">
@@ -238,14 +302,29 @@ async function handleSubmit() {
           <textarea
             placeholder="메모"
             v-model="formData.memo"
-            style="padding: 8px; border-radius: 4px; border: 1px solid #ccc; width: 100%; height: 60px;"
+            style="
+              padding: 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              width: 100%;
+              height: 60px;
+            "
           ></textarea>
         </div>
 
         <!-- 추가 버튼 -->
         <button
           type="submit"
-          style="background-color: #47a447; color: white; padding: 12px 0; border-radius: 4px; border: none; cursor: pointer; font-weight: bold; margin-top: 8px;"
+          style="
+            background-color: #47a447;
+            color: white;
+            padding: 12px 0;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 8px;
+          "
         >
           추가 +
         </button>
