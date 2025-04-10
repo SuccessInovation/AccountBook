@@ -94,7 +94,7 @@ const toggleStatsSubMenu = () => {
 
 <style scoped>
 .snb {
-  background-color: var(--point-5-color);
+  background-color: var(--color-point-5);
   z-index: 1000;
 }
 .snb.navbar {
@@ -114,11 +114,11 @@ const toggleStatsSubMenu = () => {
 .list-group-item {
   background-color: transparent;
   border: none;
-  padding: 20px 10px 20px 50px;
+  padding: 20px 10px 20 px 50px;
 }
 .list-group-item:hover > a,
 .list-group-item:hover > div {
-  color: var(--point-1-color);
+  color: var(--color-point-1);
   transition: 0.3s;
 }
 /* 서브 메뉴 */
@@ -139,7 +139,7 @@ const toggleStatsSubMenu = () => {
   font-size: 16px;
 }
 .sub-item:hover {
-  color: var(--point-1-color);
+  color: var(--color-point-1);
   transition: 0.3s;
 }
 /* 모바일 메뉴 버튼 */
@@ -152,7 +152,7 @@ const toggleStatsSubMenu = () => {
   left: -250px; /* 화면 바깥 위치 */
   width: 250px;
   height: 100%;
-  background-color: var(--point-5-color);
+  background-color: var(--color-point-5);
   transition: left 0.3s ease;
   z-index: 1000;
 }
@@ -165,7 +165,7 @@ const toggleStatsSubMenu = () => {
   height: 25px;
 }
 #snb_btn_area {
-  background-color: var(--point-5-color);
+  background-color: var(--color-point-5);
   padding-top: 0;
   padding-bottom: 0;
   align-items: start;

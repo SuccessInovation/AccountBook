@@ -11,14 +11,14 @@
 <style scoped>
 .TheFooter {
   background-color: #fff;
-  color: var(--font-color);
+  color: var(--color-font-main);
   position: fixed;
   bottom: 0;
   width: 100%;
   height: 80px;
   display: flex;
   align-items: center;
-  border-top: 0.5px solid var(--dark-brown);
+  border-top: 0.5px solid var(--color-brown-dark);
   padding-right: 30px;
   z-index: 1; /* 사이드바 밑으로 오게 설정 */
 }
