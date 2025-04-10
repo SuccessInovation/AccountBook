@@ -1,9 +1,10 @@
 <script setup>
-import { defineEmits, ref, onMounted } from 'vue'
+import { defineEmits, ref, onMounted, onBeforeUnmount } from 'vue'
 import { EXPENSE_CATEGORIES, CATEGORY_MAP } from '@/constants/categories'
 import { useBudgetStore } from '@/stores/UseBudgetStore'
 import { use_calendar_store } from '@/stores/MonthSelector'
 import axios from 'axios'
+import { BASE_URI } from '@/constants/api'
 
 const store = useBudgetStore()
 
@@ -75,10 +76,10 @@ const handleSubmit = async () => {
 
     if (existing) {
       // PUT 요청 (기존 항목 업데이트)
-      await axios.put(`http://localhost:3000/budgets/${existing.id}`, payload)
+      await axios.put(`${BASE_URI}/budgets/${existing.id}`, payload)
     } else {
       // POST 요청 (새 항목 추가)
-      await axios.post('http://localhost:3000/budgets', payload)
+      await axios.post(`${BASE_URI}/budgets`, payload)
     }
   }
   await store.fetchBudgets() // 저장 후 store 재갱신
@@ -95,7 +96,7 @@ const resetBudget = async () => {
 
   // 2. 예산 모두 0으로 초기화 (PUT 요청)
   const resetRequests = budgets.map(b => {
-    return axios.put(`http://localhost:3000/budgets/${b.id}`, {
+    return axios.put(`${BASE_URI}/budgets/${b.id}`, {
       ...b,
       amount: 0,
     })
@@ -108,6 +109,20 @@ const resetBudget = async () => {
     item.amount = 0
   })
 }
+const handleKeyup = event => {
+  if (event.key === 'Escape') {
+    handleCancel()
+  } else if (event.key === 'Enter') {
+    handleSubmit()
+  }
+}
+onMounted(() => {
+  window.addEventListener('keyup', handleKeyup)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('keyup', handleKeyup)
+})
 </script>
 
 <template>
@@ -242,6 +257,7 @@ const resetBudget = async () => {
   border: none;
   border-radius: 0.375rem;
   margin: 0.625rem 0;
+  cursor: pointer;
 }
 .popup_btn:hover {
   background: var(--dark-brown);

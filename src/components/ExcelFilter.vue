@@ -1,6 +1,6 @@
 <template>
   <form class="box" @submit.prevent="handleSubmit">
-    <label>
+    <label class="period_selector">
       <input
         type="radio"
         value="1months"
@@ -9,17 +9,18 @@
       />
       1개월
     </label>
-    <label>
-      <input type="radio" value="3months" v-model="selectPeriod" /> 3개월
+    <label class="period_selector">
+      <input type="radio" value="3months" v-model="selectPeriod" />
+      3개월
     </label>
-    <label>
-      <input type="radio" value="custom" v-model="selectPeriod" /> 기간설정
+    <label class="period_selector">
+      <input type="radio" value="custom" v-model="selectPeriod" />
+      기간설정
     </label>
     <div class="submit_btn"><button type="submit">조회</button></div>
-
-    <!-- 기간설정 선택 시에만 날짜 입력창 표시 -->
+    <!-- 기간설정 class="period_selector" 선택 시에만 날짜 입력창 표시 -->
     <div v-if="selectPeriod === 'custom'" class="date_inputs">
-      <input type="date" v-model="customStartDate" />
+      <input t class="period_selector" ype="date" v-model="customStartDate" />
       <span>~</span>
       <input type="date" v-model="customEndDate" />
     </div>
@@ -68,9 +69,11 @@ const handleSubmit = () => {
 <style scoped>
 .box {
   width: 100%;
-  border: 1px solid lightgray;
+  display: flex;
 }
-
+.period_selector {
+  padding: 0.625rem;
+}
 .submit_btn {
   background-color: var(--point-1-color);
   color: var(--very-light-brown);
