@@ -1,6 +1,5 @@
-<!-- components/TransactionEdit.vue -->
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import axios from 'axios'
 import {
@@ -17,10 +16,22 @@ console.log('받은 transactionId:', transactionId)
 
 const formData = ref({
   date: '',
+  type: '', // 거래 타입(income/expense) 추가
   amount: '',
   category: '',
   payment: '',
   memo: '',
+})
+
+// 현재 거래 타입에 따라 표시할 카테고리 목록 계산
+const categoriesList = computed(() => {
+  if (formData.value.type === 'income') {
+    return INCOME_CATEGORIES
+  } else if (formData.value.type === 'expense') {
+    return EXPENSE_CATEGORIES
+  } else {
+    return [] // 타입이 없는 경우 빈 배열 반환
+  }
 })
 
 // 거래 데이터 불러오기
@@ -53,7 +64,7 @@ function closeModal() {
 </script>
 
 <template>
-  <div class="edit-overlay">
+  <div class="edit-overlay" @click.self="closeModal">
     <div class="edit-container">
       <h2>거래 수정</h2>
       <form @submit.prevent="handleUpdate">
@@ -69,15 +80,29 @@ function closeModal() {
         />
         <label for="editCategory">카테고리</label>
         <select v-model="formData.category" id="editCategory" required>
+          <option value="" disabled>카테고리 선택</option>
           <option
-            v-for="(label, key) in EXPENSE_CATEGORIES"
+            v-for="(label, key) in categoriesList"
             :key="key"
             :value="label"
           >
             {{ CATEGORY_MAP[label] }}
           </option>
         </select>
-        <label for="editDate">메모</label>
+        <!-- 지출인 경우에만 결제 수단 표시 -->
+        <div
+          class="payment_block"
+          v-if="formData.type === 'expense'"
+          style="display: flex; flex-direction: column"
+        >
+          <label for="editPayment">결제 수단</label>
+          <select v-model="formData.paymentMethod" id="editPayment" required>
+            <option value="" disabled>결제 수단 선택</option>
+            <option value="card">카드</option>
+            <option value="cash">현금</option>
+          </select>
+        </div>
+        <label for="editMemo">메모</label>
         <input
           type="text"
           v-model="formData.memo"
@@ -129,9 +154,13 @@ function closeModal() {
   flex-direction: column;
   gap: 10px;
 }
+.payment_block {
+  gap: 10px;
+}
 
 .edit-container form > input,
-.edit-container form > select {
+.edit-container form > select,
+.payment_block > select {
   padding: 8px;
   font-size: 1rem;
   border: 1px solid #ddd;

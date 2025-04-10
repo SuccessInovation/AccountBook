@@ -5,7 +5,7 @@
       "type": "income",
       "date": "2025-04-25",
       "amount": 9899797,
-      "category": "금융수입",
+      "category": "financial",
       "paymentMethod": "",
       "memo": "",
       "createdAt": "2025-04-10T02:47:51.413Z"
