@@ -120,7 +120,6 @@ watch(
 
 /* 전체 드롭다운 영역 */
 .filter_category {
-  position: relative; /* 드롭다운 기준 위치 */
   width: 160px;
   font-size: 14px;
 }
@@ -136,7 +135,6 @@ watch(
   background-color: #fff;
   cursor: pointer;
   transition: all 0.2s ease;
-  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); */
 }
 
 /* 드롭다운 버튼 hover 이벤트 */
