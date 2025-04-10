@@ -114,7 +114,7 @@ const toggleStatsSubMenu = () => {
 .list-group-item {
   background-color: transparent;
   border: none;
-  padding: 20px 10px 20 px 50px;
+  padding: 20px 10px 20px 50px;
 }
 .list-group-item:hover > a,
 .list-group-item:hover > div {
