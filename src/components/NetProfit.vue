@@ -104,8 +104,8 @@ h3 {
 }
 
 .cabbage {
-  width: 80%;
-  height: auto;
+  /* width: 80%; */
+  height: 150px;
   margin-bottom: 0.5rem;
 }
 
