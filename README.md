@@ -55,6 +55,7 @@
 <img src="https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white">
 <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
 <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
+
 ---
 
 ### 기간
@@ -68,8 +69,7 @@
 <table>
   <tbody>
     <tr>
-      <td align="center"><a href="https://github.com/Hyukman818"><img src="https://github.com/Hyukman818.png
-      " width="100px;" alt=""/><br /><sub><b>팀장 : 오혁신 </b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/Hyukman818"><img src="https://github.com/Hyukman818.png" width="100px;" alt=""/><br /><sub><b>팀장 : 오혁신 </b></sub></a><br /></td>
       <td align="center"><a href="https://github.com/jungsunwoong"><img src="https://github.com/jungsunwoong.png" width="100px;" alt=""/><br /><sub><b>부팀장 : 정선웅 </b></sub></a><br /></td>
       <td align="center"><a href="https://github.com/saeun-park"><img src="https://github.com/saeun-park.png" width="100px;" alt=""/><br /><sub><b>팀원 : 박사은 </b></sub></a><br /></td>
       <td align="center"><a href="https://github.com/maedachaeva"><img src="https://github.com/maedachaeva.png" width="100px;" alt=""/><br /><sub><b>팀원 : 박채연 </b></sub></a><br /></td>
@@ -81,6 +81,7 @@
     </tr>
   </tbody>
 </table>
+
 ---
 
 ## 역할 상세
