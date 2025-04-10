@@ -1,17 +1,25 @@
 <template>
   <div v-if="chartData" class="chart_wrapper">
-    <Line :data="chartData" :options="chartOptions" />
-
-    <!-- ✅ 추가: 설명 -->
-    <div class="line-description">
-      <p>
-        이번 달 지출은 {{ currentMonthExpense.toLocaleString() }}원으로 전월
-        대비 {{ monthOverMonthChange }}% {{ monthOverMonthMessage }}
-      </p>
-      <p>
-        최근 8개월 간 평균 지출액은
-        {{ averageExpense.toLocaleString() }}원입니다 💸
-      </p>
+    <div class="chart_wrap">
+      <div class="line_chart">
+        <Line :data="chartData" :options="chartOptions" />
+      </div>
+      <div class="line-description">
+        <p class="line-description-box">
+          이번 달 지출은
+          <span class="line-description-text"
+            >{{ currentMonthExpense.toLocaleString() }}원</span
+          >으로 <br />전월 대비
+          <span class="line-description-text">{{ monthOverMonthChange }}</span>
+          {{ monthOverMonthMessage }}
+        </p>
+        <p class="line-description-box">
+          최근 8개월 간 평균 지출액은 <br />
+          <span class="line-description-text"
+            >{{ averageExpense.toLocaleString() }}원</span
+          >입니다 💸
+        </p>
+      </div>
     </div>
   </div>
   <div v-else>데이터를 불러오는 중...</div>
@@ -84,15 +92,15 @@ const previousMonthExpense = computed(() => {
 
 // ✅ 전월 대비 증감률 (%)
 const monthOverMonthChange = computed(() => {
-  if (previousMonthExpense.value === 0) return 'N/A' // 전월 데이터 없을 때
+  if (previousMonthExpense.value === 0) return null // 전월 데이터 없을 때
   const diff = currentMonthExpense.value - previousMonthExpense.value
   const rate = (diff / previousMonthExpense.value) * 100
-  return rate.toFixed(1)
+  return `${rate.toFixed(1)}%`
 })
 
 const monthOverMonthMessage = computed(() => {
   const change = monthOverMonthChange.value
-  if (change === 'N/A') return '데이터가 부족해요.'
+  if (change === null) return '비교할 지난 달 지출이 없네요! 😅'
   if (change > 0) return '증가했어요 📈'
   if (change < 0) return '감소했어요 📉'
   return '변동이 없어요.'
@@ -164,13 +172,40 @@ const chartOptions = computed(() => ({
 </script>
 <style scoped>
 /* p {
-  margin-bottom: 1rem;
-} */
+    margin-bottom: 1rem;
+  } */
 
 .chart_wrapper {
   width: 100%;
   height: 300px;
   aspect-ratio: 4 / 3; /* 가로세로 비율 유지 */
   position: relative;
+}
+
+.chart_wrap {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.line_chart {
+  flex: 1;
+  margin-left: 2rem;
+}
+
+.line-description {
+  width: 30%;
+  margin-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  justify-content: center;
+  text-align: center;
+}
+
+.line-description-text {
+  background: #c9b194;
 }
 </style>

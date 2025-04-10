@@ -58,7 +58,7 @@ const routes = [
     path: '/statistics/export',
     name: 'Exports',
     component: ExportExcelPage,
-    meta: { title: '통계 - 엑셀로 내보내기', layout: 'default' },
+    meta: { title: '통계 - 엑셀 내보내기', layout: 'default' },
   },
   {
     path: '/budget',
