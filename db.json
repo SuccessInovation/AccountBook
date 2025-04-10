@@ -1,104 +1,3150 @@
 {
   "transactions": [
     {
-      "id": 1712404800000,
-      "date": "2025-04-06",
-      "type": "expense",
-      "category": "food",
-      "paymentMethod": "카드",
-      "amount": 12000,
-      "memo": "점심 식사",
-      "createdAt": "2025-04-06T12:00:00Z"
+      "id": "1732733613",
+      "date": "2024-11-28",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "card",
+      "amount": 93200,
+      "memo": "기타 수입",
+      "createdAt": "2024-11-28T03:53:33Z"
     },
     {
-      "id": 1712383200000,
-      "date": "2025-04-06",
+      "id": "1710218051",
+      "date": "2024-03-12",
       "type": "expense",
-      "category": "dessert",
-      "paymentMethod": "현금",
-      "amount": 4500,
-      "memo": "커피 한 잔",
-      "createdAt": "2025-04-06T06:00:00Z"
+      "category": "contributions",
+      "paymentMethod": "cash",
+      "amount": 92300,
+      "memo": "공과금 납부",
+      "createdAt": "2024-03-12T13:34:11Z"
     },
     {
-      "id": 1712332800000,
-      "date": "2025-04-05",
+      "id": "1717638881",
+      "date": "2024-06-06",
       "type": "expense",
-      "category": "transportation",
-      "paymentMethod": "카드",
-      "amount": 1650,
+      "category": "utilities",
+      "paymentMethod": "card",
+      "amount": 6200,
+      "memo": "저축",
+      "createdAt": "2024-06-06T10:54:41Z"
+    },
+    {
+      "id": "1711892734",
+      "date": "2024-03-31",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "cash",
+      "amount": 52700,
+      "memo": "장학금 입금",
+      "createdAt": "2024-03-31T22:45:34Z"
+    },
+    {
+      "id": "1727226779",
+      "date": "2024-09-25",
+      "type": "expense",
+      "category": "travel",
+      "paymentMethod": "card",
+      "amount": 98000,
       "memo": "지하철 요금",
-      "createdAt": "2025-04-05T16:00:00Z"
+      "createdAt": "2024-09-25T10:12:59Z"
     },
     {
-      "id": 1712314800000,
-      "date": "2025-04-05",
+      "id": "1735923241",
+      "date": "2025-01-04",
+      "type": "expense",
+      "category": "contributions",
+      "paymentMethod": "cash",
+      "amount": 81300,
+      "memo": "지하철 요금",
+      "createdAt": "2025-01-04T01:54:01Z"
+    },
+    {
+      "id": "1737191089",
+      "date": "2025-01-18",
+      "type": "expense",
+      "category": "health",
+      "paymentMethod": "cash",
+      "amount": 9000,
+      "memo": "저축",
+      "createdAt": "2025-01-18T18:04:49Z"
+    },
+    {
+      "id": "1736976738",
+      "date": "2025-01-16",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "card",
+      "amount": 19900,
+      "memo": "주식 수익",
+      "createdAt": "2025-01-16T06:32:18Z"
+    },
+    {
+      "id": "1708226868",
+      "date": "2024-02-18",
+      "type": "expense",
+      "category": "contributions",
+      "paymentMethod": "cash",
+      "amount": 64400,
+      "memo": "도서 구매",
+      "createdAt": "2024-02-18T12:27:48Z"
+    },
+    {
+      "id": "1726999990",
+      "date": "2024-09-22",
+      "type": "expense",
+      "category": "leisure",
+      "paymentMethod": "cash",
+      "amount": 32100,
+      "memo": "카페 방문",
+      "createdAt": "2024-09-22T19:13:10Z"
+    },
+    {
+      "id": "1710888427",
+      "date": "2024-03-20",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "cash",
+      "amount": 1400,
+      "memo": "주식 수익",
+      "createdAt": "2024-03-20T07:47:07Z"
+    },
+    {
+      "id": "1730355073",
+      "date": "2024-10-31",
       "type": "income",
       "category": "salary",
-      "paymentMethod": "현금",
-      "amount": 20000,
-      "memo": "용돈 받음",
-      "createdAt": "2025-04-05T11:00:00Z"
+      "paymentMethod": "cash",
+      "amount": 46300,
+      "memo": "기타 수입",
+      "createdAt": "2024-10-31T15:11:13Z"
     },
     {
-      "id": 1712228400000,
-      "date": "2025-04-04",
+      "id": "1736048187",
+      "date": "2025-01-05",
+      "type": "expense",
+      "category": "food",
+      "paymentMethod": "cash",
+      "amount": 67900,
+      "memo": "운동 등록",
+      "createdAt": "2025-01-05T12:36:27Z"
+    },
+    {
+      "id": "1713612374",
+      "date": "2024-04-20",
+      "type": "expense",
+      "category": "entertainment",
+      "paymentMethod": "cash",
+      "amount": 10500,
+      "memo": "기타 지출",
+      "createdAt": "2024-04-20T20:26:14Z"
+    },
+    {
+      "id": "1713715100",
+      "date": "2024-04-22",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "cash",
+      "amount": 35900,
+      "memo": "용돈",
+      "createdAt": "2024-04-22T00:58:20Z"
+    },
+    {
+      "id": "1736362684",
+      "date": "2025-01-09",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "cash",
+      "amount": 80800,
+      "memo": "주식 수익",
+      "createdAt": "2025-01-09T03:58:04Z"
+    },
+    {
+      "id": "1720582255",
+      "date": "2024-07-10",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "cash",
+      "amount": 52600,
+      "memo": "장학금 입금",
+      "createdAt": "2024-07-10T12:30:55Z"
+    },
+    {
+      "id": "1730331951",
+      "date": "2024-10-31",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 29500,
+      "memo": "기타 수입",
+      "createdAt": "2024-10-31T08:45:51Z"
+    },
+    {
+      "id": "1734660100",
+      "date": "2024-12-20",
+      "type": "expense",
+      "category": "entertainment",
+      "paymentMethod": "cash",
+      "amount": 45900,
+      "memo": "운동 등록",
+      "createdAt": "2024-12-20T11:01:40Z"
+    },
+    {
+      "id": "1721534625",
+      "date": "2024-07-21",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "cash",
+      "amount": 18600,
+      "memo": "월급",
+      "createdAt": "2024-07-21T13:03:45Z"
+    },
+    {
+      "id": "1732517917",
+      "date": "2024-11-25",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "cash",
+      "amount": 67400,
+      "memo": "용돈",
+      "createdAt": "2024-11-25T15:58:37Z"
+    },
+    {
+      "id": "1732485592",
+      "date": "2024-11-25",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "card",
+      "amount": 10300,
+      "memo": "주식 수익",
+      "createdAt": "2024-11-25T06:59:52Z"
+    },
+    {
+      "id": "1728809689",
+      "date": "2024-10-13",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "card",
+      "amount": 96600,
+      "memo": "월급",
+      "createdAt": "2024-10-13T17:54:49Z"
+    },
+    {
+      "id": "1729989178",
+      "date": "2024-10-27",
+      "type": "expense",
+      "category": "leisure",
+      "paymentMethod": "card",
+      "amount": 14300,
+      "memo": "점심 식사",
+      "createdAt": "2024-10-27T09:32:58Z"
+    },
+    {
+      "id": "1732949032",
+      "date": "2024-11-30",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "card",
+      "amount": 39100,
+      "memo": "기타 수입",
+      "createdAt": "2024-11-30T15:43:52Z"
+    },
+    {
+      "id": "1718713014",
+      "date": "2024-06-18",
+      "type": "expense",
+      "category": "leisure",
+      "paymentMethod": "card",
+      "amount": 16100,
+      "memo": "공과금 납부",
+      "createdAt": "2024-06-18T21:16:54Z"
+    },
+    {
+      "id": "1714080886",
+      "date": "2024-04-26",
+      "type": "expense",
+      "category": "savings",
+      "paymentMethod": "card",
+      "amount": 53500,
+      "memo": "카페 방문",
+      "createdAt": "2024-04-26T06:34:46Z"
+    },
+    {
+      "id": "1710658610",
+      "date": "2024-03-17",
+      "type": "expense",
+      "category": "savings",
+      "paymentMethod": "card",
+      "amount": 74300,
+      "memo": "편의점 간식",
+      "createdAt": "2024-03-17T15:56:50Z"
+    },
+    {
+      "id": "1712742781",
+      "date": "2024-04-10",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 10300,
+      "memo": "용돈",
+      "createdAt": "2024-04-10T18:53:01Z"
+    },
+    {
+      "id": "1725881586",
+      "date": "2024-09-09",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "cash",
+      "amount": 26400,
+      "memo": "월급",
+      "createdAt": "2024-09-09T20:33:06Z"
+    },
+    {
+      "id": "1727610715",
+      "date": "2024-09-29",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "cash",
+      "amount": 29800,
+      "memo": "장학금 입금",
+      "createdAt": "2024-09-29T20:51:55Z"
+    },
+    {
+      "id": "1709965922",
+      "date": "2024-03-09",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "card",
+      "amount": 70500,
+      "memo": "용돈",
+      "createdAt": "2024-03-09T15:32:02Z"
+    },
+    {
+      "id": "1727982409",
+      "date": "2024-10-04",
+      "type": "expense",
+      "category": "entertainment",
+      "paymentMethod": "card",
+      "amount": 72400,
+      "memo": "공과금 납부",
+      "createdAt": "2024-10-04T04:06:49Z"
+    },
+    {
+      "id": "1736958179",
+      "date": "2025-01-16",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "card",
+      "amount": 39800,
+      "memo": "용돈",
+      "createdAt": "2025-01-16T01:22:59Z"
+    },
+    {
+      "id": "1732550215",
+      "date": "2024-11-26",
+      "type": "expense",
+      "category": "entertainment",
+      "paymentMethod": "card",
+      "amount": 45000,
+      "memo": "기타 지출",
+      "createdAt": "2024-11-26T00:56:55Z"
+    },
+    {
+      "id": "1734929781",
+      "date": "2024-12-23",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "card",
+      "amount": 35300,
+      "memo": "주식 수익",
+      "createdAt": "2024-12-23T13:56:21Z"
+    },
+    {
+      "id": "1704309330",
+      "date": "2024-01-04",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "cash",
+      "amount": 42600,
+      "memo": "기타 수입",
+      "createdAt": "2024-01-04T04:15:30Z"
+    },
+    {
+      "id": "1710332344",
+      "date": "2024-03-13",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "card",
+      "amount": 38300,
+      "memo": "용돈",
+      "createdAt": "2024-03-13T21:19:04Z"
+    },
+    {
+      "id": "1717697242",
+      "date": "2024-06-07",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "card",
+      "amount": 32500,
+      "memo": "월급",
+      "createdAt": "2024-06-07T03:07:22Z"
+    },
+    {
+      "id": "1714475831",
+      "date": "2024-04-30",
       "type": "expense",
       "category": "shopping",
-      "paymentMethod": "카드",
-      "amount": 39000,
-      "memo": "옷 구매",
-      "createdAt": "2025-04-04T11:00:00Z"
+      "paymentMethod": "card",
+      "amount": 20900,
+      "memo": "운동 등록",
+      "createdAt": "2024-04-30T20:17:11Z"
     },
     {
-      "id": 1712203200000,
-      "date": "2025-04-04",
-      "type": "expense",
-      "category": "food",
-      "paymentMethod": "현금",
-      "amount": 8700,
-      "memo": "저녁 식사",
-      "createdAt": "2025-04-04T04:00:00Z"
-    },
-    {
-      "id": 1712120400000,
-      "date": "2025-04-03",
+      "id": "1732635706",
+      "date": "2024-11-27",
       "type": "income",
-      "category": "etc",
-      "paymentMethod": "카드",
-      "amount": 1500000,
+      "category": "allowance",
+      "paymentMethod": "card",
+      "amount": 67200,
+      "memo": "용돈",
+      "createdAt": "2024-11-27T00:41:46Z"
+    },
+    {
+      "id": "1732764809",
+      "date": "2024-11-28",
+      "type": "expense",
+      "category": "travel",
+      "paymentMethod": "card",
+      "amount": 59200,
+      "memo": "쇼핑몰 결제",
+      "createdAt": "2024-11-28T12:33:29Z"
+    },
+    {
+      "id": "1733705714",
+      "date": "2024-12-09",
+      "type": "expense",
+      "category": "travel",
+      "paymentMethod": "card",
+      "amount": 44100,
+      "memo": "공과금 납부",
+      "createdAt": "2024-12-09T09:55:14Z"
+    },
+    {
+      "id": "1718873263",
+      "date": "2024-06-20",
+      "type": "expense",
+      "category": "transportation",
+      "paymentMethod": "cash",
+      "amount": 78600,
+      "memo": "학비 납부",
+      "createdAt": "2024-06-20T17:47:43Z"
+    },
+    {
+      "id": "1720923109",
+      "date": "2024-07-14",
+      "type": "expense",
+      "category": "savings",
+      "paymentMethod": "card",
+      "amount": 70500,
+      "memo": "병원 진료",
+      "createdAt": "2024-07-14T11:11:49Z"
+    },
+    {
+      "id": "1705653356",
+      "date": "2024-01-19",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "cash",
+      "amount": 13600,
+      "memo": "장학금 입금",
+      "createdAt": "2024-01-19T17:35:56Z"
+    },
+    {
+      "id": "1713900952",
+      "date": "2024-04-24",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "card",
+      "amount": 63400,
+      "memo": "용돈",
+      "createdAt": "2024-04-24T04:35:52Z"
+    },
+    {
+      "id": "1712074698",
+      "date": "2024-04-03",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "cash",
+      "amount": 13300,
       "memo": "월급",
-      "createdAt": "2025-04-03T04:00:00Z"
+      "createdAt": "2024-04-03T01:18:18Z"
     },
     {
-      "id": 1712066400000,
-      "date": "2025-04-02",
+      "id": "1728926809",
+      "date": "2024-10-15",
       "type": "expense",
-      "category": "food",
-      "paymentMethod": "카드",
-      "amount": 12000,
-      "memo": "영화 관람",
-      "createdAt": "2025-04-02T13:00:00Z"
+      "category": "shopping",
+      "paymentMethod": "card",
+      "amount": 64800,
+      "memo": "지하철 요금",
+      "createdAt": "2024-10-15T02:26:49Z"
     },
     {
-      "id": 1712048400000,
-      "date": "2025-04-02",
-      "type": "expense",
-      "category": "food",
-      "paymentMethod": "카드",
-      "amount": 9500,
-      "memo": "브런치 카페",
-      "createdAt": "2025-04-02T08:00:00Z"
+      "id": "1735286867",
+      "date": "2024-12-27",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "cash",
+      "amount": 40600,
+      "memo": "기타 수입",
+      "createdAt": "2024-12-27T17:07:47Z"
     },
     {
-      "id": 1711965600000,
-      "date": "2025-04-01",
+      "id": "1714477225",
+      "date": "2024-04-30",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "card",
+      "amount": 52300,
+      "memo": "장학금 입금",
+      "createdAt": "2024-04-30T20:40:25Z"
+    },
+    {
+      "id": "1738064944",
+      "date": "2025-01-28",
       "type": "income",
       "category": "etc",
-      "paymentMethod": "현금",
+      "paymentMethod": "card",
+      "amount": 16000,
+      "memo": "용돈",
+      "createdAt": "2025-01-28T20:49:04Z"
+    },
+    {
+      "id": "1714836602",
+      "date": "2024-05-05",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "card",
+      "amount": 86500,
+      "memo": "용돈",
+      "createdAt": "2024-05-05T00:30:02Z"
+    },
+    {
+      "id": "1712903117",
+      "date": "2024-04-12",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "cash",
+      "amount": 64600,
+      "memo": "용돈",
+      "createdAt": "2024-04-12T15:25:17Z"
+    },
+    {
+      "id": "1728542595",
+      "date": "2024-10-10",
+      "type": "expense",
+      "category": "shopping",
+      "paymentMethod": "cash",
+      "amount": 35800,
+      "memo": "쇼핑몰 결제",
+      "createdAt": "2024-10-10T15:43:15Z"
+    },
+    {
+      "id": "1721715920",
+      "date": "2024-07-23",
+      "type": "expense",
+      "category": "health",
+      "paymentMethod": "cash",
+      "amount": 8500,
+      "memo": "편의점 간식",
+      "createdAt": "2024-07-23T15:25:20Z"
+    },
+    {
+      "id": "1710319783",
+      "date": "2024-03-13",
+      "type": "expense",
+      "category": "etc",
+      "paymentMethod": "card",
+      "amount": 32000,
+      "memo": "점심 식사",
+      "createdAt": "2024-03-13T17:49:43Z"
+    },
+    {
+      "id": "1717784300",
+      "date": "2024-06-08",
+      "type": "expense",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 14200,
+      "memo": "쇼핑몰 결제",
+      "createdAt": "2024-06-08T03:18:20Z"
+    },
+    {
+      "id": "1724050712",
+      "date": "2024-08-19",
+      "type": "expense",
+      "category": "etc",
+      "paymentMethod": "card",
+      "amount": 44700,
+      "memo": "학비 납부",
+      "createdAt": "2024-08-19T15:58:32Z"
+    },
+    {
+      "id": "1740620693",
+      "date": "2025-02-27",
+      "type": "expense",
+      "category": "utilities",
+      "paymentMethod": "cash",
+      "amount": 59400,
+      "memo": "병원 진료",
+      "createdAt": "2025-02-27T10:44:53Z"
+    },
+    {
+      "id": "1709963461",
+      "date": "2024-03-09",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "card",
+      "amount": 37500,
+      "memo": "장학금 입금",
+      "createdAt": "2024-03-09T14:51:01Z"
+    },
+    {
+      "id": "1733459507",
+      "date": "2024-12-06",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "card",
+      "amount": 62800,
+      "memo": "장학금 입금",
+      "createdAt": "2024-12-06T13:31:47Z"
+    },
+    {
+      "id": "1713319371",
+      "date": "2024-04-17",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "cash",
+      "amount": 73900,
+      "memo": "월급",
+      "createdAt": "2024-04-17T11:02:51Z"
+    },
+    {
+      "id": "1726895480",
+      "date": "2024-09-21",
+      "type": "expense",
+      "category": "health",
+      "paymentMethod": "card",
+      "amount": 67000,
+      "memo": "병원 진료",
+      "createdAt": "2024-09-21T14:11:20Z"
+    },
+    {
+      "id": "1733053603",
+      "date": "2024-12-01",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "card",
+      "amount": 34800,
+      "memo": "월급",
+      "createdAt": "2024-12-01T20:46:43Z"
+    },
+    {
+      "id": "1722702740",
+      "date": "2024-08-04",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "card",
+      "amount": 68800,
+      "memo": "주식 수익",
+      "createdAt": "2024-08-04T01:32:20Z"
+    },
+    {
+      "id": "1709214571",
+      "date": "2024-02-29",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 59400,
+      "memo": "용돈",
+      "createdAt": "2024-02-29T22:49:31Z"
+    },
+    {
+      "id": "1729916221",
+      "date": "2024-10-26",
+      "type": "expense",
+      "category": "food",
+      "paymentMethod": "cash",
+      "amount": 95700,
+      "memo": "운동 등록",
+      "createdAt": "2024-10-26T13:17:01Z"
+    },
+    {
+      "id": "1726504361",
+      "date": "2024-09-17",
+      "type": "expense",
+      "category": "travel",
+      "paymentMethod": "card",
+      "amount": 42400,
+      "memo": "쇼핑몰 결제",
+      "createdAt": "2024-09-17T01:32:41Z"
+    },
+    {
+      "id": "1716065491",
+      "date": "2024-05-19",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "card",
+      "amount": 76100,
+      "memo": "장학금 입금",
+      "createdAt": "2024-05-19T05:51:31Z"
+    },
+    {
+      "id": "1717162577",
+      "date": "2024-05-31",
+      "type": "expense",
+      "category": "leisure",
+      "paymentMethod": "card",
+      "amount": 31400,
+      "memo": "지하철 요금",
+      "createdAt": "2024-05-31T22:36:17Z"
+    },
+    {
+      "id": "1721203993",
+      "date": "2024-07-17",
+      "type": "expense",
+      "category": "travel",
+      "paymentMethod": "cash",
+      "amount": 1000,
+      "memo": "공과금 납부",
+      "createdAt": "2024-07-17T17:13:13Z"
+    },
+    {
+      "id": "1725029886",
+      "date": "2024-08-30",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "cash",
+      "amount": 40300,
+      "memo": "용돈",
+      "createdAt": "2024-08-30T23:58:06Z"
+    },
+    {
+      "id": "1729438340",
+      "date": "2024-10-21",
+      "type": "expense",
+      "category": "shopping",
+      "paymentMethod": "card",
+      "amount": 91800,
+      "memo": "점심 식사",
+      "createdAt": "2024-10-21T00:32:20Z"
+    },
+    {
+      "id": "1714169796",
+      "date": "2024-04-27",
+      "type": "expense",
+      "category": "shopping",
+      "paymentMethod": "cash",
+      "amount": 9000,
+      "memo": "학비 납부",
+      "createdAt": "2024-04-27T07:16:36Z"
+    },
+    {
+      "id": "1726995054",
+      "date": "2024-09-22",
+      "type": "expense",
+      "category": "transportation",
+      "paymentMethod": "cash",
+      "amount": 93400,
+      "memo": "공과금 납부",
+      "createdAt": "2024-09-22T17:50:54Z"
+    },
+    {
+      "id": "1716395939",
+      "date": "2024-05-23",
+      "type": "expense",
+      "category": "travel",
+      "paymentMethod": "cash",
+      "amount": 24200,
+      "memo": "공과금 납부",
+      "createdAt": "2024-05-23T01:38:59Z"
+    },
+    {
+      "id": "1711548712",
+      "date": "2024-03-27",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "cash",
+      "amount": 50200,
+      "memo": "기타 수입",
+      "createdAt": "2024-03-27T23:11:52Z"
+    },
+    {
+      "id": "1724243151",
+      "date": "2024-08-21",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "cash",
+      "amount": 15700,
+      "memo": "기타 수입",
+      "createdAt": "2024-08-21T21:25:51Z"
+    },
+    {
+      "id": "1705120855",
+      "date": "2024-01-13",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "card",
+      "amount": 2000,
+      "memo": "기타 수입",
+      "createdAt": "2024-01-13T13:40:55Z"
+    },
+    {
+      "id": "1720501423",
+      "date": "2024-07-09",
+      "type": "expense",
+      "category": "contributions",
+      "paymentMethod": "card",
+      "amount": 1800,
+      "memo": "쇼핑몰 결제",
+      "createdAt": "2024-07-09T14:03:43Z"
+    },
+    {
+      "id": "1731054977",
+      "date": "2024-11-08",
+      "type": "expense",
+      "category": "travel",
+      "paymentMethod": "cash",
+      "amount": 1200,
+      "memo": "운동 등록",
+      "createdAt": "2024-11-08T17:36:17Z"
+    },
+    {
+      "id": "1727130631",
+      "date": "2024-09-24",
+      "type": "expense",
+      "category": "contributions",
+      "paymentMethod": "card",
+      "amount": 30500,
+      "memo": "지하철 요금",
+      "createdAt": "2024-09-24T07:30:31Z"
+    },
+    {
+      "id": "1730555758",
+      "date": "2024-11-02",
+      "type": "expense",
+      "category": "food",
+      "paymentMethod": "card",
+      "amount": 35700,
+      "memo": "카페 방문",
+      "createdAt": "2024-11-02T22:55:58Z"
+    },
+    {
+      "id": "1726158127",
+      "date": "2024-09-13",
+      "type": "expense",
+      "category": "health",
+      "paymentMethod": "cash",
+      "amount": 41000,
+      "memo": "기타 지출",
+      "createdAt": "2024-09-13T01:22:07Z"
+    },
+    {
+      "id": "1719760220",
+      "date": "2024-07-01",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "card",
+      "amount": 43100,
+      "memo": "용돈",
+      "createdAt": "2024-07-01T00:10:20Z"
+    },
+    {
+      "id": "1738012310",
+      "date": "2025-01-28",
+      "type": "expense",
+      "category": "transportation",
+      "paymentMethod": "card",
+      "amount": 78400,
+      "memo": "점심 식사",
+      "createdAt": "2025-01-28T06:11:50Z"
+    },
+    {
+      "id": "1711493080",
+      "date": "2024-03-27",
+      "type": "expense",
+      "category": "health",
+      "paymentMethod": "cash",
+      "amount": 24100,
+      "memo": "운동 등록",
+      "createdAt": "2024-03-27T07:44:40Z"
+    },
+    {
+      "id": "1709481333",
+      "date": "2024-03-04",
+      "type": "expense",
+      "category": "entertainment",
+      "paymentMethod": "card",
+      "amount": 95600,
+      "memo": "쇼핑몰 결제",
+      "createdAt": "2024-03-04T00:55:33Z"
+    },
+    {
+      "id": "1734226497",
+      "date": "2024-12-15",
+      "type": "expense",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 33000,
+      "memo": "편의점 간식",
+      "createdAt": "2024-12-15T10:34:57Z"
+    },
+    {
+      "id": "1710344272",
+      "date": "2024-03-14",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "cash",
+      "amount": 44400,
+      "memo": "용돈",
+      "createdAt": "2024-03-14T00:37:52Z"
+    },
+    {
+      "id": "1710540117",
+      "date": "2024-03-16",
+      "type": "expense",
+      "category": "dessert",
+      "paymentMethod": "cash",
+      "amount": 24100,
+      "memo": "쇼핑몰 결제",
+      "createdAt": "2024-03-16T07:01:57Z"
+    },
+    {
+      "id": "1735423653",
+      "date": "2024-12-29",
+      "type": "expense",
+      "category": "dessert",
+      "paymentMethod": "card",
+      "amount": 88300,
+      "memo": "학비 납부",
+      "createdAt": "2024-12-29T07:07:33Z"
+    },
+    {
+      "id": "1733529547",
+      "date": "2024-12-07",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "card",
+      "amount": 58100,
+      "memo": "기타 수입",
+      "createdAt": "2024-12-07T08:59:07Z"
+    },
+    {
+      "id": "1712320968",
+      "date": "2024-04-05",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "cash",
+      "amount": 75900,
+      "memo": "용돈",
+      "createdAt": "2024-04-05T21:42:48Z"
+    },
+    {
+      "id": "1740563252",
+      "date": "2025-02-26",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "cash",
+      "amount": 31900,
+      "memo": "월급",
+      "createdAt": "2025-02-26T18:47:32Z"
+    },
+    {
+      "id": "1713268033",
+      "date": "2024-04-16",
+      "type": "expense",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 32000,
+      "memo": "지하철 요금",
+      "createdAt": "2024-04-16T20:47:13Z"
+    },
+    {
+      "id": "1726767148",
+      "date": "2024-09-20",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "card",
+      "amount": 48500,
+      "memo": "월급",
+      "createdAt": "2024-09-20T02:32:28Z"
+    },
+    {
+      "id": "1720139322",
+      "date": "2024-07-05",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "cash",
+      "amount": 30200,
+      "memo": "월급",
+      "createdAt": "2024-07-05T09:28:42Z"
+    },
+    {
+      "id": "1712830569",
+      "date": "2024-04-11",
+      "type": "expense",
+      "category": "contributions",
+      "paymentMethod": "card",
+      "amount": 10900,
+      "memo": "공과금 납부",
+      "createdAt": "2024-04-11T19:16:09Z"
+    },
+    {
+      "id": "1705562741",
+      "date": "2024-01-18",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 98200,
+      "memo": "용돈",
+      "createdAt": "2024-01-18T16:25:41Z"
+    },
+    {
+      "id": "1708449570",
+      "date": "2024-02-21",
+      "type": "expense",
+      "category": "leisure",
+      "paymentMethod": "cash",
+      "amount": 92300,
+      "memo": "기타 지출",
+      "createdAt": "2024-02-21T02:19:30Z"
+    },
+    {
+      "id": "1742225951",
+      "date": "2025-03-18",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "card",
+      "amount": 38900,
+      "memo": "기타 수입",
+      "createdAt": "2025-03-18T00:39:11Z"
+    },
+    {
+      "id": "1737681578",
+      "date": "2025-01-24",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "card",
+      "amount": 27200,
+      "memo": "기타 수입",
+      "createdAt": "2025-01-24T10:19:38Z"
+    },
+    {
+      "id": "1708882151",
+      "date": "2024-02-26",
+      "type": "expense",
+      "category": "shopping",
+      "paymentMethod": "cash",
+      "amount": 44000,
+      "memo": "점심 식사",
+      "createdAt": "2024-02-26T02:29:11Z"
+    },
+    {
+      "id": "1721529498",
+      "date": "2024-07-21",
+      "type": "expense",
+      "category": "utilities",
+      "paymentMethod": "cash",
+      "amount": 47100,
+      "memo": "지하철 요금",
+      "createdAt": "2024-07-21T11:38:18Z"
+    },
+    {
+      "id": "1726133508",
+      "date": "2024-09-12",
+      "type": "expense",
+      "category": "dessert",
+      "paymentMethod": "card",
+      "amount": 51200,
+      "memo": "점심 식사",
+      "createdAt": "2024-09-12T18:31:48Z"
+    },
+    {
+      "id": "1733406554",
+      "date": "2024-12-05",
+      "type": "expense",
+      "category": "health",
+      "paymentMethod": "card",
+      "amount": 10100,
+      "memo": "쇼핑몰 결제",
+      "createdAt": "2024-12-05T22:49:14Z"
+    },
+    {
+      "id": "1711909975",
+      "date": "2024-04-01",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "card",
+      "amount": 40500,
+      "memo": "월급",
+      "createdAt": "2024-04-01T03:32:55Z"
+    },
+    {
+      "id": "1719524326",
+      "date": "2024-06-28",
+      "type": "expense",
+      "category": "food",
+      "paymentMethod": "cash",
+      "amount": 38900,
+      "memo": "카페 방문",
+      "createdAt": "2024-06-28T06:38:46Z"
+    },
+    {
+      "id": "1724777143",
+      "date": "2024-08-28",
+      "type": "expense",
+      "category": "entertainment",
+      "paymentMethod": "card",
+      "amount": 25500,
+      "memo": "저축",
+      "createdAt": "2024-08-28T01:45:43Z"
+    },
+    {
+      "id": "1718952487",
+      "date": "2024-06-21",
+      "type": "expense",
+      "category": "entertainment",
+      "paymentMethod": "card",
+      "amount": 46200,
+      "memo": "학비 납부",
+      "createdAt": "2024-06-21T15:48:07Z"
+    },
+    {
+      "id": "1718446537",
+      "date": "2024-06-15",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "card",
+      "amount": 82800,
+      "memo": "월급",
+      "createdAt": "2024-06-15T19:15:37Z"
+    },
+    {
+      "id": "1730946726",
+      "date": "2024-11-07",
+      "type": "expense",
+      "category": "dessert",
+      "paymentMethod": "cash",
+      "amount": 64000,
+      "memo": "운동 등록",
+      "createdAt": "2024-11-07T11:32:06Z"
+    },
+    {
+      "id": "1732029150",
+      "date": "2024-11-20",
+      "type": "expense",
+      "category": "food",
+      "paymentMethod": "card",
+      "amount": 65700,
+      "memo": "편의점 간식",
+      "createdAt": "2024-11-20T00:12:30Z"
+    },
+    {
+      "id": "1706121231",
+      "date": "2024-01-25",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "card",
+      "amount": 86900,
+      "memo": "장학금 입금",
+      "createdAt": "2024-01-25T03:33:51Z"
+    },
+    {
+      "id": "1728876743",
+      "date": "2024-10-14",
+      "type": "expense",
+      "category": "shopping",
+      "paymentMethod": "cash",
+      "amount": 53500,
+      "memo": "지하철 요금",
+      "createdAt": "2024-10-14T12:32:23Z"
+    },
+    {
+      "id": "1705825276",
+      "date": "2024-01-21",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "cash",
+      "amount": 21200,
+      "memo": "주식 수익",
+      "createdAt": "2024-01-21T17:21:16Z"
+    },
+    {
+      "id": "1742598686",
+      "date": "2025-03-22",
+      "type": "expense",
+      "category": "health",
+      "paymentMethod": "cash",
+      "amount": 42000,
+      "memo": "쇼핑몰 결제",
+      "createdAt": "2025-03-22T08:11:26Z"
+    },
+    {
+      "id": "1706899469",
+      "date": "2024-02-03",
+      "type": "expense",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 52200,
+      "memo": "지하철 요금",
+      "createdAt": "2024-02-03T03:44:29Z"
+    },
+    {
+      "id": "1718495941",
+      "date": "2024-06-16",
+      "type": "expense",
+      "category": "etc",
+      "paymentMethod": "card",
+      "amount": 80800,
+      "memo": "지하철 요금",
+      "createdAt": "2024-06-16T08:59:01Z"
+    },
+    {
+      "id": "1741834939",
+      "date": "2025-03-13",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "card",
+      "amount": 42700,
+      "memo": "월급",
+      "createdAt": "2025-03-13T12:02:19Z"
+    },
+    {
+      "id": "1726687882",
+      "date": "2024-09-19",
+      "type": "expense",
+      "category": "contributions",
+      "paymentMethod": "cash",
+      "amount": 27700,
+      "memo": "점심 식사",
+      "createdAt": "2024-09-19T04:31:22Z"
+    },
+    {
+      "id": "1712032435",
+      "date": "2024-04-02",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "cash",
+      "amount": 85400,
+      "memo": "용돈",
+      "createdAt": "2024-04-02T13:33:55Z"
+    },
+    {
+      "id": "1719421349",
+      "date": "2024-06-27",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "card",
+      "amount": 92900,
+      "memo": "기타 수입",
+      "createdAt": "2024-06-27T02:02:29Z"
+    },
+    {
+      "id": "1736408879",
+      "date": "2025-01-09",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "cash",
+      "amount": 9500,
+      "memo": "기타 수입",
+      "createdAt": "2025-01-09T16:47:59Z"
+    },
+    {
+      "id": "1705241257",
+      "date": "2024-01-14",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "cash",
+      "amount": 52800,
+      "memo": "주식 수익",
+      "createdAt": "2024-01-14T23:07:37Z"
+    },
+    {
+      "id": "1716697254",
+      "date": "2024-05-26",
+      "type": "expense",
+      "category": "etc",
+      "paymentMethod": "card",
+      "amount": 66300,
+      "memo": "편의점 간식",
+      "createdAt": "2024-05-26T13:20:54Z"
+    },
+    {
+      "id": "1720780165",
+      "date": "2024-07-12",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "card",
+      "amount": 16500,
+      "memo": "주식 수익",
+      "createdAt": "2024-07-12T19:29:25Z"
+    },
+    {
+      "id": "1730313697",
+      "date": "2024-10-31",
+      "type": "expense",
+      "category": "dessert",
+      "paymentMethod": "card",
+      "amount": 19200,
+      "memo": "편의점 간식",
+      "createdAt": "2024-10-31T03:41:37Z"
+    },
+    {
+      "id": "1706565247",
+      "date": "2024-01-30",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "card",
+      "amount": 88500,
+      "memo": "주식 수익",
+      "createdAt": "2024-01-30T06:54:07Z"
+    },
+    {
+      "id": "1721676513",
+      "date": "2024-07-23",
+      "type": "expense",
+      "category": "savings",
+      "paymentMethod": "card",
+      "amount": 54700,
+      "memo": "저축",
+      "createdAt": "2024-07-23T04:28:33Z"
+    },
+    {
+      "id": "1707581887",
+      "date": "2024-02-11",
+      "type": "expense",
+      "category": "food",
+      "paymentMethod": "cash",
+      "amount": 62900,
+      "memo": "병원 진료",
+      "createdAt": "2024-02-11T01:18:07Z"
+    },
+    {
+      "id": "1715225597",
+      "date": "2024-05-09",
+      "type": "expense",
+      "category": "utilities",
+      "paymentMethod": "cash",
+      "amount": 87300,
+      "memo": "기타 지출",
+      "createdAt": "2024-05-09T12:33:17Z"
+    },
+    {
+      "id": "1727466833",
+      "date": "2024-09-28",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "card",
+      "amount": 8900,
+      "memo": "기타 수입",
+      "createdAt": "2024-09-28T04:53:53Z"
+    },
+    {
+      "id": "1712898870",
+      "date": "2024-04-12",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "card",
+      "amount": 99600,
+      "memo": "기타 수입",
+      "createdAt": "2024-04-12T14:14:30Z"
+    },
+    {
+      "id": "1725312485",
+      "date": "2024-09-03",
+      "type": "expense",
+      "category": "utilities",
+      "paymentMethod": "cash",
+      "amount": 29000,
+      "memo": "지하철 요금",
+      "createdAt": "2024-09-03T06:28:05Z"
+    },
+    {
+      "id": "1738961296",
+      "date": "2025-02-08",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "cash",
+      "amount": 15900,
+      "memo": "용돈",
+      "createdAt": "2025-02-08T05:48:16Z"
+    },
+    {
+      "id": "1741819111",
+      "date": "2025-03-13",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "card",
+      "amount": 78600,
+      "memo": "용돈",
+      "createdAt": "2025-03-13T07:38:31Z"
+    },
+    {
+      "id": "1737035631",
+      "date": "2025-01-16",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 95600,
+      "memo": "기타 수입",
+      "createdAt": "2025-01-16T22:53:51Z"
+    },
+    {
+      "id": "1734963860",
+      "date": "2024-12-23",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 68700,
+      "memo": "장학금 입금",
+      "createdAt": "2024-12-23T23:24:20Z"
+    },
+    {
+      "id": "1740981226",
+      "date": "2025-03-03",
+      "type": "expense",
+      "category": "shopping",
+      "paymentMethod": "card",
+      "amount": 16400,
+      "memo": "운동 등록",
+      "createdAt": "2025-03-03T14:53:46Z"
+    },
+    {
+      "id": "1725245139",
+      "date": "2024-09-02",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "card",
+      "amount": 80200,
+      "memo": "주식 수익",
+      "createdAt": "2024-09-02T11:45:39Z"
+    },
+    {
+      "id": "1727081615",
+      "date": "2024-09-23",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "cash",
+      "amount": 67100,
+      "memo": "용돈",
+      "createdAt": "2024-09-23T17:53:35Z"
+    },
+    {
+      "id": "1728402822",
+      "date": "2024-10-09",
+      "type": "expense",
+      "category": "contributions",
+      "paymentMethod": "cash",
+      "amount": 67100,
+      "memo": "점심 식사",
+      "createdAt": "2024-10-09T00:53:42Z"
+    },
+    {
+      "id": "1715569120",
+      "date": "2024-05-13",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "cash",
+      "amount": 55800,
+      "memo": "기타 수입",
+      "createdAt": "2024-05-13T11:58:40Z"
+    },
+    {
+      "id": "1719194704",
+      "date": "2024-06-24",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "cash",
+      "amount": 71900,
+      "memo": "용돈",
+      "createdAt": "2024-06-24T11:05:04Z"
+    },
+    {
+      "id": "1723176654",
+      "date": "2024-08-09",
+      "type": "expense",
+      "category": "savings",
+      "paymentMethod": "card",
+      "amount": 47600,
+      "memo": "저축",
+      "createdAt": "2024-08-09T13:10:54Z"
+    },
+    {
+      "id": "1741470585",
+      "date": "2025-03-09",
+      "type": "expense",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 68300,
+      "memo": "점심 식사",
+      "createdAt": "2025-03-09T06:49:45Z"
+    },
+    {
+      "id": "1705578640",
+      "date": "2024-01-18",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "card",
+      "amount": 56800,
+      "memo": "주식 수익",
+      "createdAt": "2024-01-18T20:50:40Z"
+    },
+    {
+      "id": "1707551527",
+      "date": "2024-02-10",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "card",
+      "amount": 45200,
+      "memo": "용돈",
+      "createdAt": "2024-02-10T16:52:07Z"
+    },
+    {
+      "id": "1705888809",
+      "date": "2024-01-22",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "cash",
+      "amount": 46700,
+      "memo": "용돈",
+      "createdAt": "2024-01-22T11:00:09Z"
+    },
+    {
+      "id": "1717290744",
+      "date": "2024-06-02",
+      "type": "expense",
+      "category": "food",
+      "paymentMethod": "card",
+      "amount": 62900,
+      "memo": "점심 식사",
+      "createdAt": "2024-06-02T10:12:24Z"
+    },
+    {
+      "id": "1739619186",
+      "date": "2025-02-15",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "cash",
+      "amount": 38300,
+      "memo": "장학금 입금",
+      "createdAt": "2025-02-15T20:33:06Z"
+    },
+    {
+      "id": "1741932672",
+      "date": "2025-03-14",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "cash",
+      "amount": 86700,
+      "memo": "기타 수입",
+      "createdAt": "2025-03-14T15:11:12Z"
+    },
+    {
+      "id": "1726798969",
+      "date": "2024-09-20",
+      "type": "expense",
+      "category": "contributions",
+      "paymentMethod": "card",
+      "amount": 91700,
+      "memo": "지하철 요금",
+      "createdAt": "2024-09-20T11:22:49Z"
+    },
+    {
+      "id": "1734359550",
+      "date": "2024-12-16",
+      "type": "expense",
+      "category": "dessert",
+      "paymentMethod": "cash",
+      "amount": 56300,
+      "memo": "공과금 납부",
+      "createdAt": "2024-12-16T23:32:30Z"
+    },
+    {
+      "id": "1721865360",
+      "date": "2024-07-25",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "cash",
+      "amount": 29600,
+      "memo": "기타 수입",
+      "createdAt": "2024-07-25T08:56:00Z"
+    },
+    {
+      "id": "1729975089",
+      "date": "2024-10-27",
+      "type": "expense",
+      "category": "utilities",
+      "paymentMethod": "card",
+      "amount": 9300,
+      "memo": "운동 등록",
+      "createdAt": "2024-10-27T05:38:09Z"
+    },
+    {
+      "id": "1720157996",
+      "date": "2024-07-05",
+      "type": "expense",
+      "category": "dessert",
+      "paymentMethod": "card",
+      "amount": 82900,
+      "memo": "공과금 납부",
+      "createdAt": "2024-07-05T14:39:56Z"
+    },
+    {
+      "id": "1733069074",
+      "date": "2024-12-02",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "card",
+      "amount": 13100,
+      "memo": "월급",
+      "createdAt": "2024-12-02T01:04:34Z"
+    },
+    {
+      "id": "1715136797",
+      "date": "2024-05-08",
+      "type": "expense",
+      "category": "leisure",
+      "paymentMethod": "card",
+      "amount": 10300,
+      "memo": "지하철 요금",
+      "createdAt": "2024-05-08T11:53:17Z"
+    },
+    {
+      "id": "1711841877",
+      "date": "2024-03-31",
+      "type": "expense",
+      "category": "etc",
+      "paymentMethod": "card",
+      "amount": 39200,
+      "memo": "병원 진료",
+      "createdAt": "2024-03-31T08:37:57Z"
+    },
+    {
+      "id": "1727203592",
+      "date": "2024-09-25",
+      "type": "expense",
+      "category": "shopping",
+      "paymentMethod": "card",
+      "amount": 20100,
+      "memo": "운동 등록",
+      "createdAt": "2024-09-25T03:46:32Z"
+    },
+    {
+      "id": "1723642215",
+      "date": "2024-08-14",
+      "type": "expense",
+      "category": "entertainment",
+      "paymentMethod": "card",
+      "amount": 19400,
+      "memo": "공과금 납부",
+      "createdAt": "2024-08-14T22:30:15Z"
+    },
+    {
+      "id": "1729198111",
+      "date": "2024-10-18",
+      "type": "expense",
+      "category": "shopping",
+      "paymentMethod": "cash",
+      "amount": 37200,
+      "memo": "공과금 납부",
+      "createdAt": "2024-10-18T05:48:31Z"
+    },
+    {
+      "id": "1721546070",
+      "date": "2024-07-21",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "card",
+      "amount": 11400,
+      "memo": "주식 수익",
+      "createdAt": "2024-07-21T16:14:30Z"
+    },
+    {
+      "id": "1710180714",
+      "date": "2024-03-12",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 23800,
+      "memo": "주식 수익",
+      "createdAt": "2024-03-12T03:11:54Z"
+    },
+    {
+      "id": "1740524892",
+      "date": "2025-02-26",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "cash",
+      "amount": 44700,
+      "memo": "주식 수익",
+      "createdAt": "2025-02-26T08:08:12Z"
+    },
+    {
+      "id": "1730887151",
+      "date": "2024-11-06",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 61600,
+      "memo": "주식 수익",
+      "createdAt": "2024-11-06T18:59:11Z"
+    },
+    {
+      "id": "1722475053",
+      "date": "2024-08-01",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "cash",
+      "amount": 3700,
+      "memo": "장학금 입금",
+      "createdAt": "2024-08-01T10:17:33Z"
+    },
+    {
+      "id": "1734340331",
+      "date": "2024-12-16",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "card",
+      "amount": 29200,
+      "memo": "월급",
+      "createdAt": "2024-12-16T18:12:11Z"
+    },
+    {
+      "id": "1730555370",
+      "date": "2024-11-02",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "card",
+      "amount": 13400,
+      "memo": "월급",
+      "createdAt": "2024-11-02T22:49:30Z"
+    },
+    {
+      "id": "1719603598",
+      "date": "2024-06-29",
+      "type": "expense",
+      "category": "shopping",
+      "paymentMethod": "card",
+      "amount": 58000,
+      "memo": "도서 구매",
+      "createdAt": "2024-06-29T04:39:58Z"
+    },
+    {
+      "id": "1733567860",
+      "date": "2024-12-07",
+      "type": "expense",
+      "category": "travel",
+      "paymentMethod": "card",
+      "amount": 86100,
+      "memo": "카페 방문",
+      "createdAt": "2024-12-07T19:37:40Z"
+    },
+    {
+      "id": "1721803963",
+      "date": "2024-07-24",
+      "type": "expense",
+      "category": "contributions",
+      "paymentMethod": "cash",
+      "amount": 68600,
+      "memo": "병원 진료",
+      "createdAt": "2024-07-24T15:52:43Z"
+    },
+    {
+      "id": "1741618217",
+      "date": "2025-03-10",
+      "type": "expense",
+      "category": "contributions",
+      "paymentMethod": "cash",
       "amount": 50000,
-      "memo": "중고거래 수입",
-      "createdAt": "2025-04-01T08:00:00Z"
+      "memo": "운동 등록",
+      "createdAt": "2025-03-10T23:50:17Z"
+    },
+    {
+      "id": "1716512678",
+      "date": "2024-05-24",
+      "type": "expense",
+      "category": "entertainment",
+      "paymentMethod": "card",
+      "amount": 34500,
+      "memo": "지하철 요금",
+      "createdAt": "2024-05-24T10:04:38Z"
+    },
+    {
+      "id": "1733019231",
+      "date": "2024-12-01",
+      "type": "expense",
+      "category": "health",
+      "paymentMethod": "card",
+      "amount": 39000,
+      "memo": "학비 납부",
+      "createdAt": "2024-12-01T11:13:51Z"
+    },
+    {
+      "id": "1726554971",
+      "date": "2024-09-17",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "card",
+      "amount": 9600,
+      "memo": "장학금 입금",
+      "createdAt": "2024-09-17T15:36:11Z"
+    },
+    {
+      "id": "1735289320",
+      "date": "2024-12-27",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "card",
+      "amount": 23100,
+      "memo": "용돈",
+      "createdAt": "2024-12-27T17:48:40Z"
+    },
+    {
+      "id": "1716162495",
+      "date": "2024-05-20",
+      "type": "expense",
+      "category": "food",
+      "paymentMethod": "cash",
+      "amount": 51900,
+      "memo": "편의점 간식",
+      "createdAt": "2024-05-20T08:48:15Z"
+    },
+    {
+      "id": "1721895023",
+      "date": "2024-07-25",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "card",
+      "amount": 60900,
+      "memo": "용돈",
+      "createdAt": "2024-07-25T17:10:23Z"
+    },
+    {
+      "id": "1724800465",
+      "date": "2024-08-28",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 33300,
+      "memo": "용돈",
+      "createdAt": "2024-08-28T08:14:25Z"
+    },
+    {
+      "id": "1727093750",
+      "date": "2024-09-23",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "cash",
+      "amount": 23400,
+      "memo": "장학금 입금",
+      "createdAt": "2024-09-23T21:15:50Z"
+    },
+    {
+      "id": "1709817795",
+      "date": "2024-03-07",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 53800,
+      "memo": "기타 수입",
+      "createdAt": "2024-03-07T22:23:15Z"
+    },
+    {
+      "id": "1728974845",
+      "date": "2024-10-15",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "cash",
+      "amount": 91300,
+      "memo": "주식 수익",
+      "createdAt": "2024-10-15T15:47:25Z"
+    },
+    {
+      "id": "1733808429",
+      "date": "2024-12-10",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "cash",
+      "amount": 81300,
+      "memo": "장학금 입금",
+      "createdAt": "2024-12-10T14:27:09Z"
+    },
+    {
+      "id": "1709690500",
+      "date": "2024-03-06",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "card",
+      "amount": 29100,
+      "memo": "월급",
+      "createdAt": "2024-03-06T11:01:40Z"
+    },
+    {
+      "id": "1740835509",
+      "date": "2025-03-01",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 3800,
+      "memo": "월급",
+      "createdAt": "2025-03-01T22:25:09Z"
+    },
+    {
+      "id": "1705785950",
+      "date": "2024-01-21",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "cash",
+      "amount": 41100,
+      "memo": "기타 수입",
+      "createdAt": "2024-01-21T06:25:50Z"
+    },
+    {
+      "id": "1707334238",
+      "date": "2024-02-08",
+      "type": "expense",
+      "category": "leisure",
+      "paymentMethod": "card",
+      "amount": 51200,
+      "memo": "지하철 요금",
+      "createdAt": "2024-02-08T04:30:38Z"
+    },
+    {
+      "id": "1731494084",
+      "date": "2024-11-13",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 10000,
+      "memo": "주식 수익",
+      "createdAt": "2024-11-13T19:34:44Z"
+    },
+    {
+      "id": "1734366820",
+      "date": "2024-12-17",
+      "type": "expense",
+      "category": "savings",
+      "paymentMethod": "cash",
+      "amount": 6600,
+      "memo": "지하철 요금",
+      "createdAt": "2024-12-17T01:33:40Z"
+    },
+    {
+      "id": "1706055924",
+      "date": "2024-01-24",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "card",
+      "amount": 82200,
+      "memo": "장학금 입금",
+      "createdAt": "2024-01-24T09:25:24Z"
+    },
+    {
+      "id": "1732488815",
+      "date": "2024-11-25",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "card",
+      "amount": 63600,
+      "memo": "주식 수익",
+      "createdAt": "2024-11-25T07:53:35Z"
+    },
+    {
+      "id": "1735607477",
+      "date": "2024-12-31",
+      "type": "expense",
+      "category": "leisure",
+      "paymentMethod": "cash",
+      "amount": 43500,
+      "memo": "지하철 요금",
+      "createdAt": "2024-12-31T10:11:17Z"
+    },
+    {
+      "id": "1719285036",
+      "date": "2024-06-25",
+      "type": "expense",
+      "category": "utilities",
+      "paymentMethod": "card",
+      "amount": 96600,
+      "memo": "지하철 요금",
+      "createdAt": "2024-06-25T12:10:36Z"
+    },
+    {
+      "id": "1728066294",
+      "date": "2024-10-05",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "card",
+      "amount": 47200,
+      "memo": "월급",
+      "createdAt": "2024-10-05T03:24:54Z"
+    },
+    {
+      "id": "1711808124",
+      "date": "2024-03-30",
+      "type": "expense",
+      "category": "transportation",
+      "paymentMethod": "card",
+      "amount": 13900,
+      "memo": "도서 구매",
+      "createdAt": "2024-03-30T23:15:24Z"
+    },
+    {
+      "id": "1718517077",
+      "date": "2024-06-16",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "cash",
+      "amount": 43000,
+      "memo": "주식 수익",
+      "createdAt": "2024-06-16T14:51:17Z"
+    },
+    {
+      "id": "1726997084",
+      "date": "2024-09-22",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "cash",
+      "amount": 70000,
+      "memo": "용돈",
+      "createdAt": "2024-09-22T18:24:44Z"
+    },
+    {
+      "id": "1711156311",
+      "date": "2024-03-23",
+      "type": "expense",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 7500,
+      "memo": "공과금 납부",
+      "createdAt": "2024-03-23T10:11:51Z"
+    },
+    {
+      "id": "1718586828",
+      "date": "2024-06-17",
+      "type": "expense",
+      "category": "savings",
+      "paymentMethod": "cash",
+      "amount": 22400,
+      "memo": "점심 식사",
+      "createdAt": "2024-06-17T10:13:48Z"
+    },
+    {
+      "id": "1726814365",
+      "date": "2024-09-20",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "cash",
+      "amount": 53200,
+      "memo": "월급",
+      "createdAt": "2024-09-20T15:39:25Z"
+    },
+    {
+      "id": "1705855189",
+      "date": "2024-01-22",
+      "type": "expense",
+      "category": "transportation",
+      "paymentMethod": "cash",
+      "amount": 15200,
+      "memo": "지하철 요금",
+      "createdAt": "2024-01-22T01:39:49Z"
+    },
+    {
+      "id": "1720208303",
+      "date": "2024-07-06",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "cash",
+      "amount": 36400,
+      "memo": "주식 수익",
+      "createdAt": "2024-07-06T04:38:23Z"
+    },
+    {
+      "id": "1722152207",
+      "date": "2024-07-28",
+      "type": "expense",
+      "category": "food",
+      "paymentMethod": "cash",
+      "amount": 94200,
+      "memo": "학비 납부",
+      "createdAt": "2024-07-28T16:36:47Z"
+    },
+    {
+      "id": "1735945051",
+      "date": "2025-01-04",
+      "type": "expense",
+      "category": "contributions",
+      "paymentMethod": "cash",
+      "amount": 63500,
+      "memo": "점심 식사",
+      "createdAt": "2025-01-04T07:57:31Z"
+    },
+    {
+      "id": "1706818126",
+      "date": "2024-02-02",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "card",
+      "amount": 5100,
+      "memo": "용돈",
+      "createdAt": "2024-02-02T05:08:46Z"
+    },
+    {
+      "id": "1705064837",
+      "date": "2024-01-12",
+      "type": "expense",
+      "category": "etc",
+      "paymentMethod": "card",
+      "amount": 11600,
+      "memo": "공과금 납부",
+      "createdAt": "2024-01-12T22:07:17Z"
+    },
+    {
+      "id": "1734922901",
+      "date": "2024-12-23",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "cash",
+      "amount": 45900,
+      "memo": "주식 수익",
+      "createdAt": "2024-12-23T12:01:41Z"
+    },
+    {
+      "id": "1710292626",
+      "date": "2024-03-13",
+      "type": "expense",
+      "category": "leisure",
+      "paymentMethod": "cash",
+      "amount": 81600,
+      "memo": "카페 방문",
+      "createdAt": "2024-03-13T10:17:06Z"
+    },
+    {
+      "id": "1712466584",
+      "date": "2024-04-07",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "card",
+      "amount": 74700,
+      "memo": "용돈",
+      "createdAt": "2024-04-07T14:09:44Z"
+    },
+    {
+      "id": "1737537400",
+      "date": "2025-01-22",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "cash",
+      "amount": 99200,
+      "memo": "기타 수입",
+      "createdAt": "2025-01-22T18:16:40Z"
+    },
+    {
+      "id": "1734270190",
+      "date": "2024-12-15",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 32200,
+      "memo": "주식 수익",
+      "createdAt": "2024-12-15T22:43:10Z"
+    },
+    {
+      "id": "1705692034",
+      "date": "2024-01-20",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "card",
+      "amount": 44800,
+      "memo": "용돈",
+      "createdAt": "2024-01-20T04:20:34Z"
+    },
+    {
+      "id": "1704409695",
+      "date": "2024-01-05",
+      "type": "expense",
+      "category": "food",
+      "paymentMethod": "card",
+      "amount": 29300,
+      "memo": "운동 등록",
+      "createdAt": "2024-01-05T08:08:15Z"
+    },
+    {
+      "id": "1730548188",
+      "date": "2024-11-02",
+      "type": "expense",
+      "category": "health",
+      "paymentMethod": "card",
+      "amount": 87700,
+      "memo": "저축",
+      "createdAt": "2024-11-02T20:49:48Z"
+    },
+    {
+      "id": "1736346730",
+      "date": "2025-01-08",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "cash",
+      "amount": 37600,
+      "memo": "월급",
+      "createdAt": "2025-01-08T23:32:10Z"
+    },
+    {
+      "id": "1714539701",
+      "date": "2024-05-01",
+      "type": "expense",
+      "category": "dessert",
+      "paymentMethod": "cash",
+      "amount": 92000,
+      "memo": "쇼핑몰 결제",
+      "createdAt": "2024-05-01T14:01:41Z"
+    },
+    {
+      "id": "1741118779",
+      "date": "2025-03-05",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "card",
+      "amount": 65300,
+      "memo": "장학금 입금",
+      "createdAt": "2025-03-05T05:06:19Z"
+    },
+    {
+      "id": "1717153244",
+      "date": "2024-05-31",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "cash",
+      "amount": 59200,
+      "memo": "월급",
+      "createdAt": "2024-05-31T20:00:44Z"
+    },
+    {
+      "id": "1741970251",
+      "date": "2025-03-15",
+      "type": "expense",
+      "category": "travel",
+      "paymentMethod": "cash",
+      "amount": 25100,
+      "memo": "기타 지출",
+      "createdAt": "2025-03-15T01:37:31Z"
+    },
+    {
+      "id": "1739781303",
+      "date": "2025-02-17",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "card",
+      "amount": 65900,
+      "memo": "월급",
+      "createdAt": "2025-02-17T17:35:03Z"
+    },
+    {
+      "id": "1721541660",
+      "date": "2024-07-21",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "card",
+      "amount": 23500,
+      "memo": "장학금 입금",
+      "createdAt": "2024-07-21T15:01:00Z"
+    },
+    {
+      "id": "1705171375",
+      "date": "2024-01-14",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "cash",
+      "amount": 16100,
+      "memo": "월급",
+      "createdAt": "2024-01-14T03:42:55Z"
+    },
+    {
+      "id": "1727362367",
+      "date": "2024-09-26",
+      "type": "expense",
+      "category": "entertainment",
+      "paymentMethod": "card",
+      "amount": 53200,
+      "memo": "편의점 간식",
+      "createdAt": "2024-09-26T23:52:47Z"
+    },
+    {
+      "id": "1705746377",
+      "date": "2024-01-20",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 97600,
+      "memo": "월급",
+      "createdAt": "2024-01-20T19:26:17Z"
+    },
+    {
+      "id": "1707595780",
+      "date": "2024-02-11",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "cash",
+      "amount": 90800,
+      "memo": "장학금 입금",
+      "createdAt": "2024-02-11T05:09:40Z"
+    },
+    {
+      "id": "1722948187",
+      "date": "2024-08-06",
+      "type": "expense",
+      "category": "utilities",
+      "paymentMethod": "cash",
+      "amount": 22500,
+      "memo": "지하철 요금",
+      "createdAt": "2024-08-06T21:43:07Z"
+    },
+    {
+      "id": "1705480858",
+      "date": "2024-01-17",
+      "type": "expense",
+      "category": "travel",
+      "paymentMethod": "cash",
+      "amount": 24600,
+      "memo": "지하철 요금",
+      "createdAt": "2024-01-17T17:40:58Z"
+    },
+    {
+      "id": "1723218338",
+      "date": "2024-08-10",
+      "type": "expense",
+      "category": "transportation",
+      "paymentMethod": "cash",
+      "amount": 1900,
+      "memo": "쇼핑몰 결제",
+      "createdAt": "2024-08-10T00:45:38Z"
+    },
+    {
+      "id": "1712450425",
+      "date": "2024-04-07",
+      "type": "expense",
+      "category": "contributions",
+      "paymentMethod": "card",
+      "amount": 93500,
+      "memo": "학비 납부",
+      "createdAt": "2024-04-07T09:40:25Z"
+    },
+    {
+      "id": "1742322955",
+      "date": "2025-03-19",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "cash",
+      "amount": 32600,
+      "memo": "장학금 입금",
+      "createdAt": "2025-03-19T03:35:55Z"
+    },
+    {
+      "id": "1708824970",
+      "date": "2024-02-25",
+      "type": "expense",
+      "category": "contributions",
+      "paymentMethod": "cash",
+      "amount": 26500,
+      "memo": "운동 등록",
+      "createdAt": "2024-02-25T10:36:10Z"
+    },
+    {
+      "id": "1734983727",
+      "date": "2024-12-24",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "card",
+      "amount": 69900,
+      "memo": "월급",
+      "createdAt": "2024-12-24T04:55:27Z"
+    },
+    {
+      "id": "1720704023",
+      "date": "2024-07-11",
+      "type": "expense",
+      "category": "entertainment",
+      "paymentMethod": "cash",
+      "amount": 81600,
+      "memo": "쇼핑몰 결제",
+      "createdAt": "2024-07-11T22:20:23Z"
+    },
+    {
+      "id": "1740918982",
+      "date": "2025-03-02",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "cash",
+      "amount": 48000,
+      "memo": "기타 수입",
+      "createdAt": "2025-03-02T21:36:22Z"
+    },
+    {
+      "id": "1715163535",
+      "date": "2024-05-08",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "cash",
+      "amount": 38500,
+      "memo": "월급",
+      "createdAt": "2024-05-08T19:18:55Z"
+    },
+    {
+      "id": "1727173784",
+      "date": "2024-09-24",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "cash",
+      "amount": 16500,
+      "memo": "기타 수입",
+      "createdAt": "2024-09-24T19:29:44Z"
+    },
+    {
+      "id": "1739516484",
+      "date": "2025-02-14",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 79300,
+      "memo": "월급",
+      "createdAt": "2025-02-14T16:01:24Z"
+    },
+    {
+      "id": "1718111201",
+      "date": "2024-06-11",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "card",
+      "amount": 79300,
+      "memo": "용돈",
+      "createdAt": "2024-06-11T22:06:41Z"
+    },
+    {
+      "id": "1717753268",
+      "date": "2024-06-07",
+      "type": "expense",
+      "category": "travel",
+      "paymentMethod": "cash",
+      "amount": 39200,
+      "memo": "공과금 납부",
+      "createdAt": "2024-06-07T18:41:08Z"
+    },
+    {
+      "id": "1723265226",
+      "date": "2024-08-10",
+      "type": "expense",
+      "category": "health",
+      "paymentMethod": "card",
+      "amount": 90000,
+      "memo": "카페 방문",
+      "createdAt": "2024-08-10T13:47:06Z"
+    },
+    {
+      "id": "1739451119",
+      "date": "2025-02-13",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "card",
+      "amount": 63300,
+      "memo": "월급",
+      "createdAt": "2025-02-13T21:51:59Z"
+    },
+    {
+      "id": "1729861939",
+      "date": "2024-10-25",
+      "type": "expense",
+      "category": "travel",
+      "paymentMethod": "cash",
+      "amount": 42500,
+      "memo": "쇼핑몰 결제",
+      "createdAt": "2024-10-25T22:12:19Z"
+    },
+    {
+      "id": "1737151697",
+      "date": "2025-01-18",
+      "type": "expense",
+      "category": "travel",
+      "paymentMethod": "card",
+      "amount": 74300,
+      "memo": "지하철 요금",
+      "createdAt": "2025-01-18T07:08:17Z"
+    },
+    {
+      "id": "1726439207",
+      "date": "2024-09-16",
+      "type": "expense",
+      "category": "dessert",
+      "paymentMethod": "cash",
+      "amount": 80200,
+      "memo": "운동 등록",
+      "createdAt": "2024-09-16T07:26:47Z"
+    },
+    {
+      "id": "1723472298",
+      "date": "2024-08-12",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "card",
+      "amount": 96100,
+      "memo": "용돈",
+      "createdAt": "2024-08-12T23:18:18Z"
+    },
+    {
+      "id": "1712261163",
+      "date": "2024-04-05",
+      "type": "expense",
+      "category": "food",
+      "paymentMethod": "card",
+      "amount": 5000,
+      "memo": "학비 납부",
+      "createdAt": "2024-04-05T05:06:03Z"
+    },
+    {
+      "id": "1722895342",
+      "date": "2024-08-06",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "card",
+      "amount": 13700,
+      "memo": "장학금 입금",
+      "createdAt": "2024-08-06T07:02:22Z"
+    },
+    {
+      "id": "1742201730",
+      "date": "2025-03-17",
+      "type": "expense",
+      "category": "travel",
+      "paymentMethod": "cash",
+      "amount": 62200,
+      "memo": "병원 진료",
+      "createdAt": "2025-03-17T17:55:30Z"
+    },
+    {
+      "id": "1732334451",
+      "date": "2024-11-23",
+      "type": "expense",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 10400,
+      "memo": "기타 지출",
+      "createdAt": "2024-11-23T13:00:51Z"
+    },
+    {
+      "id": "1734288078",
+      "date": "2024-12-16",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "cash",
+      "amount": 28800,
+      "memo": "주식 수익",
+      "createdAt": "2024-12-16T03:41:18Z"
+    },
+    {
+      "id": "1732686185",
+      "date": "2024-11-27",
+      "type": "expense",
+      "category": "travel",
+      "paymentMethod": "cash",
+      "amount": 42400,
+      "memo": "카페 방문",
+      "createdAt": "2024-11-27T14:43:05Z"
+    },
+    {
+      "id": "1725936265",
+      "date": "2024-09-10",
+      "type": "expense",
+      "category": "shopping",
+      "paymentMethod": "card",
+      "amount": 91000,
+      "memo": "병원 진료",
+      "createdAt": "2024-09-10T11:44:25Z"
+    },
+    {
+      "id": "1705106802",
+      "date": "2024-01-13",
+      "type": "expense",
+      "category": "food",
+      "paymentMethod": "card",
+      "amount": 36100,
+      "memo": "병원 진료",
+      "createdAt": "2024-01-13T09:46:42Z"
+    },
+    {
+      "id": "1725089214",
+      "date": "2024-08-31",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "card",
+      "amount": 15500,
+      "memo": "용돈",
+      "createdAt": "2024-08-31T16:26:54Z"
+    },
+    {
+      "id": "1718400477",
+      "date": "2024-06-15",
+      "type": "expense",
+      "category": "travel",
+      "paymentMethod": "card",
+      "amount": 15200,
+      "memo": "병원 진료",
+      "createdAt": "2024-06-15T06:27:57Z"
+    },
+    {
+      "id": "1724819371",
+      "date": "2024-08-28",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "card",
+      "amount": 69300,
+      "memo": "용돈",
+      "createdAt": "2024-08-28T13:29:31Z"
+    },
+    {
+      "id": "1730118386",
+      "date": "2024-10-28",
+      "type": "expense",
+      "category": "food",
+      "paymentMethod": "cash",
+      "amount": 78700,
+      "memo": "도서 구매",
+      "createdAt": "2024-10-28T21:26:26Z"
+    },
+    {
+      "id": "1732470317",
+      "date": "2024-11-25",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "card",
+      "amount": 60600,
+      "memo": "용돈",
+      "createdAt": "2024-11-25T02:45:17Z"
+    },
+    {
+      "id": "1714167465",
+      "date": "2024-04-27",
+      "type": "expense",
+      "category": "transportation",
+      "paymentMethod": "card",
+      "amount": 78700,
+      "memo": "도서 구매",
+      "createdAt": "2024-04-27T06:37:45Z"
+    },
+    {
+      "id": "1724818924",
+      "date": "2024-08-28",
+      "type": "expense",
+      "category": "savings",
+      "paymentMethod": "cash",
+      "amount": 83700,
+      "memo": "기타 지출",
+      "createdAt": "2024-08-28T13:22:04Z"
+    },
+    {
+      "id": "1731003732",
+      "date": "2024-11-08",
+      "type": "expense",
+      "category": "shopping",
+      "paymentMethod": "cash",
+      "amount": 29200,
+      "memo": "병원 진료",
+      "createdAt": "2024-11-08T03:22:12Z"
+    },
+    {
+      "id": "1731905139",
+      "date": "2024-11-18",
+      "type": "expense",
+      "category": "entertainment",
+      "paymentMethod": "cash",
+      "amount": 85700,
+      "memo": "점심 식사",
+      "createdAt": "2024-11-18T13:45:39Z"
+    },
+    {
+      "id": "1707722460",
+      "date": "2024-02-12",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "card",
+      "amount": 20200,
+      "memo": "주식 수익",
+      "createdAt": "2024-02-12T16:21:00Z"
+    },
+    {
+      "id": "1705022672",
+      "date": "2024-01-12",
+      "type": "expense",
+      "category": "contributions",
+      "paymentMethod": "card",
+      "amount": 49200,
+      "memo": "학비 납부",
+      "createdAt": "2024-01-12T10:24:32Z"
+    },
+    {
+      "id": "1728297622",
+      "date": "2024-10-07",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "cash",
+      "amount": 90300,
+      "memo": "월급",
+      "createdAt": "2024-10-07T19:40:22Z"
+    },
+    {
+      "id": "1737451212",
+      "date": "2025-01-21",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "cash",
+      "amount": 65200,
+      "memo": "장학금 입금",
+      "createdAt": "2025-01-21T18:20:12Z"
+    },
+    {
+      "id": "1715175531",
+      "date": "2024-05-08",
+      "type": "expense",
+      "category": "food",
+      "paymentMethod": "cash",
+      "amount": 8100,
+      "memo": "도서 구매",
+      "createdAt": "2024-05-08T22:38:51Z"
+    },
+    {
+      "id": "1730660592",
+      "date": "2024-11-04",
+      "type": "expense",
+      "category": "transportation",
+      "paymentMethod": "cash",
+      "amount": 69600,
+      "memo": "공과금 납부",
+      "createdAt": "2024-11-04T04:03:12Z"
+    },
+    {
+      "id": "1720389691",
+      "date": "2024-07-08",
+      "type": "expense",
+      "category": "utilities",
+      "paymentMethod": "cash",
+      "amount": 37500,
+      "memo": "운동 등록",
+      "createdAt": "2024-07-08T07:01:31Z"
+    },
+    {
+      "id": "1726460968",
+      "date": "2024-09-16",
+      "type": "expense",
+      "category": "travel",
+      "paymentMethod": "card",
+      "amount": 26900,
+      "memo": "지하철 요금",
+      "createdAt": "2024-09-16T13:29:28Z"
+    },
+    {
+      "id": "1734072747",
+      "date": "2024-12-13",
+      "type": "expense",
+      "category": "utilities",
+      "paymentMethod": "card",
+      "amount": 64300,
+      "memo": "기타 지출",
+      "createdAt": "2024-12-13T15:52:27Z"
+    },
+    {
+      "id": "1740896749",
+      "date": "2025-03-02",
+      "type": "expense",
+      "category": "etc",
+      "paymentMethod": "card",
+      "amount": 73700,
+      "memo": "지하철 요금",
+      "createdAt": "2025-03-02T15:25:49Z"
+    },
+    {
+      "id": "1713082530",
+      "date": "2024-04-14",
+      "type": "expense",
+      "category": "food",
+      "paymentMethod": "cash",
+      "amount": 96100,
+      "memo": "쇼핑몰 결제",
+      "createdAt": "2024-04-14T17:15:30Z"
+    },
+    {
+      "id": "1707162920",
+      "date": "2024-02-06",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 8900,
+      "memo": "월급",
+      "createdAt": "2024-02-06T04:55:20Z"
+    },
+    {
+      "id": "1710519034",
+      "date": "2024-03-16",
+      "type": "expense",
+      "category": "food",
+      "paymentMethod": "card",
+      "amount": 84200,
+      "memo": "카페 방문",
+      "createdAt": "2024-03-16T01:10:34Z"
+    },
+    {
+      "id": "1717365383",
+      "date": "2024-06-03",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "cash",
+      "amount": 6100,
+      "memo": "주식 수익",
+      "createdAt": "2024-06-03T06:56:23Z"
+    },
+    {
+      "id": "1712088402",
+      "date": "2024-04-03",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "cash",
+      "amount": 65000,
+      "memo": "기타 수입",
+      "createdAt": "2024-04-03T05:06:42Z"
+    },
+    {
+      "id": "1714170134",
+      "date": "2024-04-27",
+      "type": "expense",
+      "category": "food",
+      "paymentMethod": "cash",
+      "amount": 8700,
+      "memo": "점심 식사",
+      "createdAt": "2024-04-27T07:22:14Z"
+    },
+    {
+      "id": "1738560568",
+      "date": "2025-02-03",
+      "type": "expense",
+      "category": "travel",
+      "paymentMethod": "card",
+      "amount": 48700,
+      "memo": "카페 방문",
+      "createdAt": "2025-02-03T14:29:28Z"
+    },
+    {
+      "id": "1706339389",
+      "date": "2024-01-27",
+      "type": "expense",
+      "category": "shopping",
+      "paymentMethod": "cash",
+      "amount": 28700,
+      "memo": "도서 구매",
+      "createdAt": "2024-01-27T16:09:49Z"
+    },
+    {
+      "id": "1736845030",
+      "date": "2025-01-14",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "card",
+      "amount": 53000,
+      "memo": "장학금 입금",
+      "createdAt": "2025-01-14T17:57:10Z"
+    },
+    {
+      "id": "1732718427",
+      "date": "2024-11-27",
+      "type": "expense",
+      "category": "utilities",
+      "paymentMethod": "card",
+      "amount": 97300,
+      "memo": "운동 등록",
+      "createdAt": "2024-11-27T23:40:27Z"
+    },
+    {
+      "id": "1740766207",
+      "date": "2025-03-01",
+      "type": "income",
+      "category": "etc",
+      "paymentMethod": "cash",
+      "amount": 29600,
+      "memo": "장학금 입금",
+      "createdAt": "2025-03-01T03:10:07Z"
+    },
+    {
+      "id": "1734294218",
+      "date": "2024-12-16",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "cash",
+      "amount": 56300,
+      "memo": "주식 수익",
+      "createdAt": "2024-12-16T05:23:38Z"
+    },
+    {
+      "id": "1718030542",
+      "date": "2024-06-10",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "card",
+      "amount": 4700,
+      "memo": "장학금 입금",
+      "createdAt": "2024-06-10T23:42:22Z"
+    },
+    {
+      "id": "1726650099",
+      "date": "2024-09-18",
+      "type": "expense",
+      "category": "travel",
+      "paymentMethod": "cash",
+      "amount": 81000,
+      "memo": "기타 지출",
+      "createdAt": "2024-09-18T18:01:39Z"
+    },
+    {
+      "id": "1738551509",
+      "date": "2025-02-03",
+      "type": "expense",
+      "category": "health",
+      "paymentMethod": "cash",
+      "amount": 68500,
+      "memo": "도서 구매",
+      "createdAt": "2025-02-03T11:58:29Z"
+    },
+    {
+      "id": "1740046741",
+      "date": "2025-02-20",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "card",
+      "amount": 15800,
+      "memo": "용돈",
+      "createdAt": "2025-02-20T19:19:01Z"
+    },
+    {
+      "id": "1722167422",
+      "date": "2024-07-28",
+      "type": "expense",
+      "category": "leisure",
+      "paymentMethod": "card",
+      "amount": 2100,
+      "memo": "카페 방문",
+      "createdAt": "2024-07-28T20:50:22Z"
+    },
+    {
+      "id": "1727377662",
+      "date": "2024-09-27",
+      "type": "income",
+      "category": "financial",
+      "paymentMethod": "card",
+      "amount": 88300,
+      "memo": "기타 수입",
+      "createdAt": "2024-09-27T04:07:42Z"
+    },
+    {
+      "id": "1730432799",
+      "date": "2024-11-01",
+      "type": "expense",
+      "category": "contributions",
+      "paymentMethod": "cash",
+      "amount": 42700,
+      "memo": "병원 진료",
+      "createdAt": "2024-11-01T12:46:39Z"
+    },
+    {
+      "id": "1727438063",
+      "date": "2024-09-27",
+      "type": "income",
+      "category": "scholarship",
+      "paymentMethod": "card",
+      "amount": 69700,
+      "memo": "기타 수입",
+      "createdAt": "2024-09-27T20:54:23Z"
+    },
+    {
+      "id": "1742617722",
+      "date": "2025-03-22",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "card",
+      "amount": 86900,
+      "memo": "주식 수익",
+      "createdAt": "2025-03-22T13:28:42Z"
+    },
+    {
+      "id": "1734585068",
+      "date": "2024-12-19",
+      "type": "income",
+      "category": "allowance",
+      "paymentMethod": "cash",
+      "amount": 13500,
+      "memo": "용돈",
+      "createdAt": "2024-12-19T14:11:08Z"
+    },
+    {
+      "id": "1705081149",
+      "date": "2024-01-13",
+      "type": "income",
+      "category": "salary",
+      "paymentMethod": "card",
+      "amount": 15200,
+      "memo": "주식 수익",
+      "createdAt": "2024-01-13T02:39:09Z"
+    }
+  ],
+  "budgets": [
+    {
+      "category": "food",
+      "amount": 0,
+      "month": "2025-04",
+      "id": "8aa3"
+    },
+    {
+      "category": "cafesnack",
+      "amount": 0,
+      "month": "2025-04",
+      "id": "abba"
+    },
+    {
+      "category": "entertainment",
+      "amount": 0,
+      "month": "2025-04",
+      "id": "6352"
+    },
+    {
+      "category": "shopping",
+      "amount": 0,
+      "month": "2025-04",
+      "id": "a926"
+    },
+    {
+      "category": "transportation",
+      "amount": 0,
+      "month": "2025-04",
+      "id": "2651"
+    },
+    {
+      "category": "utilities",
+      "amount": 0,
+      "month": "2025-04",
+      "id": "4266"
+    },
+    {
+      "category": "health",
+      "amount": 0,
+      "month": "2025-04",
+      "id": "d67d"
+    },
+    {
+      "category": "leisure",
+      "amount": 0,
+      "month": "2025-04",
+      "id": "504e"
+    },
+    {
+      "category": "travel",
+      "amount": 0,
+      "month": "2025-04",
+      "id": "7a74"
+    },
+    {
+      "category": "contributions",
+      "amount": 0,
+      "month": "2025-04",
+      "id": "dd71"
+    },
+    {
+      "category": "savings",
+      "amount": 0,
+      "month": "2025-04",
+      "id": "d489"
+    },
+    {
+      "category": "etc",
+      "amount": 0,
+      "month": "2025-04",
+      "id": "442d"
+    },
+    {
+      "category": "food",
+      "amount": 1000000,
+      "month": "2025-03",
+      "id": "04a4"
+    },
+    {
+      "category": "cafesnack",
+      "amount": 30000,
+      "month": "2025-03",
+      "id": "9da1"
+    },
+    {
+      "category": "entertainment",
+      "amount": 0,
+      "month": "2025-03",
+      "id": "08e3"
+    },
+    {
+      "category": "shopping",
+      "amount": 30000,
+      "month": "2025-03",
+      "id": "4903"
+    },
+    {
+      "category": "transportation",
+      "amount": 500000,
+      "month": "2025-03",
+      "id": "1849"
+    },
+    {
+      "category": "utilities",
+      "amount": 0,
+      "month": "2025-03",
+      "id": "53c9"
+    },
+    {
+      "category": "health",
+      "amount": 0,
+      "month": "2025-03",
+      "id": "65ee"
+    },
+    {
+      "category": "leisure",
+      "amount": 0,
+      "month": "2025-03",
+      "id": "18f3"
+    },
+    {
+      "category": "travel",
+      "amount": 0,
+      "month": "2025-03",
+      "id": "d701"
+    },
+    {
+      "category": "contributions",
+      "amount": 0,
+      "month": "2025-03",
+      "id": "77b3"
+    },
+    {
+      "category": "savings",
+      "amount": 0,
+      "month": "2025-03",
+      "id": "db4e"
+    },
+    {
+      "category": "etc",
+      "amount": 0,
+      "month": "2025-03",
+      "id": "70e7"
     }
   ]
 }
