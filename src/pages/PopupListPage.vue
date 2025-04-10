@@ -95,66 +95,69 @@ function closeModal() {
 </script>
 
 <template>
-  <div class="popupOverlay" @click.self="closeModal">
+  <div class="popupOverlay p-4 border rounded shadow" @click.self="closeModal">
     <!-- 목록/달력 토글 & 검색/필터 영역 -->
     <!-- 테이블 영역 -->
     <div class="popupContainer">
       <div class="topDate">
-        {{ selectedDate + '\t' + getKoreanDayName(selectedDate) }}
+        {{ selectedDate }}
+        {{ getKoreanDayName(selectedDate) }}
       </div>
       <button class="closeBtn" @click="closeModal">X</button>
 
-      <table class="ledger-table">
-        <thead>
-          <tr>
-            <!-- 선택삭제용 체크박스 열 -->
-            <!-- 아직 구현 X -->
-            <th style="width: 40px"><input type="checkbox" /></th>
-            <th style="width: 120px">날짜</th>
-            <th style="width: 120px">카테고리</th>
-            <th>내용</th>
-            <th style="width: 120px">금액</th>
-            <th style="width: 60px">수정</th>
-            <th style="width: 60px">삭제</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- 필터 상태에 따라 페이징된 거래 목록 렌더링 -->
-          <tr v-for="record in filteredByDate" :key="record.id">
-            <!-- 선택삭제 체크박스 -->
-            <td>
-              <input
-                type="checkbox"
-                v-model="record.selected"
-                style="width: 16px; height: 16px"
-              />
-            </td>
-            <td>{{ record.date }}</td>
-            <td>{{ record.category }}</td>
-            <td>{{ record.memo }}</td>
-            <!--  description에서 memo로 변경 -->
-            <td>{{ formatAmount(record.amount, record.type) }}</td>
-            <!-- 수정 아이콘 -->
-            <td>
-              <i
-                class="icon-edit"
-                @click="handleEdit(record)"
-                style="cursor: pointer"
-                >✏️</i
-              >
-            </td>
-            <!-- 삭제 아이콘 -->
-            <td>
-              <i
-                class="icon-delete"
-                @click="handleDelete(record.id)"
-                style="cursor: pointer"
-                >🗑️</i
-              >
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="scrollable-table">
+        <table class="ledger-table table">
+          <thead>
+            <tr>
+              <!-- 선택삭제용 체크박스 열 -->
+              <!-- 아직 구현 X -->
+              <th style="width: 40px"><input type="checkbox" /></th>
+              <th style="width: 120px">날짜</th>
+              <th style="width: 120px">카테고리</th>
+              <th>내용</th>
+              <th style="width: 120px">금액</th>
+              <th style="width: 60px">수정</th>
+              <th style="width: 60px">삭제</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 필터 상태에 따라 페이징된 거래 목록 렌더링 -->
+            <tr v-for="record in filteredByDate" :key="record.id">
+              <!-- 선택삭제 체크박스 -->
+              <td>
+                <input
+                  type="checkbox"
+                  v-model="record.selected"
+                  style="width: 16px; height: 16px"
+                />
+              </td>
+              <td>{{ record.date }}</td>
+              <td>{{ record.category }}</td>
+              <td>{{ record.memo }}</td>
+              <!--  description에서 memo로 변경 -->
+              <td>{{ formatAmount(record.amount, record.type) }}</td>
+              <!-- 수정 아이콘 -->
+              <td>
+                <i
+                  class="icon-edit"
+                  @click="handleEdit(record)"
+                  style="cursor: pointer"
+                  >✏️</i
+                >
+              </td>
+              <!-- 삭제 아이콘 -->
+              <td>
+                <i
+                  class="icon-delete"
+                  @click="handleDelete(record.id)"
+                  style="cursor: pointer"
+                  >🗑️</i
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <button class="closepopuplist" @click="closepopuplist" />
     </div>
   </div>
@@ -177,7 +180,6 @@ function closeModal() {
 
 .popupContainer {
   width: 60rem;
-  height: 20rem;
   padding: 20px;
   background-color: #fff;
   border-radius: 12px;
@@ -190,18 +192,19 @@ function closeModal() {
 }
 .closeBtn {
   position: absolute;
-  right: 24px;
+  right: 40px;
   top: 24px;
   cursor: pointer;
   font-size: 24px;
   /* margin-left: 200px; */
 }
-/* 기존 스타일 그대로 유지 */
 
 /* 전체 컨테이너 */
 .ledger-container {
   width: 100%;
   max-width: 1200px;
+  max-height: 20rem;
+  overflow-y: auto;
   margin: 0 auto;
   font-family: sans-serif;
   background-color: #fff;
@@ -297,6 +300,11 @@ function closeModal() {
 }
 
 /* 테이블 영역 */
+.scrollable-table {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
 .ledger-table-section {
   padding: 20px;
   background-color: #f8f8f8;

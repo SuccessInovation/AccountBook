@@ -106,7 +106,7 @@ const isToday = day => {
 
 <template>
   <!-- 월 이동 컴포넌트 -->
-  <div class="calendar_carousel">
+  <!-- <div class="calendar_carousel">
     <button type="button" class="arrow" @click="calendar.go_to_prev_month">
       &lt;
     </button>
@@ -126,7 +126,7 @@ const isToday = day => {
     <button type="button" class="arrow" @click="calendar.go_to_next_month">
       &gt;
     </button>
-  </div>
+  </div> -->
   <!-- 달력 출력 -->
   <div class="container">
     <table class="table table-bordered text-center">
@@ -177,58 +177,8 @@ const isToday = day => {
 </template>
 
 <style scoped>
-.calendar_carousel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.month_slider {
-  display: flex;
-  width: 500px;
-  overflow: hidden;
-  justify-content: space-between;
-}
-
-.month_item {
-  width: 100px;
-  text-align: center;
-  font-size: 1.2rem;
-  opacity: 0.6;
-  transform: scale(0.9);
-  transition: all 0.5s ease;
-}
-
-.month_item p {
-  font-size: 2.5rem;
-}
-
-.faded {
-  opacity: 0.4;
-}
-.active {
-  font-weight: bold;
-}
-
-.month_item.active {
-  font-size: 1.5rem;
-  font-weight: bold;
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-.arrow {
-  font-size: 2rem;
-  cursor: pointer;
-  background: none;
-  border: none;
-  color: #4caf50;
-  transition: transform 0.2s ease;
-}
-.arrow:hover {
-  transform: scale(1.2);
-}
+/* 월 이동 컴포넌트 */
+/* 달력 컴포넌트 */
 .container {
   align-items: center;
   margin: 1rem;
