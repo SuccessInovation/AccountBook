@@ -95,6 +95,7 @@ const toggleStatsSubMenu = () => {
 <style scoped>
 .snb {
   background-color: var(--color-point-5);
+  height: 100$;
   z-index: 1000;
 }
 .snb.navbar {

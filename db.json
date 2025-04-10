@@ -3004,7 +3004,7 @@
   "budgets": [
     {
       "category": "food",
-      "amount": 0,
+      "amount": 10000,
       "month": "2025-04",
       "id": "8aa3"
     },
@@ -3016,7 +3016,7 @@
     },
     {
       "category": "entertainment",
-      "amount": 0,
+      "amount": 2000,
       "month": "2025-04",
       "id": "6352"
     },
@@ -3034,19 +3034,19 @@
     },
     {
       "category": "utilities",
-      "amount": 0,
+      "amount": 2000,
       "month": "2025-04",
       "id": "4266"
     },
     {
       "category": "health",
-      "amount": 0,
+      "amount": 1000,
       "month": "2025-04",
       "id": "d67d"
     },
     {
       "category": "leisure",
-      "amount": 0,
+      "amount": 20000,
       "month": "2025-04",
       "id": "504e"
     },
@@ -3058,19 +3058,19 @@
     },
     {
       "category": "contributions",
-      "amount": 0,
+      "amount": 30000,
       "month": "2025-04",
       "id": "dd71"
     },
     {
       "category": "savings",
-      "amount": 0,
+      "amount": 10,
       "month": "2025-04",
       "id": "d489"
     },
     {
       "category": "etc",
-      "amount": 0,
+      "amount": 20000,
       "month": "2025-04",
       "id": "442d"
     },
@@ -3295,6 +3295,78 @@
       "amount": 0,
       "month": "2025-04",
       "id": "d2b8"
+    },
+    {
+      "category": "food",
+      "amount": 0,
+      "month": "2024-09",
+      "id": "1bd6"
+    },
+    {
+      "category": "dessert",
+      "amount": 0,
+      "month": "2024-09",
+      "id": "7a00"
+    },
+    {
+      "category": "entertainment",
+      "amount": 0,
+      "month": "2024-09",
+      "id": "f283"
+    },
+    {
+      "category": "shopping",
+      "amount": 0,
+      "month": "2024-09",
+      "id": "dcda"
+    },
+    {
+      "category": "transportation",
+      "amount": 0,
+      "month": "2024-09",
+      "id": "deeb"
+    },
+    {
+      "category": "utilities",
+      "amount": 0,
+      "month": "2024-09",
+      "id": "08f4"
+    },
+    {
+      "category": "health",
+      "amount": 0,
+      "month": "2024-09",
+      "id": "ed48"
+    },
+    {
+      "category": "leisure",
+      "amount": 0,
+      "month": "2024-09",
+      "id": "6320"
+    },
+    {
+      "category": "travel",
+      "amount": 0,
+      "month": "2024-09",
+      "id": "c7bd"
+    },
+    {
+      "category": "contributions",
+      "amount": 0,
+      "month": "2024-09",
+      "id": "eafd"
+    },
+    {
+      "category": "savings",
+      "amount": 0,
+      "month": "2024-09",
+      "id": "bbb2"
+    },
+    {
+      "category": "etc",
+      "amount": 0,
+      "month": "2024-09",
+      "id": "38eb"
     }
   ]
 }

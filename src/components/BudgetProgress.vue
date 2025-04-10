@@ -1,88 +1,90 @@
 <template>
-  <div class="budget_container">
-    <!-- 제목 -->
-    <div class="budget_title">
-      <h2>{{ calendar.current_month + 1 }}월 총예산</h2>
-      <div class="btn_wrap">
-        <button class="setting_btn" @click.prevent="budgetSetting">
-          <img src="../img/cabbage/배추9.png" alt="예산설정버튼" />
-          <span class="btn_txt"><strong>예산설정</strong></span>
-        </button>
-      </div>
-    </div>
-    <!-- 예산이 없는 경우 -->
-    <div v-if="expenseData.length === 0" class="budget_box">
-      <div class="no_budget">
-        <p>이번 달 예산이 설정되지 않았어요</p>
-        <img src="../img/cabbage/logo1.png" alt="배추이미지" />
-      </div>
-    </div>
-    <!-- 예산이 있을 경우 -->
-    <div v-else class="overall_progress">
-      <div class="bar_wrapper">
-        <div class="category_title">
-          <div class="percentage">
-            {{ totalBudget === 0 ? '-' : overallPercent + '%' }}
-          </div>
-          <span class="left_budget" :class="{ deficit: totalLeft < 0 }">
-            {{
-              (totalLeft < 0 ? totalLeft * -1 : totalLeft).toLocaleString()
-            }}원
-            {{ totalLeft < 0 ? '초과' : '남음' }}
-          </span>
-        </div>
-        <div class="bar_background">
-          <div
-            class="bar_fill"
-            :style="{
-              width: (totalBudget === 0 ? '100' : overallPercent) + '%',
-              backgroundColor: 'var(--color-point-1)',
-            }"
-          ></div>
-        </div>
-        <div class="bar_text">
-          <span>{{ totalSpent.toLocaleString() }}원 지출</span>
-          <span>예산 {{ totalBudget.toLocaleString() }}원</span>
+  <div class="container">
+    <div class="budget_container">
+      <!-- 제목 -->
+      <div class="budget_title">
+        <h2>{{ calendar.current_month + 1 }}월 총예산</h2>
+        <div class="btn_wrap">
+          <button class="setting_btn" @click.prevent="budgetSetting">
+            <img src="../img/cabbage/배추9.png" alt="예산설정버튼" />
+            <span class="btn_txt"><strong>예산설정</strong></span>
+          </button>
         </div>
       </div>
-    </div>
-    <div
-      :class="[
-        'progress_list',
-        expenseData.length <= 3 ? 'one-column' : 'two-column',
-      ]"
-    >
-      <!-- 카테고리 별 지출, 예산 진행률 리스트 -->
-      <div
-        v-for="item in expenseData.filter(e => e.budget > 0)"
-        :key="item.category"
-        class="progress_item"
-      >
-        <div class="category_title">
-          <img class="category_icon" :src="item.icon" alt="{{item.name}}" />
-          <span>{{ item.name }}</span>
-          <div class="percentage">
-            {{ item.budget === 0 ? '-' : item.percent + '%' }}
-          </div>
-          <span class="left_budget" :class="{ deficit: item.left < 0 }">
-            {{
-              (item.left < 0 ? item.left * -1 : item.left).toLocaleString()
-            }}원
-            {{ item.left < 0 ? '초과' : '남음' }}
-          </span>
+      <!-- 예산이 없는 경우 -->
+      <div v-if="expenseData.length === 0" class="budget_box">
+        <div class="no_budget">
+          <p>이번 달 예산이 설정되지 않았어요</p>
+          <img src="../img/cabbage/logo1.png" alt="배추이미지" />
         </div>
+      </div>
+      <!-- 예산이 있을 경우 -->
+      <div v-else class="overall_progress">
         <div class="bar_wrapper">
+          <div class="category_title">
+            <div class="percentage">
+              {{ totalBudget === 0 ? '-' : overallPercent + '%' }}
+            </div>
+            <span class="left_budget" :class="{ deficit: totalLeft < 0 }">
+              {{
+                (totalLeft < 0 ? totalLeft * -1 : totalLeft).toLocaleString()
+              }}원
+              {{ totalLeft < 0 ? '초과' : '남음' }}
+            </span>
+          </div>
           <div class="bar_background">
             <div
               class="bar_fill"
               :style="{
-                width: (item.budget === 0 ? '100' : item.percent) + '%',
+                width: (totalBudget === 0 ? '100' : overallPercent) + '%',
+                backgroundColor: 'var(--color-point-1)',
               }"
             ></div>
           </div>
           <div class="bar_text">
-            <span>{{ item.spent.toLocaleString() }}원 지출</span>
-            <span>예산 {{ item.budget.toLocaleString() }}원</span>
+            <span>{{ totalSpent.toLocaleString() }}원 지출</span>
+            <span>예산 {{ totalBudget.toLocaleString() }}원</span>
+          </div>
+        </div>
+      </div>
+      <div
+        :class="[
+          'progress_list',
+          expenseData.length <= 3 ? 'one-column' : 'two-column',
+        ]"
+      >
+        <!-- 카테고리 별 지출, 예산 진행률 리스트 -->
+        <div
+          v-for="item in expenseData.filter(e => e.budget > 0)"
+          :key="item.category"
+          class="progress_item"
+        >
+          <div class="category_title">
+            <img class="category_icon" :src="item.icon" alt="{{item.name}}" />
+            <span>{{ item.name }}</span>
+            <div class="percentage">
+              {{ item.budget === 0 ? '-' : item.percent + '%' }}
+            </div>
+            <span class="left_budget" :class="{ deficit: item.left < 0 }">
+              {{
+                (item.left < 0 ? item.left * -1 : item.left).toLocaleString()
+              }}원
+              {{ item.left < 0 ? '초과' : '남음' }}
+            </span>
+          </div>
+          <div class="bar_wrapper">
+            <div class="bar_background">
+              <div
+                class="bar_fill"
+                :style="{
+                  width: (item.budget === 0 ? '100' : item.percent) + '%',
+                }"
+              ></div>
+            </div>
+            <div class="bar_text">
+              <span>{{ item.spent.toLocaleString() }}원 지출</span>
+              <span>예산 {{ item.budget.toLocaleString() }}원</span>
+            </div>
           </div>
         </div>
       </div>
@@ -125,17 +127,19 @@ const budgetSetting = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
-  font-weight: bold;
   margin: 0.375rem auto;
   padding: 1rem 2rem;
+  font-size: 1.2rem;
+}
+.budget_title h2 {
+  font-weight: bold;
+  font-size: 30px;
 }
 /* 버튼 위치, 크기, 색상 */
 .btn_wrap {
   position: absolute;
   right: 0;
 }
-
 .setting_btn {
   align-items: center;
   width: 3rem;
@@ -154,12 +158,27 @@ const budgetSetting = () => {
 
 /* *** 컨텐츠 박스 영역 *** */
 /* 컨텐츠 박스 설정 */
-.budget_container {
+/* .budget_container {
   border: 1rem solid var(--color-point-3);
   border-radius: 1rem;
   padding: 20px;
   max-width: 900px;
   height: 600px;
+  margin: 1.5rem auto;
+} */
+.container {
+  background-color: var(--color-point-3);
+  border-radius: 30px;
+  max-width: 900px;
+  min-width: 768px;
+  height: 600px;
+}
+.budget_container {
+  background-color: #fff;
+  border-radius: 15px;
+  width: 95%;
+  height: 98%;
+  padding: 20px;
   margin: 1.5rem auto;
 }
 
@@ -171,7 +190,7 @@ const budgetSetting = () => {
 }
 
 .no_budget {
-  width: 45%;
+  width: 30%;
   text-align: center;
 }
 

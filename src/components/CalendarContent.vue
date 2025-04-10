@@ -20,8 +20,11 @@ const month_names = calendar.month_names
         :key="index"
         class="month_item"
       >
-        <p :class="{ active: index === 1, faded: index !== 1 }">
-          {{ month.year }} {{ month_names[month.month] }}
+        <p id="year" :class="{ active: index === 1, faded: index !== 1 }">
+          {{ month.year }}
+        </p>
+        <p id="month" :class="{ active: index === 1, faded: index !== 1 }">
+          {{ month_names[month.month] }}
         </p>
       </div>
     </div>
@@ -37,49 +40,49 @@ const month_names = calendar.month_names
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
 }
-
 .month_slider {
   display: flex;
-  width: 500px;
+  width: 350px;
   overflow: hidden;
-  justify-content: space-between;
+  justify-content: space-around;
 }
-
 .month_item {
   width: 100px;
   text-align: center;
-  font-size: 1.2rem;
   opacity: 0.6;
   transform: scale(0.9);
   transition: all 0.5s ease;
 }
-
-.month_item p {
-  font-size: 2.5rem;
+#year {
+  font-size: 15px;
+  margin: 0px;
+  padding: 0px;
 }
-
+#month {
+  font-size: 45px;
+}
 .faded {
   opacity: 0.4;
 }
-.active {
-  font-weight: bold;
+#year.faded {
+  font-size: 12px;
+  margin-top: 30px;
 }
-
-.month_item.active {
-  font-size: 1.5rem;
+#month.faded {
+  font-size: 25px;
+}
+.active {
   font-weight: bold;
   opacity: 1;
   transform: scale(1.1);
 }
-
 .arrow {
   font-size: 2rem;
   cursor: pointer;
   background: none;
   border: none;
-  color: #4caf50;
+  color: var(--color-point-1);
   transition: transform 0.2s ease;
 }
 .arrow:hover {

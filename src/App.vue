@@ -39,6 +39,7 @@ export default {
   margin-top: 120px; /* 헤더 높이 */
 }
 .container_router_view {
-  flex: 1;
+  display: flex;
+  left: 250px;
 }
 </style>
