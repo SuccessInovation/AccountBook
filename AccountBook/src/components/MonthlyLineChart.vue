@@ -1,10 +1,14 @@
 <template>
+  <!-- 차트 있을 때만 랜더링 -->
   <div v-if="chartData" class="chart_wrapper">
     <div class="chart_wrap">
+      <!-- 라인차트 영역 -->
       <div class="line_chart">
         <Line :data="chartData" :options="chartOptions" />
       </div>
+      <!-- 라인차트 설명 영역 -->
       <div class="line-description">
+        <!-- 현재 월 지출, 전월 대비 증감 설명 -->
         <p class="line-description-box">
           이번 달 지출은
           <span class="line-description-text"
@@ -19,6 +23,7 @@
           </span>
           {{ monthOverMonthMessage }}
         </p>
+        <!-- 8개월 평균 지출 -->
         <p class="line-description-box">
           최근 8개월 간 평균 지출액은 <br />
           <span class="line-description-text"
@@ -28,11 +33,11 @@
       </div>
     </div>
   </div>
+  <!-- 데이터 없을 때 메시지 -->
   <div v-else>데이터를 불러오는 중...</div>
 </template>
 
 <script setup>
-// Chart.js, vue-chartjs import
 import {
   Chart as ChartJS,
   Title,
@@ -46,7 +51,6 @@ import {
 import { Line } from 'vue-chartjs'
 import { computed } from 'vue'
 import { toRefs } from 'vue'
-// 이거 추가함
 import { use_calendar_store } from '@/stores/MonthSelector'
 
 // Chart.js 플러그인 등록
@@ -59,32 +63,32 @@ ChartJS.register(
   LinearScale,
   CategoryScale,
 )
-// props 받기
+// props로 부모 컴포넌트에서 지출 데이터 받아오기
 const props = defineProps({
   monthlyExpenses: {
     type: Object,
     required: true,
   },
 })
-// reactive props 구조 분해
+// 반응형으로 구조 분해
 const { monthlyExpenses } = toRefs(props)
 
-// ------------------------
-
-// 캘린더 store: 현재 월 정보 가져오기
+// 캘린더 store에서 현재 연/월 정보 가져오기
 const calendar = use_calendar_store()
+
+// 현재 월 key 구하기
 const currentMonthKey = computed(() => {
   const year = calendar.current_year
   const month = String(calendar.current_month + 1).padStart(2, '0')
   return `${year}-${month}` // ex) '2025-04'
 })
 
-// ✅ 현재 월 지출
+// 현재 월 지출액
 const currentMonthExpense = computed(() => {
   return monthlyExpenses.value?.[currentMonthKey.value] ?? 0
 })
 
-// ✅ 전월 지출
+// 전 월 key 구하기
 const previousMonthKey = computed(() => {
   const date = new Date(calendar.current_year, calendar.current_month - 1)
   const year = date.getFullYear()
@@ -92,11 +96,12 @@ const previousMonthKey = computed(() => {
   return `${year}-${month}`
 })
 
+// 전월 지출액
 const previousMonthExpense = computed(() => {
   return monthlyExpenses.value?.[previousMonthKey.value] ?? 0
 })
 
-// ✅ 전월 대비 증감률 (%)
+// 전월 대비 증감률 (%)
 const monthOverMonthChange = computed(() => {
   if (previousMonthExpense.value === 0) return null // 전월 데이터 없을 때
   const diff = currentMonthExpense.value - previousMonthExpense.value
@@ -104,6 +109,7 @@ const monthOverMonthChange = computed(() => {
   return rate.toFixed(1)
 })
 
+// 증감률에 따른 메시지
 const monthOverMonthMessage = computed(() => {
   const change = monthOverMonthChange.value
   if (change === null) return '비교할 지난 달 지출이 없네요! 😅'
@@ -112,10 +118,7 @@ const monthOverMonthMessage = computed(() => {
   return '변동이 없어요.'
 })
 
-// console.log('monthOverMonthChange:', monthOverMonthChange.value)
-// console.log('typeof:', typeof monthOverMonthChange.value)
-
-// ✅ 8개월 평균
+// 8개월 평균 지출액 계산
 const averageExpense = computed(() => {
   const amounts = Object.values(monthlyExpenses.value)
   if (amounts.length === 0) return 0
@@ -123,9 +126,7 @@ const averageExpense = computed(() => {
   return Math.round(sum / amounts.length)
 })
 
-// ------------------------
-
-// 차트 데이터
+// 라인차트에 들어갈 데이터 구성
 const chartData = computed(() => {
   if (
     !monthlyExpenses.value ||
@@ -156,7 +157,7 @@ const chartData = computed(() => {
   }
 })
 
-// 차트 옵션
+// 차트 옵션 (디자인/제목/축 등 설정)
 const chartOptions = computed(() => ({
   responsive: true,
   maintainAspectRatio: false,
@@ -180,10 +181,7 @@ const chartOptions = computed(() => ({
 }))
 </script>
 <style scoped>
-/* p {
-    margin-bottom: 1rem;
-  } */
-
+/* 전체 wrapper */
 .chart_wrapper {
   width: 100%;
   height: 300px;
@@ -191,19 +189,23 @@ const chartOptions = computed(() => ({
   position: relative;
 }
 
+/* 차트, 설명 감싸는 컨테이너 */
 .chart_wrap {
   width: 100%;
   height: 300px;
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+  margin-top: 30px;
 }
 
+/* 라인차트 영역 */
 .line_chart {
   flex: 1;
   margin-left: 2rem;
 }
 
+/* 설명 텍스트 영역 */
 .line-description {
   width: 30%;
   margin-right: 2rem;
@@ -214,6 +216,7 @@ const chartOptions = computed(() => ({
   text-align: center;
 }
 
+/* 강조 텍스트 스타일 */
 .line-description-text {
   background: #c9b194;
 }
