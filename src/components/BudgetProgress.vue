@@ -99,13 +99,13 @@ const calendar = use_calendar_store()
 
 const emit = defineEmits(['setting'])
 
-const budgetSetting = () => {
-  console.log('클릭됨')
-  emit('setting')
-}
-
 const { expenseData, totalBudget, totalSpent, overallPercent, totalLeft } =
   useBudgetProgress()
+
+const budgetSetting = () => {
+  console.log('클릭됨')
+  emit('setting') // 예산 설정 UI 열기
+}
 </script>
 
 <style scoped>

@@ -39,7 +39,6 @@ export function useBudgetProgress() {
       startDate,
       endDate,
     )
-    console.log('✅ 필터된 거래', result)
 
     const expenses = result.filter(exp => exp.type === 'expense')
     const incomes = result.filter(exp => exp.type === 'income')
@@ -124,33 +123,28 @@ export function useBudgetProgress() {
 
   // endregion
 
-  onMounted(() => {
-    loadExpensebyMonth(
+  const refresh = async () => {
+    await loadExpensebyMonth(
       calendar.monthStartDate,
       calendar.monthEndDate,
       calendar.monthKey,
     )
-  })
+  }
+  onMounted(refresh)
 
   // 달 변경되면 자동으로 다시 계산
   watch(
     () => [calendar.monthStartDate, calendar.monthEndDate, calendar.monthKey],
-    () => {
-      loadExpensebyMonth(
-        calendar.monthStartDate,
-        calendar.monthEndDate,
-        calendar.monthKey,
-      )
-    },
+    refresh,
   )
   return {
     expenseData,
     incomeData,
     totalBudget,
     totalSpent,
-
     totalIncome,
     overallPercent,
     totalLeft,
+    refresh,
   }
 }
