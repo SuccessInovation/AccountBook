@@ -4,7 +4,7 @@ import { ref, computed, onMounted, watch } from 'vue'
 // 거래 내역을 상태로 관리하는 Pinia store
 import { useTransactionStore } from '@/stores/TransactionStore'
 
-// 필터링 컴포넌트 (카테고리 선택 / 메모 검색창)
+// 필터링 컴포넌트 ( 카테고리 선택/메모 검색창 )
 import FilterCategory from '@/components/FilterCategory.vue'
 import SearchByMemo from '@/components/SearchByMemo.vue'
 
@@ -14,6 +14,8 @@ import {
   EXPENSE_CATEGORIES,
   CATEGORY_MAP,
 } from '@/constants/categories'
+
+// 내역 추가 버튼 누르면 나타나는 입력 팝업창
 
 // Pinia store 불러오기
 const transactionStore = useTransactionStore()
@@ -134,7 +136,8 @@ watch([incomeChecked, expenseChecked], () => {
 
 <template>
   <div class="TransactionPage">
-    <div class="container-fluid px-4 py-4" style="min-height: 100vh">
+    <div class="container-fluid px-4 py-4">
+      <!-- 필터 영역 -->
       <div
         class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2"
       >
@@ -176,64 +179,71 @@ watch([incomeChecked, expenseChecked], () => {
             </label>
           </div>
         </div>
+      </div>
 
-        <!-- 거래내역이 없을 경우 메시지 출력 -->
-        <div v-if="filteredList.length === 0" id="emptyTransaction">
-          표시할 내역이 없습니다.
-        </div>
-
-        <!-- '수입/지출' 필터링된 거래내역 -->
-        <div
-          v-else
-          class="table-responsive rounded shadow-sm bg-white px-3 w-100"
-          style="max-height: 400px; overflow-y: auto"
-        >
-          <table class="table table-hover mb-0 text-center align-middle">
-            <thead class="table-light">
-              <tr>
-                <th scope="col" style="width: 40px">
-                  <input type="checkbox" />
-                </th>
-                <th scope="col" style="width: 160px">날짜</th>
-                <th scope="col" style="width: 150px">카테고리</th>
-                <!-- 'width: auto': 남은 공간 자동으로 차지 -->
-                <th scope="col" style="width: auto">메모</th>
-                <th scope="col" style="width: 150px">금액</th>
-                <th scope="col" style="width: 60px">수정</th>
-                <th scope="col" style="width: 60px">삭제</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- 카테고리 필터링된 거래내역 -->
-              <tr v-for="filtered in filteredList" :key="filtered.id">
-                <td><input type="checkbox" /></td>
-                <td>{{ filtered.date }}</td>
-                <td>
-                  {{ CATEGORY_MAP[filtered.category] || filtered.category }}
-                </td>
-                <!-- text-truncate: 길어지면 말줄임표(...) 처리 (너비제한 필요) -->
-                <td class="text-start text-truncate" style="max-width: 300px">
-                  {{ filtered.memo }}
-                </td>
-                <td class="text-end">
-                  {{ prettyAmount(filtered.amount, filtered.type) }} 원
-                </td>
-                <td>
-                  <i
-                    class="text-success d-block mx-auto"
-                    style="cursor: pointer"
-                    >✏️</i
-                  >
-                </td>
-                <td>
-                  <i class="text-danger d-block mx-auto" style="cursor: pointer"
-                    >🗑️</i
-                  >
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <!-- '수입/지출' 필터링된 거래내역 -->
+      <div
+        v-if="filteredList.length > 0"
+        class="table-responsive rounded shadow-sm bg-white px-3 w-100"
+        style="max-height: 400px; overflow-y: auto"
+      >
+        <table class="table table-hover mb-0 text-center align-middle">
+          <thead class="table-light">
+            <tr>
+              <th scope="col" style="width: 40px">
+                <input type="checkbox" />
+              </th>
+              <th scope="col" style="width: 160px">날짜</th>
+              <th scope="col" style="width: 150px">카테고리</th>
+              <!-- 'width: auto': 남은 공간 자동으로 차지 -->
+              <th scope="col" style="width: auto">메모</th>
+              <th scope="col" style="width: 150px">금액</th>
+              <th scope="col" style="width: 60px">수정</th>
+              <th scope="col" style="width: 60px">삭제</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 카테고리 필터링된 거래내역 -->
+            <tr v-for="filtered in filteredList" :key="filtered.id">
+              <td><input type="checkbox" /></td>
+              <td>{{ filtered.date }}</td>
+              <td>
+                {{ CATEGORY_MAP[filtered.category] || filtered.category }}
+              </td>
+              <!-- text-truncate: 길어지면 말줄임표(...) 처리 (너비제한 필요) -->
+              <td class="text-start text-truncate" style="max-width: 300px">
+                {{ filtered.memo }}
+              </td>
+              <td class="text-end">
+                {{ prettyAmount(filtered.amount, filtered.type) }} 원
+              </td>
+              <td>
+                <i class="text-success d-block mx-auto" style="cursor: pointer"
+                  >✏️</i
+                >
+              </td>
+              <td>
+                <i class="text-danger d-block mx-auto" style="cursor: pointer"
+                  >🗑️</i
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- 거래내역 없을 경우 메시지 출력 -->
+      <div
+        v-else
+        id="emptyTransaction"
+        class="text-center text-muted mt-4 fs-5"
+        style="
+          min-height: 200px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        표시할 내역이 없습니다.
       </div>
     </div>
   </div>
