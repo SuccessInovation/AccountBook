@@ -1,8 +1,109 @@
+<script setup>
+import { ref, computed, onMounted, watch } from 'vue'
+import { useTransactionStore } from '@/stores/TransactionStore'
+import { useRoute } from 'vue-router'
+// import
+
+const transactionStore = useTransactionStore()
+const route = useRoute()
+
+console.log('날짜:', route.query.date) // console.log(route.params.id)
+//달력 showCalendar, openCalendar
+// const showCalendar = ref(false)
+
+// const openCalendar = () => {
+//   showCalendar.value = true
+// }
+
+// 페이지 로드 시 거래 내역 불러오기
+onMounted(() => {
+  transactionStore.fetchTransactions()
+})
+
+// 필터 상태: 수입/지출 (기본: 모두 체크)
+// const showIncome = ref(true)
+// const showExpense = ref(true)
+
+// 필터링된 거래 내역 목록 (수입/지출 체크 상태에 따라)
+// const filteredTransactions = computed(() => {
+//   return transactionStore.transactions.filter(record => {
+//     if (record.type === 'income' && showIncome.value) return true
+//     if (record.type === 'expense' && showExpense.value) return true
+//     return false
+//   })
+// })
+
+const selectedDate = ref(route.query.date || '')
+console.log('선택요일:', selectedDate.value)
+onMounted(() => {
+  transactionStore.fetchTransactions()
+})
+
+// 날짜 기준으로 필터링
+const filteredByDate = computed(() => {
+  return transactionStore.transactions.filter(
+    t => t.date === selectedDate.value,
+  )
+})
+watch(
+  () => route.query.date,
+  newVal => {
+    selectedDate.value = newVal
+  },
+)
+console.log('선택된 날짜:', selectedDate.value)
+console.log('전체 거래 내역:', transactionStore.transactions)
+console.log('필터된 결과:', filteredByDate.value)
+
+// 금액 포맷 함수:
+// - value를 숫자로 변환하고,
+// - 거래 유형에 따라 '수입'은 '+' 기호, '지출'은 '-' 기호 추가
+function formatAmount(value, type) {
+  const num = parseFloat(value)
+  if (isNaN(num)) return value
+  const formatted = num.toLocaleString()
+  return type === 'income'
+    ? `+${formatted}`
+    : type === 'expense'
+      ? `-${formatted}`
+      : formatted
+}
+
+// 혁신님이 주시면 갈아끼우기(handleEdit, handleDelete)
+// 수정 아이콘 클릭 시 처리 (수정 페이지로 이동)
+function handleEdit(record) {
+  router.push({ name: 'Popup', params: { id: record.id } })
+}
+
+// 삭제 아이콘 클릭 시 처리 (삭제 확인 후 삭제)
+function handleDelete(id) {
+  if (window.confirm('정말 삭제하시겠습니까?')) {
+    transactionStore.deleteTransaction(id)
+  }
+}
+// 날짜 -> 요일로 바꾸는 함수
+function getKoreanDayName(dateStr) {
+  const date = new Date(dateStr)
+  return date.toLocaleDateString('ko-KR', { weekday: 'long' })
+}
+
+// x버튼 (팝업 취소)
+const emit = defineEmits(['close'])
+function closeModal() {
+  emit('close')
+}
+</script>
+
 <template>
-  <div class="ledger-container">
+  <div class="popupOverlay" @click.self="closeModal">
     <!-- 목록/달력 토글 & 검색/필터 영역 -->
     <!-- 테이블 영역 -->
-    <section class="ledger-table-section">
+    <div class="popupContainer">
+      <div class="topDate">
+        {{ selectedDate + '\t' + getKoreanDayName(selectedDate) }}
+      </div>
+      <button class="closeBtn" @click="closeModal">X</button>
+
       <table class="ledger-table">
         <thead>
           <tr>
@@ -30,7 +131,8 @@
             </td>
             <td>{{ record.date }}</td>
             <td>{{ record.category }}</td>
-            <td>{{ record.description }}</td>
+            <td>{{ record.memo }}</td>
+            <!--  description에서 memo로 변경 -->
             <td>{{ formatAmount(record.amount, record.type) }}</td>
             <!-- 수정 아이콘 -->
             <td>
@@ -54,103 +156,46 @@
         </tbody>
       </table>
       <button class="closepopuplist" @click="closepopuplist" />
-    </section>
-
-    <!-- 하단 '추가' 버튼 -->
-    <!-- <AddListBtn /> -->
-    <!-- <div class="add-button-area">
-      <router-link to="/popup" class="add-button">추가 +</router-link> -->
-    <!-- <button class="add-button">추가</button> -->
-    <!-- </div> -->
+    </div>
   </div>
 </template>
 
-<script setup>
-import { ref, computed, onMounted } from 'vue'
-import { useTransactionStore } from '@/stores/TransactionStore'
-import { useRoute } from 'vue-router'
-// import
-
-// 달력,AddListBtn import
-import CalendarContent from '@/components/CalendarContent.vue'
-import AddListBtn from '@/components/AddListBtn.vue'
-
-const transactionStore = useTransactionStore()
-const route = useRoute()
-
-console.log('날짜:', route.query.date) // console.log(route.params.id)
-//달력 showCalendar, openCalendar
-// const showCalendar = ref(false)
-
-// const openCalendar = () => {
-//   showCalendar.value = true
-// }
-
-// 페이지 로드 시 거래 내역 불러오기
-onMounted(() => {
-  transactionStore.fetchTransactions()
-})
-
-// 필터 상태: 수입/지출 (기본: 모두 체크)
-const showIncome = ref(true)
-const showExpense = ref(true)
-
-// 필터링된 거래 내역 목록 (수입/지출 체크 상태에 따라)
-const filteredTransactions = computed(() => {
-  return transactionStore.transactions.filter(record => {
-    if (record.type === '수입' && showIncome.value) return true
-    if (record.type === '지출' && showExpense.value) return true
-    return false
-  })
-})
-
-const selectedDate = ref(route.query.date || '')
-console.log('선택요일:', selectedDate.value)
-onMounted(() => {
-  transactionStore.fetchTransactions()
-})
-
-// 날짜 기준으로 필터링
-const filteredByDate = computed(() => {
-  return transactionStore.transactions.filter(
-    t => t.date === selectedDate.value,
-  )
-})
-
-console.log('선택된 날짜:', selectedDate.value)
-// console.log('전체 거래 내역:', transactionStore.transactions)
-console.log('필터된 결과:', filteredByDate.value)
-
-// 금액 포맷 함수:
-// - value를 숫자로 변환하고,
-// - 거래 유형에 따라 '수입'은 '+' 기호, '지출'은 '-' 기호 추가
-function formatAmount(value, type) {
-  const num = parseFloat(value)
-  if (isNaN(num)) return value
-  const formatted = num.toLocaleString()
-  return type === '수입'
-    ? `+${formatted}`
-    : type === '지출'
-      ? `-${formatted}`
-      : formatted
-}
-
-// 수정 아이콘 클릭 시 처리 (수정 페이지로 이동)
-function handleEdit(record) {
-  router.push({ name: 'Popup', params: { id: record.id } })
-}
-
-// 삭제 아이콘 클릭 시 처리 (삭제 확인 후 삭제)
-function handleDelete(id) {
-  if (window.confirm('정말 삭제하시겠습니까?')) {
-    transactionStore.deleteTransaction(id)
-  }
-}
-</script>
-
-<style scoped></style>
-
+/* 혁신님 팝업 페이지 스타일 */
 <style scoped>
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4); /* 배경 딤 처리 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* 다른 컴포넌트 위에 표시 */
+}
+
+.popupContainer {
+  width: 60rem;
+  height: 20rem;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-family: sans-serif;
+  position: relative;
+}
+.topDate {
+  text-align: center;
+}
+.closeBtn {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  cursor: pointer;
+  font-size: 24px;
+  /* margin-left: 200px; */
+}
 /* 기존 스타일 그대로 유지 */
 
 /* 전체 컨테이너 */
@@ -263,6 +308,7 @@ function handleDelete(id) {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 3rem;
 }
 .ledger-table thead {
   background-color: #e2e2e2;

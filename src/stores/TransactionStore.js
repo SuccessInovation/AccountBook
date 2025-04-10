@@ -11,7 +11,7 @@ export const useTransactionStore = defineStore('transaction', {
     // 거래 내역 불러오기: 날짜(date) 기준 내림차순 정렬
     async fetchTransactions() {
       try {
-        const response = await axios.get('http://localhost:3000/records')
+        const response = await axios.get('http://localhost:3000/transactions')
         // 거래 데이터를 date를 기준으로 최신순(내림차순) 정렬
         this.transactions = response.data.sort(
           (a, b) => new Date(b.date) - new Date(a.date),

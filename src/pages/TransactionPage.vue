@@ -11,11 +11,11 @@ import TransactionContent from '@/components/TransactionContent.vue'
 const transactionStore = useTransactionStore()
 const router = useRouter()
 //달력 showCalendar, openCalendar
-const showCalendar = ref(false)
+// const showCalendar = ref(false)
 
-const openCalendar = () => {
-  showCalendar.value = true
-}
+// const openCalendar = () => {
+//   showCalendar.value = true
+// }
 const activeTab = ref('list') // 기본 탭: list
 
 // const tabs = ['목록', '달력']
@@ -47,51 +47,51 @@ const totalPages = computed(() => {
   return Math.ceil(filteredTransactions.value.length / pageSize.value) || 1
 })
 
-// 현재 페이지의 항목: filteredTransactions를 currentPage와 pageSize에 따라 슬라이스
-const paginatedTransactions = computed(() => {
-  const start = (currentPage.value - 1) * pageSize.value
-  return filteredTransactions.value.slice(start, start + pageSize.value)
-})
+// // 현재 페이지의 항목: filteredTransactions를 currentPage와 pageSize에 따라 슬라이스
+// const paginatedTransactions = computed(() => {
+//   const start = (currentPage.value - 1) * pageSize.value
+//   return filteredTransactions.value.slice(start, start + pageSize.value)
+// })
 
-// 이전 페이지 버튼 함수
-function prevPage() {
-  if (currentPage.value > 1) {
-    currentPage.value--
-  }
-}
+// // 이전 페이지 버튼 함수
+// function prevPage() {
+//   if (currentPage.value > 1) {
+//     currentPage.value--
+//   }
+// }
 
-// 다음 페이지 버튼 함수
-function nextPage() {
-  if (currentPage.value < totalPages.value) {
-    currentPage.value++
-  }
-}
+// // 다음 페이지 버튼 함수
+// function nextPage() {
+//   if (currentPage.value < totalPages.value) {
+//     currentPage.value++
+//   }
+// }
 
 // 금액 포맷 함수:
 // - value를 숫자로 변환하고,
 // - 거래 유형에 따라 '수입'은 '+' 기호, '지출'은 '-' 기호 추가
-function formatAmount(value, type) {
-  const num = parseFloat(value)
-  if (isNaN(num)) return value
-  const formatted = num.toLocaleString()
-  return type === '수입'
-    ? `+${formatted}`
-    : type === '지출'
-      ? `-${formatted}`
-      : formatted
-}
+// function formatAmount(value, type) {
+//   const num = parseFloat(value)
+//   if (isNaN(num)) return value
+//   const formatted = num.toLocaleString()
+//   return type === '수입'
+//     ? `+${formatted}`
+//     : type === '지출'
+//       ? `-${formatted}`
+//       : formatted
+// }
 
-// 수정 아이콘 클릭 시 처리 (수정 페이지로 이동)
-function handleEdit(record) {
-  router.push({ name: 'Popup', params: { id: record.id } })
-}
+// // 수정 아이콘 클릭 시 처리 (수정 페이지로 이동)
+// function handleEdit(record) {
+//   router.push({ name: 'Popup', params: { id: record.id } })
+// }
 
-// 삭제 아이콘 클릭 시 처리 (삭제 확인 후 삭제)
-function handleDelete(id) {
-  if (window.confirm('정말 삭제하시겠습니까?')) {
-    transactionStore.deleteTransaction(id)
-  }
-}
+// // 삭제 아이콘 클릭 시 처리 (삭제 확인 후 삭제)
+// function handleDelete(id) {
+//   if (window.confirm('정말 삭제하시겠습니까?')) {
+//     transactionStore.deleteTransaction(id)
+//   }
+// }
 </script>
 <!-- 탭메뉴 -->
 <template>

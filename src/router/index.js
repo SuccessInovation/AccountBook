@@ -52,12 +52,6 @@ const routes = [
     meta: { layout: 'default' }, //  헤더/사이드바 있는 레이아웃
   },
   {
-    path: '/popup/list',
-    name: 'PopupList',
-    component: PopupListPage,
-    meta: { layout: 'default' }, //  헤더/사이드바 있는 레이아웃
-  },
-  {
     path: '/statistics/summary',
     name: 'Statistics',
     component: StatisticsPage,
