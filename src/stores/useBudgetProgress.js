@@ -25,6 +25,11 @@ export function useBudgetProgress() {
   const overallPercent = ref(0)
   const totalLeft = ref(0)
 
+  // @params = 예산이 설정되지 않더라도 카테고리를 모두 더하는 함수
+  const rawTotalBudget = ref(0)
+  const rawTotalSpent = ref(0)
+  const rawTotalIncome = ref(0)
+
   //#region 함수 기능
   /**
    * 한달 지출을 불러와서 카테고리별로 예산에 다른 지출 비율 계산 함수
@@ -39,6 +44,8 @@ export function useBudgetProgress() {
       startDate,
       endDate,
     )
+    // 월 데이터를 잘 불러오고 있는지 확인 콘솔
+    // console.log('월별 전체 거래 데이터', result)
 
     const expenses = result.filter(exp => exp.type === 'expense')
     const incomes = result.filter(exp => exp.type === 'income')
@@ -119,8 +126,36 @@ export function useBudgetProgress() {
           )
 
     totalLeft.value = totalBudget.value - totalSpent.value
-  }
 
+    // 1. 전체 지출 합계
+    rawTotalSpent.value = EXPENSE_CATEGORIES.reduce((sum, cat) => {
+      return sum + (spendingByCategory[cat] || 0)
+    }, 0)
+
+    // 2. 전체 예산 합계
+    rawTotalBudget.value = EXPENSE_CATEGORIES.reduce((sum, cat) => {
+      return sum + (budgetByCategory[cat] || 0)
+    }, 0)
+
+    // 3. 전체 수입 합계
+    rawTotalIncome.value = INCOME_CATEGORIES.reduce((sum, cat) => {
+      return sum + (incomeByCategory[cat] || 0)
+    }, 0)
+    // 1. 전체 지출 합계
+    rawTotalSpent.value = EXPENSE_CATEGORIES.reduce((sum, cat) => {
+      return sum + (spendingByCategory[cat] || 0)
+    }, 0)
+
+    // 2. 전체 예산 합계
+    rawTotalBudget.value = EXPENSE_CATEGORIES.reduce((sum, cat) => {
+      return sum + (budgetByCategory[cat] || 0)
+    }, 0)
+
+    // 3. 전체 수입 합계
+    rawTotalIncome.value = INCOME_CATEGORIES.reduce((sum, cat) => {
+      return sum + (incomeByCategory[cat] || 0)
+    }, 0)
+  }
   // endregion
 
   const refresh = async () => {
@@ -146,5 +181,10 @@ export function useBudgetProgress() {
     overallPercent,
     totalLeft,
     refresh,
+
+    // 새로 추가된 "전체 기준" 합계
+    rawTotalBudget,
+    rawTotalSpent,
+    rawTotalIncome,
   }
 }

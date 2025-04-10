@@ -16,7 +16,7 @@ import { useBudgetProgress } from '@/stores/useBudgetProgress'
 // const { netProfitData, monthlyCategoryData } = storeToRefs(store)
 // const { monthStartDate, monthEndDate, monthKey } = storeToRefs(calendar)
 
-const { totalBudget, totalIncome, totalSpent } = useBudgetProgress()
+const { rawTotalBudget, rawTotalIncome, rawTotalSpent } = useBudgetProgress()
 
 // 월 변경될 때마다 수입/지출, 예산 불러오기
 // watch(
@@ -55,9 +55,9 @@ const { totalBudget, totalIncome, totalSpent } = useBudgetProgress()
     <CalendarContent />
     <!-- 값이 정의되었을 때만 렌더링 -->
     <SummaryCard
-      :totalIncome="totalIncome"
-      :totalExpense="totalSpent"
-      :budget="totalBudget"
+      :totalIncome="rawTotalIncome"
+      :totalExpense="rawTotalSpent"
+      :budget="rawTotalBudget"
     />
   </div>
 </template>
