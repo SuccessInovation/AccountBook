@@ -34,6 +34,7 @@
   background-color: var(--color-point-5);
   box-sizing: border-box;
 }
+
 /* 배추 로고 */
 h1 {
   margin: 0;
@@ -45,7 +46,7 @@ h1 {
 }
 #logo {
   height: 100%;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   font-size: 45px;
   font-weight: bold;
@@ -79,10 +80,13 @@ h1 {
   margin-left: auto;
   cursor: pointer;
 }
+/* 프로필 아이콘 */
 #img_profile {
+  position: fixed;
+  right: 20px;
   width: 70px;
   height: 70px;
-  object-fit: cover; /* 이미지 비율 잘 맞추기: 화면 비율 고정ㄴ*/
+  object-fit: cover; /* 이미지 비율 잘 맞추기: 화면 비율 고정*/
   border-radius: 50%;
   border: 3px solid white;
   cursor: pointer;
