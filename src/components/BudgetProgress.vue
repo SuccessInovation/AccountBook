@@ -54,7 +54,7 @@
     >
       <!-- 카테고리 별 지출, 예산 진행률 리스트 -->
       <div
-        v-for="item in progressData"
+        v-for="item in expenseData.filter(e => e.budget > 0)"
         :key="item.category"
         class="progress_item"
       >

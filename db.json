@@ -3004,7 +3004,7 @@
   "budgets": [
     {
       "category": "food",
-      "amount": 0,
+      "amount": 10000000,
       "month": "2025-04",
       "id": "8aa3"
     },
@@ -3028,7 +3028,7 @@
     },
     {
       "category": "transportation",
-      "amount": 0,
+      "amount": 555555,
       "month": "2025-04",
       "id": "2651"
     },

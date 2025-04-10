@@ -1,11 +1,12 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
-// import {
-//   calculateCategoryTotals,
-//   calculateMonthlyTotals,
-//   calculateNetProfit,
-// } from '@/utils/statistics'
+import {
+  calculateCategoryTotals,
+  calculateMonthlyTotals,
+  calculateNetProfit,
+} from '@/utils/statistics'
 
+import { use_calendar_store } from '@/stores/MonthSelector'
 // BASE_URI (db.json)
 import { BASE_URI } from '@/constants/api'
 
@@ -41,7 +42,8 @@ export const statisticsStore = defineStore('statistics', {
         this.transactions = res.data.sort(
           (a, b) => new Date(b.date) - new Date(a.date),
         )
-        // this.calculateStatistics() // 불러온 데이터로 통계 계산 시작
+        // 불러온 데이터로 통계 계산 시작
+        // this.calculateStatistics()
 
         const today = new Date() // 오늘 날짜
         const defaultStart = new Date()
@@ -57,7 +59,20 @@ export const statisticsStore = defineStore('statistics', {
           return transactionDate >= start && transactionDate <= end
         })
 
-        return (this.filteredTransaction = filtered)
+        this.filteredTransaction = filtered
+        console.log(
+          '[📦 fetchTransactionsByPeriod] 필터링된 거래 수:',
+          filtered.length,
+        )
+        console.log(
+          '[📦 fetchTransactionsByPeriod] 예시:',
+          filtered.slice(0, 2),
+        )
+
+        // ✅ 필터링 저장 후 통계 계산 (순서 중요)
+        this.calculateStatistics()
+
+        return filtered
       } catch (err) {
         this.error = err.message
         return []
@@ -67,19 +82,26 @@ export const statisticsStore = defineStore('statistics', {
     },
 
     // 통계 계산
-    // calculateStatistics() {
-    //   console.log('filteredRecords:', this.filteredTransaction)
-    //   this.monthlyCategoryData = calculateCategoryTotals(
-    //     this.filteredTransaction,
-    //   )
-    //   this.monthlyExpenseData = calculateMonthlyTotals(
-    //     this.transactions,
-    //     '지출',
-    //   )
-    //   this.monthlyIncomeData = calculateMonthlyTotals(this.transactions, '수입')
-    //   this.netProfitData = calculateNetProfit(this.filteredTransaction)
-    //   console.log('netProfitData:', this.netProfitData)
-    // },
+    calculateStatistics() {
+      console.log('[📊 calculateStatistics] 실행됨 ✅')
+      const calendar = use_calendar_store()
+      this.monthlyCategoryData = calculateCategoryTotals(
+        this.filteredTransaction,
+      )
+      this.monthlyExpenseData = calculateMonthlyTotals(
+        this.transactions,
+        'expense',
+        calendar.current_year,
+        calendar.current_month,
+      )
+      this.monthlyIncomeData = calculateMonthlyTotals(
+        this.transactions,
+        'income',
+        calendar.current_year,
+        calendar.current_month,
+      )
+      this.netProfitData = calculateNetProfit(this.filteredTransaction)
+    },
     // endregion
   },
 })
