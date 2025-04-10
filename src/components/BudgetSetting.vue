@@ -193,7 +193,6 @@ onBeforeUnmount(() => {
             () => {
               showConfirm = false
               onConfirm?.()
-              handleSubmit()
             }
           "
         >

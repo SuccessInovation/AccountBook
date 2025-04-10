@@ -34,13 +34,16 @@ export const statisticsStore = defineStore('statistics', {
      *
      *return : 기간별로 필터링된 결과 -> 컴포넌트로 전송
      */
-    async fetchTranactionsByPeriod(startDate = null, endDate = new Date()) {
+    async fetchTransactionsByPeriod(startDate, endDate) {
       try {
-        const res = await axios.get(`${BASE_URI}/transactions`)
         // data 내림차순 정렬
-        this.transactions = res.data.sort(
-          (a, b) => new Date(b.date) - new Date(a.date),
-        )
+        // 전체 거래가 없을 때만 서버에서 불러오기
+        if (this.transactions.length === 0) {
+          const res = await axios.get(`${BASE_URI}/transactions`)
+          this.transactions = res.data.sort(
+            (a, b) => new Date(b.date) - new Date(a.date),
+          )
+        }
         // this.calculateStatistics() // 불러온 데이터로 통계 계산 시작
 
         const today = new Date() // 오늘 날짜
