@@ -101,11 +101,11 @@ const toggleStatsSubMenu = () => {
   z-index: 1001;
 }
 #snb_desktop {
-  width: 300px;
+  width: 250px;
 }
 /* 메인 메뉴 */
 .main-menu {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
 }
 .mt-160 {
@@ -114,7 +114,7 @@ const toggleStatsSubMenu = () => {
 .list-group-item {
   background-color: transparent;
   border: none;
-  padding: 30px 10px 40px 50px;
+  padding: 20px 10px 20px 50px;
 }
 .list-group-item:hover > a,
 .list-group-item:hover > div {
@@ -131,12 +131,12 @@ const toggleStatsSubMenu = () => {
     opacity 0.3s ease;
 }
 .sub-menu.sub-menu-open {
-  max-height: 300px;
+  max-height: 250px;
   opacity: 1;
 }
 .sub-item {
-  padding: 15px 0 0 20px;
-  font-size: 18px;
+  padding: 15px 0 0 10px;
+  font-size: 16px;
 }
 .sub-item:hover {
   color: var(--point-1-color);
@@ -149,8 +149,8 @@ const toggleStatsSubMenu = () => {
 .mobile-slide-menu {
   position: fixed;
   top: 120px;
-  left: -300px; /* 화면 바깥 위치 */
-  width: 300px;
+  left: -250px; /* 화면 바깥 위치 */
+  width: 250px;
   height: 100%;
   background-color: var(--point-5-color);
   transition: left 0.3s ease;
@@ -173,5 +173,9 @@ const toggleStatsSubMenu = () => {
 .navbar-toggler {
   padding: 4px;
   border: none;
+}
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
 }
 </style>
