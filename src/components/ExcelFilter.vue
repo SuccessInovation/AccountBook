@@ -19,10 +19,20 @@
     </label>
     <div class="submit_btn"><button type="submit">조회</button></div>
     <!-- 기간설정 class="period_selector" 선택 시에만 날짜 입력창 표시 -->
-    <div v-if="selectPeriod === 'custom'" class="date_inputs">
-      <input t class="period_selector" ype="date" v-model="customStartDate" />
+    <div class="date_inputs">
+      <input
+        id="date_start"
+        class="period_selector"
+        type="date"
+        v-model="customStartDate"
+      />
       <span>~</span>
-      <input type="date" v-model="customEndDate" />
+      <input
+        id="date_end"
+        class="period_selector"
+        type="date"
+        v-model="customEndDate"
+      />
     </div>
   </form>
 </template>
@@ -68,17 +78,10 @@ const handleSubmit = () => {
 
 <style scoped>
 .box {
-  width: 100%;
-  display: flex;
+  background-color: rgba(255, 0, 0, 0.281);
+  height: 90px;
 }
 .period_selector {
-  padding: 0.625rem;
-}
-.submit_btn {
-  background-color: var(--point-1-color);
-  color: var(--very-light-brown);
-  width: 2.25rem;
-  height: 1.5rem;
-  text-align: center;
+  font-weight: 700px;
 }
 </style>

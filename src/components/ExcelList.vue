@@ -1,12 +1,14 @@
 <template>
   <div class="box">
+    <button id="btn_export" @click="downloadExcel(store.filteredTransaction)">
+      엑셀로 내보내기
+    </button>
     <ul>
       <!-- 양식에 맞게 수정 예정 -->
       <li v-for="item in store.filteredTransaction" :key="item.id">
         {{ item.date }} | {{ item.category }} | {{ item.amount }}원
       </li>
     </ul>
-    <button @click="downloadExcel(store.filteredTransaction)">내보내기</button>
   </div>
 </template>
 
@@ -31,9 +33,20 @@ const downloadExcel = data => {
 
 <style scoped>
 .box {
-  width: 80%;
-  border: none;
-  padding: 1rem;
   background-color: white;
+  border: 1px solid black;
+  height: 500px;
+  width: 100%;
+}
+#btn_export {
+  display: block;
+  margin-bottom: 10px; /* 박스와 간격 */
+  background-color: var(--color-point-1);
+  color: white;
+  font-weight: 500;
+  font-size: 15px;
+  width: 130px;
+  height: 35px;
+  border-radius: 10px;
 }
 </style>

@@ -1,7 +1,9 @@
 <template>
   <div class="ExportExcelPage">
-    <ExcelFilter class="excel_filter" @search="handleSearch" />
-    <ExcelList class="excel_list" v-if="isSearched" />
+    <div class="container">
+      <ExcelFilter class="excel_filter" @search="handleSearch" />
+      <ExcelList class="excel_list" v-if="isSearched" />
+    </div>
   </div>
 </template>
 
@@ -19,16 +21,17 @@ const handleSearch = () => {
 
 <style scoped>
 .ExportExcelPage {
+  position: absolute;
+  background-color: black;
+  height: calc(100% - (120px + 80px)); /* 헤더+푸터의 높이만큼 뺌 */
+  width: calc(100% - 250px); /* 사이드바의 너비만큼 뺌 */
   display: flex;
   justify-content: center;
+  align-items: center;
 }
-
-.excel_filter {
-  width: 1024px;
-  margin: 10rem auto;
-  border: 2rem solid var(--point-3-color);
-  background-color: var(--point-3-color);
-}
-.excel_list {
+.container {
+  background-color: blue;
+  width: 1500px;
+  height: 630px;
 }
 </style>
