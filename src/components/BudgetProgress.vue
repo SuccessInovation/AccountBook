@@ -11,7 +11,7 @@
       </div>
     </div>
     <!-- 예산이 없는 경우 -->
-    <div v-if="progressData.length === 0" class="budget_box">
+    <div v-if="expenseData.length === 0" class="budget_box">
       <div class="no_budget">
         <p>이번 달 예산이 설정되지 않았어요</p>
         <img src="../img/cabbage/logo1.png" alt="배추이미지" />
@@ -49,7 +49,7 @@
     <div
       :class="[
         'progress_list',
-        progressData.length <= 3 ? 'one-column' : 'two-column',
+        expenseData.length <= 3 ? 'one-column' : 'two-column',
       ]"
     >
       <!-- 카테고리 별 지출, 예산 진행률 리스트 -->
@@ -92,124 +92,29 @@
 
 <script setup>
 import { defineEmits } from 'vue'
-import { ref, onMounted, watch } from 'vue'
-import { statisticsStore } from '@/stores/statisticsStore' // 경로 맞게 조정 필요
-import { useBudgetStore } from '@/stores/UseBudgetStore'
+import { useBudgetProgress } from '@/stores/useBudgetProgress'
 import { use_calendar_store } from '@/stores/MonthSelector'
-import {
-  EXPENSE_CATEGORIES,
-  CATEGORY_MAP,
-  CATEGORY_IMG,
-} from '@/constants/categories'
+
+const calendar = use_calendar_store()
 
 const emit = defineEmits(['setting'])
 
+const {
+  expenseData,
+  totalBudget,
+  totalSpent,
+  overallPercent,
+  totalLeft,
+  refresh,
+} = useBudgetProgress()
+
+defineExpose({
+  refresh, // 👈 이걸 해줘야 ref.value.refresh가 가능해짐
+})
 const budgetSetting = () => {
   console.log('클릭됨')
-  emit('setting')
+  emit('setting') // 예산 설정 UI 열기
 }
-
-const statistics = statisticsStore()
-const store = useBudgetStore()
-const calendar = use_calendar_store()
-
-// 입력 데이터 저장용
-const progressData = ref([])
-
-// @params = 전체 예산, 전체 지출, 전체 비율
-const totalBudget = ref(0)
-const totalSpent = ref(0)
-const overallPercent = ref(0)
-const totalLeft = ref(0)
-
-//#region 함수 기능
-/**
- * 한달 지출을 불러와서 카테고리별로 예산에 다른 지출 비율 계산 함수
- * @param {number} spent = 지출
- * @param {number} budget = 예산
- * @param {number} percent = 지출/예산 비율
- *return 카테고리명, 지출, 예산, 계산값
- */
-const loadExpensebyMonth = async (startDate, endDate, selectedMonth) => {
-  // 한 달의 데이터를 불러와서 지출만 expenses에 저장
-  const result = await statistics.fetchTranactionsByPeriod(startDate, endDate)
-  const expenses = result.filter(exp => exp.type === 'expense')
-
-  // 카테코리 별 지출을 카테고리-금액으로 저장
-  const spendingByCategory = {}
-  expenses.forEach(r => {
-    const cat = r.category
-    const amount = r.amount ?? 0
-    spendingByCategory[cat] = (spendingByCategory[cat] || 0) + amount
-  })
-
-  //   선택 월의 예산을 불러옴
-  await store.fetchBudgets(selectedMonth)
-
-  //   카테고리 별 예산을 저장
-  const budgetByCategory = Object.fromEntries(
-    store.budgets.map(b => [b.category, b.amount]),
-  )
-
-  //   ProgressData에 카테고리 별 지출, 예산, 비율을 계산하여 저장
-  progressData.value = EXPENSE_CATEGORIES.filter(
-    cat => (budgetByCategory[cat] || 0) > 0,
-  ).map(cat => {
-    const spent = spendingByCategory[cat] || 0
-    const budget = budgetByCategory[cat] || 0
-    const percent = Math.min(100, ((spent / budget) * 100).toFixed(1))
-    const left = budget - spent
-    return {
-      category: cat,
-      name: CATEGORY_MAP[cat],
-      icon: CATEGORY_IMG[cat],
-      spent,
-      budget,
-      percent,
-      left,
-    }
-  })
-  //   총 지출, 총 예산을 계산
-  totalBudget.value = progressData.value.reduce(
-    (sum, item) => sum + item.budget,
-    0,
-  )
-  totalSpent.value = progressData.value.reduce(
-    (sum, item) => sum + item.spent,
-    0,
-  )
-  overallPercent.value =
-    totalBudget.value === 0
-      ? 0
-      : Math.min(100, ((totalSpent.value / totalBudget.value) * 100).toFixed(1))
-
-  totalLeft.value = totalBudget.value - totalSpent.value
-}
-
-// endregion
-
-// 외부에서 호출할 수 있게 expose
-const refresh = () => {
-  loadExpensebyMonth(calendar.startDate, calendar.endDate, calendar.monthKey)
-}
-defineExpose({ refresh })
-
-// mount 될 때 한 번 실행
-onMounted(() => {
-  loadExpensebyMonth(calendar.startDate, calendar.endDate, calendar.monthKey)
-})
-
-// 달 변경되면 자동으로 다시 계산
-watch(
-  () => [calendar.monthStartDate, calendar.monthEndDate, calendar.monthKey],
-  () => {
-    loadExpensebyMonth(
-      calendar.monthStartDate,
-      calendar.monthEndDate,
-      calendar.monthKey,
-    )
-  },
-)
 </script>
 
 <style scoped>

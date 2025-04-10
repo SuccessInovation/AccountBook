@@ -35,7 +35,7 @@ export const statisticsStore = defineStore('statistics', {
      *
      *return : 기간별로 필터링된 결과 -> 컴포넌트로 전송
      */
-    async fetchTranactionsByPeriod(startDate = null, endDate = new Date()) {
+    async fetchTransactionsByPeriod(startDate, endDate) {
       try {
         const res = await axios.get(`${BASE_URI}/transactions`)
         // data 내림차순 정렬
@@ -60,14 +60,6 @@ export const statisticsStore = defineStore('statistics', {
         })
 
         this.filteredTransaction = filtered
-        console.log(
-          '[📦 fetchTransactionsByPeriod] 필터링된 거래 수:',
-          filtered.length,
-        )
-        console.log(
-          '[📦 fetchTransactionsByPeriod] 예시:',
-          filtered.slice(0, 2),
-        )
 
         // ✅ 필터링 저장 후 통계 계산 (순서 중요)
         this.calculateStatistics()
@@ -83,7 +75,6 @@ export const statisticsStore = defineStore('statistics', {
 
     // 통계 계산
     calculateStatistics() {
-      console.log('[📊 calculateStatistics] 실행됨 ✅')
       const calendar = use_calendar_store()
       this.monthlyCategoryData = calculateCategoryTotals(
         this.filteredTransaction,
