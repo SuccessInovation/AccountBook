@@ -1,41 +1,14 @@
 <template>
   <div class="statistics_page">
-    <!-- 월 선택 영역 -->
-
-    <!-- <div class="month_select_area">
-      <button type="button" class="arrow" @click="calendar.go_to_prev_month">
-        &lt;
-      </button>
-
-      <div class="month_slider">
-        <div
-          v-for="(month, index) in visible_months"
-          :key="index"
-          class="month_item"
-        >
-          <p :class="{ active: index === 1, faded: index !== 1 }">
-            {{ month.year }} {{ month_names[month.month] }}
-          </p>
-        </div>
-      </div>
-
-      <button type="button" class="arrow" @click="calendar.go_to_next_month">
-        &gt;
-      </button>
-    </div> -->
+    <!-- 월 선택 컴포넌트 -->
     <CalendarContent />
-    <!-- 본문 영역 -->
+    <!-- 본문 통계 영역 -->
     <div class="content_area">
       <!-- 상단 통계 영역 -->
       <div class="top_section">
-        <!-- <div class="chart_group"> -->
-        <!-- <div class="pie_chart"> -->
         <MonthlyPieChart :monthly-data="store.monthlyCategoryData" />
-        <!-- </div> -->
-        <!-- </div> -->
         <div class="net_profit_box">
           <div class="net_profit_text">
-            <!-- <NetProfit :net-profit="store.netProfitData?.netProfit ?? 0" /> -->
             <NetProfit
               :net-profit="store.netProfitData?.netProfit ?? 0"
               :income="store.netProfitData?.income ?? 0"
@@ -50,7 +23,6 @@
           <div class="line_chart">
             <MonthlyLineChart :monthly-expenses="store.monthlyExpenseData" />
           </div>
-          <!-- <div class="line_description">설명글</div> -->
         </div>
       </div>
     </div>
@@ -61,19 +33,17 @@
 import CalendarContent from '@/components/CalendarContent.vue'
 import { statisticsStore } from '@/stores/statisticsStore'
 import { use_calendar_store } from '@/stores/MonthSelector'
-// import { storeToRefs } from 'pinia'
 import { onMounted, watch } from 'vue'
 import MonthlyPieChart from '@/components/MonthlyPieChart.vue'
 import MonthlyLineChart from '@/components/MonthlyLineChart.vue'
 import NetProfit from '@/components/NetProfit.vue'
 
+// 통계 관련 데이터를 다루는 store 인스턴스 (거래 내역 fetch, 통계 계산)
 const store = statisticsStore()
+// 현재 선택된 월/연도를 관리하는 store 인스턴스 (기간 범위 등)
 const calendar = use_calendar_store()
 
-// const { visible_months } = storeToRefs(calendar) // 월 이동용
-// const month_names = calendar.month_names // 월 이름
-
-// 페이지 로딩 시 최초 fetch + 계산
+// 페이지 로드 시 데이터 fetch 및 통계 계산
 onMounted(async () => {
   await store.fetchTransactionsByPeriod(
     calendar.monthStartDate,
@@ -82,7 +52,7 @@ onMounted(async () => {
   store.calculateStatistics()
 })
 
-// 선택된 월이 바뀌면 다시 fetch + 계산
+// 선택된 월이 바뀌면 데이터 재요청 및 통계 재계산
 watch(
   () => [calendar.current_year, calendar.current_month],
   async () => {
@@ -120,7 +90,7 @@ watch(
   background-color: white;
 }
 
-/* 상단 통계 영역 (파이 + 설명 + NetProfit) */
+/* 상단 통계 영역 (원형차트 + 설명 + 순이익) */
 .top_section {
   display: flex;
   flex-direction: row;
@@ -136,7 +106,6 @@ watch(
 .net_profit_box {
   /* flex: 1; */
   width: 250px;
-  /* border: 1px solid #ccc; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -155,7 +124,6 @@ watch(
 /* 라인차트 */
 .line_chart {
   flex: 3;
-  /* border: 1px solid #ccc; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -163,17 +131,7 @@ watch(
   height: 400px;
 }
 
-/* 설명글 */
-/* .line_description {
-  flex: 1;
-  border: 1px solid #ccc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-} */
-
-/* 캘린더 월 이동 디자인 */
+/* 캘린더 슬라이더 시작 */
 .calendar_carousel {
   display: flex;
   align-items: center;
