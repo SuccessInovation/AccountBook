@@ -197,6 +197,7 @@ const chartOptions = computed(() => ({
   justify-content: space-between;
   gap: 1rem;
   margin-top: 30px;
+  overflow: visible; /* 추가 */
 }
 
 /* 라인차트 영역 */

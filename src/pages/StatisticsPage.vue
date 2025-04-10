@@ -1,7 +1,7 @@
 <template>
   <div class="statistics_page">
     <!-- 월 선택 영역 -->
-    <CalendarNav />
+    <CalendarNav id="calendar" />
     <!-- 통계 콘텐츠 영역 -->
     <div class="content_area">
       <!-- 상단 통계 영역 (파이 차트 + 순이익) -->
@@ -75,6 +75,10 @@ watch(
   justify-content: center;
   align-items: center;
 }
+/* 월 내비게이션 */
+#calendar {
+  margin-top: 20px;
+}
 /* 통계 콘텐츠 영역 박스 */
 .content_area {
   border: 1rem solid var(--color-point-3);
@@ -121,6 +125,7 @@ watch(
 /* 하단 영역 */
 .bottom_section {
   gap: 20px;
-  height: 400px;
+  min-height: 400px;
+  height: auto;
 }
 </style>

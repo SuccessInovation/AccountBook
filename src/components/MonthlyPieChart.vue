@@ -150,8 +150,8 @@ const currentMonth = computed(() => calendar.current_month + 1) // 0부터 시�
 .chart_group {
   display: flex;
   flex-direction: row;
-  width: 100%;
-  height: auto;
+  width: 820px;
+  height: 400px;
   position: relative;
   justify-content: center;
   align-items: center;
