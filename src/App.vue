@@ -1,14 +1,26 @@
+<<<<<<< HEAD
 <!-- <template>
   <div class="container">
     <TheHeader />
     <div class="content_main">
+=======
+<template>
+  <div id="containers">
+    <TheHeader />
+    <div class="main-content">
+>>>>>>> d7a5d5b (Design: TheHeader.vue 완료)
       <TheSidebar />
       <div class="container_router_view">
         <router-view />
       </div>
     </div>
+<<<<<<< HEAD
     <TheFooter />
   </div>
+=======
+  </div>
+  <TheFooter />
+>>>>>>> d7a5d5b (Design: TheHeader.vue 완료)
 </template>
 
 <script>
