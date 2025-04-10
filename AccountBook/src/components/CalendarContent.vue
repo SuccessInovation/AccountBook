@@ -75,7 +75,7 @@ const month_names = calendar.month_names
 }
 
 .arrow {
-  font-size: 2rem;
+  font-size: 5rem;
   cursor: pointer;
   background: none;
   border: none;

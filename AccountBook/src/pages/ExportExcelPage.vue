@@ -1,11 +1,10 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
-  <div class="ExportExcelPage">엑셀 내보내기 페이지</div>
+  <div class="ExportExcelPage"></div>
 </template>
 
 <style scoped>
-
+.ExportExcelPage {
+}
 </style>

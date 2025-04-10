@@ -13,7 +13,7 @@ const budgetStore = useBudgetStore()
 
 // 총 예산 저장할 ref
 
-const { netProfitData, monthlyCategoryData } = storeToRefs(store)
+const { netProfitData } = storeToRefs(store)
 const { monthStartDate, monthEndDate, monthKey } = storeToRefs(calendar)
 
 const { totalBudget, totalIncome, totalSpent } = useBudgetProgress()
