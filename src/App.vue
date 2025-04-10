@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div id="app" class="app_layout">
     <!-- 현재 라우터가 기본(default) 레이아웃인 경우에만 헤더 표시 -->
     <TheHeader v-if="layout === 'default'" />
@@ -25,10 +26,26 @@ import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 
 // 레이아웃 컴포넌트 불러오기
+=======
+  <div class="container">
+    <TheHeader />
+    <div class="content_main">
+      <TheSidebar />
+      <div class="container_router_view">
+        <router-view />
+      </div>
+    </div>
+    <TheFooter />
+  </div>
+</template>
+
+<script>
+>>>>>>> f32031d89f4d3c574325098dc4fa57a074cf7677
 import TheHeader from './layout/TheHeader.vue'
 import TheSidebar from './layout/TheSidebar.vue'
 import TheFooter from './layout/TheFooter.vue'
 
+<<<<<<< HEAD
 // 현재 라우터 정보를 가져옴
 const route = useRoute()
 
@@ -43,10 +60,26 @@ const layout = computed(() => {
 /* 전체 레이아웃: 세로 정렬(flex column) */
 .app_layout {
   width: 100vw;
+=======
+export default {
+  components: {
+    TheHeader,
+    TheSidebar,
+    TheFooter,
+  },
+}
+</script>
+
+<style>
+.container {
+  margin: 0;
+  padding: 0;
+>>>>>>> f32031d89f4d3c574325098dc4fa57a074cf7677
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
+<<<<<<< HEAD
 
 /* 메인 영역: 가로 정렬(flex row), 헤더 제외한 나머지 */
 .main_area {
@@ -66,5 +99,14 @@ const layout = computed(() => {
   height: 100vh;
   padding: 0;
   margin: 0;
+=======
+.content_main {
+  display: flex;
+  flex: 1;
+  margin-top: 120px; /* 헤더 높이 */
+}
+.container_router_view {
+  flex: 1;
+>>>>>>> f32031d89f4d3c574325098dc4fa57a074cf7677
 }
 </style>

@@ -16,7 +16,11 @@ const routes = [
     path: '/',
     name: 'Start',
     component: StartPage,
+<<<<<<< HEAD
     meta: { layout: 'no-layout' }, // 헤더/사이드바 없는 레이아웃
+=======
+    meta: { layout: 'no-layout', backgroundColor: '#b7ccb4' }, // 헤더/사이드바 없는 레이아웃
+>>>>>>> f32031d89f4d3c574325098dc4fa57a074cf7677
   },
   {
     path: '/login',

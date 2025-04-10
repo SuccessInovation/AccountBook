@@ -9,18 +9,36 @@
     "preview": "vite preview",
     "lint": "eslint . --fix",
     "format": "prettier --write src/",
+<<<<<<< HEAD
     "db": "json-server --watch db.json --port 5000"
   },
   "dependencies": {
     "@vuepic/vue-datepicker": "^11.0.2",
     "axios": "^1.8.4",
+=======
+    "db": "json-server --watch db.json --port 3000"
+  },
+  "dependencies": {
+    "@vuepic/vue-datepicker": "^11.0.2",
+<<<<<<<< HEAD:AccountBook/package.json
+========
+    "axios": "^1.8.4",
+>>>>>>>> f32031d89f4d3c574325098dc4fa57a074cf7677:package.json
+>>>>>>> f32031d89f4d3c574325098dc4fa57a074cf7677
     "bootstrap": "^5.3.5",
     "chart.js": "^4.4.8",
     "json-server": "^1.0.0-beta.3",
     "pinia": "^3.0.1",
     "vue": "^3.5.13",
+<<<<<<< HEAD
     "vue-chartjs": "^5.3.2",
     "vue-router": "^4.5.0"
+=======
+    "vue-chart": "^2.0.0",
+    "vue-chartjs": "^5.3.2",
+    "vue-router": "^4.5.0",
+    "xlsx": "^0.18.5"
+>>>>>>> f32031d89f4d3c574325098dc4fa57a074cf7677
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",

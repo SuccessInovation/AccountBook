@@ -94,19 +94,34 @@ const toggleStatsSubMenu = () => {
 
 <style scoped>
 .snb {
+<<<<<<< HEAD
   background-color: var(--point-5-color);
+=======
+  background-color: var(--color-point-5);
+>>>>>>> f32031d89f4d3c574325098dc4fa57a074cf7677
   z-index: 1000;
 }
 .snb.navbar {
   z-index: 1001;
 }
 #snb_desktop {
+<<<<<<< HEAD
   width: 300px;
 }
 /* 메인 메뉴 */
 .main-menu {
   font-size: 22px;
   font-weight: 700;
+=======
+  width: 250px;
+}
+/* 메인 메뉴 */
+.main-menu {
+  font-size: 20px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+>>>>>>> f32031d89f4d3c574325098dc4fa57a074cf7677
 }
 .mt-160 {
   margin-top: 40px;
@@ -114,11 +129,19 @@ const toggleStatsSubMenu = () => {
 .list-group-item {
   background-color: transparent;
   border: none;
+<<<<<<< HEAD
   padding: 30px 10px 40px 50px;
 }
 .list-group-item:hover > a,
 .list-group-item:hover > div {
   color: var(--point-1-color);
+=======
+  padding: 20px 10px 20px 50px;
+}
+.list-group-item:hover > a,
+.list-group-item:hover > div {
+  color: var(--color-point-1);
+>>>>>>> f32031d89f4d3c574325098dc4fa57a074cf7677
   transition: 0.3s;
 }
 /* 서브 메뉴 */
@@ -131,6 +154,7 @@ const toggleStatsSubMenu = () => {
     opacity 0.3s ease;
 }
 .sub-menu.sub-menu-open {
+<<<<<<< HEAD
   max-height: 300px;
   opacity: 1;
 }
@@ -140,6 +164,19 @@ const toggleStatsSubMenu = () => {
 }
 .sub-item:hover {
   color: var(--point-1-color);
+=======
+  max-height: 250px;
+  opacity: 1;
+}
+.sub-item {
+  padding: 15px 0 0 10px;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.sub-item:hover {
+  color: var(--color-point-1);
+>>>>>>> f32031d89f4d3c574325098dc4fa57a074cf7677
   transition: 0.3s;
 }
 /* 모바일 메뉴 버튼 */
@@ -149,10 +186,17 @@ const toggleStatsSubMenu = () => {
 .mobile-slide-menu {
   position: fixed;
   top: 120px;
+<<<<<<< HEAD
   left: -300px; /* 화면 바깥 위치 */
   width: 300px;
   height: 100%;
   background-color: var(--point-5-color);
+=======
+  left: -250px; /* 화면 바깥 위치 */
+  width: 250px;
+  height: 100%;
+  background-color: var(--color-point-5);
+>>>>>>> f32031d89f4d3c574325098dc4fa57a074cf7677
   transition: left 0.3s ease;
   z-index: 1000;
 }
@@ -165,7 +209,11 @@ const toggleStatsSubMenu = () => {
   height: 25px;
 }
 #snb_btn_area {
+<<<<<<< HEAD
   background-color: var(--point-5-color);
+=======
+  background-color: var(--color-point-5);
+>>>>>>> f32031d89f4d3c574325098dc4fa57a074cf7677
   padding-top: 0;
   padding-bottom: 0;
   align-items: start;
@@ -174,4 +222,15 @@ const toggleStatsSubMenu = () => {
   padding: 4px;
   border: none;
 }
+<<<<<<< HEAD
+=======
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+/* 활성화된 메뉴 */
+.router-link-active {
+  color: var(--color-point-1); /* 초록색 유지 */
+}
+>>>>>>> f32031d89f4d3c574325098dc4fa57a074cf7677
 </style>

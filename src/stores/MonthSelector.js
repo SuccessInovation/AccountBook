@@ -90,6 +90,17 @@ export const use_calendar_store = defineStore('calendar', () => {
     }
   }
 
+<<<<<<< HEAD
+=======
+  /* 우진 추가 */
+  // 예산 month에 접근하기 위한 Key
+  const monthKey = computed(() => {
+    const y = current_year.value
+    const m = (current_month.value + 1).toString().padStart(2, '0')
+    return `${y}-${m}`
+  })
+
+>>>>>>> f32031d89f4d3c574325098dc4fa57a074cf7677
   // 스토어에서 사용할 항목들 반환
   return {
     current_year,
@@ -100,5 +111,9 @@ export const use_calendar_store = defineStore('calendar', () => {
     go_to_next_month,
     monthStartDate,
     monthEndDate,
+<<<<<<< HEAD
+=======
+    monthKey,
+>>>>>>> f32031d89f4d3c574325098dc4fa57a074cf7677
   }
 })

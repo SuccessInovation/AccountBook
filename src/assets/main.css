@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* 폰트 (나눔고딕) */
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 
@@ -14,6 +15,89 @@
   --light-brown: #c9b194;
   --very-light-brown: #ededed;
   --font-main: 'Nanum Gothic', sans-serif;
+=======
+/* 폰트 (Noto Sans KR) */
+@font-face {
+  font-family: 'NotoSansKR';
+  src: url('@/assets/fonts/Noto_Sans_KR/static/NotoSansKR-Thin.ttf')
+    format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'NotoSansKR';
+  src: url('@/assets/fonts/Noto_Sans_KR/static/NotoSansKR-ExtraLight.ttf')
+    format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'NotoSansKR';
+  src: url('@/assets/fonts/Noto_Sans_KR/static/NotoSansKR-Light.ttf')
+    format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'NotoSansKR';
+  src: url('@/assets/fonts/Noto_Sans_KR/static/NotoSansKR-Regular.ttf')
+    format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'NotoSansKR';
+  src: url('@/assets/fonts/Noto_Sans_KR/static/NotoSansKR-Medium.ttf')
+    format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'NotoSansKR';
+  src: url('@/assets/fonts/Noto_Sans_KR/static/NotoSansKR-SemiBold.ttf')
+    format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'NotoSansKR';
+  src: url('@/assets/fonts/Noto_Sans_KR/static/NotoSansKR-Bold.ttf')
+    format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'NotoSansKR';
+  src: url('@/assets/fonts/Noto_Sans_KR/static/NotoSansKR-ExtraBold.ttf')
+    format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'NotoSansKR';
+  src: url('@/assets/fonts/Noto_Sans_KR/static/NotoSansKR-Black.ttf')
+    format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* 변수 설정 */
+:root {
+  --color-font-main: #3f3e3c;
+  --color-point-1: #328e6e;
+  --color-point-2: #67ae6e;
+  --color-point-3: #99bc85;
+  --color-point-4: #b7ccb4;
+  --color-point-5: #d3ded9;
+  --color-input-box: #dbdbdb;
+  --color-brown-dark: #706d54;
+  --color-brown-light: #c9b194;
+  --color-brown-very-light: #ededed;
+  --color-red-100: #f93949;
+  --color-red-light: rgba(249, 57, 73, 0.2);
+  --color-green-light: rgba(42, 125, 92, 0.2);
+  --font-family-main: 'NotoSansKR', sans-serif;
+>>>>>>> f32031d89f4d3c574325098dc4fa57a074cf7677
 }
 
 /* 초기화 */
@@ -25,7 +109,12 @@
 html,
 body {
   height: 100%;
+<<<<<<< HEAD
   font-family: 'Nanum Gothic', sans-serif;
+=======
+  font-family: 'NotoSansKR', sans-serif;
+  overflow: hidden;
+>>>>>>> f32031d89f4d3c574325098dc4fa57a074cf7677
 }
 img,
 picture,

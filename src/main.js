@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 import './assets/main.css'
+=======
+import 'bootstrap/dist/css/bootstrap.min.css' // bootstrap
+import 'bootstrap/dist/js/bootstrap.bundle.min.js' // bootstrap
+import './assets/main.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+>>>>>>> f32031d89f4d3c574325098dc4fa57a074cf7677
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
