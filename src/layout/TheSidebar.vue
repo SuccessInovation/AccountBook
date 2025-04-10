@@ -140,8 +140,11 @@ const toggleStatsSubMenu = () => {
 .sub-item {
   padding: 15px 0 0 10px;
   font-size: 16px;
+<<<<<<< HEAD
   white-space: nowrap;
   overflow: hidden;
+=======
+>>>>>>> 6485c36 (Design: Sidebar 너비 및 폰트 크기 줄임)
 }
 .sub-item:hover {
   color: var(--color-point-1);
@@ -183,8 +186,11 @@ const toggleStatsSubMenu = () => {
   outline: none;
   box-shadow: none;
 }
+<<<<<<< HEAD
 /* 활성화된 메뉴 */
 .router-link-active {
   color: var(--color-point-1); /* 초록색 유지 */
 }
+=======
+>>>>>>> 6485c36 (Design: Sidebar 너비 및 폰트 크기 줄임)
 </style>
