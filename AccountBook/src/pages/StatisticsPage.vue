@@ -1,7 +1,8 @@
 <template>
   <div class="statistics_page">
     <!-- 월 선택 영역 -->
-    <div class="month_select_area">
+
+    <!-- <div class="month_select_area">
       <button type="button" class="arrow" @click="calendar.go_to_prev_month">
         &lt;
       </button>
@@ -21,17 +22,17 @@
       <button type="button" class="arrow" @click="calendar.go_to_next_month">
         &gt;
       </button>
-    </div>
-
+    </div> -->
+    <CalendarContent />
     <!-- 본문 영역 -->
     <div class="content_area">
       <!-- 상단 통계 영역 -->
       <div class="top_section">
-        <div class="chart_group">
-          <div class="pie_chart">
-            <MonthlyPieChart :monthly-data="store.monthlyCategoryData" />
-          </div>
-        </div>
+        <!-- <div class="chart_group"> -->
+        <!-- <div class="pie_chart"> -->
+        <MonthlyPieChart :monthly-data="store.monthlyCategoryData" />
+        <!-- </div> -->
+        <!-- </div> -->
         <div class="net_profit_box">
           <div class="net_profit_text">
             <!-- <NetProfit :net-profit="store.netProfitData?.netProfit ?? 0" /> -->
@@ -49,7 +50,7 @@
           <div class="line_chart">
             <MonthlyLineChart :monthly-expenses="store.monthlyExpenseData" />
           </div>
-          <div class="line_description">설명글</div>
+          <!-- <div class="line_description">설명글</div> -->
         </div>
       </div>
     </div>
@@ -57,9 +58,10 @@
 </template>
 
 <script setup>
+import CalendarContent from '@/components/CalendarContent.vue'
 import { statisticsStore } from '@/stores/statisticsStore'
 import { use_calendar_store } from '@/stores/MonthSelector'
-import { storeToRefs } from 'pinia'
+// import { storeToRefs } from 'pinia'
 import { onMounted, watch } from 'vue'
 import MonthlyPieChart from '@/components/MonthlyPieChart.vue'
 import MonthlyLineChart from '@/components/MonthlyLineChart.vue'
@@ -68,8 +70,8 @@ import NetProfit from '@/components/NetProfit.vue'
 const store = statisticsStore()
 const calendar = use_calendar_store()
 
-const { visible_months } = storeToRefs(calendar) // 월 이동용
-const month_names = calendar.month_names // 월 이름
+// const { visible_months } = storeToRefs(calendar) // 월 이동용
+// const month_names = calendar.month_names // 월 이름
 
 // 페이지 로딩 시 최초 fetch + 계산
 onMounted(async () => {
@@ -95,20 +97,12 @@ watch(
 
 <style scoped>
 .statistics_page {
-  padding: 20px;
-}
-
-.month_select_area {
-  display: flex;
-  width: auto; /* or max-content / 300px 등으로 조정 가능 */
-  overflow: hidden;
-  justify-content: space-between;
-  gap: 1rem;
+  padding: 0 20px 20px 20px;
 }
 
 /* 전체 영역 */
 .content_area {
-  border: 30px solid var(--color-point-3);
+  border: 1rem solid var(--color-point-3);
   border-radius: 20px;
   margin-top: 50px;
   display: flex;
@@ -131,55 +125,29 @@ watch(
   display: flex;
   flex-direction: row;
   gap: 20px;
-  height: 400px;
+  height: 500px;
 }
 
-/* 파이차트와 설명글을 나란히 */
-.chart_group {
-  display: flex;
-  flex-direction: row;
-  flex: 3;
-  gap: 10px;
-  box-sizing: border-box;
-}
-
-/* 파이차트 영역 */
-.pie_chart {
-  flex: 2;
-  /* border: 1px solid #ccc; */
-  min-width: 0;
-  max-width: 450px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 10px;
+.top_section > *:first-child {
+  flex: 2; /* 전체 너비의 75% */
 }
 
 /* NetProfit 영역 */
 .net_profit_box {
-  /* margin: 20px; */
-  flex: 1;
+  /* flex: 1; */
+  width: 250px;
   /* border: 1px solid #ccc; */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-.net_profit_text {
-  width: 100%;
-  display: flex;
-  flex: 1;
-  border: 1px solid #ccc;
-  justify-content: center;
-  align-items: center;
   text-align: center;
 }
 
 /* 하단 영역 */
 .bottom_section {
-  display: flex;
-  flex-direction: row;
+  /* display: flex;
+  flex-direction: row; */
   gap: 20px;
   height: 400px;
 }
@@ -192,17 +160,18 @@ watch(
   justify-content: center;
   align-items: center;
   margin-left: 10px;
+  height: 400px;
 }
 
 /* 설명글 */
-.line_description {
+/* .line_description {
   flex: 1;
   border: 1px solid #ccc;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
-}
+} */
 
 /* 캘린더 월 이동 디자인 */
 .calendar_carousel {

@@ -34,7 +34,7 @@ export function calculateMonthlyTotals(
   for (let i = 7; i >= 0; i--) {
     const date = new Date(selectedYear, selectedMonth, 1) // ✅ selectedMonth 그대로
     date.setMonth(date.getMonth() - i) // ✅ 안전하게 setMonth 사용
-    const monthStr = date.toISOString().slice(0, 7)
+    const monthStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`
 
     lastEightMonths.push(monthStr)
   }

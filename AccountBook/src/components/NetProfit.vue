@@ -1,17 +1,15 @@
 <template>
-  <div>
-    <h3>순이익 요약</h3>
-    <!-- <p>순이익: {{ netProfit?.toLocaleString?.() ?? '데이터 없음' }} 원</p> -->
-    <p>
-      순이익:
-      <span :style="{ color: netProfit >= 0 ? 'green' : 'red' }">
-        {{ netProfit?.toLocaleString?.() ?? '데이터 없음' }} 원
-      </span>
-    </p>
-    <!-- 이미지 출력 -->
-    <img :src="profitImage" alt="수입 대비 지출 상태" style="width: 200px" />
-    <!-- 설명 문구 출력 -->
-    <p class="profit-message">{{ profitMessage }}</p>
+  <div class="profit_wrapper">
+    <h3>이 달의 순이익</h3>
+    <div class="profit_wrap">
+      <p>
+        <span :style="{ color: netProfit >= 0 ? 'green' : 'red' }">
+          {{ netProfit?.toLocaleString?.() ?? '데이터 없음' }}원
+        </span>
+      </p>
+      <img :src="profitImage" alt="수입 대비 지출 상태" class="cabbage" />
+      <p class="profit-message">{{ profitMessage }}</p>
+    </div>
   </div>
 </template>
 
@@ -59,22 +57,53 @@ const profitMessage = computed(() => {
   const rate = spendingRate.value
 
   if (rate < 40) {
-    return '최고예요! 지출을 잘 관리하고 있어요 🎉'
+    return '최고예요 🎉'
   } else if (rate < 80) {
-    return '잘하고 있어요! 화이팅 👍'
+    return '좋은 흐름 유지 중 🌿'
   } else if (rate < 100) {
-    return '지출이 많아요! 관리가 필요해요 🔎'
+    return '주의가 필요해요 ⚠️'
   } else {
-    return '수입에 비해 지출이 너무 많아요 🚨'
+    return '지출이 너무 많아요 🚨'
   }
 })
 </script>
 
 <style scoped>
-h3 {
-  margin-bottom: 1rem;
+.profit_wrapper {
+  height: 100%;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  justify-content: center;
+  text-align: center;
 }
-p {
-  margin: 0.5rem 0;
+
+h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.profit_wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profit_wrap p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.cabbage {
+  width: 80%;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.profit-message {
+  margin-top: 0.5rem;
 }
 </style>
