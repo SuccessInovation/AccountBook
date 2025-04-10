@@ -1,6 +1,10 @@
 <script setup>
 import { defineEmits, ref, onMounted, onBeforeUnmount } from 'vue'
-import { EXPENSE_CATEGORIES, CATEGORY_MAP } from '@/constants/categories'
+import {
+  EXPENSE_CATEGORIES,
+  CATEGORY_MAP,
+  CATEGORY_IMG,
+} from '@/constants/categories'
 import { useBudgetStore } from '@/stores/UseBudgetStore'
 import { use_calendar_store } from '@/stores/MonthSelector'
 import axios from 'axios'
@@ -20,6 +24,7 @@ const categoryData = ref(
     category: key,
     name: CATEGORY_MAP[key],
     amount: 0,
+    icon: CATEGORY_IMG[key],
     focused: false,
   })),
 )
@@ -138,7 +143,14 @@ onBeforeUnmount(() => {
           :key="item.category"
           class="category_item"
         >
-          <span>{{ CATEGORY_MAP[item.category] }}</span>
+          <div class="txt_wrap">
+            <img
+              class="category_icon"
+              :src="CATEGORY_IMG[item.category]"
+              :alt="CATEGORY_MAP[item.category]"
+            />
+            <span>{{ CATEGORY_MAP[item.category] }}</span>
+          </div>
           <input
             class="amount_input"
             type="number"
@@ -213,17 +225,30 @@ onBeforeUnmount(() => {
 }
 /* 카테고리 별 아이템 */
 .category_item {
-  position: relative;
+  width: 20rem;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   margin: 1.25rem;
+}
+.txt_wrap {
+  width: 7rem;
+  display: flex;
+  gap: 0.625rem;
+}
+.category_icon {
+  width: 1.125rem;
+}
+.txt_wrap span {
+  flex: 1;
+  text-align: left;
+  width: 4.5rem;
 }
 .amount_input {
   background-color: var(--input-box-color);
-  width: 10rem;
+  width: 11.5rem;
   height: 2rem;
-  flex: 2;
+  flex: none;
   padding: 0 0.5rem;
   border-radius: 0.375rem;
   border: none;
@@ -231,13 +256,8 @@ onBeforeUnmount(() => {
   color: var(--font-color);
   display: inline-block;
 }
-.category_item span:first-child {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  font-size: 1rem;
-}
-.category_item span:last-child {
+
+.category_item > span:last-child {
   width: 2rem;
   text-align: right;
 }

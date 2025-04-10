@@ -48,3 +48,18 @@ export const CATEGORY_MAP = {
   financial: '금융수입',
   scholarship: '장학금',
 }
+
+export const CATEGORY_IMG = {
+  food: '/src/img/icons/bowl-food-solid.svg',
+  cafesnack: '/src/img/icons/mug-saucer-solid.svg',
+  entertainment: '/src/img/icons/wine-glass-solid.svg',
+  shopping: '/src/img/icons/bag-shopping-solid.svg',
+  transportation: '/src/img/icons/bus-simple-solid.svg',
+  utilities: '/src/img/icons/gear-solid.svg',
+  health: '/src/img/icons/house-medical-solid.svg',
+  leisure: '/src/img/icons/gear-solid.svg',
+  travel: '/src/img/icons/gear-solid.svg',
+  contributions: '/src/img/icons/gear-solid.svg',
+  savings: '/src/img/icons/gear-solid.svg',
+  etc: '/src/img/icons/gear-solid.svg',
+}

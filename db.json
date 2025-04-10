@@ -5016,7 +5016,7 @@
     },
     {
       "category": "entertainment",
-      "amount": 0,
+      "amount": 100000,
       "month": "2025-04",
       "id": "6352"
     },
@@ -5028,13 +5028,13 @@
     },
     {
       "category": "transportation",
-      "amount": 0,
+      "amount": 400000,
       "month": "2025-04",
       "id": "2651"
     },
     {
       "category": "utilities",
-      "amount": 0,
+      "amount": 10000000,
       "month": "2025-04",
       "id": "4266"
     },
@@ -5046,7 +5046,7 @@
     },
     {
       "category": "leisure",
-      "amount": 0,
+      "amount": 444555,
       "month": "2025-04",
       "id": "504e"
     },
