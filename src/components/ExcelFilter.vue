@@ -20,7 +20,6 @@
       </label>
       <button id="submit_btn" type="submit">조회</button>
     </div>
-    <!-- 기간설정 class="period_selector" 선택 시에만 날짜 입력창 표시 -->
     <div class="date_inputs">
       <input
         id="date_start"
@@ -47,8 +46,15 @@ import { defineEmits } from 'vue'
 const store = statisticsStore()
 const selectPeriod = ref('1months') // 초기값: 1개월
 
-const customStartDate = ref('')
-const customEndDate = ref('')
+// 날짜 계산
+const today = new Date()
+const oneMonthAgo = new Date()
+oneMonthAgo.setMonth(today.getMonth() - 1)
+const formatDate = date => date.toISOString().split('T')[0]
+
+// 기본값 설정
+const customStartDate = ref(formatDate(oneMonthAgo))
+const customEndDate = ref(formatDate(today))
 
 const emit = defineEmits(['search'])
 
@@ -56,15 +62,14 @@ const emit = defineEmits(['search'])
 const handleSubmit = () => {
   console.log('선택된 기간:', selectPeriod.value)
 
-  const today = new Date()
   if (selectPeriod.value === '1months') {
     store.fetchTranactionsByPeriod()
   } else if (selectPeriod.value === '3months') {
     const startDate = new Date()
     startDate.setMonth(today.getMonth() - 3)
 
-    const start = startDate.toISOString().split('T')[0]
-    store.fetchTranactionsByPeriod(start, today)
+    const start = formatDate(startDate)
+    store.fetchTranactionsByPeriod(start, formatDate(today))
   } else if (selectPeriod.value === 'custom') {
     // 입력 확인
     if (!customStartDate.value || !customEndDate.value) {
@@ -80,25 +85,27 @@ const handleSubmit = () => {
 
 <style scoped>
 .box {
-  background-color: rgb(228, 102, 102);
   height: 100px;
   font-size: 15px;
   display: block;
+  color: var(--color-font-main);
+  box-sizing: border-box;
+  margin-left: 2.5%;
 }
 .box * {
   margin: 2.5px;
 }
+/* 라디오박스 및 조회 버튼 */
 .search {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 350px;
+  width: 330px;
   height: auto;
   margin-top: 15px;
-  background-color: lightblue;
 }
 .period_selector {
-  font-weight: 700px;
+  font-weight: 700;
 }
 #submit_btn {
   background-color: var(--color-point-1);
@@ -110,23 +117,30 @@ const handleSubmit = () => {
   border-radius: 10px;
   border: none;
 }
+
+/* 기간 설정 */
 .date_inputs {
-  background-color: yellow;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 350px;
+  width: 330px;
   height: auto;
+}
+.date_inputs span {
+  font-weight: 900;
+  font-size: 24px;
+  color: #fff;
 }
 #date_start,
 #date_end {
   background-color: #fff;
   color: var(--font-family-main);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 15px;
   width: 130px;
   height: 35px;
   border-radius: 10px;
   border: none;
+  padding: 0 10px;
 }
 </style>
