@@ -1,3 +1,16 @@
+import foodIcon from '../img/icons/bowl-food-solid.svg'
+import dessertIcon from '../img/icons/mug-saucer-solid.svg'
+import entertainmentIcon from '../img/icons/wine-glass-solid.svg'
+import shoppingIcon from '../img/icons/bag-shopping-solid.svg'
+import transportationIcon from '../img/icons/bus-simple-solid.svg'
+import utilitiesIcon from '../img/icons/gear-solid.svg'
+import healthIcon from '../img/icons/house-medical-solid.svg'
+import leisureIcon from '/src/img/icons/gear-solid.svg'
+import travelIcon from '/src/img/icons/gear-solid.svg'
+import contributionsIcon from '/src/img/icons/gear-solid.svg'
+import savingsIcon from '/src/img/icons/gear-solid.svg'
+import etcIcon from '/src/img/icons/gear-solid.svg'
+
 // 카테고리 목록 배열로 저장
 // 카테고리 -> 상수 -> 배열 대문자로 명명
 
@@ -47,4 +60,19 @@ export const CATEGORY_MAP = {
   allowance: '용돈',
   financial: '금융수입',
   scholarship: '장학금',
+}
+
+export const CATEGORY_IMG = {
+  food: foodIcon,
+  dessert: dessertIcon,
+  entertainment: entertainmentIcon,
+  shopping: shoppingIcon,
+  transportation: transportationIcon,
+  utilities: utilitiesIcon,
+  health: healthIcon,
+  leisure: leisureIcon,
+  travel: travelIcon,
+  contributions: contributionsIcon,
+  savings: savingsIcon,
+  etc: etcIcon,
 }
