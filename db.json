@@ -1391,5 +1391,78 @@
       "createdAt": "2025-04-10T00:00:00Z"
     }
   ],
-  "budgets": []
+  "budgets": [
+    {
+      "id": "d396",
+      "category": "food",
+      "amount": 10000,
+      "month": "2025-04"
+    },
+    {
+      "id": "ca78",
+      "category": "dessert",
+      "amount": 10000,
+      "month": "2025-04"
+    },
+    {
+      "id": "82dc",
+      "category": "entertainment",
+      "amount": 10000,
+      "month": "2025-04"
+    },
+    {
+      "id": "4098",
+      "category": "shopping",
+      "amount": 10000,
+      "month": "2025-04"
+    },
+    {
+      "id": "a28e",
+      "category": "transportation",
+      "amount": 10000,
+      "month": "2025-04"
+    },
+    {
+      "id": "bf20",
+      "category": "utilities",
+      "amount": 0,
+      "month": "2025-04"
+    },
+    {
+      "id": "065d",
+      "category": "health",
+      "amount": 0,
+      "month": "2025-04"
+    },
+    {
+      "id": "d150",
+      "category": "leisure",
+      "amount": 0,
+      "month": "2025-04"
+    },
+    {
+      "id": "7b48",
+      "category": "travel",
+      "amount": 0,
+      "month": "2025-04"
+    },
+    {
+      "id": "d2e5",
+      "category": "contributions",
+      "amount": 0,
+      "month": "2025-04"
+    },
+    {
+      "id": "cd05",
+      "category": "savings",
+      "amount": 0,
+      "month": "2025-04"
+    },
+    {
+      "id": "54ec",
+      "category": "etc",
+      "amount": 0,
+      "month": "2025-04"
+    }
+  ]
 }
