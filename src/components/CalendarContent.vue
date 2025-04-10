@@ -182,6 +182,7 @@ const isToday = day => {
 .container {
   align-items: center;
   margin: 1rem;
+  max-height: 30rem;
 }
 .table {
   width: 50rem;

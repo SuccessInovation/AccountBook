@@ -11,10 +11,14 @@ import { useRouter } from 'vue-router'
 import CalendarContent from '@/components/CalendarContent.vue'
 import AddListBtn from '@/components/AddListBtn.vue'
 import TransactionContent from '@/components/TransactionContent.vue'
-// const transactionStore = useTransactionStore()
+const transactionStore = useTransactionStore()
 const router = useRouter()
-
+// 상단 import 부분에 추가
+// setup 내에서 calendar 상태 불러오기
 const calendar = use_calendar_store()
+const { current_year, current_month } = storeToRefs(calendar)
+
+// const calendar = use_calendar_store()
 const { transactions } = storeToRefs(transactionStore)
 
 // 필터링 컴포넌트 (카테고리 선택 / 메모 검색창)
@@ -29,7 +33,7 @@ import {
 } from '@/constants/categories'
 
 // Pinia store 불러오기
-const transactionStore = useTransactionStore()
+// const transactionStore = useTransactionStore()
 
 // 마운트될 때 거래 내역 불러오기
 onMounted(() => {
@@ -78,14 +82,29 @@ const categorySelected = ref('all')
 const memoInputted = ref('')
 
 // '수입/지출' 체크박스 상태를 기준으로 거래 내역 필터링
-const filteredTransactions = computed(() => {
+// const filteredTransactions = computed(() => {
+//   return transactionStore.transactions.filter(record => {
+//     // type이 '수입' & '수입' 체크박스 체크 O
+//     if (record.type === 'income' && incomeChecked.value) return true
+//     // type이 '수출' & '수출' 체크박스 체크 O
+//     if (record.type === 'expense' && expenseChecked.value) return true
+//     // '수입/수출' 체크박스 모두 체크 X
+//     return false
+//   })
+// })
+
+const filteredByMonthTransactions = computed(() => {
   return transactionStore.transactions.filter(record => {
-    // type이 '수입' & '수입' 체크박스 체크 O
-    if (record.type === 'income' && incomeChecked.value) return true
-    // type이 '수출' & '수출' 체크박스 체크 O
-    if (record.type === 'expense' && expenseChecked.value) return true
-    // '수입/수출' 체크박스 모두 체크 X
-    return false
+    const date = new Date(record.date)
+    const recordYear = date.getFullYear()
+    const recordMonth = date.getMonth()
+
+    return (
+      recordYear === current_year.value &&
+      recordMonth === current_month.value &&
+      ((record.type === 'income' && incomeChecked.value) ||
+        (record.type === 'expense' && expenseChecked.value))
+    )
   })
 })
 
@@ -156,7 +175,7 @@ const MemoSearchHandler = text => {
 
 // 필터링된 거래내역 (카테고리 + 메모)
 const filteredList = computed(() => {
-  return filteredTransactions.value.filter(item => {
+  return filteredByMonthTransactions.value.filter(item => {
     // 선택된 카테고리가 'all'이거나 선택된 카테고리와 카테고리가 같은 항목
     const categoryMatch =
       categorySelected.value === 'all' ||
@@ -235,120 +254,18 @@ watch([incomeChecked, expenseChecked], () => {
       <div v-if="activeTab === 'list'">
         <!-- 목록 보기 -->
         <!-- <TransactionContent :transactions="store.transactions" />/ -->
-        <TransactionContent :transactions="transactionStore.transactions" />
+        <!-- <TransactionContent :transactions="transactionStore.transactions" /> -->
+        <TransactionContent />
       </div>
       <div v-else-if="activeTab === 'calendar'">
         <!-- 달력 보기 -->
         <CalendarContent />
       </div>
     </div>
-    <!-- 추가 버튼 -->
-    <AddListBtn />
   </div>
-  <div class="TransactionPage">
-    <div class="container-fluid px-4 py-4" style="min-height: 100vh">
-      <div
-        class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2"
-      >
-        <!-- 카테고리 필터 컴포넌트 (드롭다운) -->
-        <!-- props - 'FilterCategory.vue'로 '카테고리/resetKey' 전달 -->
-        <FilterCategory
-          :categories="availableCategories"
-          :resetKey="resetKey"
-          @categorySelected="CategoryChangeHandler"
-        />
 
-        <!-- 메모 검색창 컴포넌트 -->
-        <SearchByMemo @memoInputted="MemoSearchHandler" />
-
-        <!-- 수입/지출 필터 - 하나의 하얀 박스 안에 체크박스 2개 배치 -->
-        <div class="d-flex align-items-center bg-white px-3 py-2 gap-3">
-          <!-- 수입 체크박스 -->
-          <div class="form-check form-check-inline m-0">
-            <input
-              class="form-check-input me-1"
-              type="checkbox"
-              id="incomeCheck"
-              v-model="incomeChecked"
-            />
-            <label class="form-check-label fw-semibold" for="incomeCheck">
-              수입
-            </label>
-          </div>
-          <!-- 지출 체크박스 -->
-          <div class="form-check form-check-inline m-0">
-            <input
-              class="form-check-input me-1"
-              type="checkbox"
-              id="expenseCheck"
-              v-model="expenseChecked"
-            />
-            <label class="form-check-label fw-semibold" for="expenseCheck">
-              지출
-            </label>
-          </div>
-        </div>
-
-        <!-- 거래내역이 없을 경우 메시지 출력 -->
-        <div v-if="filteredList.length === 0" id="emptyTransaction">
-          표시할 내역이 없습니다.
-        </div>
-
-        <!-- '수입/지출' 필터링된 거래내역 -->
-        <div
-          v-else
-          class="table-responsive rounded shadow-sm bg-white px-3 w-100"
-          style="max-height: 400px; overflow-y: auto"
-        >
-          <table class="table table-hover mb-0 text-center align-middle">
-            <thead class="table-light">
-              <tr>
-                <th scope="col" style="width: 40px">
-                  <input type="checkbox" />
-                </th>
-                <th scope="col" style="width: 160px">날짜</th>
-                <th scope="col" style="width: 150px">카테고리</th>
-                <!-- 'width: auto': 남은 공간 자동으로 차지 -->
-                <th scope="col" style="width: auto">메모</th>
-                <th scope="col" style="width: 150px">금액</th>
-                <th scope="col" style="width: 60px">수정</th>
-                <th scope="col" style="width: 60px">삭제</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- 카테고리 필터링된 거래내역 -->
-              <tr v-for="filtered in filteredList" :key="filtered.id">
-                <td><input type="checkbox" /></td>
-                <td>{{ filtered.date }}</td>
-                <td>
-                  {{ CATEGORY_MAP[filtered.category] || filtered.category }}
-                </td>
-                <!-- text-truncate: 길어지면 말줄임표(...) 처리 (너비제한 필요) -->
-                <td class="text-start text-truncate" style="max-width: 300px">
-                  {{ filtered.memo }}
-                </td>
-                <td class="text-end">
-                  {{ prettyAmount(filtered.amount, filtered.type) }} 원
-                </td>
-                <td>
-                  <i
-                    class="text-success d-block mx-auto"
-                    style="cursor: pointer"
-                    >✏️</i
-                  >
-                </td>
-                <td>
-                  <i class="text-danger d-block mx-auto" style="cursor: pointer"
-                    >🗑️</i
-                  >
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- 추가 버튼 -->
+  <AddListBtn />
 </template>
 
 <style scoped>
@@ -579,6 +496,7 @@ watch([incomeChecked, expenseChecked], () => {
 /* 탭메뉴 */
 .nav-tabs .nav-link {
   cursor: pointer;
+}
 /* '수입/지출' 체크박스  */
 .align-items-center {
   border-radius: 15px;
@@ -586,26 +504,26 @@ watch([incomeChecked, expenseChecked], () => {
 
 /* '수입' 체크박스 */
 #incomeCheck {
-  background-color: var(--light-green);
-  border-color: var(--point-1-color);
+  background-color: var(--color-green-light);
+  border-color: var(--color-point-1);
 }
 
 /* '수입' 체크박스 선택 */
 #incomeCheck:checked {
-  background-color: var(--point-1-color);
-  border-color: var(--point-1-color);
+  background-color: var(--color-point-1);
+  border-color: var(--color-point-1);
 }
 
 /* '지출' 체크박스 */
 #expenseCheck {
-  background-color: var(--light-red);
-  border-color: var(--red-100);
+  background-color: var(--color-red-light);
+  border-color: var(--color-red-100);
 }
 
 /* '지출' 체크박스 선택 */
 #expenseCheck:checked {
-  background-color: var(--red-100);
-  border-color: var(--red-100);
+  background-color: var(--color-red-100);
+  border-color: var(--color-red-100);
 }
 
 /* 거래내역 없을 때 텍스트 */

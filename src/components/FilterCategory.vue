@@ -120,6 +120,7 @@ watch(
 
 /* 전체 드롭다운 영역 */
 .filter_category {
+  position: relative;
   width: 160px;
   font-size: 14px;
 }
