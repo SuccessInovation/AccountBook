@@ -1,7 +1,6 @@
 {
   "transactions": [
     {
-<<<<<<< HEAD
       "id": "1732733613",
       "date": "2024-11-28",
       "type": "income",
@@ -3219,106 +3218,5 @@
       "month": "2025-05",
       "id": "810b"
     }
-=======
-      "id": 1712404800000,
-      "date": "2025-04-06",
-      "type": "expense",
-      "category": "food",
-      "paymentMethod": "카드",
-      "amount": 12000,
-      "memo": "점심 식사",
-      "createdAt": "2025-04-06T12:00:00Z"
-    },
-    {
-      "id": 1712383200000,
-      "date": "2025-04-06",
-      "type": "expense",
-      "category": "dessert",
-      "paymentMethod": "현금",
-      "amount": 4500,
-      "memo": "커피 한 잔",
-      "createdAt": "2025-04-06T06:00:00Z"
-    },
-    {
-      "id": 1712332800000,
-      "date": "2025-04-05",
-      "type": "expense",
-      "category": "transportation",
-      "paymentMethod": "카드",
-      "amount": 1650,
-      "memo": "지하철 요금",
-      "createdAt": "2025-04-05T16:00:00Z"
-    },
-    {
-      "id": 1712314800000,
-      "date": "2025-04-05",
-      "type": "income",
-      "category": "salary",
-      "paymentMethod": "현금",
-      "amount": 20000,
-      "memo": "용돈 받음",
-      "createdAt": "2025-04-05T11:00:00Z"
-    },
-    {
-      "id": 1712228400000,
-      "date": "2025-04-04",
-      "type": "expense",
-      "category": "shopping",
-      "paymentMethod": "카드",
-      "amount": 39000,
-      "memo": "옷 구매",
-      "createdAt": "2025-04-04T11:00:00Z"
-    },
-    {
-      "id": 1712203200000,
-      "date": "2025-04-04",
-      "type": "expense",
-      "category": "food",
-      "paymentMethod": "현금",
-      "amount": 8700,
-      "memo": "저녁 식사",
-      "createdAt": "2025-04-04T04:00:00Z"
-    },
-    {
-      "id": 1712120400000,
-      "date": "2025-04-03",
-      "type": "income",
-      "category": "etc",
-      "paymentMethod": "카드",
-      "amount": 1500000,
-      "memo": "월급",
-      "createdAt": "2025-04-03T04:00:00Z"
-    },
-    {
-      "id": 1712066400000,
-      "date": "2025-04-02",
-      "type": "expense",
-      "category": "food",
-      "paymentMethod": "카드",
-      "amount": 12000,
-      "memo": "영화 관람",
-      "createdAt": "2025-04-02T13:00:00Z"
-    },
-    {
-      "id": 1712048400000,
-      "date": "2025-04-02",
-      "type": "expense",
-      "category": "food",
-      "paymentMethod": "카드",
-      "amount": 9500,
-      "memo": "브런치 카페",
-      "createdAt": "2025-04-02T08:00:00Z"
-    },
-    {
-      "id": 1711965600000,
-      "date": "2025-04-01",
-      "type": "income",
-      "category": "etc",
-      "paymentMethod": "현금",
-      "amount": 50000,
-      "memo": "중고거래 수입",
-      "createdAt": "2025-04-01T08:00:00Z"
-    }
->>>>>>> e3623f404475bfdfc95054da9dd83453e5ca80d1
   ]
 }
