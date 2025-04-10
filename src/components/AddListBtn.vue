@@ -1,10 +1,11 @@
 <script setup>
-import { useRouter } from 'vue-router'
+import { ref } from 'vue'
+import PopupPage from '@/pages/PopupPage.vue'
 
-const router = useRouter()
+const showPopup = ref(false)
 
 function goToPopup() {
-  router.push('/popup')
+  showPopup.value = true
 }
 </script>
 
@@ -12,7 +13,11 @@ function goToPopup() {
   <div class="add-button-area">
     <button class="add-button" @click="goToPopup">추가 +</button>
   </div>
+
+  <!-- 팝업이 열릴 때만 보여짐 -->
+  <PopupPage v-if="showPopup" @close="showPopup = false" />
 </template>
+
 <style scoped>
 /* 하단 '추가' 버튼 영역 */
 .add-button-area {

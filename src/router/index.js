@@ -11,6 +11,7 @@ import PopupListPage from '@/pages/PopupListPage.vue'
 import StatisticsPage from '@/pages/StatisticsPage.vue'
 import BudgetPage from '@/pages/BudgetPage.vue'
 import ExportExcelPage from '@/pages/ExportExcelPage.vue'
+import TransactionEdit from '@/pages/TransactionEdit.vue'
 
 const routes = [
   {
@@ -68,6 +69,11 @@ const routes = [
     name: 'Budget',
     component: BudgetPage,
     meta: { layout: 'default' }, //  헤더/사이드바 있는 레이아웃
+  },
+  {
+    path: '/edit/:id',
+    name: 'TransactionEdit',
+    component: TransactionEdit,
   },
 ]
 

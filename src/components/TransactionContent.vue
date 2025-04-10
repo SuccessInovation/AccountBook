@@ -153,6 +153,7 @@ import { use_calendar_store } from '@/stores/MonthSelector'
 // 거래 내역을 상태로 관리하는 Pinia store
 import { useTransactionStore } from '@/stores/TransactionStore'
 import { useRouter } from 'vue-router'
+import TransactionEdit from '@/pages/TransactionEdit.vue'
 // import
 const calendar = use_calendar_store()
 const { current_year, current_month } = storeToRefs(calendar)
@@ -444,6 +445,12 @@ watch([incomeChecked, expenseChecked], () => {
                   <i
                     class="text-success d-block mx-auto"
                     style="cursor: pointer"
+                    @click="
+                      router.push({
+                        name: 'TransactionEdit',
+                        params: { id: filtered.id },
+                      })
+                    "
                     >✏️</i
                   >
                 </td>
@@ -460,4 +467,291 @@ watch([incomeChecked, expenseChecked], () => {
     </div>
   </div>
 </template>
-<style scoped></style>
+<style scoped>
+/* 월 이동 컴포넌트 */
+.container {
+  background-color: var(--color-point-3);
+  border-radius: 30px;
+  width: 98%;
+  min-width: 768px;
+  height: 630px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.calendar_carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.month_slider {
+  display: flex;
+  width: 500px;
+  overflow: hidden;
+  justify-content: space-between;
+}
+
+.month_item {
+  width: 100px;
+  text-align: center;
+  font-size: 1.2rem;
+  opacity: 0.6;
+  transform: scale(0.9);
+  transition: all 0.5s ease;
+}
+
+.month_item p {
+  font-size: 2.5rem;
+}
+
+.faded {
+  opacity: 0.4;
+}
+.active {
+  font-weight: bold;
+}
+
+.month_item.active {
+  font-size: 1.5rem;
+  font-weight: bold;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.arrow {
+  font-size: 2rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #4caf50;
+  transition: transform 0.2s ease;
+}
+.arrow:hover {
+  transform: scale(1.2);
+}
+
+/* 전체 컨테이너 */
+/* .ledger-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: sans-serif;
+  background-color: #fff;
+} */
+
+/* 상단 연/월 네비게이션 */
+/* .ledger-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  gap: 40px;
+  background-color: #fff;
+} */
+/* .month-nav {
+  font-size: 1.1rem;
+  color: #888;
+  cursor: pointer;
+} */
+.current-month {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.current-month .year {
+  font-size: 1rem;
+  color: #999;
+}
+.current-month .month {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+/* 중간의 '목록/달력/카테고리/검색/수입/지출' 섹션 */
+.ledger-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #a3c39c;
+  padding: 10px 20px;
+  color: #fff;
+}
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+.nav-btn.active,
+.nav-btn:hover {
+  background-color: #8eb58d;
+}
+.category-select {
+  background-color: #fff;
+  color: #333;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+}
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.search-input {
+  width: 300px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.income-checkbox,
+.expense-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+/* 테이블 영역 */
+.ledger-table-section {
+  padding: 20px;
+  background-color: #f8f8f8;
+}
+.ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.ledger-table thead {
+  background-color: #e2e2e2;
+}
+.ledger-table th,
+.ledger-table td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+.ledger-table th {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #333;
+}
+.ledger-table td {
+  font-size: 0.88rem;
+  color: #555;
+}
+.ledger-table td i {
+  cursor: pointer;
+}
+
+/* 페이징 컨트롤 */
+.pagination-controls button {
+  padding: 6px 12px;
+  margin: 0 6px;
+  border: none;
+  background-color: #a3c39c;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.pagination-controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* 하단 '추가' 버튼 영역 */
+.add-button-area {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #fff;
+}
+.add-button {
+  background-color: #a3c39c;
+  color: #fff;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.add-button:hover {
+  background-color: #8eb58d;
+}
+
+/* 탭메뉴 */
+.nav-tabs .nav-link {
+  cursor: pointer;
+}
+/* '수입/지출' 체크박스  */
+.align-items-center {
+  border-radius: 15px;
+}
+
+/* --color-font-main: #3f3e3c;
+  --color-point-1: #328e6e;
+  --color-point-2: #67ae6e;
+  --color-point-3: #99bc85;
+  --color-point-4: #b7ccb4;
+  --color-point-5: #d3ded9;
+  --color-input-box: #dbdbdb;
+  --color-brown-dark: #706d54;
+  --color-brown-light: #c9b194;
+  --color-brown-very-light: #ededed;
+  --color-red-100: #f93949;
+  --color-red-light: rgba(249, 57, 73, 0.2);
+  --color-green-light: rgba(42, 125, 92, 0.2); */
+/* '수입' 체크박스 */
+#incomeCheck {
+  background-color: var(--color-green-light);
+  border-color: var(--color-point-1);
+}
+
+/* '수입' 체크박스 선택 */
+#incomeCheck:checked {
+  background-color: var(--color-point-1);
+  border-color: var(--color-point-1);
+}
+
+/* '지출' 체크박스 */
+#expenseCheck {
+  background-color: var(--color-red-light);
+  border-color: var(--color-red-100);
+}
+
+/* '지출' 체크박스 선택 */
+#expenseCheck:checked {
+  background-color: var(--color-red-100);
+  border-color: var(--color-red-100);
+}
+
+/* 거래내역 없을 때 텍스트 */
+#emptyTransaction {
+  text-align: center;
+  margin: 20px;
+}
+</style>

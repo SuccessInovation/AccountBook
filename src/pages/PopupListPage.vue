@@ -1,7 +1,10 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
 import { useTransactionStore } from '@/stores/TransactionStore'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
+const router = useRouter()
+
+import TransactionEdit from './TransactionEdit.vue'
 // import
 
 const transactionStore = useTransactionStore()
@@ -103,7 +106,7 @@ function closeModal() {
         {{ selectedDate }}
         {{ getKoreanDayName(selectedDate) }}
       </div>
-      <button class="closeBtn" @click="closeModal">X</button>
+      <button class="closeBtn" @click="closeModal">✕</button>
 
       <div class="scrollable-table">
         <table class="ledger-table table">
@@ -140,7 +143,12 @@ function closeModal() {
               <td>
                 <i
                   class="icon-edit"
-                  @click="handleEdit(record)"
+                  @click="
+                    router.push({
+                      name: 'TransactionEdit',
+                      params: { id: record.id },
+                    })
+                  "
                   style="cursor: pointer"
                   >✏️</i
                 >

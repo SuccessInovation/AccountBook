@@ -205,6 +205,7 @@ watch([incomeChecked, expenseChecked], () => {
 <!-- 탭메뉴 -->
 <template>
   <!-- 월 이동 컴포넌트 -->
+
   <div class="calendar_carousel">
     <button type="button" class="arrow" @click="calendar.go_to_prev_month">
       &lt;
@@ -226,50 +227,62 @@ watch([incomeChecked, expenseChecked], () => {
       &gt;
     </button>
   </div>
-  <div>
-    <!-- Bootstrap 탭 메뉴 -->
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <button
-          class="nav-link"
-          :class="{ active: activeTab === 'list' }"
-          @click="activeTab = 'list'"
-        >
-          목록
-        </button>
-      </li>
-      <li class="nav-item">
-        <button
-          class="nav-link"
-          :class="{ active: activeTab === 'calendar' }"
-          @click="activeTab = 'calendar'"
-        >
-          달력
-        </button>
-      </li>
-    </ul>
+  <div class="container">
+    <div>
+      <!-- Bootstrap 탭 메뉴 -->
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            :class="{ active: activeTab === 'list' }"
+            @click="activeTab = 'list'"
+          >
+            목록
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            :class="{ active: activeTab === 'calendar' }"
+            @click="activeTab = 'calendar'"
+          >
+            달력
+          </button>
+        </li>
+      </ul>
 
-    <!-- 탭 콘텐츠 -->
-    <div class="tab-content mt-3">
-      <div v-if="activeTab === 'list'">
-        <!-- 목록 보기 -->
-        <!-- <TransactionContent :transactions="store.transactions" />/ -->
-        <!-- <TransactionContent :transactions="transactionStore.transactions" /> -->
-        <TransactionContent />
-      </div>
-      <div v-else-if="activeTab === 'calendar'">
-        <!-- 달력 보기 -->
-        <CalendarContent />
+      <!-- 탭 콘텐츠 -->
+      <div class="tab-content mt-3">
+        <div v-if="activeTab === 'list'">
+          <!-- 목록 보기 -->
+          <!-- <TransactionContent :transactions="store.transactions" />/ -->
+          <!-- <TransactionContent :transactions="transactionStore.transactions" /> -->
+          <TransactionContent />
+        </div>
+        <div v-else-if="activeTab === 'calendar'">
+          <!-- 달력 보기 -->
+          <CalendarContent />
+        </div>
       </div>
     </div>
   </div>
-
   <!-- 추가 버튼 -->
   <AddListBtn />
 </template>
 
 <style scoped>
 /* 월 이동 컴포넌트 */
+.container {
+  background-color: var(--color-point-3);
+  border-radius: 30px;
+  width: 98%;
+  min-width: 768px;
+  height: 630px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .calendar_carousel {
   display: flex;
   align-items: center;
@@ -324,28 +337,28 @@ watch([incomeChecked, expenseChecked], () => {
 }
 
 /* 전체 컨테이너 */
-.ledger-container {
+/* .ledger-container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   font-family: sans-serif;
   background-color: #fff;
-}
+} */
 
 /* 상단 연/월 네비게이션 */
-.ledger-header {
+/* .ledger-header {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px 0;
   gap: 40px;
   background-color: #fff;
-}
-.month-nav {
+} */
+/* .month-nav {
   font-size: 1.1rem;
   color: #888;
   cursor: pointer;
-}
+} */
 .current-month {
   display: flex;
   flex-direction: column;
@@ -502,6 +515,19 @@ watch([incomeChecked, expenseChecked], () => {
   border-radius: 15px;
 }
 
+/* --color-font-main: #3f3e3c;
+  --color-point-1: #328e6e;
+  --color-point-2: #67ae6e;
+  --color-point-3: #99bc85;
+  --color-point-4: #b7ccb4;
+  --color-point-5: #d3ded9;
+  --color-input-box: #dbdbdb;
+  --color-brown-dark: #706d54;
+  --color-brown-light: #c9b194;
+  --color-brown-very-light: #ededed;
+  --color-red-100: #f93949;
+  --color-red-light: rgba(249, 57, 73, 0.2);
+  --color-green-light: rgba(42, 125, 92, 0.2); */
 /* '수입' 체크박스 */
 #incomeCheck {
   background-color: var(--color-green-light);

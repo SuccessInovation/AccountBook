@@ -2999,6 +2999,16 @@
       "amount": 15200,
       "memo": "주식 수익",
       "createdAt": "2024-01-13T02:39:09Z"
+    },
+    {
+      "id": "1744287884020",
+      "date": "2025-04-10",
+      "type": "expense",
+      "category": "dessert",
+      "paymentMethod": "cash",
+      "amount": 15000,
+      "memo": "자허블",
+      "createdAt": "2025-04-10T12:24:44.020Z"
     }
   ],
   "budgets": [
