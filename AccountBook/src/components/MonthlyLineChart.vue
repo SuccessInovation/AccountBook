@@ -10,7 +10,13 @@
           <span class="line-description-text"
             >{{ currentMonthExpense.toLocaleString() }}원</span
           >으로 <br />전월 대비
-          <span class="line-description-text">{{ monthOverMonthChange }}</span>
+
+          <span
+            v-if="Number(monthOverMonthChange) !== 0"
+            class="line-description-text"
+          >
+            {{ monthOverMonthChange }}%
+          </span>
           {{ monthOverMonthMessage }}
         </p>
         <p class="line-description-box">
@@ -95,7 +101,7 @@ const monthOverMonthChange = computed(() => {
   if (previousMonthExpense.value === 0) return null // 전월 데이터 없을 때
   const diff = currentMonthExpense.value - previousMonthExpense.value
   const rate = (diff / previousMonthExpense.value) * 100
-  return `${rate.toFixed(1)}%`
+  return rate.toFixed(1)
 })
 
 const monthOverMonthMessage = computed(() => {
@@ -105,6 +111,9 @@ const monthOverMonthMessage = computed(() => {
   if (change < 0) return '감소했어요 📉'
   return '변동이 없어요.'
 })
+
+// console.log('monthOverMonthChange:', monthOverMonthChange.value)
+// console.log('typeof:', typeof monthOverMonthChange.value)
 
 // ✅ 8개월 평균
 const averageExpense = computed(() => {
