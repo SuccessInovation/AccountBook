@@ -30,7 +30,7 @@ const handleSearch = () => {
   align-items: center;
 }
 .container {
-  background-color: blue;
+  background-color: grey;
   width: 1500px;
   height: 630px;
 }

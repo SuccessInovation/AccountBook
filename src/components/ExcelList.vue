@@ -1,14 +1,29 @@
 <template>
-  <div class="box">
+  <div class="wrapper">
     <button id="btn_export" @click="downloadExcel(store.filteredTransaction)">
       엑셀로 내보내기
     </button>
-    <ul>
-      <!-- 양식에 맞게 수정 예정 -->
-      <li v-for="item in store.filteredTransaction" :key="item.id">
-        {{ item.date }} | {{ item.category }} | {{ item.amount }}원
-      </li>
-    </ul>
+    <div class="box">
+      <table id="transaction-table">
+        <thead>
+          <tr>
+            <th>날짜</th>
+            <th>카테고리</th>
+            <th>내용</th>
+            <th>금액</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in store.filteredTransaction" :key="item.id">
+            <td>{{ item.date }}</td>
+            <td>{{ item.category }}</td>
+            <td>{{ item.memo || '-' }}</td>
+            <!-- 내용 없으면 '-' 표시 -->
+            <td>{{ item.amount }}원</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -32,15 +47,13 @@ const downloadExcel = data => {
 </script>
 
 <style scoped>
-.box {
-  background-color: white;
-  border: 1px solid black;
-  height: 500px;
-  width: 100%;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* 버튼을 오른쪽 정렬 */
+  gap: 5px; /* 버튼과 박스 사이 간격 */
 }
 #btn_export {
-  display: block;
-  margin-bottom: 10px; /* 박스와 간격 */
   background-color: var(--color-point-1);
   color: white;
   font-weight: 500;
@@ -48,5 +61,14 @@ const downloadExcel = data => {
   width: 130px;
   height: 35px;
   border-radius: 10px;
+  position: relative;
+}
+
+.box {
+  background-color: lightpink;
+  border: 1px solid black;
+  height: 500px;
+  width: 100%;
+  display: block;
 }
 </style>
