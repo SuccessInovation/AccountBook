@@ -25,7 +25,7 @@
 
 <script setup>
 // 컴포넌트 및 스토어 import
-import CalendarContent from '@/components/CalendarNav.vue'
+import CalendarNav from '@/components/CalendarNav.vue'
 import { statisticsStore } from '@/stores/statisticsStore'
 import { use_calendar_store } from '@/stores/MonthSelector'
 import { onMounted, watch } from 'vue'
@@ -67,7 +67,6 @@ watch(
   background-color: red;
 } */
 .statistics_page {
-  background-color: red;
   position: absolute;
   height: calc(100% - (120px + 80px)); /* 헤더+푸터의 높이만큼 뺌 */
   width: calc(100% - 250px); /* 사이드바의 너비만큼 뺌 */
@@ -75,12 +74,6 @@ watch(
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-/* 달력 영역 */
-CalendarNav {
-  position: absolute;
-  background-color: black;
-  top: 500px;
 }
 /* 통계 콘텐츠 영역 박스 */
 .content_area {

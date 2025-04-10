@@ -4,7 +4,7 @@
 // import { useBudgetStore } from '@/stores/UseBudgetStore'
 // import { storeToRefs } from 'pinia'
 // import { computed, watch } from 'vue'
-import CalendarContent from '@/components/CalendarNav.vue'
+import CalendarNav from '@/components/CalendarNav.vue'
 import SummaryCard from '@/components/SummaryCard.vue'
 import { useBudgetProgress } from '@/stores/useBudgetProgress'
 // const store = statisticsStore()
@@ -52,7 +52,7 @@ const { rawTotalBudget, rawTotalIncome, rawTotalSpent } = useBudgetProgress()
 
 <template>
   <div class="home">
-    <CalendarContent />
+    <CalendarNav />
     <!-- 값이 정의되었을 때만 렌더링 -->
     <SummaryCard
       :totalIncome="rawTotalIncome"
