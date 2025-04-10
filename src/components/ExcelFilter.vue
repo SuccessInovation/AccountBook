@@ -46,13 +46,13 @@ const handleSubmit = () => {
 
   const today = new Date()
   if (selectPeriod.value === '1months') {
-    store.fetchTranactionsByPeriod()
+    store.fetchTransactionsByPeriod()
   } else if (selectPeriod.value === '3months') {
     const startDate = new Date()
     startDate.setMonth(today.getMonth() - 3)
 
     const start = startDate.toISOString().split('T')[0]
-    store.fetchTranactionsByPeriod(start, today)
+    store.fetchTransactionsByPeriod(start, today)
   } else if (selectPeriod.value === 'custom') {
     // 입력 확인
     if (!customStartDate.value || !customEndDate.value) {
@@ -60,7 +60,7 @@ const handleSubmit = () => {
       return
     }
 
-    store.fetchTranactionsByPeriod(customStartDate.value, customEndDate.value)
+    store.fetchTransactionsByPeriod(customStartDate.value, customEndDate.value)
   }
   emit('search') // 조회 완료 → 부모 컴포넌트에게 알림!
 }
