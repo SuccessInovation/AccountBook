@@ -10,6 +10,7 @@ import PopupPage from '@/pages/PopupPage.vue'
 import StatisticsPage from '@/pages/StatisticsPage.vue'
 import BudgetPage from '@/pages/BudgetPage.vue'
 import ExportExcelPage from '@/pages/ExportExcelPage.vue'
+import TransactionEdit from '@/pages/TransactionEdit.vue'
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: '/transaction',
     name: 'Transaction',
     component: TransactionPage,
+  },
+  {
+    path: '/transaction/edit/:id', // 동적 파라미터 :id
+    name: 'TransactionEdit',
+    component: TransactionEdit,
   },
   {
     path: '/popup',

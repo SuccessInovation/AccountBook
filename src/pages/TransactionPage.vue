@@ -226,6 +226,16 @@ function allDeleteHandler() {
   }
 }
 //#endregion
+
+//#region 행을 클릭하면 체크되는 이벤트
+/**
+ * 만약 클릭한 요소가 이미 수정/삭제 아이콘 등 click.stop 처리된 요소가 아니라면,
+ * 해당 행의 체크 상태를 토글
+ */
+function toggleRow(record, event) {
+  record.selected = !record.selected
+}
+//#endregion
 </script>
 
 <template>
@@ -347,7 +357,7 @@ function allDeleteHandler() {
               <td>
                 <i
                   class="text-danger d-block mx-auto icon-hover"
-                  @click.stop="handleDelete(filtered.id)"
+                  @click.stop="deleteHandler(filtered.id)"
                   style="cursor: pointer"
                   >🗑️</i
                 >
@@ -416,7 +426,7 @@ function allDeleteHandler() {
   flex-direction: column;
 }
 
-icon-hover:hover {
+.icon-hover:hover {
   transform: scale(1.2);
   transition: transform 0.2s ease;
 }
