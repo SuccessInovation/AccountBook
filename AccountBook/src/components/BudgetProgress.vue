@@ -99,13 +99,22 @@ const calendar = use_calendar_store()
 
 const emit = defineEmits(['setting'])
 
+const {
+  expenseData,
+  totalBudget,
+  totalSpent,
+  overallPercent,
+  totalLeft,
+  refresh,
+} = useBudgetProgress()
+
+defineExpose({
+  refresh, // 👈 이걸 해줘야 ref.value.refresh가 가능해짐
+})
 const budgetSetting = () => {
   console.log('클릭됨')
-  emit('setting')
+  emit('setting') // 예산 설정 UI 열기
 }
-
-const { expenseData, totalBudget, totalSpent, overallPercent, totalLeft } =
-  useBudgetProgress()
 </script>
 
 <style scoped>

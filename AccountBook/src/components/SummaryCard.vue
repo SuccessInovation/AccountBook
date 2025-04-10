@@ -35,7 +35,7 @@ console.log('받은 props:', props)
       <div class="income_card card_box">
         <div class="box_title"><span>수입</span></div>
         <div id="usevalue_income_box" class="amount_box">
-          <p>{{ isNaN(totalIncome) ? 0 : totalIncome.toFixed(0) }}원</p>
+          <p>{{ isNaN(totalIncome) ? 0 : totalIncome.toLocaleString() }}원</p>
         </div>
       </div>
 
@@ -49,9 +49,9 @@ console.log('받은 props:', props)
     </div>
 
     <!-- 오른쪽 파이차트 자리 (현재 비워져 있음) -->
-    <!-- <div class="piechart_wrap">
-      <MonthlyPieChart :monthly-data="monthlyData" />
-    </div> -->
+    <div class="piechart_wrap">
+      <!-- <MonthlyPieChart :monthly-data="monthlyData" /> -->
+    </div>
   </div>
 </template>
 
@@ -71,9 +71,9 @@ console.log('받은 props:', props)
 .card_wrap {
   width: 40%;
   height: 600px;
-  border: 30px solid var(--point-3-color);
+  border: 30px solid var(--color-point-3);
   border-radius: 20px;
-  background-color: var(--point-3-color);
+  background-color: var(--color-point-3);
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -109,7 +109,7 @@ console.log('받은 props:', props)
 .piechart_wrap {
   width: 60%;
   height: 1000px;
-  border: 30px solid var(--point-3-color);
+  border: 30px solid var(--color-point-3);
   border-radius: 20px;
   display: flex;
   align-items: center;
