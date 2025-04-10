@@ -29,7 +29,9 @@
 
         <a href="#" class="reset_link">비밀번호 초기화</a>
       </div>
-      <button class="login_btn btn">로그인</button>
+      <button class="login_btn btn">
+        <router-link to="home">로그인</router-link>
+      </button>
       <button class="signfor_btn btn">회원가입</button>
     </form>
   </div>
@@ -50,6 +52,7 @@
   justify-items: center;
   justify-content: center;
   align-items: center;
+  align-content: center;
   gap: 2rem;
 }
 
@@ -78,9 +81,9 @@
   width: 350px;
   height: 3rem;
   padding-left: 1rem;
-  border: 1px solid var(--input-box-color);
+  border: 1px solid var(--color-input-box);
   border-radius: 5px;
-  background-color: var(--input-box-color);
+  background-color: var(--color-input-box);
 }
 .options_row {
   display: flex;
@@ -94,7 +97,7 @@
 }
 .checkbox_wrapper input[type='checkbox'] {
   transform: scale(1.2); /* 숫자 조절하면 크기 변경 가능 */
-  border: 2px solid var(--input-box-color);
+  border: 2px solid var(--color-input-box);
 }
 
 .reset_link {
@@ -105,14 +108,14 @@
 }
 .login_btn {
   margin-top: 3rem;
-  background-color: var(--point-1-color);
-  color: var(--very-light-brown);
+  background-color: var(--color-point-1);
+  color: var(--color-brown-very-light);
 }
 .signfor_btn {
-  color: var(--point-1-color);
+  color: var(--color-point-1);
 }
 .btn {
-  border: 1px solid var(--point-1-color);
+  border: 1px solid var(--color-point-1);
   height: 4rem;
   border-radius: 10px;
 }

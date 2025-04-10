@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="app_layout">
+  <div id="app" class="app_layout" :style="backgroundStyle">
     <!-- 현재 라우터가 기본(default) 레이아웃인 경우에만 헤더 표시 -->
     <TheHeader v-if="layout === 'default'" />
 
@@ -37,6 +37,14 @@ const route = useRoute()
 const layout = computed(() => {
   return route.meta.layout || 'default'
 })
+
+// 시작페이지만 메타태그 이용한 배경색 적용
+const backgroundStyle = computed(() => {
+  const color = route.meta.backgroundColor || '#b7ccb4'
+  return {
+    backgroundColor: color,
+  }
+})
 </script>
 
 <style scoped>
@@ -60,6 +68,7 @@ const layout = computed(() => {
   flex: 1;
   padding: 1rem;
   overflow-y: auto;
+  align-content: center;
 }
 .main_content.full {
   width: 100vw;

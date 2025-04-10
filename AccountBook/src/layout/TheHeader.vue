@@ -3,10 +3,10 @@
 <template>
   <div class="TheHeader">
     <h1>
-      <div id="logo">
+      <router-link to="/" id="logo">
         <span>배추</span
         ><img id="img_logo" src="../img/cabbage/logo1.png" alt="로고" />
-      </div>
+      </router-link>
     </h1>
     <div class="header_title_wrapper">
       <div id="header_title">임시 제목: HOME</div>
@@ -23,7 +23,7 @@
 
 <style scoped>
 .TheHeader {
-  position: relative;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -31,19 +31,25 @@
   height: 120px;
   display: flex;
   align-items: center;
-  background-color: var(--point-5-color);
+  background-color: var(--color-point-5);
   box-sizing: border-box;
 }
+
 /* 배추 로고 */
-#logo {
+h1 {
   margin: 0;
-  width: 300px;
+  width: 250px;
   height: 100%;
-  display: flex;
+  padding: 15px 50px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#logo {
+  height: 100%;
+  display: inline-flex;
   align-items: center;
   font-size: 45px;
   font-weight: bold;
-  padding: 15px 0 0 40px;
 }
 #img_logo {
   width: 55px;
@@ -59,6 +65,8 @@
   font-size: 27px;
   font-weight: bold;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
 }
 /* 프로필 아이콘 */
 #img_profile {
@@ -72,10 +80,13 @@
   margin-left: auto;
   cursor: pointer;
 }
+/* 프로필 아이콘 */
 #img_profile {
+  position: fixed;
+  right: 20px;
   width: 70px;
   height: 70px;
-  object-fit: cover; /* 이미지 비율 잘 맞추기: 화면 비율 고정ㄴ*/
+  object-fit: cover; /* 이미지 비율 잘 맞추기: 화면 비율 고정*/
   border-radius: 50%;
   border: 3px solid white;
   cursor: pointer;
