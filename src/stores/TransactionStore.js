@@ -25,7 +25,7 @@ export const useTransactionStore = defineStore('transaction', {
     // 특정 id 거래 삭제 액션
     async deleteTransaction(id) {
       try {
-        await axios.delete(`${BASE_URI}/${id}`)
+        await axios.delete(`${BASE_URI}/transactions/${id}`)
         this.transactions = this.transactions.filter(item => item.id !== id)
       } catch (error) {
         console.error('거래 삭제 오류:', error)
@@ -34,7 +34,10 @@ export const useTransactionStore = defineStore('transaction', {
     // 거래 업데이트(수정) 액션
     async updateTransaction(id, updatedData) {
       try {
-        const response = await axios.put(`${BASE_URI}/${id}`, updatedData)
+        const response = await axios.put(
+          `${BASE_URI}/transactions/${id}`,
+          updatedData,
+        )
         // 수정된 데이터로 로컬 배열 업데이트
         this.transactions = this.transactions.map(item =>
           item.id === id ? response.data : item,

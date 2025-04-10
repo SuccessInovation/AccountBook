@@ -336,29 +336,6 @@ watch([incomeChecked, expenseChecked], () => {
   transform: scale(1.2);
 }
 
-/* 전체 컨테이너 */
-/* .ledger-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  font-family: sans-serif;
-  background-color: #fff;
-} */
-
-/* 상단 연/월 네비게이션 */
-/* .ledger-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px 0;
-  gap: 40px;
-  background-color: #fff;
-} */
-/* .month-nav {
-  font-size: 1.1rem;
-  color: #888;
-  cursor: pointer;
-} */
 .current-month {
   display: flex;
   flex-direction: column;
@@ -515,19 +492,6 @@ watch([incomeChecked, expenseChecked], () => {
   border-radius: 15px;
 }
 
-/* --color-font-main: #3f3e3c;
-  --color-point-1: #328e6e;
-  --color-point-2: #67ae6e;
-  --color-point-3: #99bc85;
-  --color-point-4: #b7ccb4;
-  --color-point-5: #d3ded9;
-  --color-input-box: #dbdbdb;
-  --color-brown-dark: #706d54;
-  --color-brown-light: #c9b194;
-  --color-brown-very-light: #ededed;
-  --color-red-100: #f93949;
-  --color-red-light: rgba(249, 57, 73, 0.2);
-  --color-green-light: rgba(42, 125, 92, 0.2); */
 /* '수입' 체크박스 */
 #incomeCheck {
   background-color: var(--color-green-light);

@@ -1,151 +1,3 @@
-<!-- <script setup> -->
-<!-- /*
-  이 컴포넌트는 거래 내역 목록을 보여줍니다.
-  Props:
-    - transactions: 거래 내역 배열
-  Emits:
-    - edit: 수정 요청 시 거래 전체 데이터를 전달
-    - delete: 삭제 요청 시 거래의 id를 전달
-*/
-
-// const emit = defineEmits(['edit', 'delete'])
-
-// // 금액 포맷 함수: 거래 유형에 따라 수입은 '+' 지출은 '-' 부호 추가
-// function formattedAmount(value, type) {
-//   const num = parseFloat(value)
-//   if (isNaN(num)) return value
-//   const formatted = num.toLocaleString()
-//   return type === '수입'
-//     ? `+${formatted}`
-//     : type === '지출'
-//       ? `-${formatted}`
-//       : formatted
-// }
-
-// function emitEdit(record) {
-//   emit('edit', record)
-// }
-
-// function emitDelete(id) {
-//   emit('delete', id)
-// }
-// </script> -->
-<!-- // <template>
-//   <div class="ledger-container"> -->
-<!-- 상단 연/월 네비게이션 영역 -->
-<!-- <header class="ledger-header">
-      <div class="month-nav prev-month">MAR</div>
-      <div class="current-month">
-        <span class="year">2025</span>
-        <span class="month">APRIL</span>
-      </div>
-      <div class="month-nav next-month">MAY</div>
-    </header> -->
-
-<!-- 목록/달력 토글 & 검색/필터 영역 -->
-<!-- <nav class="ledger-nav">
-      <div class="nav-left"> -->
-<!-- <button class="nav-btn active">목록</button> -->
-<!-- 달력 button수정, v-if 추가 -->
-<!-- <button class="nav-btn" @click="">달력</button> -->
-<!-- <CalendarContent v-if="showCalendar" /> -->
-<!-- <select class="category-select">
-          <option>카테고리</option>
-          <option>식비</option>
-          <option>교통</option>
-          <option>생활</option>
-        </select> -->
-<!-- </div>
-      <div class="nav-center">
-        <input type="text" class="search-input" placeholder="내역 검색" />
-      </div>
-      <div class="nav-right"> -->
-<!-- 수입/지출 필터 체크박스 -->
-<!-- <label class="income-checkbox">
-          <input type="checkbox" v-model="showIncome" />
-          <span>수입</span>
-        </label>
-        <label class="expense-checkbox">
-          <input type="checkbox" v-model="showExpense" />
-          <span>지출</span>
-        </label>
-      </div>
-    </nav> -->
-
-<!-- 테이블 영역 -->
-
-<!-- 하단 '추가' 버튼 -->
-<!-- <AddListBtn /> -->
-<!-- <div class="add-button-area">
-      <router-link to="/popup" class="add-button">추가 +</router-link> -->
-<!-- <button class="add-button">추가</button> -->
-<!-- </div> -->
-<!-- </div>
-</template> -->
-
-<!-- <template>
-  <div class="transaction-content">
-    <table class="ledger-table">
-      <thead>
-        <tr> -->
-<!-- 선택삭제용 체크박스 열 -->
-<!-- <th style="width: 40px"><input type="checkbox" /></th>
-          <th style="width: 120px">날짜</th>
-          <th style="width: 120px">카테고리</th>
-          <th>내용</th>
-          <th style="width: 120px">금액</th>
-          <th style="width: 60px">수정</th>
-          <th style="width: 60px">삭제</th>
-        </tr>
-      </thead>
-      <tbody> -->
-<!-- props로 받은 transactions 배열을 v-for로 반복 -->
-<!-- <tr v-for="record in transactions" :key="record.id"> -->
-<!-- 선택 삭제용 체크박스 (추후 선택 삭제 기능에 활용) -->
-<!-- <td>
-            <input type="checkbox" v-model="record.selected" />
-          </td>
-          <td>{{ record.date }}</td>
-          <td>{{ record.category }}</td>
-          <td>{{ record.description }}</td>
-          <td>{{ formattedAmount(record.amount, record.type) }}</td> -->
-<!-- 수정 아이콘: 클릭 시 edit 이벤트 emit -->
-<!-- 구현 X -->
-<!-- <td>
-            <i
-              class="icon-edit"
-              @click="emitEdit(record)"
-              style="cursor: pointer"
-              >✏️</i
-            >
-          </td> -->
-<!-- 삭제 아이콘: 클릭 시 delete 이벤트 emit -->
-<!-- <td>
-            <i
-              class="icon-delete"
-              @click="emitDelete(record.id)"
-              style="cursor: pointer"
-              >🗑️</i
-            >
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</template> -->
-
-<!-- <style scoped>
-.ledger-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-.ledger-table th,
-.ledger-table td {
-  padding: 12px;
-  border-bottom: 1px solid #eee;
-  text-align: left;
-}
-</style> -->
 <script setup>
 import { storeToRefs } from 'pinia'
 import { ref, computed, onMounted, watch } from 'vue'
@@ -153,15 +5,11 @@ import { use_calendar_store } from '@/stores/MonthSelector'
 // 거래 내역을 상태로 관리하는 Pinia store
 import { useTransactionStore } from '@/stores/TransactionStore'
 import { useRouter } from 'vue-router'
-import TransactionEdit from '@/pages/TransactionEdit.vue'
 // import
 const calendar = use_calendar_store()
 const { current_year, current_month } = storeToRefs(calendar)
 
 // 달력,AddListBtn import
-import CalendarContent from '@/components/CalendarContent.vue'
-import AddListBtn from '@/components/AddListBtn.vue'
-import TransactionContent from '@/components/TransactionContent.vue'
 const transactionStore = useTransactionStore()
 const router = useRouter()
 
@@ -190,12 +38,6 @@ onMounted(() => {
 const { visible_months } = storeToRefs(calendar)
 const month_names = calendar.month_names
 
-//달력 showCalendar, openCalendar
-// const showCalendar = ref(false)
-
-// const openCalendar = () => {
-//   showCalendar.value = true
-// }
 const activeTab = ref('list') // 기본 탭: list
 
 // const tabs = ['목록', '달력']
@@ -354,6 +196,113 @@ watch([incomeChecked, expenseChecked], () => {
   // 드롭다운 초기화 - key값 변경 시 컴포넌트 리렌더링
   resetKey.value++
 })
+
+// 전체 선택 여부 (모든 항목의 selected 값이 'true'인지)
+const isAllSelected = computed(() =>
+  transactionStore.transactions.every(record => record.selected === true),
+)
+
+//#region 전체 선택/해제 이벤트
+/**
+ * 모든 거래내역의 체크박스를 일괄 선택/해제하는 함수
+ * @param {Event} e - 체크박스 change 이벤트 객체
+ */
+function toggleSelectAll(e) {
+  const checked = e.target.checked
+  // 모든 거래 항목에 대해 selected 값을 변경
+  transactionStore.transactions.forEach(record => {
+    record.selected = checked
+  })
+}
+//#endregion
+
+//#region 개별 삭제 핸들러
+/**
+ * 특정 거래 항목을 삭제하는 함수
+ * 사용자에게 삭제 확인 -> 해당 ID의 거래를 삭제하고 목록을 새로 불러옴
+ *
+ * @param {number|string} id - 삭제할 거래 항목의 ID
+ */
+async function deleteHandler(id) {
+  if (confirm('정말 삭제하시겠습니까?')) {
+    try {
+      await transactionStore.deleteTransaction(id) // 개별 삭제 요청
+      await transactionStore.fetchTransactions() // 최신 거래 내역으로 리렌더링
+    } catch (error) {
+      console.error('거래 삭제 오류:', error)
+      alert('삭제 중 오류가 발생했습니다.')
+    }
+  }
+}
+//#endregion
+
+//#region 수정 버튼 클릭 핸들러
+/**
+ * 거래내역 수정 요청 처리 함수
+ * 클릭된 거래내역의 ID를 라우터를 통해 수정 페이지로 전달하여 이동
+ *
+ * @param {Object} record - 수정할 거래 객체
+ * @param {number|string} record.id - 거래의 고유 ID
+ */
+function handleEdit(record) {
+  console.log('수정할 거래 id:', record.id)
+  router.push({
+    name: 'TransactionEdit', // 이동할 라우터 이름
+    params: { id: record.id }, // 수정할 거래 ID 전달
+  })
+}
+//#endregion
+
+//#region 선택 삭제 이벤트
+/**
+ * 체크된 항목만 삭제하는 함수
+ * 선택된 거래내역의 id를 기준으로 삭제 진행
+ */
+function selectedDeleteHandler() {
+  const selectedIds = transactionStore.transactions
+    .filter(record => record.selected)
+    .map(record => record.id)
+
+  if (selectedIds.length === 0) {
+    alert('삭제할 항목이 없습니다!')
+    return
+  }
+
+  if (confirm('선택한 항목을 정말 삭제하시겠습니까?')) {
+    selectedIds.forEach(id => {
+      transactionStore.deleteTransaction(id)
+    })
+  }
+}
+
+//#region 전체 삭제 이벤트
+/**
+ * 모든 거래 내역을 삭제하는 함수
+ * 거래 항목이 없을 경우 예외 처리
+ */
+function allDeleteHandler() {
+  if (transactionStore.transactions.length === 0) {
+    alert('삭제할 항목이 없습니다!')
+    return
+  }
+
+  if (confirm('정말 모든 항목을 삭제하시겠습니까?')) {
+    transactionStore.transactions.forEach(record => {
+      transactionStore.deleteTransaction(record.id)
+    })
+  }
+}
+//#endregion
+
+//#region 행을 클릭하면 체크되는 이벤트
+/**
+ * 만약 클릭한 요소가 이미 수정/삭제 아이콘 등 click.stop 처리된 요소가 아니라면,
+ * 해당 행의 체크 상태를 토글
+ */
+function toggleRow(record, event) {
+  record.selected = !record.selected
+}
+//#endregion
 </script>
 <template>
   <div class="TransactionPage">
@@ -361,6 +310,12 @@ watch([incomeChecked, expenseChecked], () => {
       <div
         class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2"
       >
+        <!-- 선택/전체 삭제 버튼 -->
+        <div class="delete_btn">
+          <button @click="selectedDeleteHandler">선택 삭제</button>
+          <button @click="allDeleteHandler">전체 삭제</button>
+        </div>
+
         <!-- 카테고리 필터 컴포넌트 (드롭다운) -->
         <!-- props - 'FilterCategory.vue'로 '카테고리/resetKey' 전달 -->
         <FilterCategory
@@ -415,7 +370,11 @@ watch([incomeChecked, expenseChecked], () => {
             <thead class="table-light">
               <tr>
                 <th scope="col" style="width: 40px">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    :checked="isAllSelected"
+                    @change="toggleSelectAll($event)"
+                  />
                 </th>
                 <th scope="col" style="width: 160px">날짜</th>
                 <th scope="col" style="width: 150px">카테고리</th>
@@ -428,8 +387,19 @@ watch([incomeChecked, expenseChecked], () => {
             </thead>
             <tbody>
               <!-- 카테고리 필터링된 거래내역 -->
-              <tr v-for="filtered in filteredList" :key="filtered.id">
-                <td><input type="checkbox" /></td>
+              <tr
+                v-for="filtered in filteredList"
+                :key="filtered.id"
+                @click="toggleRow(filtered, $event)"
+                style="cursor: pointer"
+              >
+                <td>
+                  <input
+                    type="checkbox"
+                    v-model="filtered.selected"
+                    @click.stop
+                  />
+                </td>
                 <td>{{ filtered.date }}</td>
                 <td>
                   {{ CATEGORY_MAP[filtered.category] || filtered.category }}
@@ -443,7 +413,7 @@ watch([incomeChecked, expenseChecked], () => {
                 </td>
                 <td>
                   <i
-                    class="text-success d-block mx-auto"
+                    class="text-success d-block mx-auto icon-hover"
                     style="cursor: pointer"
                     @click="
                       router.push({
@@ -451,11 +421,15 @@ watch([incomeChecked, expenseChecked], () => {
                         params: { id: filtered.id },
                       })
                     "
+                    @click.stop="handleEdit(filtered)"
                     >✏️</i
                   >
                 </td>
                 <td>
-                  <i class="text-danger d-block mx-auto" style="cursor: pointer"
+                  <i
+                    class="text-danger d-block mx-auto icon-hover"
+                    style="cursor: pointer"
+                    @click.stop="deleteHandler(filtered.id)"
                     >🗑️</i
                   >
                 </td>
@@ -753,5 +727,11 @@ watch([incomeChecked, expenseChecked], () => {
 #emptyTransaction {
   text-align: center;
   margin: 20px;
+}
+
+/* 아이콘 호버 시 크기 1.2배 */
+.icon-hover:hover {
+  transform: scale(1.2);
+  transition: transform 0.2s ease;
 }
 </style>

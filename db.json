@@ -1186,7 +1186,7 @@
       "type": "expense",
       "category": "health",
       "paymentMethod": "cash",
-      "amount": 42000,
+      "amount": 32000,
       "memo": "쇼핑몰 결제",
       "createdAt": "2025-03-22T08:11:26Z"
     },
@@ -3006,7 +3006,7 @@
       "type": "expense",
       "category": "dessert",
       "paymentMethod": "cash",
-      "amount": 15000,
+      "amount": 16000,
       "memo": "자허블",
       "createdAt": "2025-04-10T12:24:44.020Z"
     }

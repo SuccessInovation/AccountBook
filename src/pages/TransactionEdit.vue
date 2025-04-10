@@ -14,7 +14,7 @@ import {
  * 모든 항목에 대해 하나라도 선택되지 않으면 제출 버튼 disabled
  *
  */
- const amountError = computed(() => {
+const amountError = computed(() => {
   const amount = Number(formData.value.amount)
   return amount <= 0 ? '금액은 0원보다 커야 합니다' : ''
 })

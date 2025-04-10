@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import axios from 'axios'
 import {
   CATEGORY_MAP,
@@ -69,6 +69,14 @@ function checkAmount() {
     }
   }
 }
+
+// computed 속성: 금액이 0 이하인 경우에만 경고 메시지 출력
+const amountError = computed(() => {
+  // 빈 문자열이면 에러 메시지 표시 안 함
+  if (formData.value.amount === '') return ''
+  const num = Number(formData.value.amount)
+  return num <= 0 ? '금액은 0원보다 커야 합니다' : ''
+})
 
 async function handleSubmit() {
   // 전체 필드 검증: 날짜, 금액, 카테고리, (지출일 경우 결제 수단)
@@ -221,6 +229,9 @@ async function handleSubmit() {
           <div v-if="errors.amount" style="color: red; font-size: 12px">
             {{ errors.amount }}
           </div>
+          <div v-else-if="amountError" style="color: red; font-size: 12px">
+            {{ amountError }}
+          </div>
         </div>
 
         <!-- 카테고리 선택 -->
@@ -315,6 +326,7 @@ async function handleSubmit() {
         <!-- 추가 버튼 -->
         <button
           type="submit"
+          :disabled="amountError !== ''"
           style="
             background-color: #47a447;
             color: white;
