@@ -1,11 +1,13 @@
 <template>
   <div class="chart_group">
+    <!-- 데이터가 있을 경우 파이차트 및 설명 표시 -->
     <div v-if="hasData" class="chart_box">
       <div class="pie_chart">
-        <!-- 차트 라이브러리에서 렌더링 -->
+        <!-- vue-chartjs 컴포넌트로 파이차트 렌더링 -->
         <Pie :data="chartData" :options="chartOptions" />
       </div>
 
+      <!-- 카테고리별 지출 순위 설명 -->
       <div class="pie_description">
         <p class="pie_title">{{ currentMonth }}월의 소비 순위</p>
         <p class="rank rank1">
@@ -25,6 +27,7 @@
         </p>
       </div>
     </div>
+    <!-- 데이터가 없을 경우 메시지 출력 -->
     <div v-else class="no_data">
       <p class="no_data_text">이번 달 지출 내역이 없습니다.</p>
     </div>
@@ -32,30 +35,34 @@
 </template>
 
 <script setup>
-// Chart.js, vue-chartjs import
+// Chart.js, vue-chartjs 불러오기
 import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement } from 'chart.js'
 import { Pie } from 'vue-chartjs'
+
+// Vue 유틸 불러오기
 import { computed } from 'vue'
 import { toRefs } from 'vue'
 import { CATEGORY_MAP } from '@/constants/categories'
 
-// import ChartDataLabels from 'chartjs-plugin-datalabels'
-// props 받기
+// props 정의
 const props = defineProps({
   monthlyData: {
     type: Object,
     required: true,
   },
 })
-// Chart.js 플러그인 등록
+// Chart.js에 필요한 플러그인 등록
 ChartJS.register(Title, Tooltip, Legend, ArcElement)
+
 // reactive props 분리 (optional, 권장)
 const { monthlyData } = toRefs(props)
 
+// 유효현 지출 데이터가 있는지 확인
 const hasData = computed(() => {
   return Object.values(monthlyData.value).reduce((acc, val) => acc + val, 0) > 0
 })
 
+// 파이차트에 사용할 데이터 생성
 const chartData = computed(() => {
   const labels = Object.keys(monthlyData.value).map(
     key => CATEGORY_MAP[key] ?? key,
@@ -81,6 +88,7 @@ const chartData = computed(() => {
   }
 })
 
+// 파이차트 옵션 설정
 const chartOptions = computed(() => ({
   responsive: true,
   maintainAspectRatio: true,
@@ -113,13 +121,7 @@ const chartOptions = computed(() => ({
   },
 }))
 
-// ✅ Top 3 카테고리 계산
-// const topCategories = computed(() => {
-//   const entries = Object.entries(monthlyData.value)
-//   const sorted = entries.sort((a, b) => b[1] - a[1]).slice(0, 3)
-
-//   return sorted.map(([category]) => category)
-// })
+// top3 지출 카테고리 및 비율 계산
 const topCategories = computed(() => {
   const entries = Object.entries(monthlyData.value)
   const total = Object.values(monthlyData.value).reduce(
@@ -138,11 +140,12 @@ const topCategories = computed(() => {
     }))
 })
 
-// ✅ 현재 월 가져오기 (자동화)
+// 현재 선택된 월 정보 (스토어에서 불러오기)
 import { use_calendar_store } from '@/stores/MonthSelector'
 const calendar = use_calendar_store()
 const currentMonth = computed(() => calendar.current_month + 1) // 0부터 시작하므로 +1
 </script>
+
 <style scoped>
 .chart_group {
   display: flex;
@@ -152,8 +155,6 @@ const currentMonth = computed(() => calendar.current_month + 1) // 0부터 시�
   position: relative;
   justify-content: center;
   align-items: center;
-  /* z-index: 2; */
-  /* margin-left: 70px; */
 }
 
 /* 파이 차트 영역 */
@@ -167,7 +168,6 @@ const currentMonth = computed(() => calendar.current_month + 1) // 0부터 시�
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  /* border: 1px solid #ccc; */ /* 필요시 해제 */
 }
 
 /* 설명글 영역 */
@@ -178,18 +178,13 @@ const currentMonth = computed(() => calendar.current_month + 1) // 0부터 시�
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* 세로 중앙 정렬 */
-  align-items: flex-start; /* 텍스트 왼쪽 정렬 */
+  justify-content: center;
+  align-items: flex-start;
   min-width: 0;
   margin-right: 20px;
   font-weight: bold;
   line-height: 1.8;
   font-size: 18px;
-  /* background-color: var(--color-brown-very-light);
-  border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-  color: var(--color-font-main);
-  line-height: 1.8; */
 }
 
 .pie_title {
@@ -208,15 +203,15 @@ const currentMonth = computed(() => calendar.current_month + 1) // 0부터 시�
 }
 
 .rank1 {
-  color: #f39c12; /* 금색 느낌 */
+  color: #f39c12;
 }
 
 .rank2 {
-  color: #95a5a6; /* 은색 느낌 */
+  color: #95a5a6;
 }
 
 .rank3 {
-  color: #cd7f32; /* 동색 느낌 */
+  color: #cd7f32;
 }
 
 .chart_box {

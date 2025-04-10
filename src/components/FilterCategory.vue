@@ -120,6 +120,7 @@ watch(
 
 /* 전체 드롭다운 영역 */
 .filter_category {
+  position: relative;
   width: 160px;
   font-size: 14px;
 }
@@ -146,7 +147,7 @@ watch(
 /* ▼ 아이콘 */
 .icon_triangle {
   font-size: 12px;
-  color: var(--point-1-color);
+  color: var(--color-point-1);
 }
 
 /* 드롭다운 목록 */

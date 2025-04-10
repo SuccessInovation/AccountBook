@@ -49,9 +49,9 @@ console.log('받은 props:', props)
     </div>
 
     <!-- 오른쪽 파이차트 자리 (현재 비워져 있음) -->
-    <div class="piechart_wrap">
-      <!-- <MonthlyPieChart :monthly-data="monthlyData" /> -->
-    </div>
+    <!-- <div class="piechart_wrap"> -->
+    <!-- <MonthlyPieChart :monthly-data="monthlyData" /> -->
+    <!-- </div> -->
   </div>
 </template>
 
@@ -60,11 +60,12 @@ console.log('받은 props:', props)
 .summary_card {
   margin-top: 5rem;
   padding: 0;
-  width: 100%;
+  width: 100vh;
   font-size: 2rem;
   color: #3f3e3c;
   display: flex;
   justify-content: center;
+  justify-items: center;
   gap: 5rem;
 }
 /* 왼쪽 카드 */

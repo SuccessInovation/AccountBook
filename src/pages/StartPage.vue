@@ -36,6 +36,7 @@
 h1 {
   overflow: visible;
 }
+
 .StartPage {
   width: 100%;
 }
@@ -56,7 +57,7 @@ h1::after {
   top: -3px;
   width: 120px;
   height: 200px;
-  background-image: url('/src/img/cabbage/logo1.png');
+  background-image: url('../img/cabbage/logo1.png');
   background-size: cover;
   background-repeat: no-repeat;
   z-index: 1;

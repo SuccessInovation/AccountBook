@@ -346,7 +346,7 @@ onBeforeUnmount(() => {
   width: 100%;
   height: 2.75rem;
   background-color: var(--color-point-1);
-  color: #fff;
+  color: var(--very-light-brown);
   border: none;
   border-radius: 0.375rem;
   margin: 0.625rem 0;

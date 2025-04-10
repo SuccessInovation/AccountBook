@@ -4,7 +4,11 @@
   <div class="app_wrapper">
     <div class="header">
       <h1>배추</h1>
-      <img class="logo_png" src="../img/logo1.png" alt="배추캐릭터로고" />
+      <img
+        class="logo_png"
+        src="../img/cabbage/logo1.png"
+        alt="배추캐릭터로고"
+      />
     </div>
     <form action="" method="post" class="login_form_box">
       <input
@@ -29,10 +33,14 @@
 
         <a href="#" class="reset_link">비밀번호 초기화</a>
       </div>
-      <button class="login_btn btn">
-        <router-link to="home">로그인</router-link>
+      <button class="login_btn btn disabled_box">
+        <router-link to="/home" class="clickable_text">로그인</router-link>
       </button>
-      <button class="signfor_btn btn">회원가입</button>
+      <button class="signfor_btn btn disabled_box">
+        <router-link to="/register" class="clickable_text"
+          >회원가입</router-link
+        >
+      </button>
     </form>
   </div>
 </template>
@@ -63,10 +71,11 @@
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
+  color: var(--color-point-1);
   /* border: 1px solid blueviolet; */
 }
 .logo_png {
-  width: 45px;
+  width: 55px;
 }
 
 /* 로그인 폼 박스 */
@@ -113,6 +122,13 @@
 }
 .signfor_btn {
   color: var(--color-point-1);
+}
+.disabled_box {
+  pointer-events: none;
+}
+.clickable_text {
+  pointer-events: auto; /* 이 글자만 클릭 가능하게 */
+  cursor: pointer;
 }
 .btn {
   border: 1px solid var(--color-point-1);
