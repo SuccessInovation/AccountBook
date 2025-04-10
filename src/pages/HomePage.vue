@@ -65,7 +65,7 @@ const { rawTotalBudget, rawTotalIncome, rawTotalSpent } = useBudgetProgress()
 <style scoped>
 .home {
   position: absolute;
-  top: 240px;
+  top: 140px;
   /* height: calc(100% - (120px + 80px)); */
   width: calc(100% - 250px);
   display: flex;
