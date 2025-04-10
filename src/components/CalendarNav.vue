@@ -63,7 +63,7 @@ const month_names = calendar.month_names
   font-size: 45px;
 }
 .faded {
-  opacity: 0.4;
+  opacity: 0.7;
 }
 #year.faded {
   font-size: 12px;
