@@ -58,7 +58,7 @@ console.log('받은 props:', props)
 <style scoped>
 /* 요약 카드 스타일 */
 .summary_card {
-  margin-top: 5rem;
+  margin-top: 3rem;
   padding: 0;
   width: 100vh;
   font-size: 2rem;
@@ -70,8 +70,9 @@ console.log('받은 props:', props)
 }
 /* 왼쪽 카드 */
 .card_wrap {
-  width: 40%;
-  height: 600px;
+  /* width: 40%; */
+  width: 50%;
+  height: 500px;
   border: 30px solid var(--color-point-3);
   border-radius: 20px;
   background-color: var(--color-point-3);
@@ -81,14 +82,14 @@ console.log('받은 props:', props)
   justify-content: center;
   justify-content: space-between;
   text-align: center;
-  gap: 3rem;
+  gap: 1.5rem;
 }
 
 .card_box {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  height: 200px;
+  height: 500px;
   justify-content: center;
   align-items: center;
   background-color: #fff;
