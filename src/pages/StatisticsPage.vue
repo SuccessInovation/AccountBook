@@ -1,7 +1,7 @@
 <template>
   <div class="statistics_page">
     <!-- 월 선택 영역 -->
-    <CalendarContent />
+    <CalendarNav />
     <!-- 통계 콘텐츠 영역 -->
     <div class="content_area">
       <!-- 상단 통계 영역 (파이 차트 + 순이익) -->
@@ -62,10 +62,26 @@ watch(
 
 <style scoped>
 /* 전체 페이지 스타일 */
-.statistics_page {
+/* .statistics_page {
   padding: 0 20px 20px 20px;
+  background-color: red;
+} */
+.statistics_page {
+  background-color: red;
+  position: absolute;
+  height: calc(100% - (120px + 80px)); /* 헤더+푸터의 높이만큼 뺌 */
+  width: calc(100% - 250px); /* 사이드바의 너비만큼 뺌 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
+/* 달력 영역 */
+CalendarNav {
+  position: absolute;
+  background-color: black;
+  top: 500px;
+}
 /* 통계 콘텐츠 영역 박스 */
 .content_area {
   border: 1rem solid var(--color-point-3);

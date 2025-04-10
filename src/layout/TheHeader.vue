@@ -40,7 +40,7 @@ const headerTitle = computed(() => {
   align-items: center;
   background-color: var(--color-point-5);
   box-sizing: border-box;
-  z-index: 1000;
+  z-index: 1050;
 }
 
 /* 배추 로고 */
