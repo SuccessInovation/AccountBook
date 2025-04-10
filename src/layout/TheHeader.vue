@@ -16,11 +16,7 @@ const headerTitle = computed(() => {
       </router-link>
     </h1>
     <div class="header_title_wrapper">
-      <<<<<<< HEAD
       <div id="header_title">{{ headerTitle }}</div>
-      =======
-      <div id="header_title">임시 제목: HOME</div>
-      >>>>>>> b029045 (Design: Header, SNB, Footer 완료)
     </div>
     <div id="img_profile">
       <img
