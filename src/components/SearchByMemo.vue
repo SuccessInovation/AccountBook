@@ -78,7 +78,6 @@ const submitSearch = () => {
   border-radius: 18px;
   max-width: 400px;
   width: 300px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   transition: border-color 0.2s ease;
 }
 
