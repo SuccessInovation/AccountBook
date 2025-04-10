@@ -1181,6 +1181,16 @@
       "createdAt": "2024-01-21T17:21:16Z"
     },
     {
+      "id": "1742598686",
+      "date": "2025-03-22",
+      "type": "expense",
+      "category": "health",
+      "paymentMethod": "cash",
+      "amount": 42000,
+      "memo": "쇼핑몰 결제",
+      "createdAt": "2025-03-22T08:11:26Z"
+    },
+    {
       "id": "1706899469",
       "date": "2024-02-03",
       "type": "expense",
@@ -2511,6 +2521,16 @@
       "createdAt": "2024-08-06T07:02:22Z"
     },
     {
+      "id": "1742201730",
+      "date": "2025-03-17",
+      "type": "expense",
+      "category": "travel",
+      "paymentMethod": "cash",
+      "amount": 62200,
+      "memo": "병원 진료",
+      "createdAt": "2025-03-17T17:55:30Z"
+    },
+    {
       "id": "1732334451",
       "date": "2024-11-23",
       "type": "expense",
@@ -2979,6 +2999,16 @@
       "amount": 15200,
       "memo": "주식 수익",
       "createdAt": "2024-01-13T02:39:09Z"
+    },
+    {
+      "id": "1744287884020",
+      "date": "2025-04-10",
+      "type": "expense",
+      "category": "dessert",
+      "paymentMethod": "cash",
+      "amount": 15000,
+      "memo": "자허블",
+      "createdAt": "2025-04-10T12:24:44.020Z"
     }
   ],
   "budgets": [
@@ -3056,13 +3086,13 @@
     },
     {
       "category": "food",
-      "amount": 1000000,
+      "amount": 0,
       "month": "2025-03",
       "id": "04a4"
     },
     {
       "category": "cafesnack",
-      "amount": 30000,
+      "amount": 0,
       "month": "2025-03",
       "id": "9da1"
     },
@@ -3074,13 +3104,13 @@
     },
     {
       "category": "shopping",
-      "amount": 30000,
+      "amount": 0,
       "month": "2025-03",
       "id": "4903"
     },
     {
       "category": "transportation",
-      "amount": 500000,
+      "amount": 0,
       "month": "2025-03",
       "id": "1849"
     },
@@ -3125,6 +3155,78 @@
       "amount": 0,
       "month": "2025-03",
       "id": "70e7"
+    },
+    {
+      "category": "food",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "4c6e"
+    },
+    {
+      "category": "cafesnack",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "05e6"
+    },
+    {
+      "category": "entertainment",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "d01b"
+    },
+    {
+      "category": "shopping",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "87e1"
+    },
+    {
+      "category": "transportation",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "2b8c"
+    },
+    {
+      "category": "utilities",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "2f25"
+    },
+    {
+      "category": "health",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "b61a"
+    },
+    {
+      "category": "leisure",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "2024"
+    },
+    {
+      "category": "travel",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "f417"
+    },
+    {
+      "category": "contributions",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "7a5a"
+    },
+    {
+      "category": "savings",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "f952"
+    },
+    {
+      "category": "etc",
+      "amount": 0,
+      "month": "2025-05",
+      "id": "810b"
     }
   ]
 }
