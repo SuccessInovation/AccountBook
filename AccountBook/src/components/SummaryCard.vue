@@ -4,11 +4,15 @@ card_box	        각 개별 카드 박스 스타일 클래스
 amount_box	      금액을 표시하는 곳
 piechart_wrap	    향후 파이차트를 넣을 오른쪽 공간 -->
 <script setup>
+// 파이차트 가져오기
+import MonthlyPieChart from '@/components/MonthlyPieChart.vue'
+
 // props로 부모 컴포넌트로부터 세 가지 숫자 데이터를 받음
 const props = defineProps({
   totalExpense: Number, // 총 지출
   totalIncome: Number, // 총 수입
   budget: Number, // 예산
+  monthlyData: Object, // 카테고리별 지출 데이터 추가
 })
 console.log('받은 props:', props)
 </script>
@@ -44,7 +48,9 @@ console.log('받은 props:', props)
     </div>
 
     <!-- 오른쪽 파이차트 자리 (현재 비워져 있음) -->
-    <div class="piechart_wrap"></div>
+    <div class="piechart_wrap">
+      <MonthlyPieChart :monthly-data="monthlyData" />
+    </div>
   </div>
 </template>
 
@@ -100,9 +106,12 @@ console.log('받은 props:', props)
 
 /* 오른쪽 파이차트 */
 .piechart_wrap {
-  width: 40%;
-  height: 600px;
+  width: 60%;
+  height: 1000px;
   border: 30px solid var(--point-3-color);
   border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

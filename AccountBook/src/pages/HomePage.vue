@@ -8,12 +8,15 @@ import { storeToRefs } from 'pinia'
 const store = statisticsStore()
 const { netProfitData } = storeToRefs(store)
 
-// 여기서 computed로 감싸줘야 반응형 연결이 안정적이야
+// 계산된 속성으로 반응형 연결
+// 수입 지출 예산
 const totalIncome = computed(() => netProfitData.value.income ?? null)
 const totalExpense = computed(() => netProfitData.value.expense ?? null)
-
+// 파이차트
+const categoryData = computed(() => netProfitData.value.expenseByCategory ?? {})
+console.log('categoryData:', categoryData.value)
 onMounted(() => {
-  // 데이터를 가져오고 통계도 계산되게
+  // 데이터를 가져와서 통계
   store.fetchRecords()
 })
 </script>
@@ -27,6 +30,7 @@ onMounted(() => {
       :total-expense="totalExpense"
       :total-income="totalIncome"
       :budget="7000000"
+      :monthly-data="categoryData"
     />
   </div>
 </template>
