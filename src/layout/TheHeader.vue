@@ -40,7 +40,7 @@ const headerTitle = computed(() => {
   align-items: center;
   background-color: var(--color-point-5);
   box-sizing: border-box;
-  z-index: 1050;
+  z-index: 1000;
 }
 
 /* 배추 로고 */
@@ -75,18 +75,6 @@ h1 {
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
-}
-/* 프로필 아이콘 */
-#img_profile {
-  position: fixed;
-  right: 20px;
-  width: 70px;
-  height: 70px;
-  /* object-fit: cover; 이미지 비율 잘 맞추기 */
-  border-radius: 50%;
-  border: 3px solid white;
-  margin-left: auto;
-  cursor: pointer;
 }
 /* 프로필 아이콘 */
 #img_profile {
