@@ -24,14 +24,19 @@
           <div class="percentage">
             {{ totalBudget === 0 ? '-' : overallPercent + '%' }}
           </div>
-          <span class="left_budget">남음</span>
+          <span class="left_budget" :class="{ deficit: totalLeft < 0 }">
+            {{
+              (totalLeft < 0 ? totalLeft * -1 : totalLeft).toLocaleString()
+            }}원
+            {{ totalLeft < 0 ? '초과' : '남음' }}
+          </span>
         </div>
         <div class="bar_background">
           <div
             class="bar_fill"
             :style="{
               width: (totalBudget === 0 ? '100' : overallPercent) + '%',
-              backgroundColor: 'var(--point-1-color)',
+              backgroundColor: 'var(--color-point-1)',
             }"
           ></div>
         </div>
@@ -54,12 +59,17 @@
         class="progress_item"
       >
         <div class="category_title">
-          <span>아이콘</span>
-          {{ item.name }}
+          <img class="category_icon" :src="item.icon" alt="{{item.name}}" />
+          <span>{{ item.name }}</span>
           <div class="percentage">
             {{ item.budget === 0 ? '-' : item.percent + '%' }}
           </div>
-          <span class="left_budget">남음</span>
+          <span class="left_budget" :class="{ deficit: item.left < 0 }">
+            {{
+              (item.left < 0 ? item.left * -1 : item.left).toLocaleString()
+            }}원
+            {{ item.left < 0 ? '초과' : '남음' }}
+          </span>
         </div>
         <div class="bar_wrapper">
           <div class="bar_background">
@@ -86,7 +96,11 @@ import { ref, onMounted, watch } from 'vue'
 import { statisticsStore } from '@/stores/statisticsStore' // 경로 맞게 조정 필요
 import { useBudgetStore } from '@/stores/UseBudgetStore'
 import { use_calendar_store } from '@/stores/MonthSelector'
-import { EXPENSE_CATEGORIES, CATEGORY_MAP } from '@/constants/categories'
+import {
+  EXPENSE_CATEGORIES,
+  CATEGORY_MAP,
+  CATEGORY_IMG,
+} from '@/constants/categories'
 
 const emit = defineEmits(['setting'])
 
@@ -95,7 +109,7 @@ const budgetSetting = () => {
   emit('setting')
 }
 
-const statics = statisticsStore()
+const statistics = statisticsStore()
 const store = useBudgetStore()
 const calendar = use_calendar_store()
 
@@ -106,6 +120,7 @@ const progressData = ref([])
 const totalBudget = ref(0)
 const totalSpent = ref(0)
 const overallPercent = ref(0)
+const totalLeft = ref(0)
 
 //#region 함수 기능
 /**
@@ -117,7 +132,7 @@ const overallPercent = ref(0)
  */
 const loadExpensebyMonth = async (startDate, endDate, selectedMonth) => {
   // 한 달의 데이터를 불러와서 지출만 expenses에 저장
-  const result = await statics.fetchTranactionsByPeriod(startDate, endDate)
+  const result = await statistics.fetchTranactionsByPeriod(startDate, endDate)
   const expenses = result.filter(exp => exp.type === 'expense')
 
   // 카테코리 별 지출을 카테고리-금액으로 저장
@@ -143,12 +158,15 @@ const loadExpensebyMonth = async (startDate, endDate, selectedMonth) => {
     const spent = spendingByCategory[cat] || 0
     const budget = budgetByCategory[cat] || 0
     const percent = Math.min(100, ((spent / budget) * 100).toFixed(1))
+    const left = budget - spent
     return {
       category: cat,
       name: CATEGORY_MAP[cat],
+      icon: CATEGORY_IMG[cat],
       spent,
       budget,
       percent,
+      left,
     }
   })
   //   총 지출, 총 예산을 계산
@@ -164,7 +182,10 @@ const loadExpensebyMonth = async (startDate, endDate, selectedMonth) => {
     totalBudget.value === 0
       ? 0
       : Math.min(100, ((totalSpent.value / totalBudget.value) * 100).toFixed(1))
+
+  totalLeft.value = totalBudget.value - totalSpent.value
 }
+
 // endregion
 
 // 외부에서 호출할 수 있게 expose
@@ -180,9 +201,13 @@ onMounted(() => {
 
 // 달 변경되면 자동으로 다시 계산
 watch(
-  () => [calendar.startDate, calendar.endDate, calendar.monthKey],
+  () => [calendar.monthStartDate, calendar.monthEndDate, calendar.monthKey],
   () => {
-    loadExpensebyMonth(calendar.startDate, calendar.endDate, calendar.monthKey)
+    loadExpensebyMonth(
+      calendar.monthStartDate,
+      calendar.monthEndDate,
+      calendar.monthKey,
+    )
   },
 )
 </script>
@@ -212,11 +237,11 @@ watch(
   cursor: pointer;
 }
 .setting_btn > span {
-  color: var(--point-1-color);
+  color: var(--color-point-1);
   text-decoration: underline;
 }
 .setting_btn:hover {
-  background-color: var(--point-5-color);
+  background-color: var(--color-point-5);
 }
 .btn_txt {
   font-size: 0.75rem;
@@ -225,7 +250,7 @@ watch(
 /* *** 컨텐츠 박스 영역 *** */
 /* 컨텐츠 박스 설정 */
 .budget_container {
-  border: 1rem solid var(--point-3-color);
+  border: 1rem solid var(--color-point-3);
   border-radius: 1rem;
   padding: 20px;
   max-width: 900px;
@@ -241,7 +266,7 @@ watch(
 }
 
 .no_budget {
-  width: 50%;
+  width: 45%;
   text-align: center;
 }
 
@@ -272,17 +297,35 @@ watch(
 .progress_item {
   padding: 1rem;
 }
+.progress_list::-webkit-scrollbar {
+  width: 0.625rem;
+  background-color: var(--color-input-box);
+  border-radius: 10px;
+}
+.progress_list::-webkit-scrollbar-thumb {
+  background-color: var(--color-point-1);
+  border-radius: 10px;
+}
 /* 카테고리명 */
+.category_icon {
+  width: 1rem;
+}
 .category_title {
   position: relative;
   font-size: 1.125rem;
   font-weight: bold;
   margin-bottom: 8px;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .left_budget {
   position: absolute;
   right: 0;
+}
+
+.left_budget.deficit {
+  color: var(--color-red-100);
 }
 
 /* 진행률 바 영역 */
@@ -294,7 +337,7 @@ watch(
   display: inline;
   margin-left: 0.625rem;
   font-size: 14px;
-  color: var(--font-color);
+  color: var(--color-font-main);
   opacity: 50%;
   font-weight: 600;
 }
@@ -302,14 +345,14 @@ watch(
 .bar_background {
   width: 100%;
   height: 1rem;
-  background-color: #e5e7eb;
+  background-color: var(--color-input-box);
   border-radius: 999px;
   overflow: hidden;
 }
 /* 진행률 표시 */
 .bar_fill {
   height: 100%;
-  background-color: var(--point-2-color);
+  background-color: var(--color-point-2);
   border-radius: 999px;
   transition: width 0.3s ease;
 }
@@ -319,7 +362,7 @@ watch(
   justify-content: space-between;
   margin-top: 6px;
   font-size: 14px;
-  color: #333;
+  color: var(--color-font-main);
 }
 /* *** 제목, 예산설정 버튼 스타일 끝 *** */
 </style>

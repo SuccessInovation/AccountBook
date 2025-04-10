@@ -3076,13 +3076,13 @@
     },
     {
       "category": "food",
-      "amount": 1000000,
+      "amount": 0,
       "month": "2025-03",
       "id": "04a4"
     },
     {
       "category": "cafesnack",
-      "amount": 30000,
+      "amount": 0,
       "month": "2025-03",
       "id": "9da1"
     },
@@ -3094,13 +3094,13 @@
     },
     {
       "category": "shopping",
-      "amount": 30000,
+      "amount": 0,
       "month": "2025-03",
       "id": "4903"
     },
     {
       "category": "transportation",
-      "amount": 500000,
+      "amount": 0,
       "month": "2025-03",
       "id": "1849"
     },
