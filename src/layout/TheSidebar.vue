@@ -182,4 +182,8 @@ const toggleStatsSubMenu = () => {
   outline: none;
   box-shadow: none;
 }
+/* 활성화된 메뉴 */
+.router-link-active {
+  color: var(--color-point-1); /* 초록색 유지 */
+}
 </style>
