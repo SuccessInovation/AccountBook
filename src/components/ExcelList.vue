@@ -1,7 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { statisticsStore } from '@/stores/statisticsStore'
-import * as XLSX from 'xlsx'
 
 const store = statisticsStore()
 
@@ -43,19 +42,6 @@ const pageNumbers = computed(() => {
   }
   return range
 })
-
-// 엑셀 내보내기
-const downloadExcel = data => {
-  if (!data || data.length === 0) {
-    alert('내보낼 데이터가 없습니다!')
-    return
-  }
-
-  const worksheet = XLSX.utils.json_to_sheet(data)
-  const workbook = XLSX.utils.book_new()
-  XLSX.utils.book_append_sheet(workbook, worksheet, '가계부')
-  XLSX.writeFile(workbook, 'transactionList.xlsx')
-}
 </script>
 <template>
   <div class="wrapper">

@@ -1,9 +1,10 @@
 // 카테고리 목록 배열로 저장
+// 카테고리 -> 상수 -> 배열 대문자로 명명
 
 // 지출
 export const EXPENSE_CATEGORIES = [
   'food',
-  'cafesnack',
+  'dessert',
   'entertainment',
   'shopping',
   'transportation',
@@ -13,7 +14,6 @@ export const EXPENSE_CATEGORIES = [
   'travel',
   'contributions',
   'savings',
-  // 'education',
   'etc',
 ]
 
@@ -30,7 +30,7 @@ export const INCOME_CATEGORIES = [
 export const CATEGORY_MAP = {
   // 지출
   food: '식비',
-  cafesnack: '카페/간식',
+  dessert: '카페/간식',
   entertainment: '술/유흥',
   shopping: '쇼핑',
   transportation: '교통',
@@ -40,7 +40,7 @@ export const CATEGORY_MAP = {
   travel: '여행/숙박',
   contributions: '경조사/회비',
   savings: '저축',
-  etc: '기타', // 지출/수입 '기타'항목은 한 번만 등록
+  etc: '기타', // 지출/수입 '기타'항목은 공통이므로 한 번만 등록
 
   // 수입
   salary: '급여',
