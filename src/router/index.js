@@ -47,6 +47,11 @@ const routes = [
     meta: { layout: 'default' }, //  헤더/사이드바 있는 레이아웃
   },
   {
+    path: '/transaction/edit/:id', // 동적 파라미터 :id
+    name: 'TransactionEdit',
+    component: TransactionEdit,
+  },
+  {
     path: '/popup',
     name: 'Popup',
     component: PopupPage,

@@ -62,6 +62,13 @@ onBeforeUnmount(() => {
   document.removeEventListener('click', clickOuterHandler)
 })
 
+// 드롭다운에 뜨는 카테고리 항목명 지정
+const displayCategory = computed(() => {
+  if (categorySelected.value === '카테고리') return '카테고리'
+  if (categorySelected.value === '전체') return '전체'
+  return CATEGORY_MAP[categorySelected.value] || categorySelected.value
+})
+
 // 카테고리 항목 클릭 시 실행 함수
 const selectFilter = category => {
   // 선택된 카테고리 값 변경
@@ -87,11 +94,7 @@ watch(
     <!-- 드롭다운 버튼 -->
     <div class="filter_btn" @click="toggleDropdown">
       <!-- 선택된 카테고리 항목명 (기본: 카테고리) -->
-      <span>{{
-        categorySelected === '카테고리'
-          ? '카테고리'
-          : CATEGORY_MAP[categorySelected]
-      }}</span>
+      <span>{{ displayCategory }}</span>
       <!-- ▼ 아이콘 -->
       <span class="icon_triangle">▼</span>
     </div>
