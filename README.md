@@ -281,8 +281,8 @@
     npm create-vue@3.16.3
     ```
 
-- Project name : `AccountBook`
-- Package name : `accountbook`
+  - Project name : `AccountBook`
+  - Package name : `accountbook`
 
 ### 2. 의존성 및 주요 라이브러리 설치
 
@@ -331,12 +331,12 @@
 
 #### 📦 JSON 서버 설치
 
-- 맥용  
+- macOS / Linux
   ```
   sudo npm install -g json-server
   ```
 
-- 윈도우용  
+- Windows
   ```
   npm install -g json-server
   ```
