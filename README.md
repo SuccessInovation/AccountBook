@@ -272,6 +272,32 @@
 
 ---
 
+## 🛠️ Vue.js 기본 세팅 과정
+
+1. `npm create-vue@3.16.3` 설치
+2. Project name : `AccountBook`
+3. Package name : `accountbook`
+4. `npm install` : node_modules 설치
+5. `npm i bootstrap@5` : 부트스트랩 설치
+6. 기본 컴포넌트 및 아이콘 폴더, base.css, logo.css, view-Home, About 삭제
+7. 패키지 폴더 내 `db.json` 파일 생성
+
+### 📦 JSON 서버 설치
+
+- 맥용  
+  `sudo npm install -g json-server`
+
+- 윈도우용  
+  `npm install -g json-server`
+
+### 🚀 JSON 서버 실행
+
+- `json-server --watch db.json`
+
+> 실행 후 `localhost:3000` 접속하여 더미 데이터 확인
+
+---
+
 ## Process
 
 - 📅 **월별 거래 관리**: 날짜별로 수입/지출 내역 등록 및 조회
