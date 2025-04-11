@@ -17,7 +17,7 @@
           </div>
         </div>
         <div class="function_slide">
-          <h2>제공하는 기능들 보여주는 슬라이드 (아래 > 위 슬라이드)</h2>
+          <!-- <h2>제공하는 기능들 보여주는 슬라이드 (아래 > 위 슬라이드)</h2> -->
         </div>
       </div>
       <div class="start-button-box">

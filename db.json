@@ -1351,26 +1351,6 @@
       "createdAt": "2025-04-08T00:00:00Z"
     },
     {
-      "id": "6039342038",
-      "date": "2025-04-09",
-      "type": "expense",
-      "category": "health",
-      "paymentMethod": "cash",
-      "amount": 7497,
-      "memo": "건강검진",
-      "createdAt": "2025-04-09T00:00:00Z"
-    },
-    {
-      "id": "5811457699",
-      "date": "2025-04-09",
-      "type": "expense",
-      "category": "contributions",
-      "paymentMethod": "transfer",
-      "amount": 24542,
-      "memo": "조의금",
-      "createdAt": "2025-04-09T00:00:00Z"
-    },
-    {
       "id": "9382539036",
       "date": "2025-04-09",
       "type": "expense",
@@ -1418,7 +1398,7 @@
     },
     {
       "category": "transportation",
-      "amount": 0,
+      "amount": 1111,
       "month": "2025-04",
       "id": "8aa8"
     },
