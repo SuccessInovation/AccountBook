@@ -245,10 +245,22 @@ function toggleRow(record, event) {
       <div
         class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2"
       >
-        <!-- 선택/전체 삭제 버튼 -->
-        <div class="delete_btn">
-          <button @click="selectedDeleteHandler">선택 삭제</button>
-          <button @click="allDeleteHandler">전체 삭제</button>
+        <!-- 선택/전체 삭제 버튼 (색상 변경) -->
+        <div
+          class="bg-white d-flex align-items-center px-3 py-2 rounded-4 gap-2"
+        >
+          <button
+            class="btn btn-outline-secondary btn-sm"
+            @click="selectedDeleteHandler"
+          >
+            선택 삭제
+          </button>
+          <button
+            class="btn btn-outline-danger btn-sm"
+            @click="allDeleteHandler"
+          >
+            전체 삭제
+          </button>
         </div>
 
         <!-- 카테고리 필터 컴포넌트 (드롭다운) -->
