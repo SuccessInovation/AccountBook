@@ -1,7 +1,9 @@
 <script setup></script>
 
 <template>
+  <!-- 로그인 페이지 시작 -->
   <div class="app_wrapper">
+    <!-- 로그인 박스 타이틀 -->
     <div class="header">
       <h1>배추</h1>
       <img
@@ -10,6 +12,7 @@
         alt="배추캐릭터로고"
       />
     </div>
+    <!-- 로그인 폼작성 -->
     <form action="" method="post" class="login_form_box">
       <input
         class="input_login"
@@ -34,9 +37,11 @@
         <a href="#" class="reset_link">비밀번호 초기화</a>
       </div>
       <button class="login_btn btn disabled_box">
+        <!-- 임시로 로그인 클릭시 홈페이지로 이동 -->
         <router-link to="/home" class="clickable_text">로그인</router-link>
       </button>
       <button class="signfor_btn btn disabled_box">
+        <!-- 임시로 회원가입 클릭시 서비스 준비중 페이지로 이동 -->
         <router-link to="/register" class="clickable_text"
           >회원가입</router-link
         >
@@ -74,6 +79,7 @@
   color: var(--color-point-1);
   /* border: 1px solid blueviolet; */
 }
+/* 배추 제목 이미지 */
 .logo_png {
   width: 55px;
 }
@@ -86,6 +92,7 @@
   gap: 1rem;
   /* border: 1px solid blue; */
 }
+/* input 스타일 초기화에 따른 설정 */
 .input_login {
   width: 350px;
   height: 3rem;
@@ -94,45 +101,58 @@
   border-radius: 5px;
   background-color: var(--color-input-box);
 }
+/* 로그인 옵션 가로 정렬 */
 .options_row {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+/* 체크박스와 레이블이 따로 떨어져서 하나로 묶어주는 클래스 */
 .checkbox_wrapper {
   display: flex;
   align-items: center;
   gap: 5px;
 }
+/* 체크박스 스타일 초기화에 따른 재설정 */
 .checkbox_wrapper input[type='checkbox'] {
   transform: scale(1.2); /* 숫자 조절하면 크기 변경 가능 */
   border: 2px solid var(--color-input-box);
 }
 
+/* 비밀번호 초기화 */
 .reset_link {
   font-size: 0.9rem;
   color: var(--font-color);
   text-decoration: none;
   cursor: pointer;
 }
+
+/* 로그인 버튼 스타일 */
 .login_btn {
   margin-top: 3rem;
   background-color: var(--color-point-1);
   color: var(--color-brown-very-light);
 }
+
+/* 회원가입 버튼 스타일 */
 .signfor_btn {
   color: var(--color-point-1);
 }
-.disabled_box {
-  pointer-events: none;
-}
-.clickable_text {
-  pointer-events: auto; /* 이 글자만 클릭 가능하게 */
-  cursor: pointer;
-}
+
+/* 로그인 / 회원가입 버튼 공통 스타일 */
 .btn {
   border: 1px solid var(--color-point-1);
   height: 4rem;
   border-radius: 10px;
+}
+/* 버튼 클릭 이벤트 오류에 따른 이벤트 발생 방지 */
+.disabled_box {
+  pointer-events: none;
+}
+
+/* 텍스트만 이벤트 발생 : 라우트 정상작동 */
+.clickable_text {
+  pointer-events: auto; /* 이 글자만 클릭 가능하게 */
+  cursor: pointer;
 }
 </style>

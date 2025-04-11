@@ -162,7 +162,7 @@ const currentMonth = computed(() => calendar.current_month + 1) // 0부터 시�
   flex: 2;
   width: 400px;
   height: 400px;
-  max-width: 450px;
+  max-width: 400px;
   min-width: 0;
   display: flex;
   flex-direction: column;
