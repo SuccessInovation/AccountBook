@@ -10,7 +10,7 @@ const emit = defineEmits(['memoInputted'])
 const inputText = ref('')
 // 입력창 포커스 여부 - 기본값: false
 const isFocused = ref(false)
-// 사용자가 입력 "중인" 텍스트 저장  - 기본:null
+// 사용자가 입력 "중인" 텍스트 저장  - 기본: null
 const inputRef = ref(null)
 
 // 외부 클릭 시 포커스 해제 처리 함수
