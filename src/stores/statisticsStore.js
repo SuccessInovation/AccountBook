@@ -1,10 +1,11 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
-// import {
-//   calculateCategoryTotals,
-//   calculateMonthlyTotals,
-//   calculateNetProfit,
-// } from '@/utils/statistics'
+import {
+  calculateCategoryTotals,
+  calculateMonthlyTotals,
+  calculateNetProfit,
+} from '@/utils/statistics'
+import { use_calendar_store } from '@/stores/MonthSelector'
 
 // BASE_URI (db.json)
 import { BASE_URI } from '@/constants/api'
@@ -14,18 +15,20 @@ export const statisticsStore = defineStore('statistics', {
     transactions: [],
     filteredTransaction: [],
 
-    // 통계용
+    // 통계용 데이터
     monthlyCategoryData: {},
     monthlyExpenseData: {},
     monthlyIncomeData: {},
     netProfitData: {},
   }),
 
+  // 컴포넌트에서 바로 사용 가능한 계산된 값들
   getters: {
     getNetProfit: state => state.netProfitData.netProfit ?? 0,
     getIncome: state => state.netProfitData.income ?? 0,
     getExpense: state => state.netProfitData.expense ?? 0,
   },
+
   actions: {
     //#region 기간으로 조회 기능
     /**
@@ -34,14 +37,13 @@ export const statisticsStore = defineStore('statistics', {
      *
      *return : 기간별로 필터링된 결과 -> 컴포넌트로 전송
      */
-    async fetchTranactionsByPeriod(startDate = null, endDate = new Date()) {
+    async fetchTransactionsByPeriod(startDate, endDate) {
       try {
         const res = await axios.get(`${BASE_URI}/transactions`)
         // data 내림차순 정렬
         this.transactions = res.data.sort(
           (a, b) => new Date(b.date) - new Date(a.date),
         )
-        // this.calculateStatistics() // 불러온 데이터로 통계 계산 시작
 
         const today = new Date() // 오늘 날짜
         const defaultStart = new Date()
@@ -57,7 +59,12 @@ export const statisticsStore = defineStore('statistics', {
           return transactionDate >= start && transactionDate <= end
         })
 
-        return (this.filteredTransaction = filtered)
+        this.filteredTransaction = filtered
+
+        // 꼭 필터링 끝난 후 통계 계산 (순서 중요)
+        this.calculateStatistics()
+
+        return filtered
       } catch (err) {
         this.error = err.message
         return []
@@ -65,21 +72,39 @@ export const statisticsStore = defineStore('statistics', {
         this.loading = false
       }
     },
+    // endregion
 
-    // 통계 계산
-    // calculateStatistics() {
-    //   console.log('filteredRecords:', this.filteredTransaction)
-    //   this.monthlyCategoryData = calculateCategoryTotals(
-    //     this.filteredTransaction,
-    //   )
-    //   this.monthlyExpenseData = calculateMonthlyTotals(
-    //     this.transactions,
-    //     '지출',
-    //   )
-    //   this.monthlyIncomeData = calculateMonthlyTotals(this.transactions, '수입')
-    //   this.netProfitData = calculateNetProfit(this.filteredTransaction)
-    //   console.log('netProfitData:', this.netProfitData)
-    // },
+    //#region 통계 계산 기능 - 박채연
+    /**
+     * 현재 필터링된 거래 내역 기준으로 통계 데이터를 계산
+     */
+    calculateStatistics() {
+      const calendar = use_calendar_store()
+
+      // 카테고리별 월간 지출
+      this.monthlyCategoryData = calculateCategoryTotals(
+        this.filteredTransaction,
+      )
+
+      // 월별 지출
+      this.monthlyExpenseData = calculateMonthlyTotals(
+        this.transactions,
+        'expense',
+        calendar.current_year,
+        calendar.current_month,
+      )
+
+      // 월별 수입
+      this.monthlyIncomeData = calculateMonthlyTotals(
+        this.transactions,
+        'income',
+        calendar.current_year,
+        calendar.current_month,
+      )
+
+      // 순이익
+      this.netProfitData = calculateNetProfit(this.filteredTransaction)
+    },
     // endregion
   },
 })

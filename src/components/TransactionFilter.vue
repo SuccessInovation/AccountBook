@@ -4,7 +4,6 @@
   수입과 지출 체크 상태를 props로 받고,
   체크 상태가 변경되면 update 이벤트를 emit합니다.
 */
-
 </script>
 
 <template>
@@ -29,7 +28,6 @@
     </label>
   </div>
 </template>
-
 
 <style scoped>
 .filter-container {

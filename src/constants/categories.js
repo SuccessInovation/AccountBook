@@ -51,7 +51,7 @@ export const CATEGORY_MAP = {
 
 export const CATEGORY_IMG = {
   food: '/src/img/icons/bowl-food-solid.svg',
-  cafesnack: '/src/img/icons/mug-saucer-solid.svg',
+  dessert: '/src/img/icons/mug-saucer-solid.svg',
   entertainment: '/src/img/icons/wine-glass-solid.svg',
   shopping: '/src/img/icons/bag-shopping-solid.svg',
   transportation: '/src/img/icons/bus-simple-solid.svg',

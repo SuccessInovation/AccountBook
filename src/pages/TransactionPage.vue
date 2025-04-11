@@ -264,6 +264,8 @@ watch([incomeChecked, expenseChecked], () => {
         </div>
       </div>
     </div>
+    <!-- 추가 버튼 -->
+    <AddListBtn class="add_btn" />
   </div>
 
   <!-- 추가 버튼 -->

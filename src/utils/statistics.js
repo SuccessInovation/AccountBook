@@ -1,55 +1,59 @@
-// 선택된 월의 지출 데이터만
-export function calculateCategoryTotalsForMonth(transactions, selectedMonth) {
+// 카테고리별 총합
+export function calculateCategoryTotals(filteredTransaction) {
   const result = {}
-
-  transactions.forEach(tx => {
-    const month = tx.date.slice(0, 7)
-    if (tx.type === '지출' && month === selectedMonth) {
-      result[tx.category] = (result[tx.category] || 0) + tx.amount
+  filteredTransaction.forEach(record => {
+    if (record.type === 'expense') {
+      result[record.category] = (result[record.category] || 0) + record.amount
     }
   })
-
   return result
 }
 
 // 월별 총합
-export function calculateMonthlyExpensesForLastMonths(
+export function calculateMonthlyTotals(
   transactions,
+  type,
+  selectedYear,
   selectedMonth,
-  range = 7,
 ) {
   const result = {}
-  const targetDate = new Date(selectedMonth + '-01')
+  // transactions 전체의 월별 총합
+  transactions.forEach(record => {
+    if (record.type === type) {
+      const recordDate = new Date(record.date)
+      const recordYear = recordDate.getFullYear()
+      const recordMonth = recordDate.getMonth()
 
-  for (let i = range; i >= 0; i--) {
-    const date = new Date(targetDate)
-    date.setMonth(date.getMonth() - i)
-    const monthKey = date.toISOString().slice(0, 7)
-    result[monthKey] = 0
-  }
-
-  transactions.forEach(tx => {
-    const month = tx.date.slice(0, 7)
-    if (tx.type === '지출' && result.hasOwnProperty(month)) {
-      result[month] += tx.amount
+      const key = `${recordYear}-${String(recordMonth + 1).padStart(2, '0')}`
+      result[key] = (result[key] || 0) + record.amount
     }
   })
 
-  return result
+  // 선택한 월 기준 최근 8개월 배열 생성
+  const lastEightMonths = []
+  for (let i = 7; i >= 0; i--) {
+    const date = new Date(selectedYear, selectedMonth, 1)
+    date.setMonth(date.getMonth() - i)
+
+    const monthStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`
+    lastEightMonths.push(monthStr)
+  }
+
+  const lastEightMonthsData = {}
+  lastEightMonths.forEach(month => {
+    lastEightMonthsData[month] = result[month] || 0
+  })
+
+  return lastEightMonthsData
 }
 
 // 순이익
-export function calculateNetProfitForMonth(transactions, selectedMonth) {
+export function calculateNetProfit(filteredTransaction) {
   let income = 0
   let expense = 0
-
-  transactions.forEach(tx => {
-    const month = tx.date.slice(0, 7)
-    if (month === selectedMonth) {
-      if (tx.type === '수입') income += tx.amount
-      if (tx.type === '지출') expense += tx.amount
-    }
+  filteredTransaction.forEach(record => {
+    if (record.type === 'income') income += record.amount
+    if (record.type === 'expense') expense += record.amount
   })
-
   return { income, expense, netProfit: income - expense }
 }

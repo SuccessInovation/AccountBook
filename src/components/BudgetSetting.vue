@@ -193,7 +193,6 @@ onBeforeUnmount(() => {
             () => {
               showConfirm = false
               onConfirm?.()
-              handleSubmit()
             }
           "
         >
@@ -340,6 +339,7 @@ onBeforeUnmount(() => {
   grid-template-columns: repeat(2, 160px);
   row-gap: 0.625rem;
   column-gap: 0.625rem;
+  color: #fff;
 }
 
 /* 팝업 버튼 */

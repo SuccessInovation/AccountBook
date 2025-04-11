@@ -1,4 +1,11 @@
-<script setup></script>
+<script setup>
+import { useRoute } from 'vue-router'
+import { computed } from 'vue'
+const route = useRoute()
+const headerTitle = computed(() => {
+  return route.meta.title || '페이지'
+})
+</script>
 
 <template>
   <div class="TheHeader">
@@ -9,14 +16,16 @@
       </router-link>
     </h1>
     <div class="header_title_wrapper">
-      <div id="header_title">임시 제목: HOME</div>
+      <div id="header_title">{{ headerTitle }}</div>
     </div>
     <div id="img_profile">
-      <img
-        class="rounded-circle"
-        src="../img/cabbage/pretty_cabbage.jpg"
-        alt="프로필 이미지"
-      />
+      <router-link to="register">
+        <img
+          class="rounded-circle"
+          src="../img/cabbage/pretty_cabbage.jpg"
+          alt="프로필 이미지"
+        />
+      </router-link>
     </div>
   </div>
 </template>
@@ -33,6 +42,7 @@
   align-items: center;
   background-color: var(--color-point-5);
   box-sizing: border-box;
+  z-index: 1050;
 }
 
 /* 배추 로고 */
@@ -67,18 +77,6 @@ h1 {
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
-}
-/* 프로필 아이콘 */
-#img_profile {
-  position: fixed;
-  right: 20px;
-  width: 70px;
-  height: 70px;
-  /* object-fit: cover; 이미지 비율 잘 맞추기 */
-  border-radius: 50%;
-  border: 3px solid white;
-  margin-left: auto;
-  cursor: pointer;
 }
 /* 프로필 아이콘 */
 #img_profile {

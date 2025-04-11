@@ -36,16 +36,22 @@ export const use_calendar_store = defineStore('calendar', () => {
   //    - base_date에서 getMonth()는 0부터 시작하므로 그대로 사용
   const current_month = ref(base_date.getMonth())
 
-  // 선택된 월의 startDate
+  //#region 선택된 월의 시작일과 종료일 계산 - 박채연
+  /**
+   * 선택된 연/월을 기반으로 해당 월의 시작일과 종료일을 계산
+   * @const current_month 현재 선택된 월 (ref, 0 = 1월, 11 = 12월)
+   */
+  // 월 시작일 (YYYY-MM-01)
   const monthStartDate = computed(
     () => new Date(current_year.value, current_month.value, 1),
   )
 
-  // 선택된 월의 endDate
-  // js에서 '다음 달의 0일'은 '이달의 마지막 날'임
+  // 월 종료일
+  // js에서는 다음 달의 0일 = 이번 달 마지막 날
   const monthEndDate = computed(
     () => new Date(current_year.value, current_month.value + 1, 0),
   )
+  // endregion
 
   //  get_month_data: offset을 받아서 해당 월/연 정보를 반환하는 함수
   //    - offset은 -1, 0, 1 (이전 달, 현재 달, 다음 달)

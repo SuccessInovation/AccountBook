@@ -63,7 +63,7 @@ const handleSubmit = () => {
   console.log('선택된 기간:', selectPeriod.value)
 
   if (selectPeriod.value === '1months') {
-    store.fetchTranactionsByPeriod()
+    store.fetchTransactionsByPeriod()
   } else if (selectPeriod.value === '3months') {
     const startDate = new Date()
     startDate.setMonth(today.getMonth() - 3)
@@ -77,7 +77,7 @@ const handleSubmit = () => {
       return
     }
 
-    store.fetchTranactionsByPeriod(customStartDate.value, customEndDate.value)
+    store.fetchTransactionsByPeriod(customStartDate.value, customEndDate.value)
   }
   emit('search') // 조회 완료 → 부모 컴포넌트에게 알림!
 }

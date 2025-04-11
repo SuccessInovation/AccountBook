@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import BudgetSetting from '@/components/BudgetSetting.vue'
 import BudgetProgress from '@/components/BudgetProgress.vue'
-import CalendarContent from '@/components/CalendarContent.vue'
+import CalendarContent from '@/components/CalendarNav.vue'
 
 const isSetting = ref(false)
 const progressRef = ref(null) // 예산 추가 시 바로 반영되기 위함
@@ -19,18 +19,31 @@ const handleSubmit = () => {
 
 <template>
   <div class="BudgetPage">
-    <CalendarContent />
-    <BudgetProgress ref="progressRef" @setting="budgetSetting" />
-    <BudgetSetting
-      v-if="isSetting"
-      @submit="handleSubmit"
-      @close="isSetting = false"
-    />
+    <div class="container">
+      <CalendarContent />
+      <BudgetProgress ref="progressRef" @setting="budgetSetting" />
+      <BudgetSetting
+        v-if="isSetting"
+        @submit="handleSubmit"
+        @close="isSetting = false"
+      />
+    </div>
   </div>
 </template>
 
 <style scoped>
 .BudgetPage {
-  position: relative;
+  position: absolute;
+  top: 240px;
+  height: calc(100% - (120px + 80px)); /* 헤더+푸터의 높이만큼 뺌 */
+  width: calc(100% - 250px); /* 사이드바의 너비만큼 뺌 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>

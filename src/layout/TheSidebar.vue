@@ -18,7 +18,7 @@ const toggleStatsSubMenu = () => {
     <div class="sidebar-container">
       <ul class="main-menu list-group list-group-flush">
         <li class="list-group-item mt-160">
-          <router-link to="/">HOME</router-link>
+          <router-link to="/home">HOME</router-link>
         </li>
         <li class="list-group-item">
           <router-link to="/transaction">수입/지출 내역</router-link>
@@ -95,6 +95,7 @@ const toggleStatsSubMenu = () => {
 <style scoped>
 .snb {
   background-color: var(--color-point-5);
+  height: 100;
   z-index: 1000;
 }
 .snb.navbar {
