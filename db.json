@@ -1374,43 +1374,43 @@
   "budgets": [
     {
       "category": "food",
-      "amount": 0,
+      "amount": 1000000,
       "month": "2025-04",
       "id": "f388"
     },
     {
       "category": "dessert",
-      "amount": 0,
+      "amount": 100000,
       "month": "2025-04",
       "id": "f047"
     },
     {
       "category": "entertainment",
-      "amount": 0,
+      "amount": 400000,
       "month": "2025-04",
       "id": "2ab8"
     },
     {
       "category": "shopping",
-      "amount": 0,
+      "amount": 4000000,
       "month": "2025-04",
       "id": "b378"
     },
     {
       "category": "transportation",
-      "amount": 1111,
+      "amount": 0,
       "month": "2025-04",
       "id": "8aa8"
     },
     {
       "category": "utilities",
-      "amount": 0,
+      "amount": 500000,
       "month": "2025-04",
       "id": "3e5b"
     },
     {
       "category": "health",
-      "amount": 0,
+      "amount": 48088,
       "month": "2025-04",
       "id": "6ff9"
     },
