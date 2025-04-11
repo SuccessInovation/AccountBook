@@ -274,61 +274,62 @@
 
 ## 🛠️ 개발 환경 및 설치 방법
 
-1. Vue 프로젝트 생성
+### 1. Vue 프로젝트 생성
 
 - Vue CLI 이용하여 새 프로젝트 생성
-```
-npm create-vue@3.16.3
-```
+    ```
+    npm create-vue@3.16.3
+    ```
 
 - Project name : `AccountBook`
 - Package name : `accountbook`
 
-2. 기본 의존성 설치
+### 2. 의존성 및 주요 라이브러리 설치
 
-- 프로젝트 기본 의존성 설치
-```
-npm install
-```
+- 📦 프로젝트 기본 의존성
+    ```
+    npm install
+    ```
 
-- Bootstrap (UI 프레임워크) 설치
-```
-npm install bootstrap@5
-```
+- 🎨 Bootstrap (UI 프레임워크)
+    ```
+    npm install bootstrap@5
+    ```
 
-3. 주요 라이브러리 설치
+- 🧭 Vue Router (페이지 이동 라우팅)
+    ```
+    npm install vue-router
+    ```
 
-- Vue Router (페이지 이동 라우팅) 설치
-```
-npm install vue-router
-```
+- 🌐 Axios (HTTP 통신 라이브러리)
+    ```
+    npm install axios
+    ```
 
-- Axios (HTTP 통신 라이브러리) 설치
-```
-npm install axios
-```
+- ⚙️ Pinia (상태 관리 라이브러리)
+    ```
+    npm install pinia
+    ```
 
-- Pinia (상태 관리 라이브러리) 설치
-```
-npm install pinia
-```
+- 📊 Chart.js & Vue Chart.js (차트 시각화 도구)
+    ```
+    npm install chart.js vue-chartjs
+    ```
 
-- Chart.js & Vue Chart.js (차트 시각화 도구) 설치
-```
-npm install chart.js vue-chartjs
-```
+- 📁 xlsx (엑셀 내보내기 기능용 라이브러리)
+    ```
+    npm install xlsx
+    ```
 
-- xlsx (엑셀 내보내기 기능용 라이브러리) 설치
-```
-npm install xlsx
-```
-
-4. 프로젝트 초기 세팅
+### 3. 프로젝트 초기 세팅
 
 - 기본 컴포넌트 및 아이콘 폴더, base.css, logo.css, view-Home, About 삭제
+
 - 패키지 폴더 내 `db.json` 파일 생성
 
-### 📦 JSON 서버 설치
+### 4. 개발용 JSON 서버 세팅
+
+#### 📦 JSON 서버 설치
 
 - 맥용  
   ```
@@ -340,12 +341,12 @@ npm install xlsx
   npm install -g json-server
   ```
 
-### 🚀 JSON 서버 실행
+#### 🚀 JSON 서버 실행
 
 - 서버 실행
-```
-json-server --watch db.json
-```
+    ```
+    json-server --watch db.json
+    ```
 
 - 실행 후 `localhost:3000` 접속하여 더미 데이터 확인
 
