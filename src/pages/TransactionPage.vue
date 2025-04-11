@@ -264,10 +264,9 @@ watch([incomeChecked, expenseChecked], () => {
         </div>
       </div>
     </div>
+    <!-- 추가 버튼 -->
+    <AddListBtn class="add_btn" />
   </div>
-
-  <!-- 추가 버튼 -->
-  <AddListBtn />
 </template>
 
 <style scoped>
@@ -315,7 +314,7 @@ watch([incomeChecked, expenseChecked], () => {
 }
 
 .month_item p {
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .faded {
@@ -333,7 +332,7 @@ watch([incomeChecked, expenseChecked], () => {
 }
 
 .arrow {
-  font-size: 4rem;
+  font-size: 2rem;
   cursor: pointer;
   background: none;
   border: none;
