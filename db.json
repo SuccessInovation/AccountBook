@@ -1241,16 +1241,6 @@
       "createdAt": "2025-04-03T00:00:00Z"
     },
     {
-      "id": "4066985082",
-      "date": "2025-04-04",
-      "type": "expense",
-      "category": "travel",
-      "paymentMethod": "transfer",
-      "amount": 168951,
-      "memo": "KTX",
-      "createdAt": "2025-04-04T00:00:00Z"
-    },
-    {
       "id": "6387034049",
       "date": "2025-04-04",
       "type": "income",
@@ -1349,26 +1339,6 @@
       "amount": 135920,
       "memo": "기타 지출",
       "createdAt": "2025-04-08T00:00:00Z"
-    },
-    {
-      "id": "9382539036",
-      "date": "2025-04-09",
-      "type": "expense",
-      "category": "entertainment",
-      "paymentMethod": "card",
-      "amount": 80595,
-      "memo": "클럽 입장",
-      "createdAt": "2025-04-09T00:00:00Z"
-    },
-    {
-      "id": "8497039951",
-      "date": "2025-04-10",
-      "type": "expense",
-      "category": "leisure",
-      "paymentMethod": "cash",
-      "amount": 16226,
-      "memo": "영화 관람",
-      "createdAt": "2025-04-10T00:00:00Z"
     }
   ],
   "budgets": [

@@ -69,7 +69,7 @@ const handleSubmit = () => {
     startDate.setMonth(today.getMonth() - 3)
 
     const start = formatDate(startDate)
-    store.fetchTranactionsByPeriod(start, formatDate(today))
+    store.fetchTransactionsByPeriod(start, formatDate(today))
   } else if (selectPeriod.value === 'custom') {
     // 입력 확인
     if (!customStartDate.value || !customEndDate.value) {
