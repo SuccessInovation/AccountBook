@@ -1366,7 +1366,7 @@
       "type": "expense",
       "category": "leisure",
       "paymentMethod": "cash",
-      "amount": 16226,
+      "amount": 16000,
       "memo": "영화 관람",
       "createdAt": "2025-04-10T00:00:00Z"
     }
