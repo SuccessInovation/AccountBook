@@ -205,7 +205,6 @@ watch([incomeChecked, expenseChecked], () => {
 <!-- 탭메뉴 -->
 <template>
   <!-- 월 이동 컴포넌트 -->
-
   <div class="calendar_carousel">
     <button type="button" class="arrow" @click="calendar.go_to_prev_month">
       &lt;
@@ -266,13 +265,22 @@ watch([incomeChecked, expenseChecked], () => {
       </div>
     </div>
   </div>
+
   <!-- 추가 버튼 -->
   <AddListBtn />
 </template>
 
 <style scoped>
 /* 월 이동 컴포넌트 */
-.container {
+/* .TransactionPage {
+  position: absolute;
+  height: calc(100% - (120px + 80px)); /* 헤더+푸터의 높이만큼 뺌 */
+/* width: calc(100% - 250px); /* 사이드바의 너비만큼 뺌 */
+/* display: flex;
+  justify-content: center;
+  align-items: center;  */
+/* } */
+/* .container {
   background-color: var(--color-point-3);
   border-radius: 30px;
   width: 98%;
@@ -281,7 +289,7 @@ watch([incomeChecked, expenseChecked], () => {
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
+} */
 
 .calendar_carousel {
   display: flex;
