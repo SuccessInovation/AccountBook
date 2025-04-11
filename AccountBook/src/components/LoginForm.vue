@@ -110,6 +110,7 @@
   margin-top: 3rem;
   background-color: var(--color-point-1);
   color: var(--color-brown-very-light);
+  cursor: pointer;
 }
 .signfor_btn {
   color: var(--color-point-1);
