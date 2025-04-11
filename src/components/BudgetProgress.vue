@@ -159,13 +159,13 @@ const budgetSetting = () => {
 /* *** 컨텐츠 박스 영역 *** */
 /* 컨텐츠 박스 설정 */
 /* .budget_container {
-  border: 1rem solid var(--color-point-3);
-  border-radius: 1rem;
-  padding: 20px;
-  max-width: 900px;
-  height: 600px;
-  margin: 1.5rem auto;
-} */
+    border: 1rem solid var(--color-point-3);
+    border-radius: 1rem;
+    padding: 20px;
+    max-width: 900px;
+    height: 600px;
+    margin: 1.5rem auto;
+  } */
 .container {
   background-color: var(--color-point-3);
   border-radius: 30px;
