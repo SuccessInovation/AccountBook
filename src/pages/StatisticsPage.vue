@@ -88,6 +88,7 @@ watch(
   flex-direction: column;
   gap: 20px;
   /* overflow: hidden; */
+  overflow-y: scroll;
   background-color: var(--color-point-3);
 }
 
@@ -104,7 +105,7 @@ watch(
   display: flex;
   flex-direction: row;
   gap: 20px;
-  height: 500px;
+  height: 400px;
 }
 
 /* pie chart group이 전체 너비를 차지하는 부분을 줄이기 위함 */

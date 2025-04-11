@@ -1,6 +1,9 @@
 <template>
   <div :style="{ backgroundColor: backgroundColor }" class="app_wrap">
-    <div v-if="layout === 'none'">
+    <div
+      v-if="layout === 'none'"
+      :class="{ full_height_router_view: centerContent }"
+    >
       <router-view />
     </div>
     <div v-else class="container">

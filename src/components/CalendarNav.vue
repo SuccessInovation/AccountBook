@@ -40,6 +40,7 @@ const month_names = calendar.month_names
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 2rem;
 }
 .month_slider {
   display: flex;
@@ -55,7 +56,7 @@ const month_names = calendar.month_names
   transition: all 0.5s ease;
 }
 #year {
-  font-size: 15px;
+  font-size: 30px;
   margin: 0px;
   padding: 0px;
 }
@@ -66,11 +67,11 @@ const month_names = calendar.month_names
   opacity: 0.7;
 }
 #year.faded {
-  font-size: 12px;
+  font-size: 20px;
   margin-top: 30px;
 }
 #month.faded {
-  font-size: 25px;
+  font-size: 35px;
 }
 .active {
   font-weight: bold;
@@ -78,7 +79,8 @@ const month_names = calendar.month_names
   transform: scale(1.1);
 }
 .arrow {
-  font-size: 2rem;
+  font-size: 3rem;
+  font-weight: 700;
   cursor: pointer;
   background: none;
   border: none;

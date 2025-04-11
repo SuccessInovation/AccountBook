@@ -19,11 +19,13 @@ const headerTitle = computed(() => {
       <div id="header_title">{{ headerTitle }}</div>
     </div>
     <div id="img_profile">
-      <img
-        class="rounded-circle"
-        src="../img/cabbage/pretty_cabbage.jpg"
-        alt="프로필 이미지"
-      />
+      <router-link to="register">
+        <img
+          class="rounded-circle"
+          src="../img/cabbage/pretty_cabbage.jpg"
+          alt="프로필 이미지"
+        />
+      </router-link>
     </div>
   </div>
 </template>

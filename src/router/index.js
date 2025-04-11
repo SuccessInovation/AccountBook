@@ -13,28 +13,38 @@ import ExportExcelPage from '@/pages/ExportExcelPage.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
     component: HomePage, // 홈 경로는 HomePage.vue로
     meta: { title: 'HOME', layout: 'default' },
   },
   {
-    path: '/start',
+    path: '/',
     name: 'Start',
     component: StartPage,
-    meta: { title: '시작', layout: 'no-layout', backgroundColor: '#b7ccb4' },
+    meta: {
+      title: '시작',
+      layout: 'none',
+      backgroundColor: '#b7ccb4',
+      centerContent: true,
+    },
   },
   {
     path: '/login',
     name: 'Login',
     component: LoginPage,
-    meta: { title: '로그인', layout: 'none' },
+    meta: {
+      title: '로그인',
+      layout: 'none',
+      backgroundColor: '#b7ccb4',
+      centerContent: true,
+    },
   },
   {
     path: '/register',
     name: 'Register',
     component: RegisterPage,
-    meta: { title: '회원가입', layout: 'no-layout' },
+    meta: { title: '회원가입', layout: 'none' },
   },
   {
     path: '/transaction',
