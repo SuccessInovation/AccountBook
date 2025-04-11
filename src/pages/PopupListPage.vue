@@ -4,37 +4,15 @@ import { useTransactionStore } from '@/stores/TransactionStore'
 import { useRoute, useRouter } from 'vue-router'
 const router = useRouter()
 
-// import TransactionEdit from '@/components/TransactionEdit.vue'
-// import
-
 const transactionStore = useTransactionStore()
 const route = useRoute()
 
 console.log('날짜:', route.query.date) // console.log(route.params.id)
-//달력 showCalendar, openCalendar
-// const showCalendar = ref(false)
-
-// const openCalendar = () => {
-//   showCalendar.value = true
-// }
 
 // 페이지 로드 시 거래 내역 불러오기
 onMounted(() => {
   transactionStore.fetchTransactions()
 })
-
-// 필터 상태: 수입/지출 (기본: 모두 체크)
-// const showIncome = ref(true)
-// const showExpense = ref(true)
-
-// 필터링된 거래 내역 목록 (수입/지출 체크 상태에 따라)
-// const filteredTransactions = computed(() => {
-//   return transactionStore.transactions.filter(record => {
-//     if (record.type === 'income' && showIncome.value) return true
-//     if (record.type === 'expense' && showExpense.value) return true
-//     return false
-//   })
-// })
 
 const selectedDate = ref(route.query.date || '')
 console.log('선택요일:', selectedDate.value)
@@ -70,12 +48,6 @@ function formatAmount(value, type) {
     : type === 'expense'
       ? `-${formatted}`
       : formatted
-}
-
-// 혁신님이 주시면 갈아끼우기(handleEdit, handleDelete)
-// 수정 아이콘 클릭 시 처리 (수정 페이지로 이동)
-function handleEdit(record) {
-  router.push({ name: 'Popup', params: { id: record.id } })
 }
 
 // 삭제 아이콘 클릭 시 처리 (삭제 확인 후 삭제)
