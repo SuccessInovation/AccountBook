@@ -87,7 +87,7 @@ watch(
   display: flex;
   flex-direction: column;
   gap: 20px;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-color: var(--color-point-3);
 }
 

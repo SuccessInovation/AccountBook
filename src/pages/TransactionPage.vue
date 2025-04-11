@@ -1,8 +1,25 @@
 <script setup>
+import { storeToRefs } from 'pinia'
 import { ref, computed, onMounted, watch } from 'vue'
-
+import { use_calendar_store } from '@/stores/MonthSelector'
 // 거래 내역을 상태로 관리하는 Pinia store
 import { useTransactionStore } from '@/stores/TransactionStore'
+import { useRouter } from 'vue-router'
+// import
+
+// 달력,AddListBtn import
+import CalendarContent from '@/components/CalendarContent.vue'
+import AddListBtn from '@/components/AddListBtn.vue'
+import TransactionContent from '@/components/TransactionContent.vue'
+const transactionStore = useTransactionStore()
+const router = useRouter()
+// 상단 import 부분에 추가
+// setup 내에서 calendar 상태 불러오기
+const calendar = use_calendar_store()
+const { current_year, current_month } = storeToRefs(calendar)
+
+// const calendar = use_calendar_store()
+const { transactions } = storeToRefs(transactionStore)
 
 // 필터링 컴포넌트 (카테고리 선택 / 메모 검색창)
 import FilterCategory from '@/components/FilterCategory.vue'
@@ -16,13 +33,43 @@ import {
 } from '@/constants/categories'
 
 // Pinia store 불러오기
-const transactionStore = useTransactionStore()
+// const transactionStore = useTransactionStore()
 
 // 마운트될 때 거래 내역 불러오기
 onMounted(() => {
   transactionStore.fetchTransactions()
 })
 
+const { visible_months } = storeToRefs(calendar)
+const month_names = calendar.month_names
+
+//달력 showCalendar, openCalendar
+// const showCalendar = ref(false)
+
+// const openCalendar = () => {
+//   showCalendar.value = true
+// }
+const activeTab = ref('list') // 기본 탭: list
+
+// const tabs = ['목록', '달력']
+
+// 페이지 로드 시 거래 내역 불러오기
+onMounted(() => {
+  transactionStore.fetchTransactions()
+})
+
+// 필터 상태: 수입/지출 (기본: 모두 체크)
+// const showIncome = ref(true)
+// const showExpense = ref(true)
+
+// 필터링된 거래 내역 목록 (수입/지출 체크 상태에 따라)
+// const filteredTransactions = computed(() => {
+//   return transactionStore.transactions.filter(record => {
+//     if (record.type === '수입' && showIncome.value) return true
+//     if (record.type === '지출' && showExpense.value) return true
+//     return false
+//   })
+// })
 // 상태변수 초기값 설정
 
 // '수입' 체크박스 - 기본: 체크됨
@@ -35,15 +82,39 @@ const categorySelected = ref('all')
 const memoInputted = ref('')
 
 // '수입/지출' 체크박스 상태를 기준으로 거래 내역 필터링
-const filteredTransactions = computed(() => {
+// const filteredTransactions = computed(() => {
+//   return transactionStore.transactions.filter(record => {
+//     // type이 '수입' & '수입' 체크박스 체크 O
+//     if (record.type === 'income' && incomeChecked.value) return true
+//     // type이 '수출' & '수출' 체크박스 체크 O
+//     if (record.type === 'expense' && expenseChecked.value) return true
+//     // '수입/수출' 체크박스 모두 체크 X
+//     return false
+//   })
+// })
+
+const filteredByMonthTransactions = computed(() => {
   return transactionStore.transactions.filter(record => {
-    // type이 '수입' & '수입' 체크박스 체크 O
-    if (record.type === 'income' && incomeChecked.value) return true
-    // type이 '수출' & '수출' 체크박스 체크 O
-    if (record.type === 'expense' && expenseChecked.value) return true
-    // '수입/수출' 체크박스 모두 체크 X
-    return false
+    const date = new Date(record.date)
+    const recordYear = date.getFullYear()
+    const recordMonth = date.getMonth()
+
+    return (
+      recordYear === current_year.value &&
+      recordMonth === current_month.value &&
+      ((record.type === 'income' && incomeChecked.value) ||
+        (record.type === 'expense' && expenseChecked.value))
+    )
   })
+})
+
+// 페이지 관련 변수
+const currentPage = ref(1)
+const pageSize = ref(10)
+
+// 총 페이지 수 계산
+const totalPages = computed(() => {
+  return Math.ceil(filteredTransactions.value.length / pageSize.value) || 1
 })
 
 //#region 💰 금액 포맷 함수
@@ -104,7 +175,7 @@ const MemoSearchHandler = text => {
 
 // 필터링된 거래내역 (카테고리 + 메모)
 const filteredList = computed(() => {
-  return filteredTransactions.value.filter(item => {
+  return filteredByMonthTransactions.value.filter(item => {
     // 선택된 카테고리가 'all'이거나 선택된 카테고리와 카테고리가 같은 항목
     const categoryMatch =
       categorySelected.value === 'all' ||
@@ -131,115 +202,291 @@ watch([incomeChecked, expenseChecked], () => {
   resetKey.value++
 })
 </script>
-
+<!-- 탭메뉴 -->
 <template>
-  <div class="TransactionPage">
-    <div class="container-fluid px-4 py-4" style="min-height: 100vh">
+  <!-- 월 이동 컴포넌트 -->
+
+  <div class="calendar_carousel">
+    <button type="button" class="arrow" @click="calendar.go_to_prev_month">
+      &lt;
+    </button>
+
+    <div class="month_slider">
       <div
-        class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2"
+        v-for="(month, index) in visible_months"
+        :key="index"
+        class="month_item"
       >
-        <!-- 카테고리 필터 컴포넌트 (드롭다운) -->
-        <!-- props - 'FilterCategory.vue'로 '카테고리/resetKey' 전달 -->
-        <FilterCategory
-          :categories="availableCategories"
-          :resetKey="resetKey"
-          @categorySelected="CategoryChangeHandler"
-        />
+        <p :class="{ active: index === 1, faded: index !== 1 }">
+          {{ month.year }} {{ month_names[month.month] }}
+        </p>
+      </div>
+    </div>
 
-        <!-- 메모 검색창 컴포넌트 -->
-        <SearchByMemo @memoInputted="MemoSearchHandler" />
+    <button type="button" class="arrow" @click="calendar.go_to_next_month">
+      &gt;
+    </button>
+  </div>
+  <div class="container">
+    <div>
+      <!-- Bootstrap 탭 메뉴 -->
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            :class="{ active: activeTab === 'list' }"
+            @click="activeTab = 'list'"
+          >
+            목록
+          </button>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link"
+            :class="{ active: activeTab === 'calendar' }"
+            @click="activeTab = 'calendar'"
+          >
+            달력
+          </button>
+        </li>
+      </ul>
 
-        <!-- 수입/지출 필터 - 하나의 하얀 박스 안에 체크박스 2개 배치 -->
-        <div class="d-flex align-items-center bg-white px-3 py-2 gap-3">
-          <!-- 수입 체크박스 -->
-          <div class="form-check form-check-inline m-0">
-            <input
-              class="form-check-input me-1"
-              type="checkbox"
-              id="incomeCheck"
-              v-model="incomeChecked"
-            />
-            <label class="form-check-label fw-semibold" for="incomeCheck">
-              수입
-            </label>
-          </div>
-          <!-- 지출 체크박스 -->
-          <div class="form-check form-check-inline m-0">
-            <input
-              class="form-check-input me-1"
-              type="checkbox"
-              id="expenseCheck"
-              v-model="expenseChecked"
-            />
-            <label class="form-check-label fw-semibold" for="expenseCheck">
-              지출
-            </label>
-          </div>
+      <!-- 탭 콘텐츠 -->
+      <div class="tab-content mt-3">
+        <div v-if="activeTab === 'list'">
+          <!-- 목록 보기 -->
+          <!-- <TransactionContent :transactions="store.transactions" />/ -->
+          <!-- <TransactionContent :transactions="transactionStore.transactions" /> -->
+          <TransactionContent />
         </div>
-
-        <!-- 거래내역이 없을 경우 메시지 출력 -->
-        <div v-if="filteredList.length === 0" id="emptyTransaction">
-          표시할 내역이 없습니다.
-        </div>
-
-        <!-- '수입/지출' 필터링된 거래내역 -->
-        <div
-          v-else
-          class="table-responsive rounded shadow-sm bg-white px-3 w-100"
-          style="max-height: 400px; overflow-y: auto"
-        >
-          <table class="table table-hover mb-0 text-center align-middle">
-            <thead class="table-light">
-              <tr>
-                <th scope="col" style="width: 40px">
-                  <input type="checkbox" />
-                </th>
-                <th scope="col" style="width: 160px">날짜</th>
-                <th scope="col" style="width: 150px">카테고리</th>
-                <!-- 'width: auto': 남은 공간 자동으로 차지 -->
-                <th scope="col" style="width: auto">메모</th>
-                <th scope="col" style="width: 150px">금액</th>
-                <th scope="col" style="width: 60px">수정</th>
-                <th scope="col" style="width: 60px">삭제</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- 카테고리 필터링된 거래내역 -->
-              <tr v-for="filtered in filteredList" :key="filtered.id">
-                <td><input type="checkbox" /></td>
-                <td>{{ filtered.date }}</td>
-                <td>
-                  {{ CATEGORY_MAP[filtered.category] || filtered.category }}
-                </td>
-                <!-- text-truncate: 길어지면 말줄임표(...) 처리 (너비제한 필요) -->
-                <td class="text-start text-truncate" style="max-width: 300px">
-                  {{ filtered.memo }}
-                </td>
-                <td class="text-end">
-                  {{ prettyAmount(filtered.amount, filtered.type) }} 원
-                </td>
-                <td>
-                  <i
-                    class="text-success d-block mx-auto"
-                    style="cursor: pointer"
-                    >✏️</i
-                  >
-                </td>
-                <td>
-                  <i class="text-danger d-block mx-auto" style="cursor: pointer"
-                    >🗑️</i
-                  >
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div v-else-if="activeTab === 'calendar'">
+          <!-- 달력 보기 -->
+          <CalendarContent />
         </div>
       </div>
     </div>
   </div>
+  <!-- 추가 버튼 -->
+  <AddListBtn />
 </template>
 
 <style scoped>
+/* 월 이동 컴포넌트 */
+.container {
+  background-color: var(--color-point-3);
+  border-radius: 30px;
+  width: 98%;
+  min-width: 768px;
+  height: 630px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.calendar_carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.month_slider {
+  display: flex;
+  width: 500px;
+  overflow: hidden;
+  justify-content: space-between;
+}
+
+.month_item {
+  width: 100px;
+  text-align: center;
+  font-size: 1.2rem;
+  opacity: 0.6;
+  transform: scale(0.9);
+  transition: all 0.5s ease;
+}
+
+.month_item p {
+  font-size: 2.5rem;
+}
+
+.faded {
+  opacity: 0.4;
+}
+.active {
+  font-weight: bold;
+}
+
+.month_item.active {
+  font-size: 1.5rem;
+  font-weight: bold;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.arrow {
+  font-size: 2rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #4caf50;
+  transition: transform 0.2s ease;
+}
+.arrow:hover {
+  transform: scale(1.2);
+}
+
+.current-month {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.current-month .year {
+  font-size: 1rem;
+  color: #999;
+}
+.current-month .month {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+/* 중간의 '목록/달력/카테고리/검색/수입/지출' 섹션 */
+.ledger-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #a3c39c;
+  padding: 10px 20px;
+  color: #fff;
+}
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+.nav-btn.active,
+.nav-btn:hover {
+  background-color: #8eb58d;
+}
+.category-select {
+  background-color: #fff;
+  color: #333;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+}
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.search-input {
+  width: 300px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.income-checkbox,
+.expense-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+/* 테이블 영역 */
+.ledger-table-section {
+  padding: 20px;
+  background-color: #f8f8f8;
+}
+.ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.ledger-table thead {
+  background-color: #e2e2e2;
+}
+.ledger-table th,
+.ledger-table td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+.ledger-table th {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #333;
+}
+.ledger-table td {
+  font-size: 0.88rem;
+  color: #555;
+}
+.ledger-table td i {
+  cursor: pointer;
+}
+
+/* 페이징 컨트롤 */
+.pagination-controls button {
+  padding: 6px 12px;
+  margin: 0 6px;
+  border: none;
+  background-color: #a3c39c;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.pagination-controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* 하단 '추가' 버튼 영역 */
+.add-button-area {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #fff;
+}
+.add-button {
+  background-color: #a3c39c;
+  color: #fff;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.add-button:hover {
+  background-color: #8eb58d;
+}
+
+/* 탭메뉴 */
+.nav-tabs .nav-link {
+  cursor: pointer;
+}
 /* '수입/지출' 체크박스  */
 .align-items-center {
   border-radius: 15px;
@@ -247,26 +494,26 @@ watch([incomeChecked, expenseChecked], () => {
 
 /* '수입' 체크박스 */
 #incomeCheck {
-  background-color: var(--light-green);
-  border-color: var(--point-1-color);
+  background-color: var(--color-green-light);
+  border-color: var(--color-point-1);
 }
 
 /* '수입' 체크박스 선택 */
 #incomeCheck:checked {
-  background-color: var(--point-1-color);
-  border-color: var(--point-1-color);
+  background-color: var(--color-point-1);
+  border-color: var(--color-point-1);
 }
 
 /* '지출' 체크박스 */
 #expenseCheck {
-  background-color: var(--light-red);
-  border-color: var(--red-100);
+  background-color: var(--color-red-light);
+  border-color: var(--color-red-100);
 }
 
 /* '지출' 체크박스 선택 */
 #expenseCheck:checked {
-  background-color: var(--red-100);
-  border-color: var(--red-100);
+  background-color: var(--color-red-100);
+  border-color: var(--color-red-100);
 }
 
 /* 거래내역 없을 때 텍스트 */
