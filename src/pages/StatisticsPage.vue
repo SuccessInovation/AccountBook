@@ -87,7 +87,11 @@ watch(
   display: flex;
   flex-direction: column;
   gap: 20px;
+<<<<<<< HEAD
   overflow-y: scroll;
+=======
+  overflow: scroll;
+>>>>>>> b01f699afde46c28739418701aeeff34c3550e49
   background-color: var(--color-point-3);
 }
 

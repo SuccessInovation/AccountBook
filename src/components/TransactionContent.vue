@@ -508,7 +508,7 @@ function toggleRow(record, event) {
 }
 
 .arrow {
-  font-size: 3rem;
+  font-size: 2rem;
   cursor: pointer;
   background: none;
   border: none;
