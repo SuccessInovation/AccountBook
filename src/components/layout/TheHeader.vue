@@ -6,23 +6,20 @@ const headerTitle = computed(() => {
   return route.meta.title || '페이지'
 })
 </script>
-
 <template>
-  <div class="TheHeader">
-    <h1>
-      <router-link to="/" id="logo">
-        <span>배추</span
-        ><img id="img_logo" src="../img/cabbage/logo1.png" alt="로고" />
+  <div class="header_grid">
+    <h1 class="logo">
+      <router-link to="/" id="logo_link">
+        <span id="logo_txt">배추</span>
+        <img id="logo_img" src="../../img/cabbage/logo1.png" alt="로고" />
       </router-link>
     </h1>
-    <div class="header_title_wrapper">
-      <div id="header_title">{{ headerTitle }}</div>
-    </div>
-    <div id="img_profile">
+    <div id="title">{{ headerTitle }}</div>
+    <div id="profile_img">
       <router-link to="register">
         <img
           class="rounded-circle"
-          src="../img/cabbage/pretty_cabbage.jpg"
+          src="../../img/cabbage/pretty_cabbage.jpg"
           alt="프로필 이미지"
         />
       </router-link>
@@ -31,63 +28,50 @@ const headerTitle = computed(() => {
 </template>
 
 <style scoped>
-.TheHeader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 120px;
-  display: flex;
-  align-items: center;
+.header_grid {
+  position: relative;
   background-color: var(--color-point-5);
-  box-sizing: border-box;
-  z-index: 1050;
-}
-
-/* 배추 로고 */
-h1 {
-  margin: 0;
-  width: 250px;
+  display: grid;
+  grid-template-columns: 200px 1fr 100px;
+  align-items: center;
   height: 100%;
-  padding: 15px 50px;
+}
+.logo {
+  grid-column: 1;
+  height: 100%;
+  margin: 0 auto;
   white-space: nowrap;
   overflow: hidden;
 }
-#logo {
+#logo_link {
   height: 100%;
   display: inline-flex;
   align-items: center;
+}
+#logo_txt {
   font-size: 45px;
   font-weight: bold;
 }
-#img_logo {
+#logo_img {
   width: 55px;
   height: 82px;
 }
-/* 화면 제목 */
-.header_title_wrapper {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-#header_title {
+#title {
+  grid-column: 2 / 4; /* 2번 칸 - 4번 칸 전까지 차지 */
   font-size: 27px;
   font-weight: bold;
-  text-align: center;
   white-space: nowrap;
   overflow: hidden;
+  justify-self: center;
 }
-/* 프로필 아이콘 */
-#img_profile {
+#profile_img {
   position: fixed;
-  right: 20px;
+  right: 10px;
   width: 70px;
   height: 70px;
   object-fit: cover; /* 이미지 비율 잘 맞추기: 화면 비율 고정*/
   border-radius: 50%;
   border: 3px solid white;
   cursor: pointer;
-  margin-right: 20px;
 }
 </style>

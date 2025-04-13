@@ -91,7 +91,12 @@ html,
 body {
   height: 100%;
   font-family: 'NotoSansKR', sans-serif;
+  color: var(--color-font-main);
   /* overflow: hidden; */
+}
+#app {
+  margin: 0;
+  padding: 0;
 }
 img,
 picture,
