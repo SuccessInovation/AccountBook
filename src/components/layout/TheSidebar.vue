@@ -34,7 +34,7 @@ const toggleStatsSubMenu = () => {
     <!-- 태블릿 화면 (992px): 사이드바 (메뉴 버튼 클릭 시) -->
     <!-- 모바일 화면 (<=768px): 사이드바 (메뉴 버튼 클릭 시) -->
     <div class="snb snb_tablet_mobile" :class="{ open: showMenu }">
-      <div class="sidebar-container">
+      <div class="snb_container">
         <ul class="list-group list-group-flush">
           <template
             v-for="(menu, index) in menuLists"
@@ -43,18 +43,15 @@ const toggleStatsSubMenu = () => {
             <li class="list-group-item" v-if="!menu.submenu">
               <router-link :to="menu.to">{{ menu.label }}</router-link>
             </li>
-            <li class="list-group-item submenu-wrapper" v-else>
+            <li class="list-group-item submenu_wrapper" v-else>
               <div @click="toggleStatsSubMenu" style="cursor: pointer">
                 {{ menu.label }}
               </div>
-              <ul
-                class="sub-menu"
-                :class="{ 'sub-menu-open': showStatsSubMenu }"
-              >
+              <ul class="submenu" :class="{ submenu_open: showStatsSubMenu }">
                 <li
                   v-for="(sub, subIndex) in menu.submenu"
                   :key="'desktop-sub-' + subIndex"
-                  class="sub-item"
+                  class="sub_item"
                   :class="{ 'pt-3': subIndex === 0, 'pt-2': subIndex !== 0 }"
                 >
                   <router-link :to="sub.to">{{ sub.label }}</router-link>
@@ -104,11 +101,11 @@ const toggleStatsSubMenu = () => {
 }
 .list-group-item:hover > a,
 .list-group-item:hover > div,
-.sub-item:hover {
+.sub_item:hover {
   color: var(--color-point-1);
   transition: 0.3s;
 }
-.sub-menu {
+.submenu {
   overflow: hidden;
   max-height: 0;
   opacity: 0;
@@ -116,7 +113,7 @@ const toggleStatsSubMenu = () => {
     max-height 1s ease,
     opacity 0.3s ease;
 }
-.sub-menu.sub-menu-open {
+.submenu.submenu_open {
   max-height: 250px;
   opacity: 1;
 }

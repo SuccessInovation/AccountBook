@@ -51,7 +51,7 @@ body {
     'sidebar sidebar sidebar sidebar footer';
 }
 .box {
-  background-color: red;
+  background-color: #fff;
   font-size: 100%;
 }
 /* 테블렛 화면 */

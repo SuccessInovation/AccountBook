@@ -36,9 +36,13 @@
 h1 {
   overflow: visible;
 }
-
 .StartPage {
   width: 100%;
+  height: 100vh;
+  background-color: var(--color-point-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 section {
   justify-items: center;

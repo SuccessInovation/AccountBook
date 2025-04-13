@@ -13,10 +13,7 @@ const layout = computed(() => route.meta.layout || 'default')
 
 <template>
   <!-- 시작, 로그인/회원가입 화면 -->
-  <div
-    v-if="layout === 'none'"
-    :class="{ full_height_router_view: centerContent }"
-  >
+  <div v-if="layout === 'none'">
     <router-view />
   </div>
   <!-- 로그인 성공 시 접속 화면 -->

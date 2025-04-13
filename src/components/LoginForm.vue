@@ -76,7 +76,7 @@
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
-  color: var(--color-point-1);
+  color: var(--color-font-main);
   /* border: 1px solid blueviolet; */
 }
 /* 배추 제목 이미지 */
