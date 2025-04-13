@@ -9,7 +9,7 @@
       <slot name="sidebar"></slot>
     </aside>
     <section class="box content">
-      <slot></slot>
+      <slot name="content"></slot>
     </section>
     <footer class="box footer">
       <slot name="footer"></slot>

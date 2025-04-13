@@ -67,17 +67,10 @@ watch(
   background-color: red;
 } */
 .statistics_page {
-  position: absolute;
-  height: calc(100% - (120px + 80px)); /* 헤더+푸터의 높이만큼 뺌 */
-  width: calc(100% - 250px); /* 사이드바의 너비만큼 뺌 */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-/* 월 내비게이션 */
-#calendar {
-  margin-top: 20px;
 }
 /* 통계 콘텐츠 영역 박스 */
 .content_area {
@@ -86,6 +79,7 @@ watch(
   margin-top: 50px;
   display: flex;
   flex-direction: column;
+  width: 90%;
   gap: 20px;
   overflow: scroll;
   background-color: var(--color-point-3);

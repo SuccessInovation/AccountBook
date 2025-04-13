@@ -33,10 +33,6 @@ const handleSubmit = () => {
 
 <style scoped>
 .BudgetPage {
-  position: absolute;
-  top: 240px;
-  height: calc(100% - (120px + 80px)); /* 헤더+푸터의 높이만큼 뺌 */
-  width: calc(100% - 250px); /* 사이드바의 너비만큼 뺌 */
   display: flex;
   justify-content: center;
   align-items: center;

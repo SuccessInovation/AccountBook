@@ -24,9 +24,8 @@ const { rawTotalBudget, rawTotalIncome, rawTotalSpent } = useBudgetProgress()
 /* 홈페이지 중앙 정렬을 위한 스타일 */
 .home {
   position: absolute;
-  top: 140px;
-  /* height: calc(100% - (120px + 80px)); */
-  width: calc(100% - 250px);
+  top: 0px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;

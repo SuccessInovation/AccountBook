@@ -46,9 +46,7 @@ const downloadExcel = data => {
 
 <style scoped>
 .ExportExcelPage {
-  position: absolute;
-  height: calc(100% - (120px + 80px)); /* 헤더+푸터의 높이만큼 뺌 */
-  width: calc(100% - 250px); /* 사이드바의 너비만큼 뺌 */
+  padding-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,7 +54,7 @@ const downloadExcel = data => {
 .container {
   background-color: var(--color-point-3);
   border-radius: 30px;
-  width: 98%;
+  width: 90%;
   min-width: 768px;
   height: 630px;
   display: flex;

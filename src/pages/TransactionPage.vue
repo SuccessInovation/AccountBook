@@ -7,6 +7,8 @@ import { useTransactionStore } from '@/stores/TransactionStore'
 import { useRouter } from 'vue-router'
 // import
 
+// 월 이동 컴포넌트 import
+import CalendarNav from '@/components/CalendarNav.vue'
 // 달력,AddListBtn import
 import CalendarContent from '@/components/CalendarContent.vue'
 import AddListBtn from '@/components/AddListBtn.vue'
@@ -205,7 +207,9 @@ watch([incomeChecked, expenseChecked], () => {
 <!-- 탭메뉴 -->
 <template>
   <!-- 월 이동 컴포넌트 -->
-  <div class="calendar_carousel">
+
+  <CalendarNav />
+  <!-- <div class="calendar_carousel">
     <button type="button" class="arrow" @click="calendar.go_to_prev_month">
       &lt;
     </button>
@@ -225,7 +229,7 @@ watch([incomeChecked, expenseChecked], () => {
     <button type="button" class="arrow" @click="calendar.go_to_next_month">
       &gt;
     </button>
-  </div>
+  </div> -->
   <div class="container">
     <div>
       <!-- Bootstrap 탭 메뉴 -->
@@ -270,94 +274,6 @@ watch([incomeChecked, expenseChecked], () => {
 </template>
 
 <style scoped>
-/* 월 이동 컴포넌트 */
-/* .TransactionPage {
-  position: absolute;
-  height: calc(100% - (120px + 80px)); /* 헤더+푸터의 높이만큼 뺌 */
-/* width: calc(100% - 250px); /* 사이드바의 너비만큼 뺌 */
-/* display: flex;
-  justify-content: center;
-  align-items: center;  */
-/* } */
-/* .container {
-  background-color: var(--color-point-3);
-  border-radius: 30px;
-  width: 98%;
-  min-width: 768px;
-  height: 630px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-} */
-
-.calendar_carousel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.month_slider {
-  display: flex;
-  width: 500px;
-  overflow: hidden;
-  justify-content: space-between;
-}
-
-.month_item {
-  width: 100px;
-  text-align: center;
-  font-size: 1.2rem;
-  opacity: 0.6;
-  transform: scale(0.9);
-  transition: all 0.5s ease;
-}
-
-.month_item p {
-  font-size: 2.5rem;
-}
-
-.faded {
-  opacity: 0.4;
-}
-.active {
-  font-weight: bold;
-}
-
-.month_item.active {
-  font-size: 1.5rem;
-  font-weight: bold;
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-.arrow {
-  font-size: 2rem;
-  cursor: pointer;
-  background: none;
-  border: none;
-  color: #4caf50;
-  transition: transform 0.2s ease;
-}
-.arrow:hover {
-  transform: scale(1.2);
-}
-
-.current-month {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.current-month .year {
-  font-size: 1rem;
-  color: #999;
-}
-.current-month .month {
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-top: 2px;
-}
-
 /* 중간의 '목록/달력/카테고리/검색/수입/지출' 섹션 */
 .ledger-nav {
   display: flex;
